@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
 struct Player {
 	char* name;
@@ -14,7 +14,6 @@ struct Player {
 };
 
 void setup(int* numPlayers, struct Player** profiles) {
-
 	// Query user for number of players
 	while (*numPlayers < 1 || *numPlayers > 6) {
 		printf("\nEnter number of players (i.e. 1-6): ");
@@ -31,22 +30,26 @@ void setup(int* numPlayers, struct Player** profiles) {
 
 	// Query user for name of each player
 	for (int i = 0; i < *numPlayers; i++) {
-		char name[20];
+		char name[20] = "";
 		printf("\nEnter name of Player %d (e.g. Raj): ", i + 1);
 		int eof = 0;
 		while (eof == 0) {
 			eof = scanf("%19[^\n]", name);
-			while (getchar() != '\n');
+			int i = 0;
+			while (getchar() != '\n') {
+				i = i + 1;
+			}
+			if (i > 0) {
+				printf("Name is longer than 20 characters. Truncated to %s.\n", name);
+			}
 		}
 		(*profiles)[i].name = malloc(strlen(name));
 		strcpy((*profiles)[i].name, name);
 		printf("Welcome %s!\n", (*profiles)[i].name);
 	}
-
 }
 
 void record(int numPlayers, struct Player* profiles, char* command) {
-
 	// Parse name from input
 	char* name = strtok(command, "-");
 	int i = 0;
@@ -65,14 +68,11 @@ void record(int numPlayers, struct Player* profiles, char* command) {
 	// Parse first argument from input
 	char* arg = strtok(NULL, " ");
 	char* num = strtok(NULL, " ");
-	if (name != NULL && (arg == NULL || num == NULL)) {
+	if (name != NULL && i < numPlayers && (arg == NULL || num == NULL)) {
 		printf("Missing input.\n");
 	}
 
 	while (arg != NULL && num != NULL && i < numPlayers) {
-
-		// TODO: add 5-6 player expansion restrictions
-
 		// Convert ASCII to integer
 		int num_i = atoi(num);
 
@@ -100,8 +100,8 @@ void record(int numPlayers, struct Player* profiles, char* command) {
 				profiles[i].settlements = profiles[i].settlements + num_i;
 				printf("%s has reached the maximum number of settlements.\n", profiles[i].name);
 			} else {
-				printf("Invalid input. An additional %s settlements would put %s over the maximum possible settlements.\
-					\n", num, profiles[i].name);
+				printf("Invalid input. An additional %s settlements would put %s over the maximum possible settlements."
+					"\n", num, profiles[i].name);
 			}
 		} else if (strcmp(arg, "city") == 0) {
 			if (profiles[i].cities + num_i < 4) {
@@ -113,10 +113,7 @@ void record(int numPlayers, struct Player* profiles, char* command) {
 				printf("Invalid input. An additional %s cities would put %s over the maximum possible cities.\n", num, \
 					profiles[i].name);
 			}
-		} else if (strcmp(arg, "card") == 0) {
-
-			// TODO: limit development card total from all profiles
-
+		} else if (strcmp(arg, "devCard") == 0) {
 			profiles[i].developmentCards = profiles[i].developmentCards + num_i;
 		} else if (strcmp(arg, "vp") == 0) {
 			if (profiles[i].victoryPoints + num_i < 10) {
@@ -142,25 +139,22 @@ void record(int numPlayers, struct Player* profiles, char* command) {
 }
 
 void display(int numPlayers, struct Player* profiles) {
-
-	// TODO: display VPs over time for requested profile
-
 	bool exit = false;
 	while (!exit) {
 		printf("\nDisplay Options:\n"
-			"1. Enter \"list\" to list names of all players.\n"
+			"1. Enter \"list\" or \"l\" to list names of all players.\n"
 			"2. Enter \"show\" followed by name of player to display their data.\n"
 			"	e.g. show Raj\n"
-			"3. Enter \"rolls\" to graph all recorded rolls.\n"
+			"3. Enter \"rolls\" or \"r\" to graph all recorded rolls.\n"
 			"4. Enter \"exit\" or \"e\" to return to the previous menu.\n\n");
 
 		// Listen for user command
-		char command[30];
+		char command[30] = "";
 		scanf("%29[^\n]", command);
 		while (getchar() != '\n');
 
 		// Execute command
-		if (strcmp(command, "list") == 0) {
+		if (strcmp(command, "list") == 0 || strcmp(command, "l") == 0) {
 			printf("Here are the players: ");
 			int i;
 			for (i = 0; i < numPlayers - 1; i++) {
@@ -168,21 +162,21 @@ void display(int numPlayers, struct Player* profiles) {
 			}
 			printf("%s\n", profiles[i].name);
 		} else if (strstr(command, "show") != NULL) {
-			char* cmd = strtok(command, " ");
+			strtok(command, " ");
 			char* name = strtok(NULL, " ");
 			int i = 0;
 			while (name != NULL && i < numPlayers && strcmp(profiles[i].name, name) != 0) {
 				i = i + 1;
 			}
-			if (i < numPlayers) {
+			if (name != NULL && i < numPlayers) {
 				printf("%s has %d roads, %d settlements, %d cities, %d development cards, and %d victory points.\n", \
 					profiles[i].name, profiles[i].roads, profiles[i].settlements, profiles[i].cities, \
 					profiles[i].developmentCards, profiles[i].victoryPoints);
 			} else {
 				printf("There is no player named %s.\n", name);
 			}
-		} else if (strcmp(command, "rolls") == 0) {
-			char graph[1000];
+		} else if (strcmp(command, "rolls") == 0 || strcmp(command, "r") == 0) {
+			char graph[1000] = "";
 			for (int i = 0; i < 12; i++) {
 				if (i < 9) {
 					snprintf(graph + strlen(graph), 1000 - strlen(graph), " ");
@@ -202,11 +196,19 @@ void display(int numPlayers, struct Player* profiles) {
 			printf("Invalid command.\n");
 		}
 	}
-
 }
 
-void listen(int numPlayers, struct Player* profiles, bool* quit) {
+void save(int numPlayers, struct Player* profiles) {
+	printf("\nSave complete.\n");
 
+	// Unallocate space used by player profiles
+	for (int i = 0; i < numPlayers; i++) {
+		free(profiles[i].name);
+	}
+	free(profiles);
+}
+
+void menu(int numPlayers, struct Player* profiles, bool* quit) {
 	printf("\nMenu:\n"
 		"1. Enter name of player followed by applicable arguments to record "
 			"data.\n"
@@ -215,49 +217,31 @@ void listen(int numPlayers, struct Player* profiles, bool* quit) {
 		"		-road integer\n"
 		"		-settle integer\n"
 		"		-city integer\n"
-		"		-card integer\n"
+		"		-devCard integer\n"
 		"		-vp integer\n"
 		"	e.g. Raj rolled 11 this turn, built 1 road for total of 5 roads, "
 				 "and got Longest Road for total of 7 VPs\n"
 		"		 Raj -roll 11 -road 1 -vp 2\n"
-		"2. Enter \"display\" to display recorded data.\n"
-		"3. Enter \"quit\" or \"q\" to end program and save data.\n\n");
+		"2. Enter \"display\" or \"d\" to display recorded data.\n"
+		"3. Enter \"quit\" or \"q\" to save data and end program.\n\n");
 
 	// Listen for user command
-	char* command = malloc(40);
+	char command[40] = "";
 	scanf("%39[^\n]", command);
 	while (getchar() != '\n');
 
 	// Execute command
-	if (strcmp(command, "quit") == 0 || strcmp(command, "q") == 0) {
-		*quit = true;
-	} else if (strcmp(command, "display") == 0) {
+	if (strcmp(command, "display") == 0 || strcmp(command, "d") == 0) {
 		display(numPlayers, profiles);
+	} else if (strcmp(command, "quit") == 0 || strcmp(command, "q") == 0) {
+		*quit = true;
+		save(numPlayers, profiles);
 	} else {
 		record(numPlayers, profiles, command);
 	}
-	free(command);
-
-}
-
-void save(int numPlayers, struct Player** profiles) {
-
-	// TODO: save results to txt file
-
-	printf("\nSave complete.\n");
-
-	for (int i = 0; i < numPlayers; i++) {
-		free((*profiles)[i].name);
-	}
-	free(*profiles);
-
 }
 
 int main() {
-
-	// TODO: add doxygen documentation
-	// TODO: cmake script
-
 	printf("\nWelcome to the Catan Tracker!\n");
 
 	// Setup player profiles
@@ -265,13 +249,11 @@ int main() {
 	struct Player* profiles = NULL;
 	setup(&numPlayers, &profiles);
 
-	// Listen for user command
+	// Run menu
 	bool quit = false;
 	while (!quit) {
-		listen(numPlayers, profiles, &quit);
+		menu(numPlayers, profiles, &quit);
 	}
-
-	save(numPlayers, &profiles);
 
 	printf("\nQuitting Catan Tracker.\n\n");
 
