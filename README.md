@@ -4,12 +4,13 @@ _Referred to as "command line application" or "application"._
 ## About
 This command line application was created to provide a simple method of tracking the progress of each player in a game of "Catan" by Klaus Teuber.
 
-Currently, only the base game is supported. Support for "Catan: 5-6 Player Extension" _coming soon_.
+Currently, the base game and "Catan: 5-6 Player Extension" are supported.
 
 ## Benefits
-* Quickly retrieve a player's victory points
-* Visualize distribution of dice rolls (to make sure they're fair)
-* Save everyone's modus operandi at the end of the game
+* Quickly retrieve everyone's victory points
+* Visualize distribution and test normality of dice rolls
+* Remind yourself of the last roll if you forget
+* _Coming Soon_: Save everyone's modus operandi at the end of the game
 * _Coming Soon_: Visualize everyone's victory points over time
 
 ## Prerequisites
