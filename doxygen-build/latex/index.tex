@@ -1,0 +1,38 @@
+\label{index_md__Users_Raj_Desktop_Catan-tracker_README}%
+\Hypertarget{index_md__Users_Raj_Desktop_Catan-tracker_README}%
+{\itshape Referred to as \char`\"{}command line application\char`\"{} or \char`\"{}application\char`\"{}.}\hypertarget{index_autotoc_md1}{}\doxysection{About}\label{index_autotoc_md1}
+This command line application was created to provide a simple method of tracking the progress of each player in a game of \char`\"{}\+Catan\char`\"{} by Klaus Teuber.
+
+Currently, the base game and \char`\"{}\+Catan\+: 5-\/6 Player Extension\char`\"{} are supported.\hypertarget{index_autotoc_md2}{}\doxysection{Benefits}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Quickly retrieve everyone\textquotesingle{}s victory points
+\item Visualize distribution and test normality of dice rolls
+\item Remind yourself of the last roll if you forget
+\item Save everyone\textquotesingle{}s modus operandi at the end of the game
+\item {\itshape Coming Soon}\+: Visualize everyone\textquotesingle{}s victory points over time
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{Prerequisites}\label{index_autotoc_md3}
+You will need access to the following to run this application.
+
+
+\begin{DoxyItemize}
+\item Unix-\/like command line
+\item gcc
+\item Make
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{Compatibility}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsection{C Variant}\label{index_autotoc_md5}
+Compiled using gcc Version 4.\+2.\+1. Tested on x86\+\_\+64-\/apple-\/darwin19.\+3.\+0 (mac\+OS Catalina Version 10.\+15.\+3).\hypertarget{index_autotoc_md6}{}\doxysubsection{C++ Variant}\label{index_autotoc_md6}
+{\itshape Coming soon.}\hypertarget{index_autotoc_md7}{}\doxysection{How to Run}\label{index_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item Download this repository to your preferred directory (e.\+g. {\ttfamily Desktop})
+\item Go to your preferred directory on your command line (e.\+g. {\ttfamily cd $\sim$/\+Desktop/\+Catan-\/tracker})
+\item Run {\ttfamily make} to compile the application
+\item Run {\ttfamily ./tracker} to open the application
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md8}{}\doxysection{Updating}\label{index_autotoc_md8}
+Run {\ttfamily make update} to update your {\ttfamily Catan-\/tracker} local repository and {\ttfamily doxygen} submodule.\hypertarget{index_autotoc_md9}{}\doxysection{Documentation}\label{index_autotoc_md9}
+The source code is commented with descriptions of each function. Also, check out the \href{https://rpatelpj.github.io/Catan-tracker}{\texttt{ H\+T\+ML interface}}.
+
+The H\+T\+ML interface is generated through Doxygen. {\ttfamily bison} version 2.\+7 or later and {\ttfamily cmake} are required in addition to other pre-\/installed packages to use Doxygen.
+
+Run {\ttfamily make generate} to generate documentation from the source code. 
