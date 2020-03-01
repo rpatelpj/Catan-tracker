@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Raj/Desktop/Catan-tracker/documentation/generated_src/gitversion.cpp
+string.h
+-
+version.h
+-
+
+/Users/Raj/Desktop/Catan-tracker/doxygen/libversion/version.h
+

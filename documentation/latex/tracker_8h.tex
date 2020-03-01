@@ -1,0 +1,142 @@
+\hypertarget{tracker_8h}{}\doxysection{/\+Users/\+Raj/\+Desktop/\+Catan-\/tracker/tracker.h File Reference}
+\label{tracker_8h}\index{/Users/Raj/Desktop/Catan-\/tracker/tracker.h@{/Users/Raj/Desktop/Catan-\/tracker/tracker.h}}
+
+
+\textquotesingle{}tracker\textquotesingle{} function prototypes.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tracker_8h_a5bc940667e835654d4904b1664781a5d}{setup}} (int $\ast$num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$$\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$$\ast$overall)
+\begin{DoxyCompactList}\small\item\em Setup tracker. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8h_aabc45f655ede002d7a6a3d621e78bde1}{record}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall, char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Record player progress. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8h_a4aba83976d0f854b523f73878f938a71}{display}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall)
+\begin{DoxyCompactList}\small\item\em Display game results. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8h_aaa15b2eeaeb770c1b3c5e29048c52610}{save}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall)
+\begin{DoxyCompactList}\small\item\em Save game results. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8h_aef3c177a28db7234d93026230db14cff}{menu}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall, bool $\ast$quit)
+\begin{DoxyCompactList}\small\item\em Provide \textquotesingle{}tracker\textquotesingle{} options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\textquotesingle{}tracker\textquotesingle{} function prototypes. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tracker_8h_a4aba83976d0f854b523f73878f938a71}\label{tracker_8h_a4aba83976d0f854b523f73878f938a71}} 
+\index{tracker.h@{tracker.h}!display@{display}}
+\index{display@{display}!tracker.h@{tracker.h}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void display (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Display game results. 
+
+Process records and display user-\/requested results.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Players} & number of players \\
+\hline
+{\em profiles} & player profiles \\
+\hline
+{\em overall} & overall game status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tracker_8h_aef3c177a28db7234d93026230db14cff}\label{tracker_8h_aef3c177a28db7234d93026230db14cff}} 
+\index{tracker.h@{tracker.h}!menu@{menu}}
+\index{menu@{menu}!tracker.h@{tracker.h}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily void menu (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall,  }\item[{bool $\ast$}]{quit }\end{DoxyParamCaption})}
+
+
+
+Provide \textquotesingle{}tracker\textquotesingle{} options. 
+
+Allow user to record data, display results, or save results and quit \textquotesingle{}tracker\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Players} & number of players \\
+\hline
+{\em profiles} & player profiles \\
+\hline
+{\em overall} & overall game status \\
+\hline
+{\em quit} & application termination flag \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tracker_8h_aabc45f655ede002d7a6a3d621e78bde1}\label{tracker_8h_aabc45f655ede002d7a6a3d621e78bde1}} 
+\index{tracker.h@{tracker.h}!record@{record}}
+\index{record@{record}!tracker.h@{tracker.h}}
+\doxysubsubsection{\texorpdfstring{record()}{record()}}
+{\footnotesize\ttfamily void record (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall,  }\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Record player progress. 
+
+Process user input to update player profiles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Players} & number of players \\
+\hline
+{\em profiles} & player profiles \\
+\hline
+{\em overall} & overall game status \\
+\hline
+{\em command} & new profile data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tracker_8h_aaa15b2eeaeb770c1b3c5e29048c52610}\label{tracker_8h_aaa15b2eeaeb770c1b3c5e29048c52610}} 
+\index{tracker.h@{tracker.h}!save@{save}}
+\index{save@{save}!tracker.h@{tracker.h}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void save (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Save game results. 
+
+Export data as C\+SV for record-\/keeping and unallocate memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Players} & number of players \\
+\hline
+{\em profiles} & player profiles \\
+\hline
+{\em overall} & overall game status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tracker_8h_a5bc940667e835654d4904b1664781a5d}\label{tracker_8h_a5bc940667e835654d4904b1664781a5d}} 
+\index{tracker.h@{tracker.h}!setup@{setup}}
+\index{setup@{setup}!tracker.h@{tracker.h}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}\item[{int $\ast$}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$$\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$$\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Setup tracker. 
+
+Allocate memory for necessary data collection units.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Players} & number of players \\
+\hline
+{\em profiles} & player profiles \\
+\hline
+{\em overall} & overall game status \\
+\hline
+\end{DoxyParams}

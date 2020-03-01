@@ -1,0 +1,42 @@
+Determining if the function iconv_open exists failed with the following output:
+Change Dir: /Users/Raj/Desktop/Catan-tracker/documentation/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d6119/fast && /Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTC_d6119.dir/build.make CMakeFiles/cmTC_d6119.dir/build
+Building C object CMakeFiles/cmTC_d6119.dir/CheckFunctionExists.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Wno-deprecated-register -mmacosx-version-min=10.9  -DCHECK_FUNCTION_EXISTS=iconv_open -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_d6119.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.16.4/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d6119
+/usr/local/Cellar/cmake/3.16.4/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6119.dir/link.txt --verbose=1
+/Library/Developer/CommandLineTools/usr/bin/cc -Wno-deprecated-register -mmacosx-version-min=10.9  -DCHECK_FUNCTION_EXISTS=iconv_open -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d6119.dir/CheckFunctionExists.c.o  -o cmTC_d6119 
+Undefined symbols for architecture x86_64:
+  "_iconv_open", referenced from:
+      _main in CheckFunctionExists.c.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [cmTC_d6119] Error 1
+make[1]: *** [cmTC_d6119/fast] Error 2
+
+
+
+Performing C++ SOURCE FILE Test ICONV_ACCEPTS_CONST_INPUT failed with the following output:
+Change Dir: /Users/Raj/Desktop/Catan-tracker/documentation/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_51e4b/fast && /Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTC_51e4b.dir/build.make CMakeFiles/cmTC_51e4b.dir/build
+Building CXX object CMakeFiles/cmTC_51e4b.dir/src.cxx.o
+/Library/Developer/CommandLineTools/usr/bin/c++    -Wno-deprecated-register -mmacosx-version-min=10.9  -DICONV_ACCEPTS_CONST_INPUT -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_51e4b.dir/src.cxx.o -c /Users/Raj/Desktop/Catan-tracker/documentation/CMakeFiles/CMakeTmp/src.cxx
+/Users/Raj/Desktop/Catan-tracker/documentation/CMakeFiles/CMakeTmp/src.cxx:4:13: error: no matching function for call to 'iconv'
+            iconv(iconv_t(-1), &p, 0, 0, 0);
+            ^~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/iconv.h:75:39: note: candidate function not viable: no known conversion from 'const char **' to 'char **' for 2nd argument
+extern __LIBICONV_DLL_EXPORTED size_t iconv (iconv_t __cd, char* * __restrict __inbuf, size_t * __restrict __inbytesleft, char* * __restrict __outbuf, size_t * __restrict __outbytesleft);
+                                      ^
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_51e4b.dir/src.cxx.o] Error 1
+make[1]: *** [cmTC_51e4b/fast] Error 2
+
+
+Source file was:
+#include <iconv.h>
+         int main() {
+            char const *p = 0;
+            iconv(iconv_t(-1), &p, 0, 0, 0);
+         }

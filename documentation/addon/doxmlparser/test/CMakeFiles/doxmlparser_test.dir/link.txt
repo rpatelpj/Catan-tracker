@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -Wno-deprecated-register -mmacosx-version-min=10.9  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/doxmlparser_test.dir/main.cpp.o  -o ../../../bin/doxmlparser_test  ../../../lib/libdoxmlparser.a ../../../lib/libqtools.a 

@@ -1,0 +1,76 @@
+\hypertarget{tracker_8c}{}\doxysection{/\+Users/\+Raj/\+Desktop/\+Catan-\/tracker/tracker.c File Reference}
+\label{tracker_8c}\index{/Users/Raj/Desktop/Catan-\/tracker/tracker.c@{/Users/Raj/Desktop/Catan-\/tracker/tracker.c}}
+{\ttfamily \#include \char`\"{}tracker.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player}{Player}}
+\item 
+struct \mbox{\hyperlink{struct_overall}{Overall}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tracker_8c_a5bc940667e835654d4904b1664781a5d}{setup}} (int $\ast$num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$$\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$$\ast$overall)
+\begin{DoxyCompactList}\small\item\em Setup tracker. Initializes necessary data collection units. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8c_aabc45f655ede002d7a6a3d621e78bde1}{record}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall, char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Record player accomplishments. Processes user input to update player profiles as necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8c_a4aba83976d0f854b523f73878f938a71}{display}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall)
+\begin{DoxyCompactList}\small\item\em Display game results. Process and display results as requested by user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8c_aaa15b2eeaeb770c1b3c5e29048c52610}{save}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall)
+\begin{DoxyCompactList}\small\item\em Save game results. Export data to C\+SV for record-\/keeping. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tracker_8c_aef3c177a28db7234d93026230db14cff}{menu}} (int num\+Players, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$profiles, struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$overall, bool $\ast$quit)
+\begin{DoxyCompactList}\small\item\em Provide \textquotesingle{}tracker\textquotesingle{} options. Allow user to record data, display results, or quit \textquotesingle{}tracker\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tracker_8c_a4aba83976d0f854b523f73878f938a71}\label{tracker_8c_a4aba83976d0f854b523f73878f938a71}} 
+\index{tracker.c@{tracker.c}!display@{display}}
+\index{display@{display}!tracker.c@{tracker.c}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void display (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Display game results. Process and display results as requested by user. 
+
+\mbox{\Hypertarget{tracker_8c_aef3c177a28db7234d93026230db14cff}\label{tracker_8c_aef3c177a28db7234d93026230db14cff}} 
+\index{tracker.c@{tracker.c}!menu@{menu}}
+\index{menu@{menu}!tracker.c@{tracker.c}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily void menu (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall,  }\item[{bool $\ast$}]{quit }\end{DoxyParamCaption})}
+
+
+
+Provide \textquotesingle{}tracker\textquotesingle{} options. Allow user to record data, display results, or quit \textquotesingle{}tracker\textquotesingle{}. 
+
+\mbox{\Hypertarget{tracker_8c_aabc45f655ede002d7a6a3d621e78bde1}\label{tracker_8c_aabc45f655ede002d7a6a3d621e78bde1}} 
+\index{tracker.c@{tracker.c}!record@{record}}
+\index{record@{record}!tracker.c@{tracker.c}}
+\doxysubsubsection{\texorpdfstring{record()}{record()}}
+{\footnotesize\ttfamily void record (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall,  }\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Record player accomplishments. Processes user input to update player profiles as necessary. 
+
+\mbox{\Hypertarget{tracker_8c_aaa15b2eeaeb770c1b3c5e29048c52610}\label{tracker_8c_aaa15b2eeaeb770c1b3c5e29048c52610}} 
+\index{tracker.c@{tracker.c}!save@{save}}
+\index{save@{save}!tracker.c@{tracker.c}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void save (\begin{DoxyParamCaption}\item[{int}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Save game results. Export data to C\+SV for record-\/keeping. 
+
+\mbox{\Hypertarget{tracker_8c_a5bc940667e835654d4904b1664781a5d}\label{tracker_8c_a5bc940667e835654d4904b1664781a5d}} 
+\index{tracker.c@{tracker.c}!setup@{setup}}
+\index{setup@{setup}!tracker.c@{tracker.c}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}\item[{int $\ast$}]{num\+Players,  }\item[{struct \mbox{\hyperlink{struct_player}{Player}} $\ast$$\ast$}]{profiles,  }\item[{struct \mbox{\hyperlink{struct_overall}{Overall}} $\ast$$\ast$}]{overall }\end{DoxyParamCaption})}
+
+
+
+Setup tracker. Initializes necessary data collection units. 
+
