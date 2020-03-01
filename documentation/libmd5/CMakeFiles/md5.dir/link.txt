@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../lib/libmd5.a  CMakeFiles/md5.dir/md5.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../lib/libmd5.a

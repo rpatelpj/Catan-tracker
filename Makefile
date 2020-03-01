@@ -20,9 +20,9 @@ update:
 	@git pull
 	@echo "Checking for changes to doxygen..."
 	@cd doxygen; \
-	git pull
-	@cd documentation; \
-	cmake -G "Unix Makefiles" ../doxygen; \
+	git pull; \
+	cd build; \
+	cmake -G "Unix Makefiles" ..; \
 	make; \
 	make install; \
 	doxygen -u Doxyfile
@@ -31,10 +31,10 @@ update:
 generate:
 	@echo "Generating documentation website..."
 	@rm -r docs
-	@cd documentation; \
+	@cd doxygen/build; \
 	doxygen Doxyfile; \
 	mv html docs; \
-	mv docs ..
+	mv docs ../..
 	@echo "Available at 'docs/index.html'."
 	@open "docs/index.html"
 

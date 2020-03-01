@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../lib/libdoxygen_version.a  CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.o CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../lib/libdoxygen_version.a
