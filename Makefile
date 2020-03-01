@@ -30,10 +30,13 @@ update:
 
 generate:
 	@echo "Generating documentation website..."
+	@rm -r docs
 	@cd documentation; \
-	doxygen Doxyfile
-	@echo "Available at 'documentation/html/index.html'."
-	@open documentation/html/index.html
+	doxygen Doxyfile; \
+	mv html docs; \
+	mv docs ..
+	@echo "Available at 'docs/index.html'."
+	@open "docs/index.html"
 
 clean:
 	@rm -f tracker ${OBJ}

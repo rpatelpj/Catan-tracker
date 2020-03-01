@@ -633,13 +633,13 @@ src/CMakeFiles/_doxygen.dir/clean:
 # Target rules for target src/CMakeFiles/doxygen.dir
 
 # All Build rule for target.
+src/CMakeFiles/doxygen.dir/all: libmd5/CMakeFiles/md5.dir/all
+src/CMakeFiles/doxygen.dir/all: liblodepng/CMakeFiles/lodepng.dir/all
+src/CMakeFiles/doxygen.dir/all: libmscgen/CMakeFiles/mscgen.dir/all
 src/CMakeFiles/doxygen.dir/all: libversion/CMakeFiles/doxygen_version.dir/all
 src/CMakeFiles/doxygen.dir/all: qtools/CMakeFiles/qtools.dir/all
 src/CMakeFiles/doxygen.dir/all: vhdlparser/CMakeFiles/vhdlparser.dir/all
 src/CMakeFiles/doxygen.dir/all: src/CMakeFiles/_doxygen.dir/all
-src/CMakeFiles/doxygen.dir/all: libmd5/CMakeFiles/md5.dir/all
-src/CMakeFiles/doxygen.dir/all: liblodepng/CMakeFiles/lodepng.dir/all
-src/CMakeFiles/doxygen.dir/all: libmscgen/CMakeFiles/mscgen.dir/all
 src/CMakeFiles/doxygen.dir/all: src/CMakeFiles/doxycfg.dir/all
 	$(MAKE) -f src/CMakeFiles/doxygen.dir/build.make src/CMakeFiles/doxygen.dir/depend
 	$(MAKE) -f src/CMakeFiles/doxygen.dir/build.make src/CMakeFiles/doxygen.dir/build
