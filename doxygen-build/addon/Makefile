@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -116,7 +116,7 @@ test/fast: test
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -149,7 +149,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -159,14 +159,14 @@ package/fast: package
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Desktop/Catan-tracker/doxygen-build/addon/CMakeFiles/progress.marks
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Downloads/Catan-tracker/doxygen-build/addon/CMakeFiles/progress.marks
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/clean
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,17 +176,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -215,6 +215,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

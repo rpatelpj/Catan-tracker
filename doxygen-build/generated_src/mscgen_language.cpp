@@ -248,7 +248,7 @@ int yywrap()
 
 char *removeEscapes(char *in)
 {
-    const uint16_t l = strlen(in);
+    const uint16_t l = (uint16_t)strlen(in);
     char          *r = (char *)malloc_s(l + 1);
     uint16_t       t, u;
 
@@ -292,7 +292,7 @@ Msc MscParse(FILE *in)
 
 
 
-#line 296 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 296 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -325,8 +325,8 @@ Msc MscParse(FILE *in)
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
-# define YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
+#ifndef YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
+# define YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -414,7 +414,7 @@ union YYSTYPE
     MscAttrib     attrib;
     MscAttribType attribType;
 
-#line 418 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 418 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -427,7 +427,7 @@ extern YYSTYPE yylval;
 
 int yyparse (void *YYPARSE_PARAM);
 
-#endif /* !YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED  */
+#endif /* !YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED  */
 
 
 
@@ -1685,7 +1685,7 @@ yyreduce:
     *(Msc *)yyparse_result = (yyval.msc);
 
 }
-#line 1689 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1689 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 3:
@@ -1695,7 +1695,7 @@ yyreduce:
     *(Msc *)yyparse_result = (yyval.msc);
 
 }
-#line 1699 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1699 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 5:
@@ -1703,7 +1703,7 @@ yyreduce:
 {
     (yyval.opt) = MscLinkOpt((yyvsp[-2].opt), (yyvsp[0].opt));
 }
-#line 1707 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1707 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 6:
@@ -1711,7 +1711,7 @@ yyreduce:
 {
     (yyval.opt) = MscAllocOpt((yyvsp[-2].optType), (yyvsp[0].string));
 }
-#line 1715 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1715 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 11:
@@ -1719,7 +1719,7 @@ yyreduce:
 {
     (yyval.entitylist) = MscLinkEntity(NULL, (yyvsp[0].entity));   /* Create new list */
 }
-#line 1723 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1723 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 12:
@@ -1727,7 +1727,7 @@ yyreduce:
 {
     (yyval.entitylist) = MscLinkEntity((yyvsp[-2].entitylist), (yyvsp[0].entity));     /* Add to existing list */
 }
-#line 1731 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1731 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 13:
@@ -1735,7 +1735,7 @@ yyreduce:
 {
     (yyval.entity) = MscAllocEntity((yyvsp[0].string));
 }
-#line 1739 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1739 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 14:
@@ -1743,7 +1743,7 @@ yyreduce:
 {
     MscEntityLinkAttrib((yyvsp[-3].entity), (yyvsp[-1].attrib));
 }
-#line 1747 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1747 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 15:
@@ -1751,7 +1751,7 @@ yyreduce:
 {
     (yyval.arclist) = MscLinkArc(NULL, (yyvsp[0].arc));      /* Create new list */
 }
-#line 1755 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1755 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 16:
@@ -1759,7 +1759,7 @@ yyreduce:
 {
     (yyval.arclist) = MscLinkArc((yyvsp[-2].arclist), (yyvsp[0].arc));     /* Add to existing list */
 }
-#line 1763 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1763 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 17:
@@ -1768,7 +1768,7 @@ yyreduce:
     /* Add a special 'parallel' arc */
     (yyval.arclist) = MscLinkArc(MscLinkArc((yyvsp[-2].arclist), MscAllocArc(NULL, NULL, MSC_ARC_PARALLEL, lex_getlinenum())), (yyvsp[0].arc));
 }
-#line 1772 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1772 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 18:
@@ -1776,7 +1776,7 @@ yyreduce:
 {
     MscArcLinkAttrib((yyvsp[-3].arc), (yyvsp[-1].attrib));
 }
-#line 1780 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1780 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 20:
@@ -1784,7 +1784,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc(NULL, NULL, (yyvsp[0].arctype), lex_getlinenum());
 }
-#line 1788 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1788 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 21:
@@ -1792,7 +1792,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc((yyvsp[-2].string), (yyvsp[0].string), (yyvsp[-1].arctype), lex_getlinenum());
 }
-#line 1796 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1796 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 22:
@@ -1802,7 +1802,7 @@ yyreduce:
     MscArcLinkAttrib(arc, MscAllocAttrib(MSC_ATTR_BI_ARROWS, strdup_s("true")));
     (yyval.arc) = arc;
 }
-#line 1806 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1806 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 23:
@@ -1810,7 +1810,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc((yyvsp[-2].string), (yyvsp[0].string), (yyvsp[-1].arctype), lex_getlinenum());
 }
-#line 1814 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1814 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 24:
@@ -1820,7 +1820,7 @@ yyreduce:
     MscArcLinkAttrib(arc, MscAllocAttrib(MSC_ATTR_NO_ARROWS, strdup_s("true")));
     (yyval.arc) = arc;
 }
-#line 1824 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1824 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 25:
@@ -1828,7 +1828,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc((yyvsp[0].string), (yyvsp[-2].string), (yyvsp[-1].arctype), lex_getlinenum());
 }
-#line 1832 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1832 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 26:
@@ -1836,7 +1836,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc((yyvsp[-2].string), strdup_s("*"), (yyvsp[-1].arctype), lex_getlinenum());
 }
-#line 1840 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1840 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 27:
@@ -1844,7 +1844,7 @@ yyreduce:
 {
     (yyval.arc) = MscAllocArc((yyvsp[0].string), strdup_s("*"), (yyvsp[-1].arctype), lex_getlinenum());
 }
-#line 1848 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1848 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 54:
@@ -1852,7 +1852,7 @@ yyreduce:
 {
     (yyval.attrib) = MscLinkAttrib((yyvsp[-2].attrib), (yyvsp[0].attrib));
 }
-#line 1856 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1856 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 55:
@@ -1860,7 +1860,7 @@ yyreduce:
 {
     (yyval.attrib) = MscAllocAttrib((yyvsp[-2].attribType), (yyvsp[0].string));
 }
-#line 1864 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1864 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 67:
@@ -1868,7 +1868,7 @@ yyreduce:
 {
     (yyval.string) = removeEscapes((yyvsp[0].string));
 }
-#line 1872 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1872 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
   case 68:
@@ -1876,11 +1876,11 @@ yyreduce:
 {
     (yyval.string) = (yyvsp[0].string);
 }
-#line 1880 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1880 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
     break;
 
 
-#line 1884 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
+#line 1884 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.cpp"
 
       default: break;
     }

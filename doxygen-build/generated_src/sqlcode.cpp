@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
 #line 23 "sqlcode.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1353,6 +1353,8 @@ static yyconst flex_int16_t yy_chk[2330] =
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
 struct sqlcodeYY_state
 {
      CodeOutputInterface * code;
@@ -1374,8 +1376,10 @@ struct sqlcodeYY_state
      const char   *currentFontClass;
 };
 
-static void codify(const char* text);
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
+
 static void setCurrentDoc(const QCString &anchor,yyscan_t yyscanner);
 static void startCodeLine(yyscan_t yyscanner);
 static void endFontClass(yyscan_t yyscanner);
@@ -1384,14 +1388,14 @@ static void nextCodeLine(yyscan_t yyscanner);
 static void codifyLines(char *text,yyscan_t yyscanner);
 static void startFontClass(const char *s,yyscan_t yyscanner);
 static int countLines(yyscan_t yyscanner);
-static int yyread(char *buf,int max_size,yyscan_t yyscanner);
+static yy_size_t yyread(char *buf,yy_size_t max_size,yyscan_t yyscanner);
 
 #undef YY_INPUT
 #define YY_INPUT(buf,result,max_size) result=yyread(buf,max_size,yyscanner);
 
 /* Need multiple keyword definitions due to max length */
 
-#line 1395 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
+#line 1399 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -1609,10 +1613,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 122 "sqlcode.l"
+#line 126 "sqlcode.l"
 
 
-#line 1616 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
+#line 1620 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -1694,7 +1698,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 124 "sqlcode.l"
+#line 128 "sqlcode.l"
 {
                         startFontClass("stringliteral",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1703,7 +1707,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 131 "sqlcode.l"
+#line 135 "sqlcode.l"
 {
                         startFontClass("keyword",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1712,7 +1716,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 137 "sqlcode.l"
+#line 141 "sqlcode.l"
 {
                         startFontClass("keywordflow",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1721,7 +1725,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 143 "sqlcode.l"
+#line 147 "sqlcode.l"
 {
                         startFontClass("keywordtype",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1730,7 +1734,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 149 "sqlcode.l"
+#line 153 "sqlcode.l"
 {
                         startFontClass("preprocessor",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1739,7 +1743,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 155 "sqlcode.l"
+#line 159 "sqlcode.l"
 {
                         startFontClass("comment",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1748,7 +1752,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 161 "sqlcode.l"
+#line 165 "sqlcode.l"
 {
                         startFontClass("comment",yyscanner);
                         codifyLines(yytext,yyscanner);
@@ -1757,7 +1761,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 167 "sqlcode.l"
+#line 171 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
  
@@ -1766,14 +1770,14 @@ YY_RULE_SETUP
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 171 "sqlcode.l"
+#line 175 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
                     }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 175 "sqlcode.l"
+#line 179 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
                         endFontClass(yyscanner);
@@ -1782,7 +1786,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 181 "sqlcode.l"
+#line 185 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
                     }
@@ -1790,24 +1794,24 @@ YY_RULE_SETUP
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 185 "sqlcode.l"
+#line 189 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
                     }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 189 "sqlcode.l"
+#line 193 "sqlcode.l"
 {
                         codifyLines(yytext,yyscanner);
                     }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 193 "sqlcode.l"
+#line 197 "sqlcode.l"
 ECHO;
 	YY_BREAK
-#line 1811 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
+#line 1815 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/sqlcode.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2921,16 +2925,10 @@ void sqlcodeYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 193 "sqlcode.l"
+#line 197 "sqlcode.l"
 
 
 
-
-static void codify(const char* text, yyscan_t yyscanner)
-{ 
-  struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  yyextra->code->codify(text);
-}
 
 static void setCurrentDoc(const QCString &anchor, yyscan_t yyscanner)
 {
@@ -3081,10 +3079,10 @@ static int countLines(yyscan_t yyscanner)
   return count;
 }
 
-static int yyread(char *buf,int max_size,yyscan_t yyscanner)
+static yy_size_t yyread(char *buf,yy_size_t max_size,yyscan_t yyscanner)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int c=0;
+  yy_size_t c=0;
   while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
   {
     *buf = yyextra->inputString[yyextra->inputPosition++] ;
@@ -3220,5 +3218,7 @@ void SQLCodeParser::resetCodeParserState()
 
 //---------------------------------------------------------------------------------
 
+#if USE_STATE2STRING
 #include "sqlcode.l.h"
+#endif
 

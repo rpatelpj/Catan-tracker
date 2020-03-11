@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -114,7 +114,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -125,7 +125,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -159,14 +159,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Desktop/Catan-tracker/doxygen-build/qtools/CMakeFiles/progress.marks
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Downloads/Catan-tracker/doxygen-build/qtools/CMakeFiles/progress.marks
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/clean
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,22 +176,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 qtools/CMakeFiles/qtools.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/CMakeFiles/qtools.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 qtools/CMakeFiles/qtools.dir/rule
 .PHONY : qtools/CMakeFiles/qtools.dir/rule
 
 # Convenience name for target.
@@ -201,7 +201,7 @@ qtools: qtools/CMakeFiles/qtools.dir/rule
 
 # fast build rule for target.
 qtools/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/build
 .PHONY : qtools/fast
 
 qbuffer.o: qbuffer.cpp.o
@@ -210,7 +210,7 @@ qbuffer.o: qbuffer.cpp.o
 
 # target to build an object file
 qbuffer.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.o
 .PHONY : qbuffer.cpp.o
 
 qbuffer.i: qbuffer.cpp.i
@@ -219,7 +219,7 @@ qbuffer.i: qbuffer.cpp.i
 
 # target to preprocess a source file
 qbuffer.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.i
 .PHONY : qbuffer.cpp.i
 
 qbuffer.s: qbuffer.cpp.s
@@ -228,7 +228,7 @@ qbuffer.s: qbuffer.cpp.s
 
 # target to generate assembly for a file
 qbuffer.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qbuffer.cpp.s
 .PHONY : qbuffer.cpp.s
 
 qcollection.o: qcollection.cpp.o
@@ -237,7 +237,7 @@ qcollection.o: qcollection.cpp.o
 
 # target to build an object file
 qcollection.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.o
 .PHONY : qcollection.cpp.o
 
 qcollection.i: qcollection.cpp.i
@@ -246,7 +246,7 @@ qcollection.i: qcollection.cpp.i
 
 # target to preprocess a source file
 qcollection.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.i
 .PHONY : qcollection.cpp.i
 
 qcollection.s: qcollection.cpp.s
@@ -255,7 +255,7 @@ qcollection.s: qcollection.cpp.s
 
 # target to generate assembly for a file
 qcollection.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcollection.cpp.s
 .PHONY : qcollection.cpp.s
 
 qcstring.o: qcstring.cpp.o
@@ -264,7 +264,7 @@ qcstring.o: qcstring.cpp.o
 
 # target to build an object file
 qcstring.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.o
 .PHONY : qcstring.cpp.o
 
 qcstring.i: qcstring.cpp.i
@@ -273,7 +273,7 @@ qcstring.i: qcstring.cpp.i
 
 # target to preprocess a source file
 qcstring.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.i
 .PHONY : qcstring.cpp.i
 
 qcstring.s: qcstring.cpp.s
@@ -282,7 +282,7 @@ qcstring.s: qcstring.cpp.s
 
 # target to generate assembly for a file
 qcstring.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstring.cpp.s
 .PHONY : qcstring.cpp.s
 
 qcstringlist.o: qcstringlist.cpp.o
@@ -291,7 +291,7 @@ qcstringlist.o: qcstringlist.cpp.o
 
 # target to build an object file
 qcstringlist.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.o
 .PHONY : qcstringlist.cpp.o
 
 qcstringlist.i: qcstringlist.cpp.i
@@ -300,7 +300,7 @@ qcstringlist.i: qcstringlist.cpp.i
 
 # target to preprocess a source file
 qcstringlist.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.i
 .PHONY : qcstringlist.cpp.i
 
 qcstringlist.s: qcstringlist.cpp.s
@@ -309,7 +309,7 @@ qcstringlist.s: qcstringlist.cpp.s
 
 # target to generate assembly for a file
 qcstringlist.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qcstringlist.cpp.s
 .PHONY : qcstringlist.cpp.s
 
 qdatastream.o: qdatastream.cpp.o
@@ -318,7 +318,7 @@ qdatastream.o: qdatastream.cpp.o
 
 # target to build an object file
 qdatastream.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.o
 .PHONY : qdatastream.cpp.o
 
 qdatastream.i: qdatastream.cpp.i
@@ -327,7 +327,7 @@ qdatastream.i: qdatastream.cpp.i
 
 # target to preprocess a source file
 qdatastream.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.i
 .PHONY : qdatastream.cpp.i
 
 qdatastream.s: qdatastream.cpp.s
@@ -336,7 +336,7 @@ qdatastream.s: qdatastream.cpp.s
 
 # target to generate assembly for a file
 qdatastream.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatastream.cpp.s
 .PHONY : qdatastream.cpp.s
 
 qdatetime.o: qdatetime.cpp.o
@@ -345,7 +345,7 @@ qdatetime.o: qdatetime.cpp.o
 
 # target to build an object file
 qdatetime.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.o
 .PHONY : qdatetime.cpp.o
 
 qdatetime.i: qdatetime.cpp.i
@@ -354,7 +354,7 @@ qdatetime.i: qdatetime.cpp.i
 
 # target to preprocess a source file
 qdatetime.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.i
 .PHONY : qdatetime.cpp.i
 
 qdatetime.s: qdatetime.cpp.s
@@ -363,7 +363,7 @@ qdatetime.s: qdatetime.cpp.s
 
 # target to generate assembly for a file
 qdatetime.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdatetime.cpp.s
 .PHONY : qdatetime.cpp.s
 
 qdir.o: qdir.cpp.o
@@ -372,7 +372,7 @@ qdir.o: qdir.cpp.o
 
 # target to build an object file
 qdir.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.o
 .PHONY : qdir.cpp.o
 
 qdir.i: qdir.cpp.i
@@ -381,7 +381,7 @@ qdir.i: qdir.cpp.i
 
 # target to preprocess a source file
 qdir.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.i
 .PHONY : qdir.cpp.i
 
 qdir.s: qdir.cpp.s
@@ -390,7 +390,7 @@ qdir.s: qdir.cpp.s
 
 # target to generate assembly for a file
 qdir.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir.cpp.s
 .PHONY : qdir.cpp.s
 
 qdir_unix.o: qdir_unix.cpp.o
@@ -399,7 +399,7 @@ qdir_unix.o: qdir_unix.cpp.o
 
 # target to build an object file
 qdir_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.o
 .PHONY : qdir_unix.cpp.o
 
 qdir_unix.i: qdir_unix.cpp.i
@@ -408,7 +408,7 @@ qdir_unix.i: qdir_unix.cpp.i
 
 # target to preprocess a source file
 qdir_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.i
 .PHONY : qdir_unix.cpp.i
 
 qdir_unix.s: qdir_unix.cpp.s
@@ -417,7 +417,7 @@ qdir_unix.s: qdir_unix.cpp.s
 
 # target to generate assembly for a file
 qdir_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qdir_unix.cpp.s
 .PHONY : qdir_unix.cpp.s
 
 qfile.o: qfile.cpp.o
@@ -426,7 +426,7 @@ qfile.o: qfile.cpp.o
 
 # target to build an object file
 qfile.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.o
 .PHONY : qfile.cpp.o
 
 qfile.i: qfile.cpp.i
@@ -435,7 +435,7 @@ qfile.i: qfile.cpp.i
 
 # target to preprocess a source file
 qfile.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.i
 .PHONY : qfile.cpp.i
 
 qfile.s: qfile.cpp.s
@@ -444,7 +444,7 @@ qfile.s: qfile.cpp.s
 
 # target to generate assembly for a file
 qfile.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile.cpp.s
 .PHONY : qfile.cpp.s
 
 qfile_unix.o: qfile_unix.cpp.o
@@ -453,7 +453,7 @@ qfile_unix.o: qfile_unix.cpp.o
 
 # target to build an object file
 qfile_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.o
 .PHONY : qfile_unix.cpp.o
 
 qfile_unix.i: qfile_unix.cpp.i
@@ -462,7 +462,7 @@ qfile_unix.i: qfile_unix.cpp.i
 
 # target to preprocess a source file
 qfile_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.i
 .PHONY : qfile_unix.cpp.i
 
 qfile_unix.s: qfile_unix.cpp.s
@@ -471,7 +471,7 @@ qfile_unix.s: qfile_unix.cpp.s
 
 # target to generate assembly for a file
 qfile_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfile_unix.cpp.s
 .PHONY : qfile_unix.cpp.s
 
 qfileinfo.o: qfileinfo.cpp.o
@@ -480,7 +480,7 @@ qfileinfo.o: qfileinfo.cpp.o
 
 # target to build an object file
 qfileinfo.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.o
 .PHONY : qfileinfo.cpp.o
 
 qfileinfo.i: qfileinfo.cpp.i
@@ -489,7 +489,7 @@ qfileinfo.i: qfileinfo.cpp.i
 
 # target to preprocess a source file
 qfileinfo.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.i
 .PHONY : qfileinfo.cpp.i
 
 qfileinfo.s: qfileinfo.cpp.s
@@ -498,7 +498,7 @@ qfileinfo.s: qfileinfo.cpp.s
 
 # target to generate assembly for a file
 qfileinfo.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo.cpp.s
 .PHONY : qfileinfo.cpp.s
 
 qfileinfo_unix.o: qfileinfo_unix.cpp.o
@@ -507,7 +507,7 @@ qfileinfo_unix.o: qfileinfo_unix.cpp.o
 
 # target to build an object file
 qfileinfo_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.o
 .PHONY : qfileinfo_unix.cpp.o
 
 qfileinfo_unix.i: qfileinfo_unix.cpp.i
@@ -516,7 +516,7 @@ qfileinfo_unix.i: qfileinfo_unix.cpp.i
 
 # target to preprocess a source file
 qfileinfo_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.i
 .PHONY : qfileinfo_unix.cpp.i
 
 qfileinfo_unix.s: qfileinfo_unix.cpp.s
@@ -525,7 +525,7 @@ qfileinfo_unix.s: qfileinfo_unix.cpp.s
 
 # target to generate assembly for a file
 qfileinfo_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qfileinfo_unix.cpp.s
 .PHONY : qfileinfo_unix.cpp.s
 
 qgarray.o: qgarray.cpp.o
@@ -534,7 +534,7 @@ qgarray.o: qgarray.cpp.o
 
 # target to build an object file
 qgarray.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.o
 .PHONY : qgarray.cpp.o
 
 qgarray.i: qgarray.cpp.i
@@ -543,7 +543,7 @@ qgarray.i: qgarray.cpp.i
 
 # target to preprocess a source file
 qgarray.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.i
 .PHONY : qgarray.cpp.i
 
 qgarray.s: qgarray.cpp.s
@@ -552,7 +552,7 @@ qgarray.s: qgarray.cpp.s
 
 # target to generate assembly for a file
 qgarray.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgarray.cpp.s
 .PHONY : qgarray.cpp.s
 
 qgcache.o: qgcache.cpp.o
@@ -561,7 +561,7 @@ qgcache.o: qgcache.cpp.o
 
 # target to build an object file
 qgcache.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.o
 .PHONY : qgcache.cpp.o
 
 qgcache.i: qgcache.cpp.i
@@ -570,7 +570,7 @@ qgcache.i: qgcache.cpp.i
 
 # target to preprocess a source file
 qgcache.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.i
 .PHONY : qgcache.cpp.i
 
 qgcache.s: qgcache.cpp.s
@@ -579,7 +579,7 @@ qgcache.s: qgcache.cpp.s
 
 # target to generate assembly for a file
 qgcache.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgcache.cpp.s
 .PHONY : qgcache.cpp.s
 
 qgdict.o: qgdict.cpp.o
@@ -588,7 +588,7 @@ qgdict.o: qgdict.cpp.o
 
 # target to build an object file
 qgdict.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.o
 .PHONY : qgdict.cpp.o
 
 qgdict.i: qgdict.cpp.i
@@ -597,7 +597,7 @@ qgdict.i: qgdict.cpp.i
 
 # target to preprocess a source file
 qgdict.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.i
 .PHONY : qgdict.cpp.i
 
 qgdict.s: qgdict.cpp.s
@@ -606,7 +606,7 @@ qgdict.s: qgdict.cpp.s
 
 # target to generate assembly for a file
 qgdict.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgdict.cpp.s
 .PHONY : qgdict.cpp.s
 
 qglist.o: qglist.cpp.o
@@ -615,7 +615,7 @@ qglist.o: qglist.cpp.o
 
 # target to build an object file
 qglist.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.o
 .PHONY : qglist.cpp.o
 
 qglist.i: qglist.cpp.i
@@ -624,7 +624,7 @@ qglist.i: qglist.cpp.i
 
 # target to preprocess a source file
 qglist.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.i
 .PHONY : qglist.cpp.i
 
 qglist.s: qglist.cpp.s
@@ -633,7 +633,7 @@ qglist.s: qglist.cpp.s
 
 # target to generate assembly for a file
 qglist.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglist.cpp.s
 .PHONY : qglist.cpp.s
 
 qglobal.o: qglobal.cpp.o
@@ -642,7 +642,7 @@ qglobal.o: qglobal.cpp.o
 
 # target to build an object file
 qglobal.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.o
 .PHONY : qglobal.cpp.o
 
 qglobal.i: qglobal.cpp.i
@@ -651,7 +651,7 @@ qglobal.i: qglobal.cpp.i
 
 # target to preprocess a source file
 qglobal.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.i
 .PHONY : qglobal.cpp.i
 
 qglobal.s: qglobal.cpp.s
@@ -660,7 +660,7 @@ qglobal.s: qglobal.cpp.s
 
 # target to generate assembly for a file
 qglobal.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qglobal.cpp.s
 .PHONY : qglobal.cpp.s
 
 qgstring.o: qgstring.cpp.o
@@ -669,7 +669,7 @@ qgstring.o: qgstring.cpp.o
 
 # target to build an object file
 qgstring.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.o
 .PHONY : qgstring.cpp.o
 
 qgstring.i: qgstring.cpp.i
@@ -678,7 +678,7 @@ qgstring.i: qgstring.cpp.i
 
 # target to preprocess a source file
 qgstring.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.i
 .PHONY : qgstring.cpp.i
 
 qgstring.s: qgstring.cpp.s
@@ -687,7 +687,7 @@ qgstring.s: qgstring.cpp.s
 
 # target to generate assembly for a file
 qgstring.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgstring.cpp.s
 .PHONY : qgstring.cpp.s
 
 qgvector.o: qgvector.cpp.o
@@ -696,7 +696,7 @@ qgvector.o: qgvector.cpp.o
 
 # target to build an object file
 qgvector.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.o
 .PHONY : qgvector.cpp.o
 
 qgvector.i: qgvector.cpp.i
@@ -705,7 +705,7 @@ qgvector.i: qgvector.cpp.i
 
 # target to preprocess a source file
 qgvector.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.i
 .PHONY : qgvector.cpp.i
 
 qgvector.s: qgvector.cpp.s
@@ -714,7 +714,7 @@ qgvector.s: qgvector.cpp.s
 
 # target to generate assembly for a file
 qgvector.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qgvector.cpp.s
 .PHONY : qgvector.cpp.s
 
 qiodevice.o: qiodevice.cpp.o
@@ -723,7 +723,7 @@ qiodevice.o: qiodevice.cpp.o
 
 # target to build an object file
 qiodevice.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.o
 .PHONY : qiodevice.cpp.o
 
 qiodevice.i: qiodevice.cpp.i
@@ -732,7 +732,7 @@ qiodevice.i: qiodevice.cpp.i
 
 # target to preprocess a source file
 qiodevice.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.i
 .PHONY : qiodevice.cpp.i
 
 qiodevice.s: qiodevice.cpp.s
@@ -741,7 +741,7 @@ qiodevice.s: qiodevice.cpp.s
 
 # target to generate assembly for a file
 qiodevice.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qiodevice.cpp.s
 .PHONY : qiodevice.cpp.s
 
 qmap.o: qmap.cpp.o
@@ -750,7 +750,7 @@ qmap.o: qmap.cpp.o
 
 # target to build an object file
 qmap.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.o
 .PHONY : qmap.cpp.o
 
 qmap.i: qmap.cpp.i
@@ -759,7 +759,7 @@ qmap.i: qmap.cpp.i
 
 # target to preprocess a source file
 qmap.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.i
 .PHONY : qmap.cpp.i
 
 qmap.s: qmap.cpp.s
@@ -768,7 +768,7 @@ qmap.s: qmap.cpp.s
 
 # target to generate assembly for a file
 qmap.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmap.cpp.s
 .PHONY : qmap.cpp.s
 
 qmutex.o: qmutex.cpp.o
@@ -777,7 +777,7 @@ qmutex.o: qmutex.cpp.o
 
 # target to build an object file
 qmutex.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.o
 .PHONY : qmutex.cpp.o
 
 qmutex.i: qmutex.cpp.i
@@ -786,7 +786,7 @@ qmutex.i: qmutex.cpp.i
 
 # target to preprocess a source file
 qmutex.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.i
 .PHONY : qmutex.cpp.i
 
 qmutex.s: qmutex.cpp.s
@@ -795,7 +795,7 @@ qmutex.s: qmutex.cpp.s
 
 # target to generate assembly for a file
 qmutex.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex.cpp.s
 .PHONY : qmutex.cpp.s
 
 qmutex_unix.o: qmutex_unix.cpp.o
@@ -804,7 +804,7 @@ qmutex_unix.o: qmutex_unix.cpp.o
 
 # target to build an object file
 qmutex_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.o
 .PHONY : qmutex_unix.cpp.o
 
 qmutex_unix.i: qmutex_unix.cpp.i
@@ -813,7 +813,7 @@ qmutex_unix.i: qmutex_unix.cpp.i
 
 # target to preprocess a source file
 qmutex_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.i
 .PHONY : qmutex_unix.cpp.i
 
 qmutex_unix.s: qmutex_unix.cpp.s
@@ -822,7 +822,7 @@ qmutex_unix.s: qmutex_unix.cpp.s
 
 # target to generate assembly for a file
 qmutex_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qmutex_unix.cpp.s
 .PHONY : qmutex_unix.cpp.s
 
 qregexp.o: qregexp.cpp.o
@@ -831,7 +831,7 @@ qregexp.o: qregexp.cpp.o
 
 # target to build an object file
 qregexp.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.o
 .PHONY : qregexp.cpp.o
 
 qregexp.i: qregexp.cpp.i
@@ -840,7 +840,7 @@ qregexp.i: qregexp.cpp.i
 
 # target to preprocess a source file
 qregexp.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.i
 .PHONY : qregexp.cpp.i
 
 qregexp.s: qregexp.cpp.s
@@ -849,7 +849,7 @@ qregexp.s: qregexp.cpp.s
 
 # target to generate assembly for a file
 qregexp.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qregexp.cpp.s
 .PHONY : qregexp.cpp.s
 
 qstring.o: qstring.cpp.o
@@ -858,7 +858,7 @@ qstring.o: qstring.cpp.o
 
 # target to build an object file
 qstring.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.o
 .PHONY : qstring.cpp.o
 
 qstring.i: qstring.cpp.i
@@ -867,7 +867,7 @@ qstring.i: qstring.cpp.i
 
 # target to preprocess a source file
 qstring.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.i
 .PHONY : qstring.cpp.i
 
 qstring.s: qstring.cpp.s
@@ -876,7 +876,7 @@ qstring.s: qstring.cpp.s
 
 # target to generate assembly for a file
 qstring.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstring.cpp.s
 .PHONY : qstring.cpp.s
 
 qstringlist.o: qstringlist.cpp.o
@@ -885,7 +885,7 @@ qstringlist.o: qstringlist.cpp.o
 
 # target to build an object file
 qstringlist.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.o
 .PHONY : qstringlist.cpp.o
 
 qstringlist.i: qstringlist.cpp.i
@@ -894,7 +894,7 @@ qstringlist.i: qstringlist.cpp.i
 
 # target to preprocess a source file
 qstringlist.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.i
 .PHONY : qstringlist.cpp.i
 
 qstringlist.s: qstringlist.cpp.s
@@ -903,7 +903,7 @@ qstringlist.s: qstringlist.cpp.s
 
 # target to generate assembly for a file
 qstringlist.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qstringlist.cpp.s
 .PHONY : qstringlist.cpp.s
 
 qtextcodec.o: qtextcodec.cpp.o
@@ -912,7 +912,7 @@ qtextcodec.o: qtextcodec.cpp.o
 
 # target to build an object file
 qtextcodec.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.o
 .PHONY : qtextcodec.cpp.o
 
 qtextcodec.i: qtextcodec.cpp.i
@@ -921,7 +921,7 @@ qtextcodec.i: qtextcodec.cpp.i
 
 # target to preprocess a source file
 qtextcodec.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.i
 .PHONY : qtextcodec.cpp.i
 
 qtextcodec.s: qtextcodec.cpp.s
@@ -930,7 +930,7 @@ qtextcodec.s: qtextcodec.cpp.s
 
 # target to generate assembly for a file
 qtextcodec.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextcodec.cpp.s
 .PHONY : qtextcodec.cpp.s
 
 qtextstream.o: qtextstream.cpp.o
@@ -939,7 +939,7 @@ qtextstream.o: qtextstream.cpp.o
 
 # target to build an object file
 qtextstream.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.o
 .PHONY : qtextstream.cpp.o
 
 qtextstream.i: qtextstream.cpp.i
@@ -948,7 +948,7 @@ qtextstream.i: qtextstream.cpp.i
 
 # target to preprocess a source file
 qtextstream.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.i
 .PHONY : qtextstream.cpp.i
 
 qtextstream.s: qtextstream.cpp.s
@@ -957,7 +957,7 @@ qtextstream.s: qtextstream.cpp.s
 
 # target to generate assembly for a file
 qtextstream.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qtextstream.cpp.s
 .PHONY : qtextstream.cpp.s
 
 qthread.o: qthread.cpp.o
@@ -966,7 +966,7 @@ qthread.o: qthread.cpp.o
 
 # target to build an object file
 qthread.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.o
 .PHONY : qthread.cpp.o
 
 qthread.i: qthread.cpp.i
@@ -975,7 +975,7 @@ qthread.i: qthread.cpp.i
 
 # target to preprocess a source file
 qthread.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.i
 .PHONY : qthread.cpp.i
 
 qthread.s: qthread.cpp.s
@@ -984,7 +984,7 @@ qthread.s: qthread.cpp.s
 
 # target to generate assembly for a file
 qthread.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread.cpp.s
 .PHONY : qthread.cpp.s
 
 qthread_unix.o: qthread_unix.cpp.o
@@ -993,7 +993,7 @@ qthread_unix.o: qthread_unix.cpp.o
 
 # target to build an object file
 qthread_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.o
 .PHONY : qthread_unix.cpp.o
 
 qthread_unix.i: qthread_unix.cpp.i
@@ -1002,7 +1002,7 @@ qthread_unix.i: qthread_unix.cpp.i
 
 # target to preprocess a source file
 qthread_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.i
 .PHONY : qthread_unix.cpp.i
 
 qthread_unix.s: qthread_unix.cpp.s
@@ -1011,7 +1011,7 @@ qthread_unix.s: qthread_unix.cpp.s
 
 # target to generate assembly for a file
 qthread_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qthread_unix.cpp.s
 .PHONY : qthread_unix.cpp.s
 
 qutfcodec.o: qutfcodec.cpp.o
@@ -1020,7 +1020,7 @@ qutfcodec.o: qutfcodec.cpp.o
 
 # target to build an object file
 qutfcodec.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.o
 .PHONY : qutfcodec.cpp.o
 
 qutfcodec.i: qutfcodec.cpp.i
@@ -1029,7 +1029,7 @@ qutfcodec.i: qutfcodec.cpp.i
 
 # target to preprocess a source file
 qutfcodec.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.i
 .PHONY : qutfcodec.cpp.i
 
 qutfcodec.s: qutfcodec.cpp.s
@@ -1038,7 +1038,7 @@ qutfcodec.s: qutfcodec.cpp.s
 
 # target to generate assembly for a file
 qutfcodec.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qutfcodec.cpp.s
 .PHONY : qutfcodec.cpp.s
 
 qwaitcondition_unix.o: qwaitcondition_unix.cpp.o
@@ -1047,7 +1047,7 @@ qwaitcondition_unix.o: qwaitcondition_unix.cpp.o
 
 # target to build an object file
 qwaitcondition_unix.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.o
 .PHONY : qwaitcondition_unix.cpp.o
 
 qwaitcondition_unix.i: qwaitcondition_unix.cpp.i
@@ -1056,7 +1056,7 @@ qwaitcondition_unix.i: qwaitcondition_unix.cpp.i
 
 # target to preprocess a source file
 qwaitcondition_unix.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.i
 .PHONY : qwaitcondition_unix.cpp.i
 
 qwaitcondition_unix.s: qwaitcondition_unix.cpp.s
@@ -1065,7 +1065,7 @@ qwaitcondition_unix.s: qwaitcondition_unix.cpp.s
 
 # target to generate assembly for a file
 qwaitcondition_unix.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qwaitcondition_unix.cpp.s
 .PHONY : qwaitcondition_unix.cpp.s
 
 qxml.o: qxml.cpp.o
@@ -1074,7 +1074,7 @@ qxml.o: qxml.cpp.o
 
 # target to build an object file
 qxml.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.o
 .PHONY : qxml.cpp.o
 
 qxml.i: qxml.cpp.i
@@ -1083,7 +1083,7 @@ qxml.i: qxml.cpp.i
 
 # target to preprocess a source file
 qxml.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.i
 .PHONY : qxml.cpp.i
 
 qxml.s: qxml.cpp.s
@@ -1092,7 +1092,7 @@ qxml.s: qxml.cpp.s
 
 # target to generate assembly for a file
 qxml.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f qtools/CMakeFiles/qtools.dir/build.make qtools/CMakeFiles/qtools.dir/qxml.cpp.s
 .PHONY : qxml.cpp.s
 
 # Help Target
@@ -1221,6 +1221,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

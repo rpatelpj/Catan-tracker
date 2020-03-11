@@ -22,6 +22,7 @@ update:
 	@cd doxygen; \
 	git pull
 	@cd doxygen-build; \
+	rm CMakeCache.txt; \
 	cmake -G "Unix Makefiles" ../doxygen; \
 	make; \
 	make install; \

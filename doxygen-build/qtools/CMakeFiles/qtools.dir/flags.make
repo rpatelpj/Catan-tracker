@@ -6,5 +6,5 @@ CXX_FLAGS = -Wno-deprecated-register -mmacosx-version-min=10.9  -isysroot /Libra
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/Raj/Desktop/Catan-tracker/doxygen/qtools/. 
+CXX_INCLUDES = -I/Users/Raj/Downloads/Catan-tracker/doxygen/qtools/. 
 

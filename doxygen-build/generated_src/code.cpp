@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/code.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/code.cpp"
 #line 22 "code.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/code.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/code.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -11886,6 +11886,8 @@ goto find_rule; \
 #define SCOPEBLOCK (int *)8
 #define INNERBLOCK (int *)12
 
+#define USE_STATE2STRING 0
+
 /* -----------------------------------------------------------------
  *	statics
  */
@@ -11963,7 +11965,7 @@ class VariableContext
     void addVariable(yyscan_t yyscanner,const QCString &type,const QCString &name);
     ClassDef *findVariable(const QCString &name);
 
-    int count() const { return m_scopes.count(); }
+    uint count() const { return m_scopes.count(); }
     
   private:
     Scope        m_globalScope;
@@ -12050,7 +12052,7 @@ struct codeYY_state
   QCString      parmName;
 
   const char *  inputString = 0;     //!< the code fragment as text
-  int	        inputPosition = 0;   //!< read offset during parsing 
+  yy_size_t     inputPosition = 0;   //!< read offset during parsing 
   int           inputLines = 0;      //!< number of line in the code fragment
   int	        yyLineNr = 0;        //!< current line number
   int	        yyColNr = 0;         //!< current column number
@@ -12132,10 +12134,12 @@ struct codeYY_state
 static bool isCastKeyword(const QCString &s);
 
 //-------------------------------------------------------------------
+#if USE_STATE2STRING
+static const char *stateToString(yyscan_t yyscanner,int state);
+#endif
 
 static void saveObjCContext(yyscan_t yyscanner);
 static void restoreObjCContext(yyscan_t yyscanner);
-static const char *stateToString(yyscan_t yyscanner,int state);
 static void addUsingDirective(yyscan_t yyscanner,const char *name);
 static void pushScope(yyscan_t yyscanner,const char *s);
 static void popScope(yyscan_t yyscanner);
@@ -12185,7 +12189,7 @@ static QCString escapeObject(yyscan_t yyscanner,const char *s);
 static QCString escapeWord(yyscan_t yyscanner,const char *s);
 static QCString escapeComment(yyscan_t yyscanner,const char *s);
 static bool skipLanguageSpecificKeyword(yyscan_t yyscanner,const QCString &kw);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 
 
 /* -----------------------------------------------------------------
@@ -12230,7 +12234,7 @@ static int yyread(yyscan_t yyscanner,char *buf,int max_size);
 
 
 
-#line 12234 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/code.cpp"
+#line 12238 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/code.cpp"
 
 #define INITIAL 0
 #define SkipString 1
@@ -12499,10 +12503,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 436 "code.l"
+#line 440 "code.l"
 
 
-#line 12506 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/code.cpp"
+#line 12510 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/code.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -12621,12 +12625,12 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 438 "code.l"
+#line 442 "code.l"
 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 439 "code.l"
+#line 443 "code.l"
 {
   					  startFontClass(yyscanner,"preprocessor");
 					  yyextra->code->codify(yytext);
@@ -12636,7 +12640,7 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 444 "code.l"
+#line 448 "code.l"
 { 
                                           yyextra->insideObjC=TRUE;
   					  startFontClass(yyscanner,"keyword");
@@ -12648,7 +12652,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 452 "code.l"
+#line 456 "code.l"
 {
   					  if (yyextra->insideTemplate) REJECT;
   					  startFontClass(yyscanner,"keyword");
@@ -12660,7 +12664,7 @@ YY_RULE_SETUP
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 459 "code.l"
+#line 463 "code.l"
 { 
   					  if (yyextra->insideTemplate) REJECT;
   					  startFontClass(yyscanner,"keyword");
@@ -12670,7 +12674,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 465 "code.l"
+#line 469 "code.l"
 { 
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -12682,7 +12686,7 @@ YY_RULE_SETUP
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 472 "code.l"
+#line 476 "code.l"
 { 
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -12693,7 +12697,7 @@ YY_RULE_SETUP
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 478 "code.l"
+#line 482 "code.l"
 {
   					  if (!yyextra->insideObjC) REJECT;
   					  codifyLines(yyscanner,yytext);
@@ -12702,7 +12706,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 483 "code.l"
+#line 487 "code.l"
 {
 					  if (!yyextra->insideObjC || yyextra->insideBody)
 					  { 
@@ -12718,7 +12722,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 495 "code.l"
+#line 499 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  BEGIN(ObjCParams);
@@ -12726,7 +12730,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 499 "code.l"
+#line 503 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  BEGIN(ObjCParamType);
@@ -12734,7 +12738,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 503 "code.l"
+#line 507 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  if (*yytext=='{')
@@ -12759,14 +12763,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 524 "code.l"
+#line 528 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 527 "code.l"
+#line 531 "code.l"
 {
   					  startFontClass(yyscanner,"keywordtype");
 					  yyextra->code->codify(yytext);
@@ -12776,7 +12780,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 533 "code.l"
+#line 537 "code.l"
 {
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
   					  yyextra->parmType=yytext;
@@ -12784,7 +12788,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 537 "code.l"
+#line 541 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  BEGIN(ObjCParams);
@@ -12792,7 +12796,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 541 "code.l"
+#line 545 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  yyextra->parmName=yytext;
@@ -12802,14 +12806,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 547 "code.l"
+#line 551 "code.l"
 {
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
   					}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 550 "code.l"
+#line 554 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
@@ -12817,14 +12821,14 @@ YY_RULE_SETUP
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 553 "code.l"
+#line 557 "code.l"
 {
   					  codifyLines(yyscanner,yytext);
   					}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 556 "code.l"
+#line 560 "code.l"
 {
 					  //FileInfo *f;
 					  bool ambig;
@@ -12873,7 +12877,7 @@ YY_RULE_SETUP
 					  {
 					    yyextra->code->codify(yytext);
 					  }
-					  char c=yyinput(yyscanner);
+					  char c=(char)yyinput(yyscanner);
 					  QCString text;
 					  text+=c;
 					  yyextra->code->codify(text);
@@ -12883,7 +12887,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 611 "code.l"
+#line 615 "code.l"
 { 
   					  startFontClass(yyscanner,"preprocessor");
 					  yyextra->lastSkipCppContext = YY_START;
@@ -12893,14 +12897,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 617 "code.l"
+#line 621 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 620 "code.l"
+#line 624 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
@@ -12908,21 +12912,21 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 623 "code.l"
+#line 627 "code.l"
 { 
   					  codifyLines(yyscanner,yytext);
 					}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 626 "code.l"
+#line 630 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 629 "code.l"
+#line 633 "code.l"
 { 
                                           yyextra->theVarContext.pushScope();
 
@@ -12946,7 +12950,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 649 "code.l"
+#line 653 "code.l"
 { 
                                           yyextra->theVarContext.popScope();
   					  yyextra->type.resize(0); 
@@ -12974,7 +12978,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 673 "code.l"
+#line 677 "code.l"
 { 
   					  //printf("End of objc scope fd=%s\n",yyextra->sourceFileDef->name().data());
                                           if (yyextra->sourceFileDef)
@@ -13013,7 +13017,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 708 "code.l"
+#line 712 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					  yyextra->searchingForBody=FALSE; 
@@ -13022,7 +13026,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 713 "code.l"
+#line 717 "code.l"
 {
   					  yyextra->type=yyextra->curClassName.copy();
   					  yyextra->name.resize(0);
@@ -13032,7 +13036,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 719 "code.l"
+#line 723 "code.l"
 {
 					  startFontClass(yyscanner,"keyword");
   					  yyextra->code->codify(yytext);
@@ -13040,10 +13044,10 @@ YY_RULE_SETUP
 					}
 	YY_BREAK
 case 33:
-#line 725 "code.l"
+#line 729 "code.l"
 case 34:
 YY_RULE_SETUP
-#line 725 "code.l"
+#line 729 "code.l"
 {
                                           if (yyextra->lang==SrcLangExt_CSharp)
                                             yyextra->curClassName=substitute(yytext,".","::");
@@ -13066,7 +13070,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 744 "code.l"
+#line 748 "code.l"
 { 
                                           yyextra->bracketCount=1;
 					  yyextra->code->codify(yytext);
@@ -13076,26 +13080,26 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 749 "code.l"
+#line 753 "code.l"
 { yyextra->yyLineNr++; 
                                           codifyLines(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 752 "code.l"
+#line 756 "code.l"
 { yyextra->code->codify(yytext); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 753 "code.l"
+#line 757 "code.l"
 { yyextra->code->codify(yytext);
                                           yyextra->bracketCount++; 
                                         }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 756 "code.l"
+#line 760 "code.l"
 { 
                                           yyextra->code->codify(yytext);
                                           if (--yyextra->bracketCount<=0)
@@ -13107,19 +13111,19 @@ YY_RULE_SETUP
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 763 "code.l"
+#line 767 "code.l"
 { yyextra->yyLineNr++; 
                                           codifyLines(yyscanner,yytext); 
                                         }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 766 "code.l"
+#line 770 "code.l"
 { yyextra->code->codify(yytext); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 767 "code.l"
+#line 771 "code.l"
 { // PHP namespace
                                           yyextra->curClassName=substitute(yytext,"\\","::");
   					  yyextra->scopeStack.push(CLASSBLOCK);
@@ -13131,7 +13135,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 775 "code.l"
+#line 779 "code.l"
 { // Obj-C category
                                           yyextra->curClassName=removeRedundantWhiteSpace(yytext);
   					  yyextra->scopeStack.push(CLASSBLOCK);
@@ -13143,7 +13147,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 783 "code.l"
+#line 787 "code.l"
 {
 					  yyextra->curClassName=substitute(yytext,".","::");
 					  //printf("found package: %s\n",yyextra->curClassName.data());
@@ -13153,7 +13157,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 789 "code.l"
+#line 793 "code.l"
 {
 					  unput(*yytext);
 					  BEGIN( Body );
@@ -13161,7 +13165,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 793 "code.l"
+#line 797 "code.l"
 { // Java, Slice
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13173,7 +13177,7 @@ YY_RULE_SETUP
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 800 "code.l"
+#line 804 "code.l"
 {
 					  DBG_CTX((stderr,"***** C++/CLI modifier %s on yyextra->curClassName=%s\n",yytext,yyextra->curClassName.data()));
   					  startFontClass(yyscanner,"keyword");
@@ -13184,7 +13188,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 807 "code.l"
+#line 811 "code.l"
 {
   					  yyextra->type = yyextra->curClassName.copy();
 					  yyextra->name = yytext;
@@ -13197,7 +13201,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 816 "code.l"
+#line 820 "code.l"
 {
   					  codifyLines(yyscanner,yytext);
 					  yyextra->curClassBases.clear();
@@ -13205,12 +13209,12 @@ YY_RULE_SETUP
 					}
 	YY_BREAK
 case 50:
-#line 822 "code.l"
+#line 826 "code.l"
 case 51:
-#line 823 "code.l"
+#line 827 "code.l"
 case 52:
 YY_RULE_SETUP
-#line 823 "code.l"
+#line 827 "code.l"
 {
                                           yyextra->theVarContext.pushScope();
   					  yyextra->code->codify(yytext);
@@ -13263,7 +13267,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 872 "code.l"
+#line 876 "code.l"
 { 
   					  startFontClass(yyscanner,"keyword");
   					  yyextra->code->codify(yytext);
@@ -13272,7 +13276,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 877 "code.l"
+#line 881 "code.l"
 { 
 					  DBG_CTX((stderr,"%s:addBase(%s)\n",yyextra->curClassName.data(),yytext));
   					  yyextra->curClassBases.inSort(yytext); 
@@ -13281,7 +13285,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 882 "code.l"
+#line 886 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					  if (!yyextra->insideObjC)
@@ -13297,7 +13301,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 894 "code.l"
+#line 898 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  yyextra->insideProtocolList=FALSE;
@@ -13305,7 +13309,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 898 "code.l"
+#line 902 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  ++yyextra->sharpCount; 
@@ -13313,7 +13317,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 902 "code.l"
+#line 906 "code.l"
 { 
   					  yyextra->code->codify(yytext);
   					  if (--yyextra->sharpCount<=0)
@@ -13322,7 +13326,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 907 "code.l"
+#line 911 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  yyextra->lastStringContext=YY_START;
@@ -13331,7 +13335,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 912 "code.l"
+#line 916 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  yyextra->lastStringContext=YY_START;
@@ -13340,7 +13344,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 917 "code.l"
+#line 921 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           yyextra->sharpCount=1;
@@ -13349,7 +13353,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 922 "code.l"
+#line 926 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           ++yyextra->sharpCount;
@@ -13357,7 +13361,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 926 "code.l"
+#line 930 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           if (--yyextra->sharpCount<=0)
@@ -13366,7 +13370,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 933 "code.l"
+#line 937 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					}
@@ -13377,7 +13381,7 @@ case 65:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 938 "code.l"
+#line 942 "code.l"
 {
   					  addType(yyscanner);
 					  generateFunctionLink(yyscanner,*yyextra->code,yytext);
@@ -13393,7 +13397,7 @@ case 66:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 946 "code.l"
+#line 950 "code.l"
 {
   					  addType(yyscanner);
 					  generateFunctionLink(yyscanner,*yyextra->code,yytext);
@@ -13409,7 +13413,7 @@ case 67:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 954 "code.l"
+#line 958 "code.l"
 {
   					  addType(yyscanner);
 					  generateFunctionLink(yyscanner,*yyextra->code,yytext);
@@ -13425,7 +13429,7 @@ case 68:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 962 "code.l"
+#line 966 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13437,7 +13441,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 969 "code.l"
+#line 973 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13447,7 +13451,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 975 "code.l"
+#line 979 "code.l"
 { addUsingDirective(yyscanner,yytext);
  					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
                                           DBG_CTX((stderr,"** scope stack push CLASSBLOCK\n"));
@@ -13459,17 +13463,17 @@ YY_RULE_SETUP
 case 71:
 /* rule 71 can match eol */
 YY_RULE_SETUP
-#line 982 "code.l"
+#line 986 "code.l"
 { codifyLines(yyscanner,yytext); BEGIN(Body); }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 983 "code.l"
+#line 987 "code.l"
 { codifyLines(yyscanner,yytext); BEGIN(Body); }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 984 "code.l"
+#line 988 "code.l"
 { yyextra->code->codify(yytext); // this-> for C++, this. for C#
 					  yyextra->prefixed_with_this_keyword = TRUE;
                                         }
@@ -13480,7 +13484,7 @@ case 74:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 987 "code.l"
+#line 991 "code.l"
 {
                                           if (yyextra->lang==SrcLangExt_Java && qstrcmp("internal",yytext) ==0) REJECT;
                                           if (skipLanguageSpecificKeyword(yyscanner,yytext)) REJECT;
@@ -13496,7 +13500,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 999 "code.l"
+#line 1003 "code.l"
 {
                                           if (skipLanguageSpecificKeyword(yyscanner,yytext)) REJECT;
   					  startFontClass(yyscanner,"keyword");
@@ -13507,7 +13511,7 @@ YY_RULE_SETUP
 case 76:
 /* rule 76 can match eol */
 YY_RULE_SETUP
-#line 1005 "code.l"
+#line 1009 "code.l"
 {
                                           if (skipLanguageSpecificKeyword(yyscanner,yytext)) REJECT;
   					  startFontClass(yyscanner,"keyword");
@@ -13522,7 +13526,7 @@ case 77:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1012 "code.l"
+#line 1016 "code.l"
 {
 					  if (!yyextra->inForEachExpression) REJECT;
   					  startFontClass(yyscanner,"keywordflow");
@@ -13538,7 +13542,7 @@ YY_RULE_SETUP
 case 78:
 /* rule 78 can match eol */
 YY_RULE_SETUP
-#line 1023 "code.l"
+#line 1027 "code.l"
 {
   					  startFontClass(yyscanner,"keywordflow");
   					  codifyLines(yyscanner,yytext);
@@ -13551,7 +13555,7 @@ YY_RULE_SETUP
 case 79:
 /* rule 79 can match eol */
 YY_RULE_SETUP
-#line 1031 "code.l"
+#line 1035 "code.l"
 {
                                           if (yyextra->currentMemberDef && yyextra->currentMemberDef->isFunction())
                                           {
@@ -13571,7 +13575,7 @@ case 80:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1043 "code.l"
+#line 1047 "code.l"
 {
   					  startFontClass(yyscanner,"keywordflow");
   					  codifyLines(yyscanner,yytext);
@@ -13588,7 +13592,7 @@ case 81:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1052 "code.l"
+#line 1056 "code.l"
 {
                                           if (yyextra->currentMemberDef && yyextra->currentMemberDef->isFunction())
                                           {
@@ -13605,7 +13609,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 1065 "code.l"
+#line 1069 "code.l"
 {
   					  startFontClass(yyscanner,"keywordflow");
   					  codifyLines(yyscanner,yytext);
@@ -13614,7 +13618,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 1070 "code.l"
+#line 1074 "code.l"
 {
                                           if (yyextra->currentMemberDef && yyextra->currentMemberDef->isFunction())
                                           {
@@ -13627,7 +13631,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 1079 "code.l"
+#line 1083 "code.l"
 { // end of cast?
   					  yyextra->code->codify(yytext);
 					  yyextra->theCallContext.popScope(yyextra->name, yyextra->type);
@@ -13638,7 +13642,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 1086 "code.l"
+#line 1090 "code.l"
 {
   					  yyextra->code->codify(yytext);
   				          yyextra->name.resize(0);yyextra->type.resize(0);
@@ -13652,7 +13656,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 1096 "code.l"
+#line 1100 "code.l"
 {
   					  startFontClass(yyscanner,"keywordtype");
 					  yyextra->code->codify(yytext);
@@ -13663,7 +13667,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 1103 "code.l"
+#line 1107 "code.l"
 {
                                           if (yyextra->lang!=SrcLangExt_Slice)
                                           {
@@ -13684,7 +13688,7 @@ case 88:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 7;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1117 "code.l"
+#line 1121 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
 					  yyextra->code->codify(yytext);
@@ -13698,7 +13702,7 @@ case 89:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1124 "code.l"
+#line 1128 "code.l"
 { // template<...>
   					  startFontClass(yyscanner,"keyword");
 					  yyextra->code->codify(yytext);
@@ -13709,7 +13713,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 1131 "code.l"
+#line 1135 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13718,7 +13722,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 1136 "code.l"
+#line 1140 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           yyextra->sharpCount++;
@@ -13726,7 +13730,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 1140 "code.l"
+#line 1144 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           yyextra->sharpCount--;
@@ -13738,7 +13742,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 1148 "code.l"
+#line 1152 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13748,14 +13752,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 1154 "code.l"
+#line 1158 "code.l"
 {
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
 					}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 1157 "code.l"
+#line 1161 "code.l"
 {
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13764,14 +13768,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 1162 "code.l"
+#line 1166 "code.l"
 {
   					  codifyLines(yyscanner,yytext);
 					}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 1165 "code.l"
+#line 1169 "code.l"
 { // static_cast<T>(
   					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -13783,7 +13787,7 @@ YY_RULE_SETUP
 case 98:
 /* rule 98 can match eol */
 YY_RULE_SETUP
-#line 1172 "code.l"
+#line 1176 "code.l"
 { // PHP member variable
 					  addType(yyscanner);
 					  generatePHPVariableLink(yyscanner,*yyextra->code,yytext);
@@ -13793,7 +13797,7 @@ YY_RULE_SETUP
 case 99:
 /* rule 99 can match eol */
 YY_RULE_SETUP
-#line 1177 "code.l"
+#line 1181 "code.l"
 { // A<T> *pt;
 					  if (isCastKeyword(yytext) && YY_START==Body)
 					  {
@@ -13807,7 +13811,7 @@ YY_RULE_SETUP
 case 100:
 /* rule 100 can match eol */
 YY_RULE_SETUP
-#line 1186 "code.l"
+#line 1190 "code.l"
 { // "int var;" or "var, var2" or "debug(f) macro" , or int var : 5;
 					  addType(yyscanner);
 					  // changed this to generateFunctionLink, see bug 624514
@@ -13819,7 +13823,7 @@ YY_RULE_SETUP
 case 101:
 /* rule 101 can match eol */
 YY_RULE_SETUP
-#line 1193 "code.l"
+#line 1197 "code.l"
 { // p->func()
 					  addType(yyscanner);
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
@@ -13829,11 +13833,11 @@ YY_RULE_SETUP
 case 102:
 /* rule 102 can match eol */
 YY_RULE_SETUP
-#line 1198 "code.l"
+#line 1202 "code.l"
 {  // (*p)->func() but not "if (p) ..."
 					  yyextra->code->codify(yytext);
-					  int s=0;while (s<(int)yyleng && !isId(yytext[s])) s++;
-                                          int e=(int)yyleng-1;while (e>=0 && !isId(yytext[e])) e--;
+					  uint s=0;while (s<(uint)yyleng && !isId(yytext[s])) s++;
+                                          uint e=(uint)yyleng-1;while (!isId(yytext[e])) e--;
 					  QCString varname = ((QCString)yytext).mid(s,e-s+1); 
 					  addType(yyscanner);
   					  yyextra->name=varname; 
@@ -13841,11 +13845,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 103:
 /* rule 103 can match eol */
-#line 1207 "code.l"
+#line 1211 "code.l"
 case 104:
 /* rule 104 can match eol */
 YY_RULE_SETUP
-#line 1207 "code.l"
+#line 1211 "code.l"
 { // a() or c::a() or t<A,B>::a() or A\B\foo()
 					  if (isCastKeyword(yytext))
 					  {
@@ -13862,10 +13866,10 @@ YY_RULE_SETUP
 case 105:
 /* rule 105 can match eol */
 YY_RULE_SETUP
-#line 1219 "code.l"
+#line 1223 "code.l"
 {
                                           QCString text=yytext;
-                                          int i=text.find('R');
+                                          uint i=(uint)text.find('R');
                                           yyextra->code->codify(text.left(i+1));
 					  startFontClass(yyscanner,"stringliteral");
   					  yyextra->code->codify(yytext+i+1);
@@ -13878,7 +13882,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 1231 "code.l"
+#line 1235 "code.l"
 {
 					  startFontClass(yyscanner,"stringliteral");
   					  yyextra->code->codify(yytext);
@@ -13889,7 +13893,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 1238 "code.l"
+#line 1242 "code.l"
 {
 					  startFontClass(yyscanner,"stringliteral");
   					  yyextra->code->codify(yytext);
@@ -13900,28 +13904,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 1245 "code.l"
+#line 1249 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 1248 "code.l"
+#line 1252 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 1251 "code.l"
+#line 1255 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 1254 "code.l"
+#line 1258 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  endFontClass(yyscanner);
@@ -13930,7 +13934,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 1259 "code.l"
+#line 1263 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  endFontClass(yyscanner);
@@ -13939,7 +13943,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 1264 "code.l"
+#line 1268 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					}
@@ -13947,7 +13951,7 @@ YY_RULE_SETUP
 case 114:
 /* rule 114 can match eol */
 YY_RULE_SETUP
-#line 1267 "code.l"
+#line 1271 "code.l"
 { 
                                           yyextra->code->codify(yytext);
                                           QCString delimiter = yytext+1;
@@ -13960,37 +13964,37 @@ YY_RULE_SETUP
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 1276 "code.l"
+#line 1280 "code.l"
 { yyextra->code->codify(yytext); }
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 1277 "code.l"
+#line 1281 "code.l"
 { yyextra->code->codify(yytext); }
 	YY_BREAK
 case 117:
 /* rule 117 can match eol */
 YY_RULE_SETUP
-#line 1278 "code.l"
+#line 1282 "code.l"
 { codifyLines(yyscanner,yytext); }
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 1279 "code.l"
+#line 1283 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 1282 "code.l"
+#line 1286 "code.l"
 { // escaped quote
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 1285 "code.l"
+#line 1289 "code.l"
 { // end of string
   					  yyextra->code->codify(yytext);
 					  endFontClass(yyscanner);
@@ -13999,7 +14003,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 1290 "code.l"
+#line 1294 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
@@ -14007,14 +14011,14 @@ YY_RULE_SETUP
 case 122:
 /* rule 122 can match eol */
 YY_RULE_SETUP
-#line 1293 "code.l"
+#line 1297 "code.l"
 {
   					  codifyLines(yyscanner,yytext);
   					}
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 1296 "code.l"
+#line 1300 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  yyextra->name.resize(0);yyextra->type.resize(0);
@@ -14022,7 +14026,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 1300 "code.l"
+#line 1304 "code.l"
 {
   					  if (yyextra->insideTemplate)
 					  {
@@ -14033,7 +14037,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 1307 "code.l"
+#line 1311 "code.l"
 {
   					  if (yyextra->insideTemplate)
 					  {
@@ -14047,7 +14051,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 1317 "code.l"
+#line 1321 "code.l"
 {
   					  startFontClass(yyscanner,"charliteral"); 
   					  yyextra->code->codify(yytext);
@@ -14056,7 +14060,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 1322 "code.l"
+#line 1326 "code.l"
 { 
   				          if (yytext[0]=='-') // -> could be overloaded
 					  {
@@ -14070,7 +14074,7 @@ YY_RULE_SETUP
 case 128:
 /* rule 128 can match eol */
 YY_RULE_SETUP
-#line 1331 "code.l"
+#line 1335 "code.l"
 {
 					  if (yyextra->theCallContext.getScope())
 					  {
@@ -14101,7 +14105,7 @@ YY_RULE_SETUP
 case 129:
 /* rule 129 can match eol */
 YY_RULE_SETUP
-#line 1357 "code.l"
+#line 1361 "code.l"
 {
 					  if (yyextra->theCallContext.getScope())
 					  {
@@ -14126,7 +14130,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 1378 "code.l"
+#line 1382 "code.l"
 {
 					  if (yyextra->insideObjC && *yytext=='[')
 					  {
@@ -14229,7 +14233,7 @@ YY_RULE_SETUP
   */
 case 131:
 YY_RULE_SETUP
-#line 1477 "code.l"
+#line 1481 "code.l"
 {
                                     saveObjCContext(yyscanner);
 			            yyextra->currentCtx->format+=*yytext;
@@ -14239,7 +14243,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 1483 "code.l"
+#line 1487 "code.l"
 {
 			            yyextra->currentCtx->format+=*yytext;
                                     restoreObjCContext(yyscanner);
@@ -14255,14 +14259,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 1495 "code.l"
+#line 1499 "code.l"
 {
                                     yyextra->currentCtx->format+=escapeComment(yyscanner,yytext);
                                   }
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 1498 "code.l"
+#line 1502 "code.l"
 {
                                     yyextra->lastObjCCallContext = YY_START;
                                     yyextra->currentCtx->comment=yytext;
@@ -14271,7 +14275,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 1503 "code.l"
+#line 1507 "code.l"
 {
                                     yyextra->currentCtx->comment+=yytext;
                                     yyextra->currentCtx->format+=escapeComment(yyscanner,yyextra->currentCtx->comment);
@@ -14280,28 +14284,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 1508 "code.l"
+#line 1512 "code.l"
 { yyextra->currentCtx->comment+=yytext; }
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 1509 "code.l"
+#line 1513 "code.l"
 { yyextra->currentCtx->comment+=yytext; }
 	YY_BREAK
 case 138:
 /* rule 138 can match eol */
 YY_RULE_SETUP
-#line 1510 "code.l"
+#line 1514 "code.l"
 { yyextra->currentCtx->comment+=*yytext; }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 1511 "code.l"
+#line 1515 "code.l"
 { yyextra->currentCtx->comment+=*yytext; }
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 1512 "code.l"
+#line 1516 "code.l"
 {
                                     yyextra->currentCtx->format+=escapeObject(yyscanner,yytext);
 			            if (yyextra->braceCount==0)
@@ -14315,7 +14319,7 @@ YY_RULE_SETUP
 case 141:
 /* rule 141 can match eol */
 YY_RULE_SETUP
-#line 1521 "code.l"
+#line 1525 "code.l"
 { 
                                     if (yyextra->braceCount==0 && 
 					yyextra->currentCtx->methodName.isEmpty())
@@ -14332,7 +14336,7 @@ YY_RULE_SETUP
 case 142:
 /* rule 142 can match eol */
 YY_RULE_SETUP
-#line 1533 "code.l"
+#line 1537 "code.l"
 { 
                                      if (yyextra->braceCount==0)
                                      {
@@ -14344,29 +14348,29 @@ YY_RULE_SETUP
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 1541 "code.l"
+#line 1545 "code.l"
 { yyextra->currentCtx->format+=yytext; }
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 1542 "code.l"
+#line 1546 "code.l"
 { yyextra->currentCtx->format+=yytext; }
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 1543 "code.l"
+#line 1547 "code.l"
 { yyextra->currentCtx->format+=yytext; 
                                       BEGIN(yyextra->lastStringContext); 
                                    }
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 1546 "code.l"
+#line 1550 "code.l"
 { yyextra->currentCtx->format+=yytext; }
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 1547 "code.l"
+#line 1551 "code.l"
 { yyextra->currentCtx->format+=yytext; 
                                       yyextra->lastStringContext=YY_START;
                                       BEGIN(ObjCSkipStr); 
@@ -14374,17 +14378,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 1551 "code.l"
+#line 1555 "code.l"
 { yyextra->currentCtx->format+="$$"; }
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 1552 "code.l"
+#line 1556 "code.l"
 { yyextra->currentCtx->format+=*yytext; yyextra->braceCount++; }
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 1553 "code.l"
+#line 1557 "code.l"
 { yyextra->currentCtx->format+=*yytext; yyextra->braceCount--; }
 	YY_BREAK
 case 151:
@@ -14392,30 +14396,30 @@ case 151:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1554 "code.l"
+#line 1558 "code.l"
 { // needed to prevent matching the global rule (for C#)
                                      yyextra->currentCtx->format+=yytext;
                                    }
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 1557 "code.l"
+#line 1561 "code.l"
 { yyextra->currentCtx->format+=escapeWord(yyscanner,yytext); }
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 1558 "code.l"
+#line 1562 "code.l"
 { yyextra->currentCtx->format+=*yytext; }
 	YY_BREAK
 case 154:
 /* rule 154 can match eol */
 YY_RULE_SETUP
-#line 1559 "code.l"
+#line 1563 "code.l"
 { yyextra->currentCtx->format+=*yytext; }
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 1561 "code.l"
+#line 1565 "code.l"
 {
 					  yyextra->theCallContext.popScope(yyextra->name, yyextra->type);
   					  yyextra->code->codify(yytext);
@@ -14426,14 +14430,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 1568 "code.l"
+#line 1572 "code.l"
 {
 					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 1571 "code.l"
+#line 1575 "code.l"
 {
 					  yyextra->code->codify(yytext);
 					}
@@ -14444,7 +14448,7 @@ case 158:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1574 "code.l"
+#line 1578 "code.l"
 {
 					  //addParmType(yyscanner);
 					  //yyextra->parmName=yytext; 
@@ -14460,7 +14464,7 @@ case 159:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1582 "code.l"
+#line 1586 "code.l"
 {
 					  addParmType(yyscanner);
 					  yyextra->parmName=yytext; 
@@ -14475,7 +14479,7 @@ case 160:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1589 "code.l"
+#line 1593 "code.l"
 {
                                           if (yyextra->lang!=SrcLangExt_Slice)
                                           {
@@ -14497,7 +14501,7 @@ case 161:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1603 "code.l"
+#line 1607 "code.l"
 {
 					  addParmType(yyscanner);
 					  yyextra->parmName=yytext; 
@@ -14512,7 +14516,7 @@ case 162:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1610 "code.l"
+#line 1614 "code.l"
 {
                                           if (yyextra->currentMemberDef && yyextra->currentMemberDef->isFunction())
                                           {
@@ -14527,7 +14531,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 1621 "code.l"
+#line 1625 "code.l"
 {
 					  if (isCastKeyword(yytext))
 					  {
@@ -14540,7 +14544,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 1630 "code.l"
+#line 1634 "code.l"
 { // probably a cast, not a function call
   					  yyextra->code->codify(yytext);
 					  yyextra->inForEachExpression = FALSE;
@@ -14549,7 +14553,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 1635 "code.l"
+#line 1639 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  yyextra->theVarContext.addVariable(yyscanner,yyextra->parmType,yyextra->parmName);
@@ -14558,7 +14562,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 1640 "code.l"
+#line 1644 "code.l"
 {
                                           if (yyextra->bracketCount>0)
                                           {
@@ -14575,14 +14579,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 1653 "code.l"
+#line 1657 "code.l"
 { yyextra->curlyCount++;
                                           yyextra->code->codify(yytext);
                                         }
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 1656 "code.l"
+#line 1660 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                           if (--yyextra->curlyCount<=0)
@@ -14594,21 +14598,21 @@ YY_RULE_SETUP
 case 169:
 /* rule 169 can match eol */
 YY_RULE_SETUP
-#line 1663 "code.l"
+#line 1667 "code.l"
 {
                                           codifyLines(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 1666 "code.l"
+#line 1670 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                         }
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 1669 "code.l"
+#line 1673 "code.l"
 {
 					  yyextra->parmType.resize(0);yyextra->parmName.resize(0);
   					  yyextra->code->codify(yytext);
@@ -14622,7 +14626,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 1679 "code.l"
+#line 1683 "code.l"
 { // operator
   					  if (qstrcmp(yytext,"*") && 
 					      qstrcmp(yytext,"&") &&
@@ -14637,7 +14641,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 1690 "code.l"
+#line 1694 "code.l"
 { 
                                           if (yytext[0]==')') // no a pointer cast
                                           {
@@ -14675,7 +14679,7 @@ YY_RULE_SETUP
 case 174:
 /* rule 174 can match eol */
 YY_RULE_SETUP
-#line 1723 "code.l"
+#line 1727 "code.l"
 { codifyLines(yyscanner,yytext); }
 	YY_BREAK
 /*
@@ -14683,7 +14687,7 @@ YY_RULE_SETUP
   */
 case 175:
 YY_RULE_SETUP
-#line 1727 "code.l"
+#line 1731 "code.l"
 {
   					  codifyLines(yyscanner,yytext);
   					  yyextra->bracketCount=0;
@@ -14714,7 +14718,7 @@ YY_RULE_SETUP
 case 176:
 /* rule 176 can match eol */
 YY_RULE_SETUP
-#line 1753 "code.l"
+#line 1757 "code.l"
 {
 					  startFontClass(yyscanner,"keyword");
   					  codifyLines(yyscanner,yytext);
@@ -14724,7 +14728,7 @@ YY_RULE_SETUP
 case 177:
 /* rule 177 can match eol */
 YY_RULE_SETUP
-#line 1758 "code.l"
+#line 1762 "code.l"
 {
                                           if (yyextra->insideBody)
 					  {
@@ -14737,7 +14741,7 @@ YY_RULE_SETUP
 					  DBG_CTX((stderr,"yyextra->name=%s\n",yyextra->name.data()));
 					  if (index!=-1) 
 					  {
-					    QCString scope = yyextra->name.left(index);
+					    QCString scope = yyextra->name.left((uint)index);
 					    if (!yyextra->classScope.isEmpty()) scope.prepend(yyextra->classScope+"::");
 					    const ClassDef *cd=getResolvedClass(Doxygen::globalScope,yyextra->sourceFileDef,scope);
 					    if (cd)
@@ -14783,7 +14787,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 1813 "code.l"
+#line 1817 "code.l"
 { // function-try-block
 					  startFontClass(yyscanner,"keyword");
   					  yyextra->code->codify(yytext);
@@ -14793,7 +14797,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 1819 "code.l"
+#line 1823 "code.l"
 {
   					  if (yyextra->insideBody || !yyextra->parmType.isEmpty()) 
 					  {
@@ -14808,7 +14812,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 1830 "code.l"
+#line 1834 "code.l"
 {
 					  addParmType(yyscanner);
 					  yyextra->parmName=yytext; 
@@ -14817,7 +14821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 1835 "code.l"
+#line 1839 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  yyextra->theVarContext.addVariable(yyscanner,yyextra->parmType,yyextra->parmName);
@@ -14827,7 +14831,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 1841 "code.l"
+#line 1845 "code.l"
 {
   					  startFontClass(yyscanner,"preprocessor");
 					  yyextra->lastSkipCppContext = Body;
@@ -14837,7 +14841,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 1847 "code.l"
+#line 1851 "code.l"
 {
   					  unput(*yytext);
                                           if (!yyextra->insideBody) 
@@ -14851,7 +14855,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 1857 "code.l"
+#line 1861 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					  yyextra->type.resize(0); yyextra->name.resize(0);
@@ -14860,7 +14864,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 1862 "code.l"
+#line 1866 "code.l"
 { 
   					  yyextra->code->codify(yytext);
   					  if (yyextra->searchingForBody)
@@ -14886,7 +14890,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 1884 "code.l"
+#line 1888 "code.l"
 {
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
   					}
@@ -14896,14 +14900,14 @@ case 187:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1887 "code.l"
+#line 1891 "code.l"
 {
 					  generateFunctionLink(yyscanner,*yyextra->code,yytext);
 					}
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 1890 "code.l"
+#line 1894 "code.l"
 { 
 					  yyextra->name=yytext; 
 					  generateClassOrGlobalLink(yyscanner,*yyextra->code,yytext);
@@ -14912,11 +14916,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 1895 "code.l"
+#line 1899 "code.l"
 { 
   					  yyextra->code->codify(yytext);
-					  int s=0;while (!isId(yytext[s])) s++;
-                                          int e=(int)yyleng-1;while (!isId(yytext[e])) e--;
+					  uint s=0;while (!isId(yytext[s])) s++;
+                                          uint e=(uint)yyleng-1;while (!isId(yytext[e])) e--;
 					  yyextra->name=((QCString)yytext).mid(s,e-s+1); 
 					  BEGIN( MemberCall2 ); 
 					}
@@ -14924,7 +14928,7 @@ YY_RULE_SETUP
 case 190:
 /* rule 190 can match eol */
 YY_RULE_SETUP
-#line 1902 "code.l"
+#line 1906 "code.l"
 { 
   					  if (!yyextra->args.isEmpty())
 					    generateMemberLink(yyscanner,*yyextra->code,yyextra->args,yytext);
@@ -14937,7 +14941,7 @@ YY_RULE_SETUP
 case 191:
 /* rule 191 can match eol */
 YY_RULE_SETUP
-#line 1910 "code.l"
+#line 1914 "code.l"
 {
   					  //yyextra->code->codify(yytext);
 					  yyextra->name=yytext; 
@@ -14947,7 +14951,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 1916 "code.l"
+#line 1920 "code.l"
 {
   				          if (yytext[0]=='-') // -> could be overloaded
 					  {
@@ -14960,7 +14964,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 1925 "code.l"
+#line 1929 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					  endFontClass(yyscanner);
@@ -14969,21 +14973,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 1930 "code.l"
+#line 1934 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 1933 "code.l"
+#line 1937 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 1936 "code.l"
+#line 1940 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					  endFontClass(yyscanner);
@@ -14997,27 +15001,27 @@ YY_RULE_SETUP
 case 197:
 /* rule 197 can match eol */
 YY_RULE_SETUP
-#line 1945 "code.l"
+#line 1949 "code.l"
 { // line continuation
   					  codifyLines(yyscanner,yytext);
 					}
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 1948 "code.l"
+#line 1952 "code.l"
 { 
   					  yyextra->code->codify(yytext);
 					}
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 1951 "code.l"
+#line 1955 "code.l"
 
 	YY_BREAK
 case 200:
 /* rule 200 can match eol */
 YY_RULE_SETUP
-#line 1952 "code.l"
+#line 1956 "code.l"
 {
   					  unput('\n');
 					  endFontClass(yyscanner);
@@ -15026,7 +15030,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 1957 "code.l"
+#line 1961 "code.l"
 {
   					  yyextra->code->codify(yytext);
   					}
@@ -15037,7 +15041,7 @@ case 202:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1960 "code.l"
+#line 1964 "code.l"
 {
   					  yyextra->yyLineNr+=QCString(yytext).contains('\n');
 					}
@@ -15045,7 +15049,7 @@ YY_RULE_SETUP
 case 203:
 /* rule 203 can match eol */
 YY_RULE_SETUP
-#line 1963 "code.l"
+#line 1967 "code.l"
 {
   					  yyextra->yyLineNr+=QCString(yytext).contains('\n');
 					  nextCodeLine(yyscanner);
@@ -15062,35 +15066,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 1976 "code.l"
+#line 1980 "code.l"
 {
   					  BEGIN(yyextra->lastSpecialCContext);
   					}
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 1979 "code.l"
+#line 1983 "code.l"
 
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 1980 "code.l"
+#line 1984 "code.l"
 
 	YY_BREAK
 case 207:
 /* rule 207 can match eol */
 YY_RULE_SETUP
-#line 1981 "code.l"
+#line 1985 "code.l"
 { yyextra->yyLineNr++; }
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 1982 "code.l"
+#line 1986 "code.l"
 
 	YY_BREAK
 case 209:
 YY_RULE_SETUP
-#line 1983 "code.l"
+#line 1987 "code.l"
 { 
   					  yyextra->code->codify(yytext);
     					  yyextra->type.resize(0);
@@ -15101,7 +15105,7 @@ YY_RULE_SETUP
 case 210:
 /* rule 210 can match eol */
 YY_RULE_SETUP
-#line 1989 "code.l"
+#line 1993 "code.l"
 { // remove special one-line comment
 					  if (YY_START==SkipCPP) REJECT;
   					  if (Config_getBool(STRIP_CODE_COMMENTS))
@@ -15128,7 +15132,7 @@ case 211:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2008 "code.l"
+#line 2012 "code.l"
 { 
 					  endFontClass(yyscanner);
   					  codifyLines(yyscanner,yytext);
@@ -15138,7 +15142,7 @@ YY_RULE_SETUP
 case 212:
 /* rule 212 can match eol */
 YY_RULE_SETUP
-#line 2013 "code.l"
+#line 2017 "code.l"
 { // remove one-line group marker
   					  if (Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15161,7 +15165,7 @@ YY_RULE_SETUP
 case 213:
 /* rule 213 can match eol */
 YY_RULE_SETUP
-#line 2031 "code.l"
+#line 2035 "code.l"
 { // remove one-line group marker
 					  if (Config_getBool(STRIP_CODE_COMMENTS))
   					  {
@@ -15185,7 +15189,7 @@ YY_RULE_SETUP
 case 214:
 /* rule 214 can match eol */
 YY_RULE_SETUP
-#line 2050 "code.l"
+#line 2054 "code.l"
 { // remove one-line group marker
   					  if (Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15202,7 +15206,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 215:
 YY_RULE_SETUP
-#line 2063 "code.l"
+#line 2067 "code.l"
 { // remove multi-line group marker
 					  if (Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15225,7 +15229,7 @@ YY_RULE_SETUP
 case 216:
 /* rule 216 can match eol */
 YY_RULE_SETUP
-#line 2081 "code.l"
+#line 2085 "code.l"
 { // remove special one-line comment
   					  if (Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15243,7 +15247,7 @@ YY_RULE_SETUP
 case 217:
 /* rule 217 can match eol */
 YY_RULE_SETUP
-#line 2094 "code.l"
+#line 2098 "code.l"
 { // strip special one-line comment
                                           if (YY_START==SkipComment || YY_START==SkipString) REJECT;
   					  if (Config_getBool(STRIP_CODE_COMMENTS))
@@ -15261,11 +15265,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 218:
 YY_RULE_SETUP
-#line 2108 "code.l"
+#line 2112 "code.l"
 { // special pattern /*[tag:filename]*/ to force linking to a tag file
   					  yyextra->forceTagReference=yytext;
-					  int s=yyextra->forceTagReference.find(':');
-					  int e=yyextra->forceTagReference.findRev(']');
+					  uint s=(uint)yyextra->forceTagReference.find(':');
+					  uint e=(uint)yyextra->forceTagReference.findRev(']');
 					  yyextra->forceTagReference = yyextra->forceTagReference.mid(s+1,e-s-1);
   					}
 	YY_BREAK
@@ -15275,7 +15279,7 @@ case 219:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2114 "code.l"
+#line 2118 "code.l"
 {
 					  if (Config_getBool(STRIP_CODE_COMMENTS))
   					  {
@@ -15302,7 +15306,7 @@ case 220:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2133 "code.l"
+#line 2137 "code.l"
 { // special C "banner" comment block at a new line
 					  if (Config_getBool(JAVADOC_BANNER) && Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15328,7 +15332,7 @@ case 221:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2151 "code.l"
+#line 2155 "code.l"
 { // special C comment block at a new line
 					  if (Config_getBool(STRIP_CODE_COMMENTS))
 					  {
@@ -15354,7 +15358,7 @@ case 222:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2169 "code.l"
+#line 2173 "code.l"
 { // special C comment block half way a line
                                           if (YY_START==SkipString) REJECT;
 					  if (Config_getBool(STRIP_CODE_COMMENTS))
@@ -15377,7 +15381,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 223:
 YY_RULE_SETUP
-#line 2188 "code.l"
+#line 2192 "code.l"
 { 
                                           if (YY_START==SkipString) REJECT;
                                           if (!Config_getBool(STRIP_CODE_COMMENTS))
@@ -15390,14 +15394,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 224:
 YY_RULE_SETUP
-#line 2197 "code.l"
+#line 2201 "code.l"
 {
                                           yyextra->code->codify(yytext);
                                         }
 	YY_BREAK
 case 225:
 YY_RULE_SETUP
-#line 2200 "code.l"
+#line 2204 "code.l"
 { 
 					  startFontClass(yyscanner,"comment");
   					  yyextra->code->codify(yytext);
@@ -15411,7 +15415,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 226:
 YY_RULE_SETUP
-#line 2210 "code.l"
+#line 2214 "code.l"
 { // C# verbatim string
 					  startFontClass(yyscanner,"stringliteral");
   					  yyextra->code->codify(yytext);
@@ -15421,7 +15425,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 227:
 YY_RULE_SETUP
-#line 2216 "code.l"
+#line 2220 "code.l"
 { 
   					  startFontClass(yyscanner,"comment");
   					  yyextra->code->codify(yytext);
@@ -15431,7 +15435,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 228:
 YY_RULE_SETUP
-#line 2222 "code.l"
+#line 2226 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  yyextra->theCallContext.pushScope(yyextra->name, yyextra->type);
@@ -15439,7 +15443,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 229:
 YY_RULE_SETUP
-#line 2226 "code.l"
+#line 2230 "code.l"
 {
   					  yyextra->code->codify(yytext);
 					  yyextra->theCallContext.popScope(yyextra->name, yyextra->type);
@@ -15448,7 +15452,7 @@ YY_RULE_SETUP
 case 230:
 /* rule 230 can match eol */
 YY_RULE_SETUP
-#line 2230 "code.l"
+#line 2234 "code.l"
 {
 					  yyextra->yyColNr++;
   					  codifyLines(yyscanner,yytext); 
@@ -15456,7 +15460,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 231:
 YY_RULE_SETUP
-#line 2234 "code.l"
+#line 2238 "code.l"
 {
 					  yyextra->yyColNr++;
   					  yyextra->code->codify(yytext);
@@ -15473,10 +15477,10 @@ YY_RULE_SETUP
   */
 case 232:
 YY_RULE_SETUP
-#line 2248 "code.l"
+#line 2252 "code.l"
 ECHO;
 	YY_BREAK
-#line 15480 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/code.cpp"
+#line 15484 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/code.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(SkipString):
 			case YY_STATE_EOF(SkipStringS):
@@ -16639,7 +16643,7 @@ void codeYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 2248 "code.l"
+#line 2252 "code.l"
 
 
 
@@ -18122,7 +18126,7 @@ static void writeObjCMethodCall(yyscan_t yyscanner,ObjCCallCtx *ctx)
         }
 	else // illegal marker
 	{
-	  ASSERT(!"invalid escape sequence");
+	  ASSERT("invalid escape sequence"==0);
 	}
       }
     }
@@ -18196,12 +18200,12 @@ static bool isCastKeyword(const QCString &s)
   return kw=="const_cast" || kw=="static_cast" || kw=="dynamic_cast" || kw=="reinterpret_cast";
 }
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int inputPosition = yyextra->inputPosition;
-  const char *s = yyextra->inputString + yyextra->inputPosition;
-  int c=0;
+  yy_size_t inputPosition = yyextra->inputPosition;
+  const char *s = yyextra->inputString + inputPosition;
+  yy_size_t c=0;
   while( c < max_size && *s )
   {
     *buf++ = *s++;
@@ -18403,5 +18407,7 @@ void CCodeParser::parseCode(CodeOutputInterface &od,const char *className,const 
   return;
 }
 
+#if USE_STATE2STRING
 #include "code.l.h"
+#endif
 

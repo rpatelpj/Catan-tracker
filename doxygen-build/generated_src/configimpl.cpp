@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
 #line 15 "configimpl.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -686,7 +686,11 @@ char *configimplYYtext;
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 static const char *warning_str = "warning: ";
 static const char *error_str = "error: ";
@@ -735,20 +739,27 @@ static QCString convertToComment(const QCString &s, const QCString &u)
     QCString tmp=s.stripWhiteSpace();
     const char *p=tmp.data();
     char c;
-    result+="#";
-    if (*p && *p!='\n')
-      result+=" ";
-    while ((c=*p++))
+    if (p)
     {
-      if (c=='\n')
+      result+="#";
+      if (*p && *p!='\n')
       {
-        result+="\n#";
-        if (*p && *p!='\n')
-          result+=" ";
+        result+=" ";
       }
-      else result+=c;
+      while ((c=*p++))
+      {
+        if (c=='\n')
+        {
+          result+="\n#";
+          if (*p && *p!='\n')
+          {
+            result+=" ";
+          }
+        }
+        else result+=c;
+      }
+      result+='\n';
     }
-    result+='\n';
   }
   if (!u.isEmpty())
   {
@@ -773,7 +784,7 @@ void ConfigOption::writeStringValue(FTextStream &t,QCString &s)
 {
   char c;
   bool needsEscaping=FALSE;
-  // convert the string back to it original encoding
+  // convert the string back to it original g_encoding
   QCString se = configStringRecode(s,"UTF-8",m_encoding);
   const char *p=se.data();
   if (p)
@@ -1169,47 +1180,47 @@ struct ConfigFileState
   QCString fileName;
 };  
 
-static const char       *inputString;
-static int	         inputPosition;
-static int               yyLineNr;
-static QCString          yyFileName;
-static QCString          tmpString;
-static QCString         *s=0;
-static bool             *b=0;
-static QStrList         *l=0;
-static int               lastState;
-static QCString          elemStr;
-static QStrList          includePathList;
-static QStack<ConfigFileState> includeStack;  
-static int               includeDepth;
-static bool              config_upd = FALSE;
-static QCString          encoding;
-static ConfigImpl       *config;
+static const char       *g_inputString;
+static int	         g_inputPosition;
+static int               g_yyLineNr;
+static QCString          g_yyFileName;
+static QCString          g_tmpString;
+static QCString         *g_string=0;
+static bool             *g_bool=0;
+static QStrList         *g_list=0;
+static int               g_lastState;
+static QCString          g_elemStr;
+static QStrList          g_includePathList;
+static QStack<ConfigFileState> g_includeStack;  
+static int               g_includeDepth;
+static bool              g_configUpdate = FALSE;
+static QCString          g_encoding;
+static ConfigImpl       *g_config;
 
 /* -----------------------------------------------------------------
  */
 #undef	YY_INPUT
 #define	YY_INPUT(buf,result,max_size) result=yyread(buf,max_size);
 
-static int yyread(char *buf,int max_size)
+static yy_size_t yyread(char *buf,yy_size_t max_size)
 {
-    // no file included
-    if (includeStack.isEmpty()) 
+  // no file included
+  if (g_includeStack.isEmpty()) 
+  {
+    yy_size_t c=0;
+    if (g_inputString==0) return c;
+    while( c < max_size && g_inputString[g_inputPosition] )
     {
-        int c=0;
-	if (inputString==0) return c;
-	while( c < max_size && inputString[inputPosition] )
-	{
-	      *buf = inputString[inputPosition++] ;
-	      c++; buf++;
-  	}
-	return c;
-    } 
-    else 
-    {
-        //assert(includeStack.current()->newState==YY_CURRENT_BUFFER);
-	return (int)fread(buf,1,max_size,includeStack.current()->filePtr);
+      *buf = g_inputString[g_inputPosition++] ;
+      c++; buf++;
     }
+    return c;
+  }
+  else
+  {
+    //assert(g_includeStack.current()->newState==YY_CURRENT_BUFFER);
+    return (yy_size_t)fread(buf,1,max_size,g_includeStack.current()->filePtr);
+  }
 }
 
 
@@ -1252,8 +1263,8 @@ static QCString configStringRecode(
 
 static void checkEncoding()
 {
-  ConfigString *option = (ConfigString*)config->get("DOXYFILE_ENCODING");
-  encoding = *option->valueRef();
+  ConfigString *option = (ConfigString*)g_config->get("DOXYFILE_ENCODING");
+  g_encoding = *option->valueRef();
 }
 
 static FILE *tryPath(const char *path,const char *fileName)
@@ -1282,21 +1293,21 @@ static FILE *findFile(const char *fileName)
   {
     return tryPath(NULL, fileName);
   }
-  substEnvVarsInStrList(includePathList);
-  char *s=includePathList.first();
+  substEnvVarsInStrList(g_includePathList);
+  char *s=g_includePathList.first();
   while (s) // try each of the include paths
   {
     FILE *f = tryPath(s,fileName);
     if (f) return f;
-    s=includePathList.next();
+    s=g_includePathList.next();
   } 
-  // try cwd if includePathList fails
+  // try cwd if g_includePathList fails
   return tryPath(".",fileName);
 }
 
 static void readIncludeFile(const char *incName)
 {
-  if (includeDepth==MAX_INCLUDE_DEPTH) {
+  if (g_includeDepth==MAX_INCLUDE_DEPTH) {
     config_term("maximum include depth (%d) reached, %s is not included. Aborting...\n",
 	MAX_INCLUDE_DEPTH,incName);
   } 
@@ -1316,23 +1327,23 @@ static void readIncludeFile(const char *incName)
   {
     // For debugging
 #if SHOW_INCLUDES
-    for (i=0;i<includeStack.count();i++) msg("  ");
+    for (i=0;i<g_includeStack.count();i++) msg("  ");
     msg("@INCLUDE = %s: parsing...\n",inc.data());
 #endif
 
     // store the state of the old file 
     ConfigFileState *fs=new ConfigFileState;
     fs->oldState=YY_CURRENT_BUFFER;
-    fs->lineNr=yyLineNr;
-    fs->fileName=yyFileName;
+    fs->lineNr=g_yyLineNr;
+    fs->fileName=g_yyFileName;
     fs->filePtr=f;
     // push the state on the stack
-    includeStack.push(fs);
+    g_includeStack.push(fs);
     // set the scanner to the include file
     configimplYY_switch_to_buffer(configimplYY_create_buffer(f,YY_BUF_SIZE));
     fs->newState=YY_CURRENT_BUFFER;
-    yyFileName=inc;
-    includeDepth++;
+    g_yyFileName=inc;
+    g_includeDepth++;
   } 
   else
   {
@@ -1352,7 +1363,7 @@ static void readIncludeFile(const char *incName)
 
 
 
-#line 1356 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
+#line 1367 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
 
 #define INITIAL 0
 #define PreStart 1
@@ -1545,10 +1556,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 721 "configimpl.l"
+#line 732 "configimpl.l"
 
 
-#line 1552 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
+#line 1563 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -1629,18 +1640,18 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 723 "configimpl.l"
+#line 734 "configimpl.l"
 
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 724 "configimpl.l"
-{ config->appendStartComment(configimplYYtext);yyLineNr++;}
+#line 735 "configimpl.l"
+{ g_config->appendStartComment(configimplYYtext);g_yyLineNr++;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 725 "configimpl.l"
+#line 736 "configimpl.l"
 {
               BEGIN(Start);
               unput(*configimplYYtext);
@@ -1649,30 +1660,30 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 729 "configimpl.l"
-{ config->appendUserComment(configimplYYtext);yyLineNr++;}
+#line 740 "configimpl.l"
+{ g_config->appendUserComment(configimplYYtext);g_yyLineNr++;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 730 "configimpl.l"
+#line 741 "configimpl.l"
 { BEGIN(SkipComment); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 731 "configimpl.l"
+#line 742 "configimpl.l"
 { QCString cmd=configimplYYtext;
                                            cmd=cmd.left(cmd.length()-1).stripWhiteSpace(); 
-					   ConfigOption *option = config->get(cmd);
+					   ConfigOption *option = g_config->get(cmd);
 					   if (option==0) // oops not known
 					   {
 					     config_warn("ignoring unsupported tag '%s' at line %d, file %s\n",
-						 cmd.data(),yyLineNr,yyFileName.data()); 
+						 cmd.data(),g_yyLineNr,g_yyFileName.data()); 
 					     BEGIN(SkipInvalid);
 					   }
 					   else // known tag
 					   {
-                                             option->setUserComment(config->takeUserComment());
-					     option->setEncoding(encoding);
+                                             option->setUserComment(g_config->takeUserComment());
+					     option->setEncoding(g_encoding);
 					     switch(option->kind())
 					     {
 					       case ConfigOption::O_Info:
@@ -1680,9 +1691,9 @@ YY_RULE_SETUP
 					         BEGIN(SkipInvalid);
 						 break;
 					       case ConfigOption::O_List:
-						 l = ((ConfigList *)option)->valueRef();
-					         l->clear();
-						 elemStr="";
+						 g_list = ((ConfigList *)option)->valueRef();
+					         g_list->clear();
+						 g_elemStr="";
 						 if (cmd == "PREDEFINED")
 						 {
 					           BEGIN(GetStrList1);
@@ -1693,50 +1704,50 @@ YY_RULE_SETUP
 						 }
 					         break;
 					       case ConfigOption::O_Enum:
-						 s = ((ConfigEnum *)option)->valueRef();
-					         s->resize(0);
+						 g_string = ((ConfigEnum *)option)->valueRef();
+					         g_string->resize(0);
 					         BEGIN(GetString);
 					         break;
 					       case ConfigOption::O_String:
-						 s = ((ConfigString *)option)->valueRef();
-					         s->resize(0);
+						 g_string = ((ConfigString *)option)->valueRef();
+					         g_string->resize(0);
 					         BEGIN(GetString);
 					         break;
 					       case ConfigOption::O_Int:
-						 s = ((ConfigInt *)option)->valueStringRef();
-					         s->resize(0);
+						 g_string = ((ConfigInt *)option)->valueStringRef();
+					         g_string->resize(0);
 					         BEGIN(GetString);
 					         break;
 					       case ConfigOption::O_Bool:
-						 s = ((ConfigBool *)option)->valueStringRef();
-					         s->resize(0);
+						 g_string = ((ConfigBool *)option)->valueStringRef();
+					         g_string->resize(0);
 					         BEGIN(GetString);
 						 break;
 					       case ConfigOption::O_Obsolete:
-                                                 if (config_upd)
+                                                 if (g_configUpdate)
                                                  {
 					           config_warn("Tag '%s' at line %d of file '%s' has become obsolete.\n"
-						              "         This tag has been removed.\n", cmd.data(),yyLineNr,yyFileName.data());
+						              "         This tag has been removed.\n", cmd.data(),g_yyLineNr,g_yyFileName.data());
                                                  }
                                                  else
                                                  {
 					           config_warn("Tag '%s' at line %d of file '%s' has become obsolete.\n"
 						              "         To avoid this warning please remove this line from your configuration "
-							      "file or upgrade it using \"doxygen -u\"\n", cmd.data(),yyLineNr,yyFileName.data()); 
+							      "file or upgrade it using \"doxygen -u\"\n", cmd.data(),g_yyLineNr,g_yyFileName.data()); 
                                                  }
 					         BEGIN(SkipInvalid);
 						 break;
 					       case ConfigOption::O_Disabled:
-                                                 if (config_upd)
+                                                 if (g_configUpdate)
                                                  {
 					           config_warn("Tag '%s' at line %d of file '%s' belongs to an option that was not enabled at compile time.\n"
-						              "         This tag has been removed.\n", cmd.data(),yyLineNr,yyFileName.data());
+						              "         This tag has been removed.\n", cmd.data(),g_yyLineNr,g_yyFileName.data());
                                                  }
                                                  else
                                                  {
 					           config_warn("Tag '%s' at line %d of file '%s' belongs to an option that was not enabled at compile time.\n"
 						              "         To avoid this warning please remove this line from your configuration "
-							    "file or upgrade it using \"doxygen -u\", or recompile doxygen with this feature enabled.\n", cmd.data(),yyLineNr,yyFileName.data()); 
+							    "file or upgrade it using \"doxygen -u\", or recompile doxygen with this feature enabled.\n", cmd.data(),g_yyLineNr,g_yyFileName.data()); 
                                                  }
 					         BEGIN(SkipInvalid);
 						 break;
@@ -1746,19 +1757,19 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 814 "configimpl.l"
+#line 825 "configimpl.l"
 { QCString cmd=configimplYYtext;
                                           cmd=cmd.left(cmd.length()-2).stripWhiteSpace(); 
-					  ConfigOption *option = config->get(cmd);
+					  ConfigOption *option = g_config->get(cmd);
 					  if (option==0) // oops not known
 					  {
 					    config_warn("ignoring unsupported tag '%s' at line %d, file %s\n",
-						cmd.data(),yyLineNr,yyFileName.data()); 
+						cmd.data(),g_yyLineNr,g_yyFileName.data()); 
 					    BEGIN(SkipInvalid);
 					  }
 					  else // known tag
 					  {
-                                            option->setUserComment(config->takeUserComment());
+                                            option->setUserComment(g_config->takeUserComment());
 					    switch(option->kind())
 					    {
 					      case ConfigOption::O_Info:
@@ -1766,8 +1777,8 @@ YY_RULE_SETUP
 					        BEGIN(SkipInvalid);
 						break;
 					      case ConfigOption::O_List:
-					        l = ((ConfigList *)option)->valueRef();
-						elemStr="";
+					        g_list = ((ConfigList *)option)->valueRef();
+						g_elemStr="";
 						if (cmd == "PREDEFINED")
 						{
 					          BEGIN(GetStrList1);
@@ -1782,19 +1793,19 @@ YY_RULE_SETUP
 					      case ConfigOption::O_Int:
 					      case ConfigOption::O_Bool:
 					        config_warn("operator += not supported for '%s'. Ignoring line at line %d, file %s\n",
-						    configimplYYtext,yyLineNr,yyFileName.data()); 
+						    configimplYYtext,g_yyLineNr,g_yyFileName.data()); 
 					        BEGIN(SkipInvalid);
 						break;
 					       case ConfigOption::O_Obsolete:
 					         config_warn("Tag '%s' at line %d of file %s has become obsolete.\n"
 						            "To avoid this warning please update your configuration "
-							    "file using \"doxygen -u\"\n", cmd.data(),yyLineNr,yyFileName.data()); 
+							    "file using \"doxygen -u\"\n", cmd.data(),g_yyLineNr,g_yyFileName.data()); 
 					         BEGIN(SkipInvalid);
 						 break;
 					       case ConfigOption::O_Disabled:
 					         config_warn("Tag '%s' at line %d of file %s belongs to an option that was not enabled at compile time.\n"
 						            "To avoid this warning please remove this line from your configuration "
-							    "file, upgrade it using \"doxygen -u\", or recompile doxygen with this feature enabled.\n", cmd.data(),yyLineNr,yyFileName.data()); 
+							    "file, upgrade it using \"doxygen -u\", or recompile doxygen with this feature enabled.\n", cmd.data(),g_yyLineNr,g_yyFileName.data()); 
 					         BEGIN(SkipInvalid);
 						 break;
 					     }
@@ -1803,20 +1814,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 867 "configimpl.l"
-{ BEGIN(GetStrList); l=&includePathList; l->clear(); elemStr=""; }
+#line 878 "configimpl.l"
+{ BEGIN(GetStrList); g_list=&g_includePathList; g_list->clear(); g_elemStr=""; }
 	YY_BREAK
-/* include a config file */
+/* include a g_config file */
 case 9:
 YY_RULE_SETUP
-#line 869 "configimpl.l"
+#line 880 "configimpl.l"
 { BEGIN(Include);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 870 "configimpl.l"
+#line 881 "configimpl.l"
 { 
-  					  readIncludeFile(configStringRecode(configimplYYtext,encoding,"UTF-8")); 
+  					  readIncludeFile(configStringRecode(configimplYYtext,g_encoding,"UTF-8")); 
   					  BEGIN(Start);
 					}
 	YY_BREAK
@@ -1832,198 +1843,198 @@ case YY_STATE_EOF(GetStrList1):
 case YY_STATE_EOF(GetQuotedString):
 case YY_STATE_EOF(GetEnvVar):
 case YY_STATE_EOF(Include):
-#line 874 "configimpl.l"
+#line 885 "configimpl.l"
 {
                                           //printf("End of include file\n");
 					  //printf("Include stack depth=%d\n",g_includeStack.count());
-                                          if (includeStack.isEmpty())
+                                          if (g_includeStack.isEmpty())
 					  {
 					    //printf("Terminating scanner!\n");
 					    yyterminate();
 					  }
 					  else
 					  {
-					    ConfigFileState *fs=includeStack.pop();
+					    ConfigFileState *fs=g_includeStack.pop();
 					    fclose(fs->filePtr);
 					    YY_BUFFER_STATE oldBuf = YY_CURRENT_BUFFER;
 					    configimplYY_switch_to_buffer(fs->oldState );
 					    configimplYY_delete_buffer(oldBuf );
-					    yyLineNr=fs->lineNr;
-					    yyFileName=fs->fileName;
+					    g_yyLineNr=fs->lineNr;
+					    g_yyFileName=fs->fileName;
 					    delete fs; fs=0;
-                                            includeDepth--;
+                                            g_includeDepth--;
 					  }
   					}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 896 "configimpl.l"
-{ config_warn("ignoring unknown tag '%s' at line %d, file %s\n",configimplYYtext,yyLineNr,yyFileName.data()); }
+#line 907 "configimpl.l"
+{ config_warn("ignoring unknown tag '%s' at line %d, file %s\n",configimplYYtext,g_yyLineNr,g_yyFileName.data()); }
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 897 "configimpl.l"
-{ yyLineNr++; BEGIN(Start); }
+#line 908 "configimpl.l"
+{ g_yyLineNr++; BEGIN(Start); }
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 898 "configimpl.l"
+#line 909 "configimpl.l"
 {
-  					  yyLineNr++; 
-					  if (!elemStr.isEmpty())
+  					  g_yyLineNr++; 
+					  if (!g_elemStr.isEmpty())
 					  {
-					    //printf("elemStr1='%s'\n",elemStr.data());
-					    l->append(elemStr);
+					    //printf("elemStr1='%s'\n",g_elemStr.data());
+					    g_list->append(g_elemStr);
 					  }
 					  BEGIN(Start); 
 					}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 907 "configimpl.l"
+#line 918 "configimpl.l"
 {
-					  if (!elemStr.isEmpty())
+					  if (!g_elemStr.isEmpty())
 					  {
-					    //printf("elemStr2='%s'\n",elemStr.data());
-					    l->append(elemStr);
+					    //printf("elemStr2='%s'\n",g_elemStr.data());
+					    g_list->append(g_elemStr);
 					  }
-					  elemStr.resize(0);
+					  g_elemStr.resize(0);
 					}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 915 "configimpl.l"
+#line 926 "configimpl.l"
 {
-  				          if (!elemStr.isEmpty())
+  				          if (!g_elemStr.isEmpty())
 					  {
-					    //printf("elemStr2='%s'\n",elemStr.data());
-  					    l->append(elemStr);
+					    //printf("elemStr2='%s'\n",g_elemStr.data());
+  					    g_list->append(g_elemStr);
 					  }
-					  elemStr.resize(0);
+					  g_elemStr.resize(0);
   					}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 923 "configimpl.l"
-{ (*s)+=configStringRecode(configimplYYtext,encoding,"UTF-8"); 
+#line 934 "configimpl.l"
+{ (*g_string)+=configStringRecode(configimplYYtext,g_encoding,"UTF-8"); 
                                           checkEncoding();
                                         }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 926 "configimpl.l"
-{ lastState=YY_START;
+#line 937 "configimpl.l"
+{ g_lastState=YY_START;
   					  BEGIN(GetQuotedString); 
-                                          tmpString.resize(0); 
+                                          g_tmpString.resize(0); 
 					}
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 930 "configimpl.l"
+#line 941 "configimpl.l"
 { 
                                           // we add a bogus space to signal that the string was quoted. This space will be stripped later on.
-                                          tmpString+=" ";
-  					  //printf("Quoted String = '%s'\n",tmpString.data());
-  					  if (lastState==GetString)
+                                          g_tmpString+=" ";
+  					  //printf("Quoted String = '%s'\n",g_tmpString.data());
+  					  if (g_lastState==GetString)
 					  {
-					    (*s)+=configStringRecode(tmpString,encoding,"UTF-8");
+					    (*g_string)+=configStringRecode(g_tmpString,g_encoding,"UTF-8");
                                             checkEncoding();
 					  }
 					  else
 					  {
-					    elemStr+=configStringRecode(tmpString,encoding,"UTF-8");
+					    g_elemStr+=configStringRecode(g_tmpString,g_encoding,"UTF-8");
 					  }
 					  if (*configimplYYtext=='\n')
 					  {
-					    config_warn("Missing end quote (\") on line %d, file %s\n",yyLineNr,yyFileName.data());
-					    yyLineNr++;
+					    config_warn("Missing end quote (\") on line %d, file %s\n",g_yyLineNr,g_yyFileName.data());
+					    g_yyLineNr++;
 					  }
-					  BEGIN(lastState);
+					  BEGIN(g_lastState);
   					}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 950 "configimpl.l"
+#line 961 "configimpl.l"
 {
-  					  tmpString+='"';
+  					  g_tmpString+='"';
   					}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 953 "configimpl.l"
-{ tmpString+=*configimplYYtext; }
+#line 964 "configimpl.l"
+{ g_tmpString+=*configimplYYtext; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 954 "configimpl.l"
+#line 965 "configimpl.l"
 { 
   					  QCString bs=configimplYYtext; 
   					  bs=bs.upper();
   					  if (bs=="YES" || bs=="1")
-					    *b=TRUE;
+					    *g_bool=TRUE;
 					  else if (bs=="NO" || bs=="0")
-					    *b=FALSE;
+					    *g_bool=FALSE;
 					  else 
 					  {
-					    *b=FALSE; 
+					    *g_bool=FALSE; 
 					    config_warn("Invalid value '%s' for "
 						 "boolean tag in line %d, file %s; use YES or NO\n",
-						 bs.data(),yyLineNr,yyFileName.data());
+						 bs.data(),g_yyLineNr,g_yyFileName.data());
 					  }
 					}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 969 "configimpl.l"
+#line 980 "configimpl.l"
 {
-					  elemStr+=configStringRecode(configimplYYtext,encoding,"UTF-8");
+					  g_elemStr+=configStringRecode(configimplYYtext,g_encoding,"UTF-8");
 					}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 972 "configimpl.l"
+#line 983 "configimpl.l"
 {
-  					  elemStr+=configStringRecode(configimplYYtext,encoding,"UTF-8");
+  					  g_elemStr+=configStringRecode(configimplYYtext,g_encoding,"UTF-8");
   					}
 	YY_BREAK
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 975 "configimpl.l"
-{ yyLineNr++; BEGIN(Start); }
+#line 986 "configimpl.l"
+{ g_yyLineNr++; BEGIN(Start); }
 	YY_BREAK
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 976 "configimpl.l"
-{ yyLineNr++; BEGIN(Start); }
+#line 987 "configimpl.l"
+{ g_yyLineNr++; BEGIN(Start); }
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 977 "configimpl.l"
-{ yyLineNr++; }
+#line 988 "configimpl.l"
+{ g_yyLineNr++; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 978 "configimpl.l"
+#line 989 "configimpl.l"
 
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 979 "configimpl.l"
-{ yyLineNr++ ; }
+#line 990 "configimpl.l"
+{ g_yyLineNr++ ; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 981 "configimpl.l"
+#line 992 "configimpl.l"
 ECHO;
 	YY_BREAK
-#line 2027 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
+#line 2038 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -3015,7 +3026,7 @@ void configimplYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 981 "configimpl.l"
+#line 992 "configimpl.l"
 
 
 
@@ -3318,27 +3329,27 @@ static QCString configFileToString(const char *name)
 
 bool ConfigImpl::parseString(const char *fn,const char *str,bool update)
 {
-  config = ConfigImpl::instance();
-  inputString   = str;
-  inputPosition = 0;
-  yyFileName    = fn;
-  yyLineNr      = 1;
-  includeStack.setAutoDelete(TRUE);
-  includeStack.clear();
-  includeDepth  = 0;
+  g_config = ConfigImpl::instance();
+  g_inputString   = str;
+  g_inputPosition = 0;
+  g_yyFileName    = fn;
+  g_yyLineNr      = 1;
+  g_includeStack.setAutoDelete(TRUE);
+  g_includeStack.clear();
+  g_includeDepth  = 0;
   configimplYYrestart( configimplYYin );
   BEGIN( PreStart );
-  config_upd = update;
+  g_configUpdate = update;
   configimplYYlex();
-  config_upd = FALSE;
-  inputString = 0;
+  g_configUpdate = FALSE;
+  g_inputString = 0;
   return TRUE;
 }
 
 bool ConfigImpl::parse(const char *fn,bool update)
 {
   int retval;
-  encoding = "UTF-8";
+  g_encoding = "UTF-8";
   printlex(configimplYY_flex_debug, TRUE, __FILE__, fn);
   retval =  parseString(fn,configFileToString(fn), update); 
   printlex(configimplYY_flex_debug, FALSE, __FILE__, fn);
@@ -3371,13 +3382,13 @@ static void cleanUpPaths(QStrList &str)
       if (fi.exists() && fi.isDir())
       {
         int i = str.at();
-        QCString p = fi.absFilePath().utf8();
-        if (p[p.length()-1]!='/') p+='/';
+        QCString path_str = fi.absFilePath().utf8();
+        if (path_str[path_str.length()-1]!='/') path_str+='/';
         str.remove();
         if (str.at()==i) // did not remove last item
-          str.insert(i,p);
+          str.insert(i,path_str);
         else
-          str.append(p);
+          str.append(path_str);
       }
     }
     sfp = str.next();
@@ -4042,7 +4053,7 @@ void Config::postProcess(bool clearHeaderAndFooter, bool compare)
   if (!compare)ConfigImpl::instance()->emptyValueToDefault();
   ConfigImpl::instance()->convertStrToVal();
 
-  // avoid bootstrapping issues when the config file already
+  // avoid bootstrapping issues when the g_config file already
   // refers to the files that we are supposed to parse.
   if (clearHeaderAndFooter)
   {
@@ -4058,5 +4069,7 @@ void Config::deinit()
   ConfigImpl::instance()->deleteInstance();
 }
 
+#if USE_STATE2STRING
 #include "configimpl.l.h"
+#endif
 

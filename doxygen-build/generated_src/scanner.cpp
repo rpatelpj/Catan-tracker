@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
 #line 22 "scanner.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -12051,6 +12051,8 @@ goto find_rule; \
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
 struct scannerYY_state
 {
   OutlineParserInterface *thisParser;
@@ -12182,12 +12184,14 @@ struct scannerYY_state
 
   int              column = 0;
 
-  int              fencedSize = 0;
+  uint             fencedSize = 0;
   bool             nestedComment = false;
   std::vector< std::pair<Entry*,std::shared_ptr<Entry> > > outerScopeEntries;
 };
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 //-----------------------------------------------------------------------------
 
 // forward declarations for stateless functions
@@ -12210,7 +12214,7 @@ static bool checkForKnRstyleC(yyscan_t yyscanner);
 static void splitKnRArg(yyscan_t yyscanner,QCString &oldStyleArgPtr,QCString &oldStyleArgName);
 static void addKnRArgInfo(yyscan_t yyscanner,const QCString &type,const QCString &name,
                           const QCString &brief,const QCString &docs);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 
 
 /* ----------------------------------------------------------------- */
@@ -12373,7 +12377,7 @@ static int yyread(yyscan_t yyscanner,char *buf,int max_size);
 
 
 
-#line 12377 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
+#line 12381 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
 
 #define INITIAL 0
 #define AlignAs 1
@@ -12757,10 +12761,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 420 "scanner.l"
+#line 424 "scanner.l"
 
 
-#line 12764 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
+#line 12768 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -12879,7 +12883,7 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 422 "scanner.l"
+#line 426 "scanner.l"
 {
   					  yyextra->curlyCount=0;
 					  yyextra->needsSemi = TRUE;
@@ -12888,7 +12892,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 427 "scanner.l"
+#line 431 "scanner.l"
 {
   				 	  yyextra->roundCount=0;
   					  BEGIN(SkipRoundBlock);
@@ -12896,14 +12900,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 431 "scanner.l"
+#line 435 "scanner.l"
 {
 					  ++yyextra->roundCount;
   					}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 434 "scanner.l"
+#line 438 "scanner.l"
 {
   					  if (yyextra->roundCount )
 					    --yyextra->roundCount ;
@@ -12913,14 +12917,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 440 "scanner.l"
+#line 444 "scanner.l"
 {
   					  ++yyextra->curlyCount ; 
 					}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 443 "scanner.l"
+#line 447 "scanner.l"
 { 
   				          if( yyextra->curlyCount )
 					  {
@@ -12938,7 +12942,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 457 "scanner.l"
+#line 461 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -12949,12 +12953,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 464 "scanner.l"
+#line 468 "scanner.l"
 { if (yyextra->insidePHP) REJECT; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 465 "scanner.l"
+#line 469 "scanner.l"
 {
   					  yyextra->lastStringContext=NextSemi;
 					  BEGIN(SkipString);
@@ -12962,7 +12966,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 469 "scanner.l"
+#line 473 "scanner.l"
 { 
   					  unput(*yytext);
   					  BEGIN( FindMembers ); 
@@ -12970,7 +12974,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 473 "scanner.l"
+#line 477 "scanner.l"
 {
   					  unput(*yytext);
 					  BEGIN( FindMembers );
@@ -12978,7 +12982,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 477 "scanner.l"
+#line 481 "scanner.l"
 {
                                           yyextra->current->args = yyextra->current->args.simplifyWhiteSpace();
   					  unput(*yytext);
@@ -12987,14 +12991,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 482 "scanner.l"
+#line 486 "scanner.l"
 { // PHP code with unsupported extension?
                                           yyextra->insidePHP = TRUE;
   					}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 485 "scanner.l"
+#line 489 "scanner.l"
 { // PHP code start
                                            BEGIN( FindMembers );
 					}
@@ -13002,7 +13006,7 @@ YY_RULE_SETUP
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 488 "scanner.l"
+#line 492 "scanner.l"
 { // PHP code start
 					  lineCount(yyscanner) ;
                                           BEGIN( FindMembers );
@@ -13010,7 +13014,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 492 "scanner.l"
+#line 496 "scanner.l"
 { // PHP code end
 					  if (yyextra->insidePHP)
 					    BEGIN( FindMembersPHP );
@@ -13020,28 +13024,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 498 "scanner.l"
+#line 502 "scanner.l"
 { // Non-PHP code text, ignore
   					}
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 500 "scanner.l"
+#line 504 "scanner.l"
 { // Non-PHP code text, ignore
                                           lineCount(yyscanner);
   					}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 503 "scanner.l"
+#line 507 "scanner.l"
 { // Non-PHP code text, ignore
 				        }
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 505 "scanner.l"
+#line 509 "scanner.l"
 { if (yyextra->insidePHP)
 					    BEGIN( NextSemi );
 					  else
@@ -13050,7 +13054,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 510 "scanner.l"
+#line 514 "scanner.l"
 { // Mozilla XPIDL lang-specific block
 					  if (!yyextra->insideIDL)
 					    REJECT;
@@ -13058,7 +13062,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 514 "scanner.l"
+#line 518 "scanner.l"
 { // Mozilla XPIDL lang-specific block end
 					  if (!yyextra->insideIDL)
 					    REJECT;
@@ -13067,7 +13071,7 @@ YY_RULE_SETUP
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 518 "scanner.l"
+#line 522 "scanner.l"
 { // IDL or Borland C++ builder property 
   					  yyextra->current->mtype = yyextra->mtype = Property;
 					  yyextra->current->protection = yyextra->protection = Public ;
@@ -13081,7 +13085,7 @@ YY_RULE_SETUP
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 528 "scanner.l"
+#line 532 "scanner.l"
 { yyextra->current->mtype = yyextra->mtype = DCOP;
 					  yyextra->current->protection = yyextra->protection = Public ;
 					  yyextra->current->type.resize(0); 
@@ -13094,7 +13098,7 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 537 "scanner.l"
+#line 541 "scanner.l"
 { yyextra->current->mtype = yyextra->mtype = Signal;
   
 					  yyextra->current->protection = yyextra->protection = Public ;
@@ -13108,7 +13112,7 @@ YY_RULE_SETUP
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 547 "scanner.l"
+#line 551 "scanner.l"
 {
 					  yyextra->current->protection = yyextra->protection = Public ;
 					  yyextra->current->mtype = yyextra->mtype = Slot;
@@ -13122,7 +13126,7 @@ YY_RULE_SETUP
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 557 "scanner.l"
+#line 561 "scanner.l"
 {
 					  yyextra->current->protection = yyextra->protection = Protected ;
 					  yyextra->current->mtype = yyextra->mtype = Slot;
@@ -13136,7 +13140,7 @@ YY_RULE_SETUP
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 567 "scanner.l"
+#line 571 "scanner.l"
 {
 					  yyextra->current->protection = yyextra->protection = Private ;
 					  yyextra->current->mtype = yyextra->mtype = Slot;
@@ -13150,7 +13154,7 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 576 "scanner.l"
+#line 580 "scanner.l"
 { 
 					  yyextra->current->protection = yyextra->protection = Public ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13164,7 +13168,7 @@ YY_RULE_SETUP
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 585 "scanner.l"
+#line 589 "scanner.l"
 {  // for now treat C++/CLI's internal as package...
   					  if (yyextra->insideCli)
 					  {
@@ -13185,7 +13189,7 @@ YY_RULE_SETUP
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 601 "scanner.l"
+#line 605 "scanner.l"
 {  
   					  yyextra->current->protection = yyextra->protection = Protected ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13199,7 +13203,7 @@ YY_RULE_SETUP
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 610 "scanner.l"
+#line 614 "scanner.l"
 { 
   					  yyextra->current->protection = yyextra->protection = Private ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13213,7 +13217,7 @@ YY_RULE_SETUP
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 619 "scanner.l"
+#line 623 "scanner.l"
 { 
   					  if (yyextra->insideCli)
 					  {
@@ -13239,7 +13243,7 @@ YY_RULE_SETUP
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 640 "scanner.l"
+#line 644 "scanner.l"
 {
   					   if (yyextra->insideCli)
 					   {
@@ -13258,7 +13262,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 655 "scanner.l"
+#line 659 "scanner.l"
 {
   					  addType(yyscanner);
   					  yyextra->current->name = yytext;
@@ -13266,7 +13270,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 659 "scanner.l"
+#line 663 "scanner.l"
 { // C++/CLI indexed property
   					  yyextra->current->args = "[";
 					  BEGIN( CliPropertyIndex );
@@ -13274,7 +13278,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 663 "scanner.l"
+#line 667 "scanner.l"
 {
 					  yyextra->curlyCount=0;
 					  //printf("event: '%s' '%s'\n",yyextra->current->type.data(),yyextra->current->name.data());
@@ -13283,7 +13287,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 668 "scanner.l"
+#line 672 "scanner.l"
 {
   					  unput(*yytext);
 					  BEGIN( FindMembers );
@@ -13292,20 +13296,20 @@ YY_RULE_SETUP
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 672 "scanner.l"
+#line 676 "scanner.l"
 {
                                           lineCount(yyscanner);
   					}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 675 "scanner.l"
+#line 679 "scanner.l"
 {
   					}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 677 "scanner.l"
+#line 681 "scanner.l"
 {
   					  addType(yyscanner);
   					  yyextra->current->type += yytext;
@@ -13313,7 +13317,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 681 "scanner.l"
+#line 685 "scanner.l"
 {
                                           BEGIN( CliPropertyType );
   					  yyextra->current->args+=yytext;
@@ -13321,7 +13325,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 685 "scanner.l"
+#line 689 "scanner.l"
 {
   					  yyextra->current->args+=yytext;
   					}
@@ -13342,7 +13346,7 @@ YY_RULE_SETUP
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 701 "scanner.l"
+#line 705 "scanner.l"
 {
   					  yyextra->current->protection = yyextra->protection = Private ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13356,7 +13360,7 @@ YY_RULE_SETUP
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 710 "scanner.l"
+#line 714 "scanner.l"
 {
   					  yyextra->current->protection = yyextra->protection = Protected ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13370,7 +13374,7 @@ YY_RULE_SETUP
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 719 "scanner.l"
+#line 723 "scanner.l"
 {
   					  yyextra->current->protection = yyextra->protection = Public ;
 					  yyextra->current->mtype = yyextra->mtype = Method;
@@ -13384,7 +13388,7 @@ YY_RULE_SETUP
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 728 "scanner.l"
+#line 732 "scanner.l"
 {
   					  if (!yyextra->insideObjC) 
 					  {
@@ -13414,14 +13418,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 754 "scanner.l"
+#line 758 "scanner.l"
 { // start of method's return type
   					  BEGIN( ObjCReturnType );
   					}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 757 "scanner.l"
+#line 761 "scanner.l"
 { // found method name
   					  if (yyextra->current->type.isEmpty())
 					  {
@@ -13436,7 +13440,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 768 "scanner.l"
+#line 772 "scanner.l"
 { // start of parameter list
   					  yyextra->current->name += ':';
   					  Argument a;
@@ -13447,14 +13451,14 @@ YY_RULE_SETUP
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 774 "scanner.l"
+#line 778 "scanner.l"
 { // TODO: check if nested braches are possible.
   					  yyextra->current->type = yytext;
   					}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 777 "scanner.l"
+#line 781 "scanner.l"
 {
   					  BEGIN( ObjCMethod );
   					}
@@ -13462,7 +13466,7 @@ YY_RULE_SETUP
 case 53:
 /* rule 53 can match eol */
 YY_RULE_SETUP
-#line 780 "scanner.l"
+#line 784 "scanner.l"
 { // Keyword of parameter
 					  QCString keyw = yytext;
 					  keyw=keyw.left(keyw.length()-1).stripWhiteSpace(); // strip :
@@ -13486,7 +13490,7 @@ YY_RULE_SETUP
 case 54:
 /* rule 54 can match eol */
 YY_RULE_SETUP
-#line 799 "scanner.l"
+#line 803 "scanner.l"
 { // name of parameter
   					  lineCount(yyscanner);
   					  yyextra->current->argList.back().name=QCString(yytext).stripWhiteSpace();
@@ -13495,7 +13499,7 @@ YY_RULE_SETUP
 case 55:
 /* rule 55 can match eol */
 YY_RULE_SETUP
-#line 803 "scanner.l"
+#line 807 "scanner.l"
 { // name of parameter
   					  lineCount(yyscanner);
 					  // do we want the comma as part of the name?
@@ -13513,7 +13517,7 @@ YY_RULE_SETUP
    */
 case 56:
 YY_RULE_SETUP
-#line 817 "scanner.l"
+#line 821 "scanner.l"
 {
 				 	  yyextra->roundCount=0;
 					  yyextra->current->argList.back().type.resize(0);
@@ -13522,7 +13526,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 822 "scanner.l"
+#line 826 "scanner.l"
 {
                                           yyextra->roundCount++;
   					  yyextra->current->argList.back().type+=yytext;
@@ -13533,7 +13537,7 @@ case 58:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 826 "scanner.l"
+#line 830 "scanner.l"
 {
                                           if (yyextra->roundCount<=0)
                                           {
@@ -13549,14 +13553,14 @@ YY_RULE_SETUP
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 837 "scanner.l"
+#line 841 "scanner.l"
 {
         				  yyextra->current->argList.back().type+=QCString(yytext).stripWhiteSpace();
   					}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 840 "scanner.l"
+#line 844 "scanner.l"
 { // end of method declaration
 					  if (!yyextra->current->argList.empty() && yyextra->current->argList.back().type.isEmpty())
 					  {
@@ -13575,7 +13579,7 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 854 "scanner.l"
+#line 858 "scanner.l"
 { // start of a method body
   					  lineCount(yyscanner);
                                           //printf("Type=%s Name=%s args=%s\n",
@@ -13597,7 +13601,7 @@ YY_RULE_SETUP
 case 62:
 /* rule 62 can match eol */
 YY_RULE_SETUP
-#line 871 "scanner.l"
+#line 875 "scanner.l"
 {
 					  if (yyextra->insideSlice)
 					  {
@@ -13618,7 +13622,7 @@ YY_RULE_SETUP
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 887 "scanner.l"
+#line 891 "scanner.l"
 {
 					  if (yyextra->insideSlice)
 					  {
@@ -13639,7 +13643,7 @@ YY_RULE_SETUP
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 903 "scanner.l"
+#line 907 "scanner.l"
 {
   					  lineCount(yyscanner);
   					}
@@ -13647,7 +13651,7 @@ YY_RULE_SETUP
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 906 "scanner.l"
+#line 910 "scanner.l"
 {
   					  if (yyextra->insideJava) // Java annotation
 					  {
@@ -13672,40 +13676,40 @@ YY_RULE_SETUP
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 927 "scanner.l"
+#line 931 "scanner.l"
 { 
                                           yyextra->current->read = yytext+7;
 					}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 930 "scanner.l"
+#line 934 "scanner.l"
 { 
                                           yyextra->current->write = yytext+7;
 					}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 933 "scanner.l"
+#line 937 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Writable;
   					}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 936 "scanner.l"
+#line 940 "scanner.l"
 { // default
   					}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 938 "scanner.l"
+#line 942 "scanner.l"
 { // default
   					}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 940 "scanner.l"
+#line 944 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Assign;
 					  yyextra->current->spec|=Entry::Unretained;
@@ -13713,7 +13717,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 944 "scanner.l"
+#line 948 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Assign;
 					  yyextra->current->spec|=Entry::Retain;
@@ -13721,7 +13725,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 948 "scanner.l"
+#line 952 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Assign;
 					  yyextra->current->spec|=Entry::Copy;
@@ -13729,7 +13733,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 952 "scanner.l"
+#line 956 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Assign;
 					  yyextra->current->spec|=Entry::Weak;
@@ -13737,7 +13741,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 956 "scanner.l"
+#line 960 "scanner.l"
 {
 					  yyextra->current->spec&=~Entry::Assign;
 					  yyextra->current->spec|=Entry::Strong;
@@ -13745,21 +13749,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 960 "scanner.l"
+#line 964 "scanner.l"
 {
 					  yyextra->current->spec|=Entry::NonAtomic;
   					}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 963 "scanner.l"
+#line 967 "scanner.l"
 {
   					  BEGIN(FindMembers);
   					}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 966 "scanner.l"
+#line 970 "scanner.l"
 {
   					  if (yyextra->insideJava) // Java annotation
 					  {
@@ -13787,14 +13791,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 990 "scanner.l"
+#line 994 "scanner.l"
 {
   					  BEGIN(FindMembers);
   					}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 993 "scanner.l"
+#line 997 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
 					  //printf("Found namespace %s lang=%d\n",yytext,yyextra->current->lang);
@@ -13812,7 +13816,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 1007 "scanner.l"
+#line 1011 "scanner.l"
 {
                                           std::shared_ptr<Entry> tmp = yyextra->current;
 					  yyextra->current_root->moveToSubEntryAndRefresh(yyextra->current);
@@ -13823,7 +13827,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 1014 "scanner.l"
+#line 1018 "scanner.l"
 {
 					  yyextra->curlyCount=0;
 					  BEGIN( ReadNSBody );
@@ -13832,7 +13836,7 @@ YY_RULE_SETUP
 case 83:
 /* rule 83 can match eol */
 YY_RULE_SETUP
-#line 1018 "scanner.l"
+#line 1022 "scanner.l"
 {
   					  yyextra->current->type += " initonly ";
 					  if (yyextra->insideCli) yyextra->current->spec |= Entry::Initonly;
@@ -13842,7 +13846,7 @@ YY_RULE_SETUP
 case 84:
 /* rule 84 can match eol */
 YY_RULE_SETUP
-#line 1023 "scanner.l"
+#line 1027 "scanner.l"
 { yyextra->current->type += " static ";
   					  yyextra->current->stat = TRUE;
 					  lineCount(yyscanner);
@@ -13851,7 +13855,7 @@ YY_RULE_SETUP
 case 85:
 /* rule 85 can match eol */
 YY_RULE_SETUP
-#line 1027 "scanner.l"
+#line 1031 "scanner.l"
 {
   					  yyextra->current->stat = FALSE;
 					  yyextra->current->explicitExternal = TRUE;
@@ -13861,7 +13865,7 @@ YY_RULE_SETUP
 case 86:
 /* rule 86 can match eol */
 YY_RULE_SETUP
-#line 1032 "scanner.l"
+#line 1036 "scanner.l"
 { if (yyextra->insideCS)
 					  {
 					    yyextra->current->type += " const ";
@@ -13877,7 +13881,7 @@ YY_RULE_SETUP
 case 87:
 /* rule 87 can match eol */
 YY_RULE_SETUP
-#line 1043 "scanner.l"
+#line 1047 "scanner.l"
 { yyextra->current->type += " virtual ";
 					  yyextra->current->virt = Virtual;
 					  lineCount(yyscanner);
@@ -13886,7 +13890,7 @@ YY_RULE_SETUP
 case 88:
 /* rule 88 can match eol */
 YY_RULE_SETUP
-#line 1047 "scanner.l"
+#line 1051 "scanner.l"
 { 
                                           if (yyextra->insideCpp)
                                           {
@@ -13903,7 +13907,7 @@ YY_RULE_SETUP
 case 89:
 /* rule 89 can match eol */
 YY_RULE_SETUP
-#line 1059 "scanner.l"
+#line 1063 "scanner.l"
 { // UNO IDL published keyword
 					  if (yyextra->insideIDL)
 					  {
@@ -13919,7 +13923,7 @@ YY_RULE_SETUP
 case 90:
 /* rule 90 can match eol */
 YY_RULE_SETUP
-#line 1070 "scanner.l"
+#line 1074 "scanner.l"
 { 
                                           if (!yyextra->insidePHP) 
 					  {
@@ -13943,7 +13947,7 @@ YY_RULE_SETUP
 case 91:
 /* rule 91 can match eol */
 YY_RULE_SETUP
-#line 1089 "scanner.l"
+#line 1093 "scanner.l"
 { yyextra->current->spec|=Entry::Inline;
                                           lineCount(yyscanner); 
                                         }
@@ -13951,7 +13955,7 @@ YY_RULE_SETUP
 case 92:
 /* rule 92 can match eol */
 YY_RULE_SETUP
-#line 1092 "scanner.l"
+#line 1096 "scanner.l"
 { yyextra->current->spec|=Entry::Mutable;
                                           lineCount(yyscanner); 
                                         }
@@ -13959,7 +13963,7 @@ YY_RULE_SETUP
 case 93:
 /* rule 93 can match eol */
 YY_RULE_SETUP
-#line 1095 "scanner.l"
+#line 1099 "scanner.l"
 { yyextra->current->spec|=Entry::Explicit;
                                           lineCount(yyscanner); 
                                         }
@@ -13967,7 +13971,7 @@ YY_RULE_SETUP
 case 94:
 /* rule 94 can match eol */
 YY_RULE_SETUP
-#line 1098 "scanner.l"
+#line 1102 "scanner.l"
 { yyextra->current->spec|=Entry::Local;
                                           lineCount(yyscanner); 
                                         }
@@ -13975,7 +13979,7 @@ YY_RULE_SETUP
 case 95:
 /* rule 95 can match eol */
 YY_RULE_SETUP
-#line 1101 "scanner.l"
+#line 1105 "scanner.l"
 { // Objective C 2.0 protocol required section
                                           yyextra->current->spec=(yyextra->current->spec & ~Entry::Optional) | Entry::Required;
                                           lineCount(yyscanner); 
@@ -13984,7 +13988,7 @@ YY_RULE_SETUP
 case 96:
 /* rule 96 can match eol */
 YY_RULE_SETUP
-#line 1105 "scanner.l"
+#line 1109 "scanner.l"
 {  // Objective C 2.0 protocol optional section
                                           yyextra->current->spec=(yyextra->current->spec & ~Entry::Required) | Entry::Optional;
                                           lineCount(yyscanner); 
@@ -13998,7 +14002,7 @@ YY_RULE_SETUP
 case 97:
 /* rule 97 can match eol */
 YY_RULE_SETUP
-#line 1114 "scanner.l"
+#line 1118 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 98:
@@ -14007,7 +14011,7 @@ case 98:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1115 "scanner.l"
+#line 1119 "scanner.l"
 { 
   					  yyextra->isTypedef=FALSE;
 					  yyextra->current->section = Entry::NAMESPACE_SEC;
@@ -14030,7 +14034,7 @@ YY_RULE_SETUP
 case 99:
 /* rule 99 can match eol */
 YY_RULE_SETUP
-#line 1133 "scanner.l"
+#line 1137 "scanner.l"
 { 
 					  lineCount(yyscanner);
                                           if (yyextra->insideIDL || yyextra->insideSlice)
@@ -14059,7 +14063,7 @@ YY_RULE_SETUP
 case 100:
 /* rule 100 can match eol */
 YY_RULE_SETUP
-#line 1157 "scanner.l"
+#line 1161 "scanner.l"
 { 
 					  lineCount(yyscanner);
                                           if (yyextra->insideIDL)
@@ -14083,7 +14087,7 @@ YY_RULE_SETUP
 case 101:
 /* rule 101 can match eol */
 YY_RULE_SETUP
-#line 1176 "scanner.l"
+#line 1180 "scanner.l"
 {  // UNO IDL constant group
 					  lineCount(yyscanner);
 					  if (yyextra->insideIDL)
@@ -14107,7 +14111,7 @@ YY_RULE_SETUP
 case 102:
 /* rule 102 can match eol */
 YY_RULE_SETUP
-#line 1195 "scanner.l"
+#line 1199 "scanner.l"
 { // UNO IDL service
 					  lineCount(yyscanner);
 					  if (yyextra->insideIDL)
@@ -14134,7 +14138,7 @@ YY_RULE_SETUP
 case 103:
 /* rule 103 can match eol */
 YY_RULE_SETUP
-#line 1217 "scanner.l"
+#line 1221 "scanner.l"
 { // UNO IDL singleton
 					  lineCount(yyscanner);
 					  if (yyextra->insideIDL)
@@ -14160,7 +14164,7 @@ YY_RULE_SETUP
 case 104:
 /* rule 104 can match eol */
 YY_RULE_SETUP
-#line 1238 "scanner.l"
+#line 1242 "scanner.l"
 { // M$/Corba/UNO IDL/Java/Slice interface
 					  lineCount(yyscanner);
                                           if (yyextra->insideIDL || yyextra->insideJava || yyextra->insideCS || yyextra->insideD || yyextra->insidePHP || yyextra->insideSlice)
@@ -14188,7 +14192,7 @@ YY_RULE_SETUP
 case 105:
 /* rule 105 can match eol */
 YY_RULE_SETUP
-#line 1261 "scanner.l"
+#line 1265 "scanner.l"
 { // Objective-C class implementation
 					  lineCount(yyscanner);
   					  yyextra->isTypedef=FALSE;
@@ -14207,7 +14211,7 @@ YY_RULE_SETUP
 case 106:
 /* rule 106 can match eol */
 YY_RULE_SETUP
-#line 1275 "scanner.l"
+#line 1279 "scanner.l"
 { // Objective-C class interface, or Java attribute
 					  lineCount(yyscanner);
   					  yyextra->isTypedef=FALSE;
@@ -14231,7 +14235,7 @@ YY_RULE_SETUP
 case 107:
 /* rule 107 can match eol */
 YY_RULE_SETUP
-#line 1294 "scanner.l"
+#line 1298 "scanner.l"
 { // Objective-C protocol definition
 					  lineCount(yyscanner);
   					  yyextra->isTypedef=FALSE;
@@ -14252,7 +14256,7 @@ YY_RULE_SETUP
 case 108:
 /* rule 108 can match eol */
 YY_RULE_SETUP
-#line 1310 "scanner.l"
+#line 1314 "scanner.l"
 { // Corba IDL/Slice exception
   					  yyextra->isTypedef=FALSE;
 					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14271,14 +14275,14 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 109:
-#line 1327 "scanner.l"
+#line 1331 "scanner.l"
 case 110:
 /* rule 110 can match eol */
-#line 1328 "scanner.l"
+#line 1332 "scanner.l"
 case 111:
 /* rule 111 can match eol */
 YY_RULE_SETUP
-#line 1328 "scanner.l"
+#line 1332 "scanner.l"
 { 
                                           QCString decl = yytext;
 					  yyextra->isTypedef=decl.find("typedef")!=-1;
@@ -14320,11 +14324,11 @@ YY_RULE_SETUP
 					}
 	YY_BREAK
 case 112:
-#line 1368 "scanner.l"
+#line 1372 "scanner.l"
 case 113:
 /* rule 113 can match eol */
 YY_RULE_SETUP
-#line 1368 "scanner.l"
+#line 1372 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14341,11 +14345,11 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 114:
-#line 1383 "scanner.l"
+#line 1387 "scanner.l"
 case 115:
 /* rule 115 can match eol */
 YY_RULE_SETUP
-#line 1383 "scanner.l"
+#line 1387 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14362,11 +14366,11 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 116:
-#line 1398 "scanner.l"
+#line 1402 "scanner.l"
 case 117:
 /* rule 117 can match eol */
 YY_RULE_SETUP
-#line 1398 "scanner.l"
+#line 1402 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14385,7 +14389,7 @@ YY_RULE_SETUP
 case 118:
 /* rule 118 can match eol */
 YY_RULE_SETUP
-#line 1412 "scanner.l"
+#line 1416 "scanner.l"
 {
   					  if (yyextra->insideIDL)
 					  {
@@ -14411,11 +14415,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 119:
 /* rule 119 can match eol */
-#line 1435 "scanner.l"
+#line 1439 "scanner.l"
 case 120:
 /* rule 120 can match eol */
 YY_RULE_SETUP
-#line 1435 "scanner.l"
+#line 1439 "scanner.l"
 { 
                                           QCString decl = yytext;
 					  yyextra->isTypedef=decl.find("typedef")!=-1;
@@ -14449,11 +14453,11 @@ YY_RULE_SETUP
 					}
 	YY_BREAK
 case 121:
-#line 1467 "scanner.l"
+#line 1471 "scanner.l"
 case 122:
 /* rule 122 can match eol */
 YY_RULE_SETUP
-#line 1467 "scanner.l"
+#line 1471 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14470,11 +14474,11 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 123:
-#line 1482 "scanner.l"
+#line 1486 "scanner.l"
 case 124:
 /* rule 124 can match eol */
 YY_RULE_SETUP
-#line 1482 "scanner.l"
+#line 1486 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14491,11 +14495,11 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 125:
-#line 1497 "scanner.l"
+#line 1501 "scanner.l"
 case 126:
 /* rule 126 can match eol */
 YY_RULE_SETUP
-#line 1497 "scanner.l"
+#line 1501 "scanner.l"
 {
   					  yyextra->isTypedef=FALSE;
   					  yyextra->current->section = Entry::CLASS_SEC;
@@ -14513,11 +14517,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 127:
 /* rule 127 can match eol */
-#line 1512 "scanner.l"
+#line 1516 "scanner.l"
 case 128:
 /* rule 128 can match eol */
 YY_RULE_SETUP
-#line 1512 "scanner.l"
+#line 1516 "scanner.l"
 { 
                                           QCString decl=yytext;
 					  yyextra->isTypedef=decl.find("typedef")!=-1;
@@ -14548,11 +14552,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 129:
 /* rule 129 can match eol */
-#line 1540 "scanner.l"
+#line 1544 "scanner.l"
 case 130:
 /* rule 130 can match eol */
 YY_RULE_SETUP
-#line 1540 "scanner.l"
+#line 1544 "scanner.l"
 { // for IDL: typedef [something] enum
                                           QCString text=yytext;
 					  yyextra->isTypedef    = text.find("typedef")!=-1;
@@ -14587,7 +14591,7 @@ case 131:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1567 "scanner.l"
+#line 1571 "scanner.l"
 {  // A::operator()<int>(int arg)
   					  lineCount(yyscanner);
 					  yyextra->current->name += "()";
@@ -14600,7 +14604,7 @@ case 132:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1572 "scanner.l"
+#line 1576 "scanner.l"
 {
   					  lineCount(yyscanner);
     					  yyextra->current->name += yytext ;
@@ -14610,7 +14614,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 1578 "scanner.l"
+#line 1582 "scanner.l"
 { // can occur when importing members
   					  unput(';');
 					  BEGIN( FindMembers ) ;
@@ -14619,7 +14623,7 @@ YY_RULE_SETUP
 case 134:
 /* rule 134 can match eol */
 YY_RULE_SETUP
-#line 1582 "scanner.l"
+#line 1586 "scanner.l"
 { 
     					  lineCount(yyscanner);
     					  yyextra->current->name += *yytext ;
@@ -14627,12 +14631,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 1586 "scanner.l"
+#line 1590 "scanner.l"
 { /* skip guided templ specifiers */ }
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 1587 "scanner.l"
+#line 1591 "scanner.l"
 {
 					  yyextra->current->name = yyextra->current->name.simplifyWhiteSpace();
 					  unput(*yytext);
@@ -14642,7 +14646,7 @@ YY_RULE_SETUP
 case 137:
 /* rule 137 can match eol */
 YY_RULE_SETUP
-#line 1592 "scanner.l"
+#line 1596 "scanner.l"
 {  // generic is a C++/CLI extension
   					  lineCount(yyscanner);
 					  ArgumentList al;
@@ -14659,7 +14663,7 @@ YY_RULE_SETUP
 case 138:
 /* rule 138 can match eol */
 YY_RULE_SETUP
-#line 1604 "scanner.l"
+#line 1608 "scanner.l"
 { // namespace alias
                                           lineCount(yyscanner); 
   					  BEGIN( NSAliasName );
@@ -14667,7 +14671,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 1608 "scanner.l"
+#line 1612 "scanner.l"
 {
   					  yyextra->aliasName = yytext;
 					  BEGIN( NSAliasArg );
@@ -14675,7 +14679,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 1612 "scanner.l"
+#line 1616 "scanner.l"
 {
   					  //printf("Inserting namespace alias %s::%s->%s\n",yyextra->current_root->name.data(),yyextra->aliasName.data(),yytext);
 					  //if (yyextra->current_root->name.isEmpty())
@@ -14693,7 +14697,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 1626 "scanner.l"
+#line 1630 "scanner.l"
 {
   					  BEGIN( FindMembers );
   					}
@@ -14701,7 +14705,7 @@ YY_RULE_SETUP
 case 142:
 /* rule 142 can match eol */
 YY_RULE_SETUP
-#line 1629 "scanner.l"
+#line 1633 "scanner.l"
 {
   					  lineCount(yyscanner);
 					  yyextra->aliasName=yytext;
@@ -14711,7 +14715,7 @@ YY_RULE_SETUP
 case 143:
 /* rule 143 can match eol */
 YY_RULE_SETUP
-#line 1634 "scanner.l"
+#line 1638 "scanner.l"
 {
   					  lineCount(yyscanner);
 					  yyextra->current->name=removeRedundantWhiteSpace(substitute(yytext,"\\","::"));
@@ -14730,20 +14734,20 @@ YY_RULE_SETUP
 case 144:
 /* rule 144 can match eol */
 YY_RULE_SETUP
-#line 1648 "scanner.l"
+#line 1652 "scanner.l"
 {
   					  lineCount(yyscanner);
   					}
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 1651 "scanner.l"
+#line 1655 "scanner.l"
 {
                                         }
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 1653 "scanner.l"
+#line 1657 "scanner.l"
 {
   					  //printf("PHP: adding use as relation: %s->%s\n",yytext,yyextra->aliasName.data());
                                           if (!yyextra->aliasName.isEmpty())
@@ -14757,7 +14761,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 1663 "scanner.l"
+#line 1667 "scanner.l"
 {
 					  if (*yytext==',')
 					  {
@@ -14772,7 +14776,7 @@ YY_RULE_SETUP
 case 148:
 /* rule 148 can match eol */
 YY_RULE_SETUP
-#line 1673 "scanner.l"
+#line 1677 "scanner.l"
 { // package import => add as a using directive
   					  lineCount(yyscanner);
   					  QCString scope=yytext;
@@ -14787,7 +14791,7 @@ YY_RULE_SETUP
 case 149:
 /* rule 149 can match eol */
 YY_RULE_SETUP
-#line 1683 "scanner.l"
+#line 1687 "scanner.l"
 { // class import => add as a using declaration
                                           lineCount(yyscanner);
   					  QCString scope=yytext;
@@ -14811,7 +14815,7 @@ YY_RULE_SETUP
 case 150:
 /* rule 150 can match eol */
 YY_RULE_SETUP
-#line 1702 "scanner.l"
+#line 1706 "scanner.l"
 { 
 					  yyextra->current->startLine=yyextra->yyLineNr; 
 					  yyextra->current->startColumn = yyextra->yyColNr;
@@ -14822,13 +14826,13 @@ YY_RULE_SETUP
 case 151:
 /* rule 151 can match eol */
 YY_RULE_SETUP
-#line 1708 "scanner.l"
+#line 1712 "scanner.l"
 { lineCount(yyscanner); BEGIN(UsingDirective); }
 	YY_BREAK
 case 152:
 /* rule 152 can match eol */
 YY_RULE_SETUP
-#line 1709 "scanner.l"
+#line 1713 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  yyextra->current->name=yytext;
@@ -14856,14 +14860,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 1733 "scanner.l"
+#line 1737 "scanner.l"
 { // C++11 style template alias?
                                           BEGIN(UsingAlias);
                                         }
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 1736 "scanner.l"
+#line 1740 "scanner.l"
 { 
                                           yyextra->previous->section=Entry::VARIABLE_SEC;
                                           yyextra->previous->type = "typedef "+yyextra->previous->args;
@@ -14878,7 +14882,7 @@ YY_RULE_SETUP
 case 155:
 /* rule 155 can match eol */
 YY_RULE_SETUP
-#line 1746 "scanner.l"
+#line 1750 "scanner.l"
 {
 					  yyextra->docBlockContext   = UsingAliasEnd;
 					  yyextra->docBlockInBody    = FALSE;
@@ -14904,14 +14908,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 1768 "scanner.l"
+#line 1772 "scanner.l"
 {
                                           yyextra->previous->args+="> >"; // see bug769552
                                         }
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 1771 "scanner.l"
+#line 1775 "scanner.l"
 {
                                           yyextra->previous->args+=yytext;
                                         }
@@ -14919,7 +14923,7 @@ YY_RULE_SETUP
 case 158:
 /* rule 158 can match eol */
 YY_RULE_SETUP
-#line 1774 "scanner.l"
+#line 1778 "scanner.l"
 {
                                           yyextra->previous->args+=yytext;
                                           lineCount(yyscanner);
@@ -14927,7 +14931,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 1778 "scanner.l"
+#line 1782 "scanner.l"
 {
                                           yyextra->previous->doc   = yyextra->current->doc;
                                           yyextra->previous->brief = yyextra->current->brief;
@@ -14940,7 +14944,7 @@ YY_RULE_SETUP
 case 160:
 /* rule 160 can match eol */
 YY_RULE_SETUP
-#line 1786 "scanner.l"
+#line 1790 "scanner.l"
 { yyextra->current->name=removeRedundantWhiteSpace(yytext);
                                           yyextra->current->fileName = yyextra->yyFileName; 
   					  yyextra->current->section=Entry::USINGDIR_SEC;
@@ -14951,13 +14955,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 1793 "scanner.l"
+#line 1797 "scanner.l"
 { BEGIN(FindMembers); }
 	YY_BREAK
 case 162:
 /* rule 162 can match eol */
 YY_RULE_SETUP
-#line 1794 "scanner.l"
+#line 1798 "scanner.l"
 { // guided template decl
 					  QCString n=yytext;
 					  addType(yyscanner);
@@ -14970,7 +14974,7 @@ case 163:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1799 "scanner.l"
+#line 1803 "scanner.l"
 { // Note: this could be a return type!
                                           yyextra->roundCount=0;
   					  yyextra->sharpCount=0;
@@ -14992,7 +14996,7 @@ case 164:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1813 "scanner.l"
+#line 1817 "scanner.l"
 {
   					  yyextra->sharpCount=0;
 					  yyextra->roundCount=0;
@@ -15008,7 +15012,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 1825 "scanner.l"
+#line 1829 "scanner.l"
 {
   					  if (!yyextra->insidePHP) 
 					  {
@@ -15023,7 +15027,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 1836 "scanner.l"
+#line 1840 "scanner.l"
 {
   					  yyextra->current->name+=yytext;
   					  // *yyextra->currentTemplateSpec+=yytext; 
@@ -15031,7 +15035,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 1840 "scanner.l"
+#line 1844 "scanner.l"
 { 
                                           if (yyextra->roundCount==0)
                                           {
@@ -15043,7 +15047,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 1848 "scanner.l"
+#line 1852 "scanner.l"
 {
   					  if (yyextra->insideJava || yyextra->insideCS || yyextra->insideCli || yyextra->roundCount==0)
 					  {
@@ -15060,7 +15064,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 1861 "scanner.l"
+#line 1865 "scanner.l"
 {
   					  yyextra->current->name+='>';
 					  // *yyextra->currentTemplateSpec+='>';
@@ -15074,7 +15078,7 @@ YY_RULE_SETUP
 case 170:
 /* rule 170 can match eol */
 YY_RULE_SETUP
-#line 1870 "scanner.l"
+#line 1874 "scanner.l"
 { 
   					  lineCount(yyscanner);
   					  yyextra->current->name+='>';
@@ -15094,7 +15098,7 @@ YY_RULE_SETUP
 case 171:
 /* rule 171 can match eol */
 YY_RULE_SETUP
-#line 1885 "scanner.l"
+#line 1889 "scanner.l"
 { // function pointer returning a template instance
   					  lineCount(yyscanner);
   					  yyextra->current->name+='>';
@@ -15110,7 +15114,7 @@ case 172:
 yyg->yy_c_buf_p = yy_cp -= 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1893 "scanner.l"
+#line 1897 "scanner.l"
 {
   					  lineCount(yyscanner);
   					  yyextra->current->name+='>';
@@ -15123,21 +15127,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 1902 "scanner.l"
+#line 1906 "scanner.l"
 { yyextra->current->name+=*yytext;
                                           yyextra->roundCount++; 
                                         }
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 1905 "scanner.l"
+#line 1909 "scanner.l"
 { yyextra->current->name+=*yytext;
                                           if (yyextra->roundCount>0) yyextra->roundCount--; 
                                         }
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 1908 "scanner.l"
+#line 1912 "scanner.l"
 { 
   					  yyextra->current->name+=*yytext;
   					  // *yyextra->currentTemplateSpec+=*yytext; 
@@ -15146,7 +15150,7 @@ YY_RULE_SETUP
 case 176:
 /* rule 176 can match eol */
 YY_RULE_SETUP
-#line 1912 "scanner.l"
+#line 1916 "scanner.l"
 {
 					  if (yyextra->insidePHP)
 					  {
@@ -15159,7 +15163,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 1921 "scanner.l"
+#line 1925 "scanner.l"
 { // PHP heredoc
   					  yyextra->delimiter = yytext;
                                           *yyextra->pCopyHereDocGString += yytext;
@@ -15171,7 +15175,7 @@ case 178:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1926 "scanner.l"
+#line 1930 "scanner.l"
 { // PHP nowdoc
   					  yyextra->delimiter = &yytext[1];
                                           *yyextra->pCopyHereDocGString += yytext;
@@ -15180,7 +15184,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 1931 "scanner.l"
+#line 1935 "scanner.l"
 { // PHP heredoc
   					  yyextra->delimiter = yytext;
 					  BEGIN(HereDocEnd);
@@ -15191,7 +15195,7 @@ case 180:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1935 "scanner.l"
+#line 1939 "scanner.l"
 { // PHP nowdoc
   					  yyextra->delimiter = &yytext[1];
 					  BEGIN(HereDocEnd);
@@ -15199,7 +15203,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 1939 "scanner.l"
+#line 1943 "scanner.l"
 { // id at start of the line could mark the end of the block
   					  if (yyextra->delimiter==yytext) // it is the end marker
 					  {
@@ -15209,12 +15213,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 1945 "scanner.l"
+#line 1949 "scanner.l"
 { }
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 1946 "scanner.l"
+#line 1950 "scanner.l"
 { // id at start of the line could mark the end of the block
                                           *yyextra->pCopyHereDocGString += yytext;
   					  if (yyextra->delimiter==yytext) // it is the end marker
@@ -15226,7 +15230,7 @@ YY_RULE_SETUP
 case 184:
 /* rule 184 can match eol */
 YY_RULE_SETUP
-#line 1953 "scanner.l"
+#line 1957 "scanner.l"
 { 
                                           lineCount(yyscanner);
                                           *yyextra->pCopyHereDocGString += yytext;
@@ -15234,27 +15238,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 1957 "scanner.l"
+#line 1961 "scanner.l"
 { 
                                           *yyextra->pCopyHereDocGString += yytext;
                                         }
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 1960 "scanner.l"
+#line 1964 "scanner.l"
 { 
                                           *yyextra->pCopyHereDocGString += yytext;
                                         }
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 1963 "scanner.l"
+#line 1967 "scanner.l"
 { // Qt object macro
   					}
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 1965 "scanner.l"
+#line 1969 "scanner.l"
 { // Qt property declaration
 					  yyextra->current->protection = Public ; // see bug734245 & bug735462
   					  yyextra->current->mtype = yyextra->mtype = Property;
@@ -15264,13 +15268,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 1971 "scanner.l"
+#line 1975 "scanner.l"
 { // start of property arguments
   					}
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 1973 "scanner.l"
+#line 1977 "scanner.l"
 { // end of property arguments
   					  unput(';');
 					  BEGIN(FindMembers);
@@ -15278,21 +15282,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 1977 "scanner.l"
+#line 1981 "scanner.l"
 {
   				          yyextra->current->type+=yytext;
   					}
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 1980 "scanner.l"
+#line 1984 "scanner.l"
 {
   				          yyextra->current->type+=yytext;
   					}
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 1983 "scanner.l"
+#line 1987 "scanner.l"
 {
   					  yyextra->current->type+=yytext;
                                           BEGIN(QtPropName);
@@ -15300,7 +15304,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 1987 "scanner.l"
+#line 1991 "scanner.l"
 {
   					  yyextra->current->name=yytext;
   					  BEGIN(QtPropAttr);
@@ -15308,7 +15312,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 1991 "scanner.l"
+#line 1995 "scanner.l"
 {
   					  yyextra->current->spec |= Entry::Readable;
 					  BEGIN(QtPropRead);
@@ -15316,7 +15320,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 1995 "scanner.l"
+#line 1999 "scanner.l"
 {
   					  yyextra->current->spec |= Entry::Writable;
 					  BEGIN(QtPropWrite);
@@ -15324,25 +15328,25 @@ YY_RULE_SETUP
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 1999 "scanner.l"
+#line 2003 "scanner.l"
 { // reset method => not supported yet
   					}
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 2001 "scanner.l"
+#line 2005 "scanner.l"
 { // scriptable property => not supported yet
   					}
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 2003 "scanner.l"
+#line 2007 "scanner.l"
 { // designable property => not supported yet
   					}
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 2005 "scanner.l"
+#line 2009 "scanner.l"
 {
   					  yyextra->current->read = yytext;
   					  BEGIN(QtPropAttr);
@@ -15350,7 +15354,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 2009 "scanner.l"
+#line 2013 "scanner.l"
 {
   					  yyextra->current->write = yytext;
 					  BEGIN(QtPropAttr);
@@ -15359,7 +15363,7 @@ YY_RULE_SETUP
 case 202:
 /* rule 202 can match eol */
 YY_RULE_SETUP
-#line 2013 "scanner.l"
+#line 2017 "scanner.l"
 {
   					  yyextra->current->name=yytext;
 				          BEGIN(FindMembers);
@@ -15368,7 +15372,7 @@ YY_RULE_SETUP
 case 203:
 /* rule 203 can match eol */
 YY_RULE_SETUP
-#line 2017 "scanner.l"
+#line 2021 "scanner.l"
 {
                                           if (yyextra->insideCpp || yyextra->insideObjC) 
                                           {
@@ -15532,7 +15536,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 2177 "scanner.l"
+#line 2181 "scanner.l"
 {
 					  yyextra->lastSkipRoundContext = FindMembers;
 					  yyextra->roundCount=0;
@@ -15542,12 +15546,12 @@ YY_RULE_SETUP
 case 205:
 /* rule 205 can match eol */
 YY_RULE_SETUP
-#line 2182 "scanner.l"
+#line 2186 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 2183 "scanner.l"
+#line 2187 "scanner.l"
 { // variable with static_assert as name?
                                           unput(*yytext);
                                           BEGIN(FindMembers);
@@ -15555,7 +15559,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 207:
 YY_RULE_SETUP
-#line 2187 "scanner.l"
+#line 2191 "scanner.l"
 {
 					  yyextra->current->type+=yytext;
   					  yyextra->lastRoundContext=FindMembers;
@@ -15567,12 +15571,12 @@ YY_RULE_SETUP
 case 208:
 /* rule 208 can match eol */
 YY_RULE_SETUP
-#line 2194 "scanner.l"
+#line 2198 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 209:
 YY_RULE_SETUP
-#line 2195 "scanner.l"
+#line 2199 "scanner.l"
 {
                                           unput(*yytext);
                                           BEGIN(FindMembers);
@@ -15580,7 +15584,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 210:
 YY_RULE_SETUP
-#line 2199 "scanner.l"
+#line 2203 "scanner.l"
 {
 					  yyextra->current->name+=removeRedundantWhiteSpace(yytext);
   					  BEGIN(FindMembers);
@@ -15588,13 +15592,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 211:
 YY_RULE_SETUP
-#line 2203 "scanner.l"
+#line 2207 "scanner.l"
 { // some number where we did not expect one
   					}
 	YY_BREAK
 case 212:
 YY_RULE_SETUP
-#line 2205 "scanner.l"
+#line 2209 "scanner.l"
 {
   					  if (yyextra->insideJava || yyextra->insideCS || yyextra->insideD)
 					  {
@@ -15604,14 +15608,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 213:
 YY_RULE_SETUP
-#line 2211 "scanner.l"
+#line 2215 "scanner.l"
 {
 					  yyextra->current->name+=yytext;
   					}
 	YY_BREAK
 case 214:
 YY_RULE_SETUP
-#line 2214 "scanner.l"
+#line 2218 "scanner.l"
 {
   					  yyextra->insideCppQuote=TRUE;
   					  BEGIN(FindMembers);
@@ -15619,34 +15623,34 @@ YY_RULE_SETUP
 	YY_BREAK
 case 215:
 YY_RULE_SETUP
-#line 2218 "scanner.l"
+#line 2222 "scanner.l"
 
 	YY_BREAK
 case 216:
 YY_RULE_SETUP
-#line 2219 "scanner.l"
+#line 2223 "scanner.l"
 { BEGIN(FindMembers); }
 	YY_BREAK
 case 217:
 /* rule 217 can match eol */
 YY_RULE_SETUP
-#line 2220 "scanner.l"
+#line 2224 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 218:
 YY_RULE_SETUP
-#line 2221 "scanner.l"
+#line 2225 "scanner.l"
 
 	YY_BREAK
 case 219:
 /* rule 219 can match eol */
 YY_RULE_SETUP
-#line 2222 "scanner.l"
+#line 2226 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 220:
 YY_RULE_SETUP
-#line 2223 "scanner.l"
+#line 2227 "scanner.l"
 { 
 					  yyextra->curlyCount=0;
 					  yyextra->lastCurlyContext = TryFunctionBlockEnd ;
@@ -15655,34 +15659,34 @@ YY_RULE_SETUP
 	YY_BREAK
 case 221:
 YY_RULE_SETUP
-#line 2228 "scanner.l"
+#line 2232 "scanner.l"
 
 	YY_BREAK
 case 222:
 /* rule 222 can match eol */
 YY_RULE_SETUP
-#line 2229 "scanner.l"
+#line 2233 "scanner.l"
 { lineCount(yyscanner); BEGIN(TryFunctionBlock); // {BN}* added to fix bug 611193
 					}
 	YY_BREAK
 case 223:
 /* rule 223 can match eol */
 YY_RULE_SETUP
-#line 2231 "scanner.l"
+#line 2235 "scanner.l"
 { unput(*yytext); // rule added to fix bug id 601138
   					  BEGIN( FindMembers );
 					}
 	YY_BREAK
 case 224:
 YY_RULE_SETUP
-#line 2234 "scanner.l"
+#line 2238 "scanner.l"
 { unput(*yytext);
   					  BEGIN( FindMembers );
 					}
 	YY_BREAK
 case 225:
 YY_RULE_SETUP
-#line 2237 "scanner.l"
+#line 2241 "scanner.l"
 {
   					  yyextra->insideCppQuote=FALSE;
 					  BEGIN(FindMembers);
@@ -15690,7 +15694,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 226:
 YY_RULE_SETUP
-#line 2241 "scanner.l"
+#line 2245 "scanner.l"
 { if (yyextra->insidePHP)
 					    REJECT;
 					  yyextra->lastCPPContext = YY_START;
@@ -15699,7 +15703,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 227:
 YY_RULE_SETUP
-#line 2246 "scanner.l"
+#line 2250 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					    REJECT;
@@ -15713,7 +15717,7 @@ case 228:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 2253 "scanner.l"
+#line 2257 "scanner.l"
 { /* line control directive */
                                           yyextra->yyLineNr = atoi(&yytext[1]);
 					  //printf("setting line number to %d\n",yyextra->yyLineNr);
@@ -15729,7 +15733,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 229:
 YY_RULE_SETUP
-#line 2265 "scanner.l"
+#line 2269 "scanner.l"
 {
 				          yyextra->yyFileName = stripQuotes(yytext);
 					  if (yyextra->lastPreLineCtrlContext==ReadBody || 
@@ -15742,7 +15746,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 230:
 YY_RULE_SETUP
-#line 2274 "scanner.l"
+#line 2278 "scanner.l"
 {
 					  if (yyextra->lastPreLineCtrlContext==ReadBody || 
 					      yyextra->lastPreLineCtrlContext==ReadNSBody ||
@@ -15755,7 +15759,7 @@ YY_RULE_SETUP
 case 231:
 /* rule 231 can match eol */
 YY_RULE_SETUP
-#line 2282 "scanner.l"
+#line 2286 "scanner.l"
 {
 					  if (yyextra->lastPreLineCtrlContext==ReadBody || 
 					      yyextra->lastPreLineCtrlContext==ReadNSBody ||
@@ -15769,26 +15773,26 @@ YY_RULE_SETUP
 	YY_BREAK
 case 232:
 YY_RULE_SETUP
-#line 2292 "scanner.l"
+#line 2296 "scanner.l"
 
 	YY_BREAK
 case 233:
 /* rule 233 can match eol */
 YY_RULE_SETUP
-#line 2293 "scanner.l"
+#line 2297 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 234:
 /* rule 234 can match eol */
 YY_RULE_SETUP
-#line 2294 "scanner.l"
+#line 2298 "scanner.l"
 { lineCount(yyscanner);
 					  BEGIN( yyextra->lastCPPContext) ;
 					}
 	YY_BREAK
 case 235:
 YY_RULE_SETUP
-#line 2297 "scanner.l"
+#line 2301 "scanner.l"
 {
   					  yyextra->current->name = yytext;
 					  yyextra->current->name = yyextra->current->name.left(yyextra->current->name.length()-1).stripWhiteSpace();
@@ -15812,7 +15816,7 @@ YY_RULE_SETUP
   */
 case 236:
 YY_RULE_SETUP
-#line 2317 "scanner.l"
+#line 2321 "scanner.l"
 {
   					  //printf("Define '%s' without args\n",yytext);
                                           if (yyextra->insideCpp || yyextra->insideObjC) 
@@ -15827,7 +15831,7 @@ YY_RULE_SETUP
 case 237:
 /* rule 237 can match eol */
 YY_RULE_SETUP
-#line 2327 "scanner.l"
+#line 2331 "scanner.l"
 {
   					  //printf("End define: doc=%s docFile=%s docLine=%d\n",yyextra->current->doc.data(),yyextra->current->docFile.data(),yyextra->current->docLine);
                                           lineCount(yyscanner);
@@ -15845,7 +15849,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 238:
 YY_RULE_SETUP
-#line 2341 "scanner.l"
+#line 2345 "scanner.l"
 {
   					  //printf("End define\n");
 					  yyextra->current->fileName   = yyextra->yyFileName;
@@ -15866,20 +15870,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 239:
 YY_RULE_SETUP
-#line 2358 "scanner.l"
+#line 2362 "scanner.l"
 
 	YY_BREAK
 case 240:
 /* rule 240 can match eol */
 YY_RULE_SETUP
-#line 2359 "scanner.l"
+#line 2363 "scanner.l"
 {
                                           lineCount(yyscanner);
   					}
 	YY_BREAK
 case 241:
 YY_RULE_SETUP
-#line 2362 "scanner.l"
+#line 2366 "scanner.l"
 {
 					  if (yyextra->insideIDL && yyextra->insideCppQuote)
 					  {
@@ -15894,13 +15898,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 242:
 YY_RULE_SETUP
-#line 2373 "scanner.l"
+#line 2377 "scanner.l"
 
 	YY_BREAK
 case 243:
 /* rule 243 can match eol */
 YY_RULE_SETUP
-#line 2374 "scanner.l"
+#line 2378 "scanner.l"
 {
   					  yyextra->current->name = yytext;
 					  yyextra->current->name = yyextra->current->name.stripWhiteSpace();
@@ -15915,7 +15919,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 244:
 YY_RULE_SETUP
-#line 2386 "scanner.l"
+#line 2390 "scanner.l"
 {  // ^ and % are C++/CLI extensions
   					  if (yyextra->insideCli)
 					  {
@@ -15930,7 +15934,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 245:
 YY_RULE_SETUP
-#line 2397 "scanner.l"
+#line 2401 "scanner.l"
 { 
                                           yyextra->current->name += yytext ;  
   					  addType(yyscanner);
@@ -15939,7 +15943,7 @@ YY_RULE_SETUP
 case 246:
 /* rule 246 can match eol */
 YY_RULE_SETUP
-#line 2401 "scanner.l"
+#line 2405 "scanner.l"
 {
 					  if (yyextra->current->bodyLine==-1)
 					  {
@@ -15978,7 +15982,7 @@ YY_RULE_SETUP
 case 247:
 /* rule 247 can match eol */
 YY_RULE_SETUP
-#line 2435 "scanner.l"
+#line 2439 "scanner.l"
 {
 					  yyextra->docBlockContext   = YY_START;
 					  yyextra->docBlockInBody    = FALSE;
@@ -16012,7 +16016,7 @@ YY_RULE_SETUP
 case 248:
 /* rule 248 can match eol */
 YY_RULE_SETUP
-#line 2464 "scanner.l"
+#line 2468 "scanner.l"
 {
 					  if (yyextra->current->bodyLine==-1)
 					  {
@@ -16042,7 +16046,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 249:
 YY_RULE_SETUP
-#line 2491 "scanner.l"
+#line 2495 "scanner.l"
 {
   					  //handleGroupStartCommand(yyextra->current->name);
                                           if (yyextra->previous && yyextra->previous->section==Entry::GROUPDOC_SEC)
@@ -16099,7 +16103,7 @@ YY_RULE_SETUP
 case 250:
 /* rule 250 can match eol */
 YY_RULE_SETUP
-#line 2543 "scanner.l"
+#line 2547 "scanner.l"
 {
                                           bool insideEnum = YY_START==FindFields || (YY_START==ReadInitializer && yyextra->lastInitializerContext==FindFields); // see bug746226
   					  yyextra->commentScanner.close(yyextra->current.get(),yyextra->yyFileName,yyextra->yyLineNr,insideEnum);
@@ -16108,7 +16112,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 251:
 YY_RULE_SETUP
-#line 2548 "scanner.l"
+#line 2552 "scanner.l"
 { // in PHP code this could also be due to "<?="
   					  yyextra->current->bodyLine = yyextra->yyLineNr;
                                           yyextra->current->initializer = yytext;
@@ -16120,7 +16124,7 @@ YY_RULE_SETUP
 case 252:
 /* rule 252 can match eol */
 YY_RULE_SETUP
-#line 2555 "scanner.l"
+#line 2559 "scanner.l"
 {
 					  lineCount(yyscanner);
 					  yyextra->current->exception += " ";
@@ -16129,7 +16133,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 253:
 YY_RULE_SETUP
-#line 2560 "scanner.l"
+#line 2564 "scanner.l"
 {
 					  yyextra->current->exception += " }";
 					  BEGIN(FindMembers);
@@ -16138,7 +16142,7 @@ YY_RULE_SETUP
 /* Read initializer rules */
 case 254:
 YY_RULE_SETUP
-#line 2565 "scanner.l"
+#line 2569 "scanner.l"
 {
   					  yyextra->lastRoundContext=YY_START;
   					  yyextra->pCopyRoundGString=&yyextra->current->initializer;
@@ -16149,7 +16153,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 255:
 YY_RULE_SETUP
-#line 2572 "scanner.l"
+#line 2576 "scanner.l"
 {
                                           if (!yyextra->insidePHP) REJECT;
                                           yyextra->lastSquareContext=YY_START;
@@ -16161,7 +16165,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 256:
 YY_RULE_SETUP
-#line 2580 "scanner.l"
+#line 2584 "scanner.l"
 {
   					  yyextra->lastCurlyContext=YY_START;
   					  yyextra->pCopyCurlyGString=&yyextra->current->initializer;
@@ -16172,7 +16176,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 257:
 YY_RULE_SETUP
-#line 2587 "scanner.l"
+#line 2591 "scanner.l"
 {
   					  //printf(">> initializer '%s' <<\n",yyextra->current->initializer.data());
                                           if (*yytext==';' && (yyextra->current_root->spec&Entry::Enum))
@@ -16206,7 +16210,7 @@ YY_RULE_SETUP
 case 258:
 /* rule 258 can match eol */
 YY_RULE_SETUP
-#line 2616 "scanner.l"
+#line 2620 "scanner.l"
 { // C++11 raw string
                                           if (!yyextra->insideCpp)
                                           { 
@@ -16229,7 +16233,7 @@ YY_RULE_SETUP
 case 259:
 /* rule 259 can match eol */
 YY_RULE_SETUP
-#line 2634 "scanner.l"
+#line 2638 "scanner.l"
 {
                                           *yyextra->pCopyRawGString+=yytext;
                                           QCString delimiter = yytext+1;
@@ -16242,14 +16246,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 260:
 YY_RULE_SETUP
-#line 2643 "scanner.l"
+#line 2647 "scanner.l"
 {
                                           *yyextra->pCopyRawGString+=yytext;
                                         }
 	YY_BREAK
 case 261:
 YY_RULE_SETUP
-#line 2646 "scanner.l"
+#line 2650 "scanner.l"
 {
                                           *yyextra->pCopyRawGString+=yytext;
                                         }
@@ -16257,7 +16261,7 @@ YY_RULE_SETUP
 case 262:
 /* rule 262 can match eol */
 YY_RULE_SETUP
-#line 2649 "scanner.l"
+#line 2653 "scanner.l"
 {
                                           *yyextra->pCopyRawGString+=yytext;
                                           lineCount(yyscanner);
@@ -16266,7 +16270,7 @@ YY_RULE_SETUP
 case 263:
 /* rule 263 can match eol */
 YY_RULE_SETUP
-#line 2653 "scanner.l"
+#line 2657 "scanner.l"
 {
                                           *yyextra->pCopyRawString+=yytext;
   					  yyextra->fullArgString+=yytext;
@@ -16281,7 +16285,7 @@ YY_RULE_SETUP
 case 264:
 /* rule 264 can match eol */
 YY_RULE_SETUP
-#line 2663 "scanner.l"
+#line 2667 "scanner.l"
 {
                                           *yyextra->pCopyRawString+=yytext;
   					  yyextra->fullArgString+=yytext;
@@ -16289,7 +16293,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 265:
 YY_RULE_SETUP
-#line 2667 "scanner.l"
+#line 2671 "scanner.l"
 {
                                           *yyextra->pCopyRawString+=yytext;
   					  yyextra->fullArgString+=yytext;
@@ -16298,7 +16302,7 @@ YY_RULE_SETUP
 case 266:
 /* rule 266 can match eol */
 YY_RULE_SETUP
-#line 2671 "scanner.l"
+#line 2675 "scanner.l"
 {
                                           *yyextra->pCopyRawString+=yytext;
   					  yyextra->fullArgString+=yytext;
@@ -16307,7 +16311,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 267:
 YY_RULE_SETUP
-#line 2676 "scanner.l"
+#line 2680 "scanner.l"
 {
 					  if (yyextra->insideIDL && yyextra->insideCppQuote)
   					  {
@@ -16324,28 +16328,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 268:
 YY_RULE_SETUP
-#line 2689 "scanner.l"
+#line 2693 "scanner.l"
 {
   					  yyextra->current->initializer+=yytext; 
 					}
 	YY_BREAK
 case 269:
 YY_RULE_SETUP
-#line 2692 "scanner.l"
+#line 2696 "scanner.l"
 {
   					  yyextra->current->initializer+=yytext; 
 					}
 	YY_BREAK
 case 270:
 YY_RULE_SETUP
-#line 2695 "scanner.l"
+#line 2699 "scanner.l"
 {
   					  yyextra->current->initializer+=yytext; 
   					}
 	YY_BREAK
 case 271:
 YY_RULE_SETUP
-#line 2698 "scanner.l"
+#line 2702 "scanner.l"
 {
   					  yyextra->initBracketCount++;
   					  yyextra->current->initializer+=*yytext; 
@@ -16353,7 +16357,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 272:
 YY_RULE_SETUP
-#line 2702 "scanner.l"
+#line 2706 "scanner.l"
 {
   					  yyextra->initBracketCount--;
   					  yyextra->current->initializer+=*yytext; 
@@ -16361,7 +16365,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 273:
 YY_RULE_SETUP
-#line 2706 "scanner.l"
+#line 2710 "scanner.l"
 {	
   					  if (yyextra->insidePHP)
 					  {
@@ -16378,7 +16382,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 274:
 YY_RULE_SETUP
-#line 2719 "scanner.l"
+#line 2723 "scanner.l"
 { 
                                           if (yyextra->insidePHP) 
 					  {
@@ -16393,7 +16397,7 @@ YY_RULE_SETUP
 case 275:
 /* rule 275 can match eol */
 YY_RULE_SETUP
-#line 2729 "scanner.l"
+#line 2733 "scanner.l"
 {
   					  yyextra->current->initializer+=*yytext;
                                           lineCount(yyscanner);
@@ -16401,7 +16405,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 276:
 YY_RULE_SETUP
-#line 2733 "scanner.l"
+#line 2737 "scanner.l"
 { 
   					  //printf("yyextra->insideCS=%d\n",yyextra->insideCS);
   					  yyextra->current->initializer+=yytext;
@@ -16420,21 +16424,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 277:
 YY_RULE_SETUP
-#line 2748 "scanner.l"
+#line 2752 "scanner.l"
 {
 					  *yyextra->pSkipVerbString+=yytext;
 					}
 	YY_BREAK
 case 278:
 YY_RULE_SETUP
-#line 2751 "scanner.l"
+#line 2755 "scanner.l"
 { // quote escape
 					  *yyextra->pSkipVerbString+=yytext;
 					}
 	YY_BREAK
 case 279:
 YY_RULE_SETUP
-#line 2754 "scanner.l"
+#line 2758 "scanner.l"
 {
 					  *yyextra->pSkipVerbString+=*yytext;
 					  BEGIN(yyextra->lastSkipVerbStringContext);
@@ -16443,7 +16447,7 @@ YY_RULE_SETUP
 case 280:
 /* rule 280 can match eol */
 YY_RULE_SETUP
-#line 2758 "scanner.l"
+#line 2762 "scanner.l"
 {
 					  *yyextra->pSkipVerbString+=*yytext;
                                           lineCount(yyscanner);
@@ -16451,14 +16455,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 281:
 YY_RULE_SETUP
-#line 2762 "scanner.l"
+#line 2766 "scanner.l"
 {
 					  *yyextra->pSkipVerbString+=*yytext;
   					}
 	YY_BREAK
 case 282:
 YY_RULE_SETUP
-#line 2765 "scanner.l"
+#line 2769 "scanner.l"
 {
 					  if (yyextra->insidePHP)
 					    BEGIN( FindMembersPHP );
@@ -16468,7 +16472,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 283:
 YY_RULE_SETUP
-#line 2771 "scanner.l"
+#line 2775 "scanner.l"
 { 
   					  yyextra->current->initializer+=*yytext; 
 					}
@@ -16476,20 +16480,12 @@ YY_RULE_SETUP
 /* generic quoted string copy rules */
 case 284:
 YY_RULE_SETUP
-#line 2776 "scanner.l"
+#line 2780 "scanner.l"
 {
   					  *yyextra->pCopyQuotedString+=yytext;
   					}
 	YY_BREAK
 case 285:
-YY_RULE_SETUP
-#line 2779 "scanner.l"
-{ 
-  					  *yyextra->pCopyQuotedString+=*yytext;
-  					  BEGIN( yyextra->lastStringContext ); 
-					}
-	YY_BREAK
-case 286:
 YY_RULE_SETUP
 #line 2783 "scanner.l"
 { 
@@ -16497,9 +16493,17 @@ YY_RULE_SETUP
   					  BEGIN( yyextra->lastStringContext ); 
 					}
 	YY_BREAK
-case 287:
+case 286:
 YY_RULE_SETUP
 #line 2787 "scanner.l"
+{ 
+  					  *yyextra->pCopyQuotedString+=*yytext;
+  					  BEGIN( yyextra->lastStringContext ); 
+					}
+	YY_BREAK
+case 287:
+YY_RULE_SETUP
+#line 2791 "scanner.l"
 {
   					  *yyextra->pCopyQuotedString+=yytext;
   					}
@@ -16507,7 +16511,7 @@ YY_RULE_SETUP
 case 288:
 /* rule 288 can match eol */
 YY_RULE_SETUP
-#line 2790 "scanner.l"
+#line 2794 "scanner.l"
 {
   					  *yyextra->pCopyQuotedString+=*yytext;
                                           lineCount(yyscanner);
@@ -16515,7 +16519,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 289:
 YY_RULE_SETUP
-#line 2794 "scanner.l"
+#line 2798 "scanner.l"
 {
   					  *yyextra->pCopyQuotedString+=*yytext;
   					}
@@ -16523,20 +16527,12 @@ YY_RULE_SETUP
 /* generic quoted growable string copy rules */
 case 290:
 YY_RULE_SETUP
-#line 2799 "scanner.l"
+#line 2803 "scanner.l"
 {
   					  *yyextra->pCopyQuotedGString+=yytext;
   					}
 	YY_BREAK
 case 291:
-YY_RULE_SETUP
-#line 2802 "scanner.l"
-{ 
-  					  *yyextra->pCopyQuotedGString+=*yytext;
-  					  BEGIN( yyextra->lastStringContext ); 
-					}
-	YY_BREAK
-case 292:
 YY_RULE_SETUP
 #line 2806 "scanner.l"
 { 
@@ -16544,9 +16540,17 @@ YY_RULE_SETUP
   					  BEGIN( yyextra->lastStringContext ); 
 					}
 	YY_BREAK
-case 293:
+case 292:
 YY_RULE_SETUP
 #line 2810 "scanner.l"
+{ 
+  					  *yyextra->pCopyQuotedGString+=*yytext;
+  					  BEGIN( yyextra->lastStringContext ); 
+					}
+	YY_BREAK
+case 293:
+YY_RULE_SETUP
+#line 2814 "scanner.l"
 { // we had an odd number of quotes.
 					  *yyextra->pCopyQuotedGString += yytext;
   					  BEGIN( yyextra->lastStringContext ); 
@@ -16554,7 +16558,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 294:
 YY_RULE_SETUP
-#line 2814 "scanner.l"
+#line 2818 "scanner.l"
 {
   					  *yyextra->pCopyQuotedGString+=yytext;
   					}
@@ -16562,7 +16566,7 @@ YY_RULE_SETUP
 case 295:
 /* rule 295 can match eol */
 YY_RULE_SETUP
-#line 2817 "scanner.l"
+#line 2821 "scanner.l"
 {
   					  *yyextra->pCopyQuotedGString+=*yytext;
                                           lineCount(yyscanner);
@@ -16570,7 +16574,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 296:
 YY_RULE_SETUP
-#line 2821 "scanner.l"
+#line 2825 "scanner.l"
 {
   					  *yyextra->pCopyQuotedGString+=*yytext;
   					}
@@ -16578,7 +16582,7 @@ YY_RULE_SETUP
 /* generic round bracket list copy rules */
 case 297:
 YY_RULE_SETUP
-#line 2826 "scanner.l"
+#line 2830 "scanner.l"
 {
 					  *yyextra->pCopyRoundString+=*yytext;
   					  yyextra->pCopyQuotedString=yyextra->pCopyRoundString;
@@ -16588,7 +16592,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 298:
 YY_RULE_SETUP
-#line 2832 "scanner.l"
+#line 2836 "scanner.l"
 {
   					  *yyextra->pCopyRoundString+=*yytext;
   					  yyextra->roundCount++;
@@ -16596,7 +16600,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 299:
 YY_RULE_SETUP
-#line 2836 "scanner.l"
+#line 2840 "scanner.l"
 {
   					  *yyextra->pCopyRoundString+=*yytext;
 					  if (--yyextra->roundCount<0)
@@ -16606,7 +16610,7 @@ YY_RULE_SETUP
 case 300:
 /* rule 300 can match eol */
 YY_RULE_SETUP
-#line 2841 "scanner.l"
+#line 2845 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  *yyextra->pCopyRoundString+=*yytext;
@@ -16614,7 +16618,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 301:
 YY_RULE_SETUP
-#line 2845 "scanner.l"
+#line 2849 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -16631,7 +16635,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 302:
 YY_RULE_SETUP
-#line 2858 "scanner.l"
+#line 2862 "scanner.l"
 { 
                                           if (yyextra->insidePHP)
 					  {
@@ -16645,14 +16649,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 303:
 YY_RULE_SETUP
-#line 2868 "scanner.l"
+#line 2872 "scanner.l"
 {
   					  *yyextra->pCopyRoundString+=yytext;
   					}
 	YY_BREAK
 case 304:
 YY_RULE_SETUP
-#line 2871 "scanner.l"
+#line 2875 "scanner.l"
 {
   					  *yyextra->pCopyRoundString+=*yytext;
   					}
@@ -16660,7 +16664,7 @@ YY_RULE_SETUP
 /* generic round bracket list copy rules for growable strings */
 case 305:
 YY_RULE_SETUP
-#line 2876 "scanner.l"
+#line 2880 "scanner.l"
 {
 					  *yyextra->pCopyRoundGString+=*yytext;
   					  yyextra->pCopyQuotedGString=yyextra->pCopyRoundGString;
@@ -16670,7 +16674,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 306:
 YY_RULE_SETUP
-#line 2882 "scanner.l"
+#line 2886 "scanner.l"
 {
   					  *yyextra->pCopyRoundGString+=*yytext;
   					  yyextra->roundCount++;
@@ -16678,7 +16682,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 307:
 YY_RULE_SETUP
-#line 2886 "scanner.l"
+#line 2890 "scanner.l"
 {
   					  *yyextra->pCopyRoundGString+=*yytext;
 					  if (--yyextra->roundCount<0)
@@ -16688,7 +16692,7 @@ YY_RULE_SETUP
 case 308:
 /* rule 308 can match eol */
 YY_RULE_SETUP
-#line 2891 "scanner.l"
+#line 2895 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  *yyextra->pCopyRoundGString+=*yytext;
@@ -16696,7 +16700,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 309:
 YY_RULE_SETUP
-#line 2895 "scanner.l"
+#line 2899 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -16713,7 +16717,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 310:
 YY_RULE_SETUP
-#line 2908 "scanner.l"
+#line 2912 "scanner.l"
 { 
                                           if (yyextra->insidePHP)
 					  {
@@ -16727,14 +16731,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 311:
 YY_RULE_SETUP
-#line 2918 "scanner.l"
+#line 2922 "scanner.l"
 {
   					  *yyextra->pCopyRoundGString+=yytext;
   					}
 	YY_BREAK
 case 312:
 YY_RULE_SETUP
-#line 2921 "scanner.l"
+#line 2925 "scanner.l"
 {
   					  *yyextra->pCopyRoundGString+=*yytext;
   					}
@@ -16742,7 +16746,7 @@ YY_RULE_SETUP
 /* generic square bracket list copy rules for growable strings, we should only enter here in case of php, left the test part as in GCopyRound to keep it compatible with the round bracket version */
 case 313:
 YY_RULE_SETUP
-#line 2926 "scanner.l"
+#line 2930 "scanner.l"
 {
                                           *yyextra->pCopySquareGString+=*yytext;
                                             yyextra->pCopyQuotedGString=yyextra->pCopySquareGString;
@@ -16752,7 +16756,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 314:
 YY_RULE_SETUP
-#line 2932 "scanner.l"
+#line 2936 "scanner.l"
 {
                                           *yyextra->pCopySquareGString+=*yytext;
                                           yyextra->squareCount++;
@@ -16760,7 +16764,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 315:
 YY_RULE_SETUP
-#line 2936 "scanner.l"
+#line 2940 "scanner.l"
 {
                                           *yyextra->pCopySquareGString+=*yytext;
                                           if (--yyextra->squareCount<0)
@@ -16770,7 +16774,7 @@ YY_RULE_SETUP
 case 316:
 /* rule 316 can match eol */
 YY_RULE_SETUP
-#line 2941 "scanner.l"
+#line 2945 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           *yyextra->pCopySquareGString+=*yytext;
@@ -16778,7 +16782,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 317:
 YY_RULE_SETUP
-#line 2945 "scanner.l"
+#line 2949 "scanner.l"
 {
                                           if (yyextra->insidePHP)
                                           {
@@ -16795,7 +16799,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 318:
 YY_RULE_SETUP
-#line 2958 "scanner.l"
+#line 2962 "scanner.l"
 { 
                                           if (yyextra->insidePHP)
                                           {
@@ -16809,14 +16813,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 319:
 YY_RULE_SETUP
-#line 2968 "scanner.l"
+#line 2972 "scanner.l"
 {
                                           *yyextra->pCopySquareGString+=yytext;
                                         }
 	YY_BREAK
 case 320:
 YY_RULE_SETUP
-#line 2971 "scanner.l"
+#line 2975 "scanner.l"
 {
                                           *yyextra->pCopySquareGString+=*yytext;
                                         }
@@ -16824,7 +16828,7 @@ YY_RULE_SETUP
 /* generic curly bracket list copy rules */
 case 321:
 YY_RULE_SETUP
-#line 2976 "scanner.l"
+#line 2980 "scanner.l"
 {
 					  *yyextra->pCopyCurlyString+=*yytext;
   					  yyextra->pCopyQuotedString=yyextra->pCopyCurlyString;
@@ -16834,7 +16838,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 322:
 YY_RULE_SETUP
-#line 2982 "scanner.l"
+#line 2986 "scanner.l"
 {
 					  *yyextra->pCopyCurlyString+=*yytext;
   					  if (yyextra->insidePHP)
@@ -16847,7 +16851,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 323:
 YY_RULE_SETUP
-#line 2991 "scanner.l"
+#line 2995 "scanner.l"
 {
   					  *yyextra->pCopyCurlyString+=*yytext;
 					  yyextra->curlyCount++;
@@ -16855,7 +16859,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 324:
 YY_RULE_SETUP
-#line 2995 "scanner.l"
+#line 2999 "scanner.l"
 {
 					  *yyextra->pCopyCurlyString+=*yytext;
 					  if (--yyextra->curlyCount<0)
@@ -16864,7 +16868,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 325:
 YY_RULE_SETUP
-#line 3000 "scanner.l"
+#line 3004 "scanner.l"
 { if (yyextra->insidePHP) 
                                           { 
 					    REJECT; 
@@ -16877,20 +16881,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 326:
 YY_RULE_SETUP
-#line 3009 "scanner.l"
+#line 3013 "scanner.l"
 {
   					  *yyextra->pCopyCurlyString+=yytext;
   					}
 	YY_BREAK
 case 327:
 YY_RULE_SETUP
-#line 3012 "scanner.l"
+#line 3016 "scanner.l"
 { *yyextra->pCopyCurlyString+=yytext; }
 	YY_BREAK
 case 328:
 /* rule 328 can match eol */
 YY_RULE_SETUP
-#line 3013 "scanner.l"
+#line 3017 "scanner.l"
 {
                                           lineCount(yyscanner);
 					  *yyextra->pCopyCurlyString+=*yytext;
@@ -16898,7 +16902,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 329:
 YY_RULE_SETUP
-#line 3017 "scanner.l"
+#line 3021 "scanner.l"
 {
 					  *yyextra->pCopyCurlyString+=*yytext;
   					}
@@ -16907,14 +16911,14 @@ YY_RULE_SETUP
 case 330:
 /* rule 330 can match eol */
 YY_RULE_SETUP
-#line 3022 "scanner.l"
+#line 3026 "scanner.l"
 { // start of included file marker
                                         }
 	YY_BREAK
 case 331:
 /* rule 331 can match eol */
 YY_RULE_SETUP
-#line 3024 "scanner.l"
+#line 3028 "scanner.l"
 { // end of included file marker
 					  QCString line = QCString(yytext);
 					  int s = line.find(' ');
@@ -16929,7 +16933,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 332:
 YY_RULE_SETUP
-#line 3035 "scanner.l"
+#line 3039 "scanner.l"
 {
 					  *yyextra->pCopyCurlyGString+=*yytext;
   					  yyextra->pCopyQuotedGString=yyextra->pCopyCurlyGString;
@@ -16939,7 +16943,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 333:
 YY_RULE_SETUP
-#line 3041 "scanner.l"
+#line 3045 "scanner.l"
 {
 					  *yyextra->pCopyCurlyGString+=*yytext;
   					  if (yyextra->insidePHP)
@@ -16952,7 +16956,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 334:
 YY_RULE_SETUP
-#line 3050 "scanner.l"
+#line 3054 "scanner.l"
 {
   					  *yyextra->pCopyCurlyGString+=*yytext;
 					  yyextra->curlyCount++;
@@ -16960,7 +16964,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 335:
 YY_RULE_SETUP
-#line 3054 "scanner.l"
+#line 3058 "scanner.l"
 {
 					  *yyextra->pCopyCurlyGString+=*yytext;
 					  if (--yyextra->curlyCount<0)
@@ -16969,7 +16973,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 336:
 YY_RULE_SETUP
-#line 3059 "scanner.l"
+#line 3063 "scanner.l"
 { if (yyextra->insidePHP) 
                                           { 
 					    REJECT; 
@@ -16982,27 +16986,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 337:
 YY_RULE_SETUP
-#line 3068 "scanner.l"
+#line 3072 "scanner.l"
 {
   					  *yyextra->pCopyCurlyGString+=yytext;
   					}
 	YY_BREAK
 case 338:
 YY_RULE_SETUP
-#line 3071 "scanner.l"
+#line 3075 "scanner.l"
 {
   					  *yyextra->pCopyCurlyGString+=yytext;
   					}
 	YY_BREAK
 case 339:
 YY_RULE_SETUP
-#line 3074 "scanner.l"
+#line 3078 "scanner.l"
 { *yyextra->pCopyCurlyGString+=yytext; }
 	YY_BREAK
 case 340:
 /* rule 340 can match eol */
 YY_RULE_SETUP
-#line 3075 "scanner.l"
+#line 3079 "scanner.l"
 {
                                           lineCount(yyscanner);
 					  *yyextra->pCopyCurlyGString+=*yytext;
@@ -17010,7 +17014,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 341:
 YY_RULE_SETUP
-#line 3079 "scanner.l"
+#line 3083 "scanner.l"
 {
 					  *yyextra->pCopyCurlyGString+=*yytext;
   					}
@@ -17018,7 +17022,7 @@ YY_RULE_SETUP
 /* ---------------------- */
 case 342:
 YY_RULE_SETUP
-#line 3086 "scanner.l"
+#line 3090 "scanner.l"
 {
 					  if (yyextra->current->type.isEmpty() &&
                                               yyextra->current->name=="enum") // see bug 69041, C++11 style anon enum: 'enum : unsigned int {...}'
@@ -17042,14 +17046,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 343:
 YY_RULE_SETUP
-#line 3106 "scanner.l"
+#line 3110 "scanner.l"
 {
   					  yyextra->current->bitfields+=*yytext;
   					}
 	YY_BREAK
 case 344:
 YY_RULE_SETUP
-#line 3109 "scanner.l"
+#line 3113 "scanner.l"
 {
   					  yyextra->current->args+=*yytext;
   					}
@@ -17057,7 +17061,7 @@ YY_RULE_SETUP
 case 345:
 /* rule 345 can match eol */
 YY_RULE_SETUP
-#line 3112 "scanner.l"
+#line 3116 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  yyextra->current->args+=' ';
@@ -17065,7 +17069,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 346:
 YY_RULE_SETUP
-#line 3116 "scanner.l"
+#line 3120 "scanner.l"
 { 
   					  QCString oldType = yyextra->current->type;
 					  if (yyextra->current->bodyLine==-1)
@@ -17121,7 +17125,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 347:
 YY_RULE_SETUP
-#line 3169 "scanner.l"
+#line 3173 "scanner.l"
 { 
                                           if (yyextra->insideSlice)
                                           {
@@ -17173,7 +17177,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 348:
 YY_RULE_SETUP
-#line 3217 "scanner.l"
+#line 3221 "scanner.l"
 { // Global metadata.
           				  yyextra->squareCount++;
                                           yyextra->current->metaData += "[";
@@ -17182,7 +17186,7 @@ YY_RULE_SETUP
 case 349:
 /* rule 349 can match eol */
 YY_RULE_SETUP
-#line 3221 "scanner.l"
+#line 3225 "scanner.l"
 {
           				  lineCount(yyscanner);
                                         }
@@ -17190,21 +17194,21 @@ YY_RULE_SETUP
 case 350:
 /* rule 350 can match eol */
 YY_RULE_SETUP
-#line 3224 "scanner.l"
+#line 3228 "scanner.l"
 {
                                           yyextra->current->metaData += yytext;
                                         }
 	YY_BREAK
 case 351:
 YY_RULE_SETUP
-#line 3227 "scanner.l"
+#line 3231 "scanner.l"
 {
                                           yyextra->current->metaData += yytext;
                                         }
 	YY_BREAK
 case 352:
 YY_RULE_SETUP
-#line 3230 "scanner.l"
+#line 3234 "scanner.l"
 {
                                           yyextra->current->metaData += yytext;
                                           if (--yyextra->squareCount<=0)
@@ -17215,7 +17219,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 353:
 YY_RULE_SETUP
-#line 3237 "scanner.l"
+#line 3241 "scanner.l"
 {
                                           yyextra->current->type += "(";
                                           yyextra->roundCount++;
@@ -17223,14 +17227,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 354:
 YY_RULE_SETUP
-#line 3241 "scanner.l"
+#line 3245 "scanner.l"
 {
                                           yyextra->current->type += yytext;
                                         }
 	YY_BREAK
 case 355:
 YY_RULE_SETUP
-#line 3244 "scanner.l"
+#line 3248 "scanner.l"
 {
                                           yyextra->current->type += ")";
                                           if(--yyextra->roundCount<=0)
@@ -17241,7 +17245,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 356:
 YY_RULE_SETUP
-#line 3251 "scanner.l"
+#line 3255 "scanner.l"
 {
   					  // end of IDL function attribute
 					  if (--yyextra->squareCount<=0)
@@ -17256,7 +17260,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 357:
 YY_RULE_SETUP
-#line 3262 "scanner.l"
+#line 3266 "scanner.l"
 {
                                           if (Config_getBool(IDL_PROPERTY_SUPPORT))
 					  {
@@ -17267,7 +17271,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 358:
 YY_RULE_SETUP
-#line 3269 "scanner.l"
+#line 3273 "scanner.l"
 {
                                           if (Config_getBool(IDL_PROPERTY_SUPPORT))
 					  {
@@ -17278,28 +17282,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 359:
 YY_RULE_SETUP
-#line 3276 "scanner.l"
+#line 3280 "scanner.l"
 { // UNO IDL property
 					  yyextra->current->spec |= Entry::Property;
 					}
 	YY_BREAK
 case 360:
 YY_RULE_SETUP
-#line 3279 "scanner.l"
+#line 3283 "scanner.l"
 { // UNO IDL attribute
 					  yyextra->current->spec |= Entry::Attribute;
 					}
 	YY_BREAK
 case 361:
 YY_RULE_SETUP
-#line 3282 "scanner.l"
+#line 3286 "scanner.l"
 { // on UNO IDL interface/service/attribute/property
                            yyextra->current->spec |= Entry::Optional;
                          }
 	YY_BREAK
 case 362:
 YY_RULE_SETUP
-#line 3285 "scanner.l"
+#line 3289 "scanner.l"
 { // on UNO IDL attribute or property
 					  if (Config_getBool(IDL_PROPERTY_SUPPORT) && yyextra->odlProp)
 					  {
@@ -17313,63 +17317,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 363:
 YY_RULE_SETUP
-#line 3295 "scanner.l"
+#line 3299 "scanner.l"
 { // on UNO IDL attribute or property
 					  yyextra->current->spec |= Entry::Bound;
 					}
 	YY_BREAK
 case 364:
 YY_RULE_SETUP
-#line 3298 "scanner.l"
+#line 3302 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::Removable;
 					}
 	YY_BREAK
 case 365:
 YY_RULE_SETUP
-#line 3301 "scanner.l"
+#line 3305 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::Constrained;
 					}
 	YY_BREAK
 case 366:
 YY_RULE_SETUP
-#line 3304 "scanner.l"
+#line 3308 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::Transient;
 					}
 	YY_BREAK
 case 367:
 YY_RULE_SETUP
-#line 3307 "scanner.l"
+#line 3311 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::MaybeVoid;
 					}
 	YY_BREAK
 case 368:
 YY_RULE_SETUP
-#line 3310 "scanner.l"
+#line 3314 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::MaybeDefault;
 					}
 	YY_BREAK
 case 369:
 YY_RULE_SETUP
-#line 3313 "scanner.l"
+#line 3317 "scanner.l"
 { // on UNO IDL property
 					  yyextra->current->spec |= Entry::MaybeAmbiguous;
 					}
 	YY_BREAK
 case 370:
 YY_RULE_SETUP
-#line 3316 "scanner.l"
+#line 3320 "scanner.l"
 {
 					}
 	YY_BREAK
 case 371:
 /* rule 371 can match eol */
 YY_RULE_SETUP
-#line 3318 "scanner.l"
+#line 3322 "scanner.l"
 {
 					  // return type (probably HRESULT) - skip it
 
@@ -17382,7 +17386,7 @@ YY_RULE_SETUP
 case 372:
 /* rule 372 can match eol */
 YY_RULE_SETUP
-#line 3326 "scanner.l"
+#line 3330 "scanner.l"
 {
   					  yyextra->current->name = yytext;
 					  yyextra->current->name = yyextra->current->name.left(yyextra->current->name.length()-1).stripWhiteSpace();
@@ -17394,7 +17398,7 @@ YY_RULE_SETUP
 case 373:
 /* rule 373 can match eol */
 YY_RULE_SETUP
-#line 3333 "scanner.l"
+#line 3337 "scanner.l"
 {
 					   if (yyextra->odlProp)
 					   {
@@ -17408,7 +17412,7 @@ case 374:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 3339 "scanner.l"
+#line 3343 "scanner.l"
 {
 					   if (yyextra->odlProp)
 					   {
@@ -17423,7 +17427,7 @@ YY_RULE_SETUP
 case 375:
 /* rule 375 can match eol */
 YY_RULE_SETUP
-#line 3349 "scanner.l"
+#line 3353 "scanner.l"
 {  // attribute of a parameter
 					   yyextra->idlAttr = yytext;
 					   yyextra->idlAttr=yyextra->idlAttr.stripWhiteSpace();
@@ -17431,7 +17435,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 376:
 YY_RULE_SETUP
-#line 3353 "scanner.l"
+#line 3357 "scanner.l"
 {  // property type
 					   yyextra->idlProp = yytext;
 					}
@@ -17439,7 +17443,7 @@ YY_RULE_SETUP
 case 377:
 /* rule 377 can match eol */
 YY_RULE_SETUP
-#line 3356 "scanner.l"
+#line 3360 "scanner.l"
 {  // Rare: Another parameter ([propput] HRESULT Item(int index, [in] Type theRealProperty);)
 					  if (!yyextra->current->args)
 					    yyextra->current->args = "(";
@@ -17459,14 +17463,14 @@ YY_RULE_SETUP
 case 378:
 /* rule 378 can match eol */
 YY_RULE_SETUP
-#line 3371 "scanner.l"
+#line 3375 "scanner.l"
 {
 					  // the parameter name for the property - just skip.
 					}
 	YY_BREAK
 case 379:
 YY_RULE_SETUP
-#line 3374 "scanner.l"
+#line 3378 "scanner.l"
 {
 					  yyextra->current->fileName   = yyextra->yyFileName;
 					  yyextra->current->type		= yyextra->idlProp;
@@ -17482,14 +17486,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 380:
 YY_RULE_SETUP
-#line 3386 "scanner.l"
+#line 3390 "scanner.l"
 { // spaces, *, or other stuff
   					  //yyextra->idlProp+=yytext;
  					}
 	YY_BREAK
 case 381:
 YY_RULE_SETUP
-#line 3389 "scanner.l"
+#line 3393 "scanner.l"
 { yyextra->current->args += *yytext ;
 					  if (--yyextra->squareCount<=0)
 	                                     BEGIN( FindMembers ) ;
@@ -17497,7 +17501,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 382:
 YY_RULE_SETUP
-#line 3393 "scanner.l"
+#line 3397 "scanner.l"
 { yyextra->current->args += *yytext ;
 					  if (--yyextra->squareCount<=0)
 	                                     BEGIN( Function ) ;
@@ -17505,24 +17509,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 383:
 YY_RULE_SETUP
-#line 3397 "scanner.l"
+#line 3401 "scanner.l"
 { yyextra->current->args += *yytext ;
 					  yyextra->squareCount++;	
 					}
 	YY_BREAK
 case 384:
 YY_RULE_SETUP
-#line 3400 "scanner.l"
+#line 3404 "scanner.l"
 { yyextra->current->args += *yytext ; }
 	YY_BREAK
 case 385:
 YY_RULE_SETUP
-#line 3401 "scanner.l"
+#line 3405 "scanner.l"
 { yyextra->squareCount++; }
 	YY_BREAK
 case 386:
 YY_RULE_SETUP
-#line 3402 "scanner.l"
+#line 3406 "scanner.l"
 {
   					  if (--yyextra->squareCount<=0)
 					    BEGIN( yyextra->lastSquareContext );
@@ -17530,7 +17534,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 387:
 YY_RULE_SETUP
-#line 3406 "scanner.l"
+#line 3410 "scanner.l"
 {
   					  yyextra->lastStringContext=YY_START;
   				          BEGIN( SkipString ); 
@@ -17538,12 +17542,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 388:
 YY_RULE_SETUP
-#line 3410 "scanner.l"
+#line 3414 "scanner.l"
 
 	YY_BREAK
 case 389:
 YY_RULE_SETUP
-#line 3411 "scanner.l"
+#line 3415 "scanner.l"
 { addType(yyscanner);
 					  yyextra->current->type += yytext ;
 					  BEGIN( Sharp ) ;
@@ -17551,7 +17555,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 390:
 YY_RULE_SETUP
-#line 3415 "scanner.l"
+#line 3419 "scanner.l"
 { yyextra->current->type += *yytext ;
 					  if (--yyextra->sharpCount<=0)
 	                                     BEGIN( FindMembers ) ;
@@ -17559,7 +17563,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 391:
 YY_RULE_SETUP
-#line 3419 "scanner.l"
+#line 3423 "scanner.l"
 { yyextra->current->type += *yytext ;
 					  yyextra->sharpCount++;	
 					}
@@ -17567,7 +17571,7 @@ YY_RULE_SETUP
 case 392:
 /* rule 392 can match eol */
 YY_RULE_SETUP
-#line 3422 "scanner.l"
+#line 3426 "scanner.l"
 {
                                           yyextra->current->type += ' ';
   					  lineCount(yyscanner);
@@ -17575,12 +17579,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 393:
 YY_RULE_SETUP
-#line 3426 "scanner.l"
+#line 3430 "scanner.l"
 { yyextra->current->type += *yytext ; }
 	YY_BREAK
 case 394:
 YY_RULE_SETUP
-#line 3427 "scanner.l"
+#line 3431 "scanner.l"
 {
                                           if (yyextra->insideCpp || yyextra->insideObjC) 
                                           {
@@ -17592,7 +17596,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 395:
 YY_RULE_SETUP
-#line 3435 "scanner.l"
+#line 3439 "scanner.l"
 {
   					  // Java enum initializer
   					  unput('(');
@@ -17604,7 +17608,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 396:
 YY_RULE_SETUP
-#line 3443 "scanner.l"
+#line 3447 "scanner.l"
 {
   					  yyextra->lastInitializerContext = YY_START;
 					  yyextra->initBracketCount=0;
@@ -17614,7 +17618,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 397:
 YY_RULE_SETUP
-#line 3449 "scanner.l"
+#line 3453 "scanner.l"
 {
   					  if (yyextra->insideJava)  // yyextra->last enum field in Java class
 					  {
@@ -17645,19 +17649,19 @@ YY_RULE_SETUP
 case 398:
 /* rule 398 can match eol */
 YY_RULE_SETUP
-#line 3475 "scanner.l"
+#line 3479 "scanner.l"
 { 
                                           lineCount(yyscanner);
                                         }
 	YY_BREAK
 case 399:
 YY_RULE_SETUP
-#line 3478 "scanner.l"
+#line 3482 "scanner.l"
 
 	YY_BREAK
 case 400:
 YY_RULE_SETUP
-#line 3479 "scanner.l"
+#line 3483 "scanner.l"
 {
 					  //printf("adding '%s' '%s' '%s' to enum '%s' (mGrpId=%d)\n",
 					  //     yyextra->current->type.data(), yyextra->current->name.data(),
@@ -17697,7 +17701,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 401:
 YY_RULE_SETUP
-#line 3515 "scanner.l"
+#line 3519 "scanner.l"
 { // attribute list in IDL
 					  yyextra->squareCount=1;
 					  yyextra->lastSquareContext = YY_START;
@@ -17709,17 +17713,17 @@ YY_RULE_SETUP
   */
 case 402:
 YY_RULE_SETUP
-#line 3523 "scanner.l"
+#line 3527 "scanner.l"
 { yyextra->current->program += yytext ; }
 	YY_BREAK
 case 403:
 YY_RULE_SETUP
-#line 3524 "scanner.l"
+#line 3528 "scanner.l"
 { yyextra->current->program += yytext ; }
 	YY_BREAK
 case 404:
 YY_RULE_SETUP
-#line 3525 "scanner.l"
+#line 3529 "scanner.l"
 { if (!yyextra->insidePHP) 
 					    REJECT;
 					  // append PHP comment.
@@ -17728,7 +17732,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 405:
 YY_RULE_SETUP
-#line 3530 "scanner.l"
+#line 3534 "scanner.l"
 { yyextra->current->program += yytext ; 
                                           yyextra->pSkipVerbString = &yyextra->current->program;
                                           yyextra->lastSkipVerbStringContext=YY_START;
@@ -17737,7 +17741,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 406:
 YY_RULE_SETUP
-#line 3535 "scanner.l"
+#line 3539 "scanner.l"
 { if (yyextra->insidePHP)
                                           {
                                             yyextra->current->program += yytext ; 
@@ -17753,7 +17757,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 407:
 YY_RULE_SETUP
-#line 3547 "scanner.l"
+#line 3551 "scanner.l"
 { yyextra->current->program += yytext ; 
                                           yyextra->pCopyQuotedGString = &yyextra->current->program;
                                           yyextra->lastStringContext=YY_START;
@@ -17762,7 +17766,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 408:
 YY_RULE_SETUP
-#line 3552 "scanner.l"
+#line 3556 "scanner.l"
 { yyextra->current->program += yytext ;
 					  yyextra->lastContext = YY_START ;
 					  BEGIN( Comment ) ;
@@ -17771,7 +17775,7 @@ YY_RULE_SETUP
 case 409:
 /* rule 409 can match eol */
 YY_RULE_SETUP
-#line 3556 "scanner.l"
+#line 3560 "scanner.l"
 { yyextra->current->program += yytext ;
 					  ++yyextra->yyLineNr ;
 					  yyextra->lastContext = YY_START ;
@@ -17780,7 +17784,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 410:
 YY_RULE_SETUP
-#line 3561 "scanner.l"
+#line 3565 "scanner.l"
 {
   					  if (!yyextra->insidePHP)
 					  {
@@ -17797,7 +17801,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 411:
 YY_RULE_SETUP
-#line 3574 "scanner.l"
+#line 3578 "scanner.l"
 { 
                                               if (yyextra->insidePHP) 
 					      {
@@ -17812,14 +17816,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 412:
 YY_RULE_SETUP
-#line 3585 "scanner.l"
+#line 3589 "scanner.l"
 { yyextra->current->program += yytext ;
 					  ++yyextra->curlyCount ;
 					}
 	YY_BREAK
 case 413:
 YY_RULE_SETUP
-#line 3588 "scanner.l"
+#line 3592 "scanner.l"
 {
 					  yyextra->current->program += yytext ;
 					  --yyextra->curlyCount ;
@@ -17827,7 +17831,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 414:
 YY_RULE_SETUP
-#line 3592 "scanner.l"
+#line 3596 "scanner.l"
 { //err("ReadBody count=%d\n",yyextra->curlyCount);
   					  if ( yyextra->curlyCount>0 )
 					  {
@@ -17942,7 +17946,7 @@ YY_RULE_SETUP
 case 415:
 /* rule 415 can match eol */
 YY_RULE_SETUP
-#line 3702 "scanner.l"
+#line 3706 "scanner.l"
 { //err("ReadBody count=%d\n",yyextra->curlyCount);
 					  lineCount(yyscanner);
   					  if ( yyextra->curlyCount>0 )
@@ -17967,7 +17971,7 @@ YY_RULE_SETUP
 case 416:
 /* rule 416 can match eol */
 YY_RULE_SETUP
-#line 3722 "scanner.l"
+#line 3726 "scanner.l"
 { // late "const" or "volatile" keyword
 					  lineCount(yyscanner);
   					  yyextra->current->type.prepend(yytext);
@@ -17975,7 +17979,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 417:
 YY_RULE_SETUP
-#line 3726 "scanner.l"
+#line 3730 "scanner.l"
 {
 					  if ((yyextra->current->section == Entry::ENUM_SEC) || (yyextra->current->spec&Entry::Enum))
 					  {
@@ -17998,7 +18002,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 418:
 YY_RULE_SETUP
-#line 3745 "scanner.l"
+#line 3749 "scanner.l"
 { /* typedef of anonymous type */
 					  yyextra->current->name.sprintf("@%d",yyextra->anonCount++);
 					  if ((yyextra->current->section == Entry::ENUM_SEC) || (yyextra->current->spec&Entry::Enum))
@@ -18018,7 +18022,7 @@ YY_RULE_SETUP
 case 419:
 /* rule 419 can match eol */
 YY_RULE_SETUP
-#line 3760 "scanner.l"
+#line 3764 "scanner.l"
 { // the [] part could be improved.
   					  lineCount(yyscanner);
   					  int i=0,l=(int)yyleng,j;
@@ -18056,7 +18060,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 420:
 YY_RULE_SETUP
-#line 3794 "scanner.l"
+#line 3798 "scanner.l"
 { // function with struct return type
   					  addType(yyscanner);
   					  yyextra->current->name = yyextra->msName;
@@ -18067,7 +18071,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 421:
 YY_RULE_SETUP
-#line 3801 "scanner.l"
+#line 3805 "scanner.l"
 {
   					  if (yyextra->msName.isEmpty() && !yyextra->current->name.isEmpty())
 					  { 
@@ -18190,7 +18194,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 422:
 YY_RULE_SETUP
-#line 3920 "scanner.l"
+#line 3924 "scanner.l"
 { 
   					  yyextra->lastInitializerContext=YY_START;
 					  yyextra->initBracketCount=0;
@@ -18209,18 +18213,18 @@ YY_RULE_SETUP
   */
 case 423:
 YY_RULE_SETUP
-#line 3935 "scanner.l"
+#line 3939 "scanner.l"
 { BEGIN(MemberSpec); }
 	YY_BREAK
 case 424:
 YY_RULE_SETUP
-#line 3936 "scanner.l"
+#line 3940 "scanner.l"
 { unput(';'); BEGIN(MemberSpec); }
 	YY_BREAK
 case 425:
 /* rule 425 can match eol */
 YY_RULE_SETUP
-#line 3937 "scanner.l"
+#line 3941 "scanner.l"
 { yyextra->current->program += yytext ;
 					  lineCount(yyscanner) ;
 					}
@@ -18231,7 +18235,7 @@ case 426:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 4;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 3940 "scanner.l"
+#line 3944 "scanner.l"
 { // end of Objective C block
 					  yyextra->current_root->moveToSubEntryAndRefresh( yyextra->current ) ;
 					  initEntry(yyscanner);
@@ -18242,7 +18246,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 427:
 YY_RULE_SETUP
-#line 3947 "scanner.l"
+#line 3951 "scanner.l"
 { yyextra->current->program += yytext ; }
 	YY_BREAK
 case 428:
@@ -18250,11 +18254,11 @@ case 428:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
-#line 3950 "scanner.l"
+#line 3954 "scanner.l"
 case 429:
 /* rule 429 can match eol */
 YY_RULE_SETUP
-#line 3950 "scanner.l"
+#line 3954 "scanner.l"
 {   /* typedef void (A::*ptr_t)(args...) or int (*func(int))[], the ^ is for Obj-C blocks */
   					  if (yyextra->insidePHP) // reference parameter
 					  {
@@ -18275,7 +18279,7 @@ YY_RULE_SETUP
 case 430:
 /* rule 430 can match eol */
 YY_RULE_SETUP
-#line 3966 "scanner.l"
+#line 3970 "scanner.l"
 {
   					  yyextra->current->name = yytext;
 					  if (nameIsOperator(yyextra->current->name))
@@ -18297,7 +18301,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 431:
 YY_RULE_SETUP
-#line 3984 "scanner.l"
+#line 3988 "scanner.l"
 {
   					  //printf("error: FuncPtr '%c' unexpected at line %d of %s\n",*yytext,yyextra->yyLineNr,yyextra->yyFileName);
   					}
@@ -18308,7 +18312,7 @@ case 432:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 3987 "scanner.l"
+#line 3991 "scanner.l"
 {
   					  yyextra->current->name += yytext;
 					  yyextra->current->name = yyextra->current->name.simplifyWhiteSpace();
@@ -18318,7 +18322,7 @@ YY_RULE_SETUP
 case 433:
 /* rule 433 can match eol */
 YY_RULE_SETUP
-#line 3992 "scanner.l"
+#line 3996 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  yyextra->current->name += *yytext;
@@ -18326,7 +18330,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 434:
 YY_RULE_SETUP
-#line 3996 "scanner.l"
+#line 4000 "scanner.l"
 {
   					  unput(*yytext);
 					  BEGIN( EndFuncPtr );
@@ -18334,7 +18338,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 435:
 YY_RULE_SETUP
-#line 4000 "scanner.l"
+#line 4004 "scanner.l"
 {
   					  yyextra->current->name += *yytext;
   					}
@@ -18345,7 +18349,7 @@ case 436:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4003 "scanner.l"
+#line 4007 "scanner.l"
 { // a variable with extra braces
  					  lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType.data()+1;
@@ -18358,7 +18362,7 @@ case 437:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4008 "scanner.l"
+#line 4012 "scanner.l"
 { // a function pointer
   					  lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType+")";
@@ -18371,7 +18375,7 @@ case 438:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4013 "scanner.l"
+#line 4017 "scanner.l"
 { // an array of variables
   					  lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType.data();
@@ -18381,7 +18385,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 439:
 YY_RULE_SETUP
-#line 4019 "scanner.l"
+#line 4023 "scanner.l"
 { // a function returning a function or 
                                           // a function returning a pointer to an array
   					  yyextra->current->args += *yytext ;
@@ -18396,21 +18400,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 440:
 YY_RULE_SETUP
-#line 4030 "scanner.l"
+#line 4034 "scanner.l"
 {
   					  yyextra->funcPtrType+=yytext;
   					}
 	YY_BREAK
 case 441:
 YY_RULE_SETUP
-#line 4033 "scanner.l"
+#line 4037 "scanner.l"
 {
   					  BEGIN(FindMembers);
   					}
 	YY_BREAK
 case 442:
 YY_RULE_SETUP
-#line 4036 "scanner.l"
+#line 4040 "scanner.l"
 {
   					  yyextra->current->args += *yytext ;
   					  ++yyextra->roundCount;
@@ -18418,7 +18422,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 443:
 YY_RULE_SETUP
-#line 4040 "scanner.l"
+#line 4044 "scanner.l"
 {
   					  yyextra->current->args += *yytext ;
   					  if ( yyextra->roundCount )
@@ -18432,7 +18436,7 @@ YY_RULE_SETUP
 case 444:
 /* rule 444 can match eol */
 YY_RULE_SETUP
-#line 4049 "scanner.l"
+#line 4053 "scanner.l"
 {
   					  lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType+")(";
@@ -18445,7 +18449,7 @@ case 445:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4054 "scanner.l"
+#line 4058 "scanner.l"
 {
   					  lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType.data()+1;
@@ -18458,7 +18462,7 @@ case 446:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4059 "scanner.l"
+#line 4063 "scanner.l"
 { // function returning a pointer to an array
                                           lineCount(yyscanner);
 					  yyextra->current->type+=yyextra->funcPtrType;
@@ -18468,14 +18472,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 447:
 YY_RULE_SETUP
-#line 4065 "scanner.l"
+#line 4069 "scanner.l"
 {
   					  yyextra->current->args += *yytext;
   					}
 	YY_BREAK
 case 448:
 YY_RULE_SETUP
-#line 4068 "scanner.l"
+#line 4072 "scanner.l"
 {
   					  yyextra->current->type += *yytext;
 					  yyextra->roundCount++;
@@ -18483,7 +18487,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 449:
 YY_RULE_SETUP
-#line 4072 "scanner.l"
+#line 4076 "scanner.l"
 {
   					  yyextra->current->type += *yytext;
   					  if (yyextra->roundCount)
@@ -18495,18 +18499,18 @@ YY_RULE_SETUP
 case 450:
 /* rule 450 can match eol */
 YY_RULE_SETUP
-#line 4079 "scanner.l"
+#line 4083 "scanner.l"
 { lineCount(yyscanner) ; yyextra->current->type += ", " ; }
 	YY_BREAK
 case 451:
 /* rule 451 can match eol */
 YY_RULE_SETUP
-#line 4080 "scanner.l"
+#line 4084 "scanner.l"
 { lineCount(yyscanner) ; yyextra->current->type += ' ' ; }
 	YY_BREAK
 case 452:
 YY_RULE_SETUP
-#line 4081 "scanner.l"
+#line 4085 "scanner.l"
 {
   					  yyextra->current->type += *yytext;
   					}
@@ -18517,7 +18521,7 @@ case 453:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4084 "scanner.l"
+#line 4088 "scanner.l"
 { // for catching typedef void (__stdcall *f)() like definitions
                                           if (yyextra->current->type.left(7)=="typedef" && yyextra->current->bodyLine==-1) 
 					    // the bodyLine check is to prevent this guard to be true more than once
@@ -18540,7 +18544,7 @@ YY_RULE_SETUP
 case 454:
 /* rule 454 can match eol */
 YY_RULE_SETUP
-#line 4102 "scanner.l"
+#line 4106 "scanner.l"
 {
   					  lineCount(yyscanner);
   					  addType(yyscanner);
@@ -18552,7 +18556,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 455:
 YY_RULE_SETUP
-#line 4110 "scanner.l"
+#line 4114 "scanner.l"
 { 
                                           if (!yyextra->current->name.isEmpty())
 					  {
@@ -18576,21 +18580,21 @@ YY_RULE_SETUP
 /*- Function argument reading rules ---------------------------------------*/
 case 456:
 YY_RULE_SETUP
-#line 4132 "scanner.l"
+#line 4136 "scanner.l"
 { *yyextra->copyArgString+=yytext; 
   					  yyextra->fullArgString+=yytext;
   					}
 	YY_BREAK
 case 457:
 YY_RULE_SETUP
-#line 4135 "scanner.l"
+#line 4139 "scanner.l"
 { *yyextra->copyArgString+=yytext; 
 					  yyextra->fullArgString+=yytext;
 					}
 	YY_BREAK
 case 458:
 YY_RULE_SETUP
-#line 4138 "scanner.l"
+#line 4142 "scanner.l"
 { 
   					  *yyextra->copyArgString+=yytext; 
   					  yyextra->fullArgString+=yytext;
@@ -18599,7 +18603,7 @@ YY_RULE_SETUP
 case 459:
 /* rule 459 can match eol */
 YY_RULE_SETUP
-#line 4142 "scanner.l"
+#line 4146 "scanner.l"
 {
   					  *yyextra->copyArgString+=" ";
   					  yyextra->fullArgString+=" ";
@@ -18609,7 +18613,7 @@ YY_RULE_SETUP
 case 460:
 /* rule 460 can match eol */
 YY_RULE_SETUP
-#line 4147 "scanner.l"
+#line 4151 "scanner.l"
 {
                                           yyextra->delimiter = yytext+2;
                                           yyextra->delimiter=yyextra->delimiter.left(yyextra->delimiter.length()-1);
@@ -18622,7 +18626,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 461:
 YY_RULE_SETUP
-#line 4156 "scanner.l"
+#line 4160 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18632,7 +18636,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 462:
 YY_RULE_SETUP
-#line 4162 "scanner.l"
+#line 4166 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18643,7 +18647,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 463:
 YY_RULE_SETUP
-#line 4169 "scanner.l"
+#line 4173 "scanner.l"
 { 
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18668,7 +18672,7 @@ YY_RULE_SETUP
 /* a special comment */
 case 464:
 YY_RULE_SETUP
-#line 4190 "scanner.l"
+#line 4194 "scanner.l"
 { 
                                           if (yyextra->currentArgumentContext==DefineEnd)
 					  {
@@ -18699,12 +18703,12 @@ YY_RULE_SETUP
 /* a non-special comment */
 case 465:
 YY_RULE_SETUP
-#line 4217 "scanner.l"
+#line 4221 "scanner.l"
 { /* empty comment */ }
 	YY_BREAK
 case 466:
 YY_RULE_SETUP
-#line 4218 "scanner.l"
+#line 4222 "scanner.l"
 {
   					  yyextra->lastCContext = YY_START;
 					  BEGIN( SkipComment );
@@ -18712,7 +18716,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 467:
 YY_RULE_SETUP
-#line 4222 "scanner.l"
+#line 4226 "scanner.l"
 {
   					  yyextra->lastCContext = YY_START;
 					  BEGIN( SkipCxxComment );
@@ -18735,7 +18739,7 @@ YY_RULE_SETUP
 case 468:
 /* rule 468 can match eol */
 YY_RULE_SETUP
-#line 4240 "scanner.l"
+#line 4244 "scanner.l"
 {
   					  lineCount(yyscanner);
                                           if (yyextra->currentArgumentContext==DefineEnd)
@@ -18771,17 +18775,17 @@ YY_RULE_SETUP
 case 469:
 /* rule 469 can match eol */
 YY_RULE_SETUP
-#line 4271 "scanner.l"
+#line 4275 "scanner.l"
 
 	YY_BREAK
 case 470:
 YY_RULE_SETUP
-#line 4272 "scanner.l"
+#line 4276 "scanner.l"
 { yyextra->fullArgString+=yytext; }
 	YY_BREAK
 case 471:
 YY_RULE_SETUP
-#line 4273 "scanner.l"
+#line 4277 "scanner.l"
 { yyextra->fullArgString+=yytext; 
   					  if (yyextra->lastCopyArgChar!=0)
 					    unput(yyextra->lastCopyArgChar); 
@@ -18791,7 +18795,7 @@ YY_RULE_SETUP
 case 472:
 /* rule 472 can match eol */
 YY_RULE_SETUP
-#line 4278 "scanner.l"
+#line 4282 "scanner.l"
 { yyextra->fullArgString+=yytext;
                                           lineCount(yyscanner);
   					  if (yyextra->lastCopyArgChar!=0)
@@ -18805,7 +18809,7 @@ case 473:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4284 "scanner.l"
+#line 4288 "scanner.l"
 { // verbatim command (which could contain nested comments!)
 				          yyextra->docBlockName=&yytext[1];
   					  yyextra->fullArgString+=yytext;
@@ -18814,7 +18818,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 474:
 YY_RULE_SETUP
-#line 4289 "scanner.l"
+#line 4293 "scanner.l"
 {
 				          yyextra->docBlockName=&yytext[1];
 					  if (yyextra->docBlockName.at(1)=='[')
@@ -18835,7 +18839,7 @@ case 475:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 4302 "scanner.l"
+#line 4306 "scanner.l"
 { // end of verbatim block
   					  yyextra->fullArgString+=yytext;
 				          if (yytext[1]=='f') // end of formula
@@ -18850,28 +18854,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 476:
 YY_RULE_SETUP
-#line 4313 "scanner.l"
+#line 4317 "scanner.l"
 { yyextra->fullArgString+=yytext; }
 	YY_BREAK
 case 477:
 YY_RULE_SETUP
-#line 4314 "scanner.l"
+#line 4318 "scanner.l"
 { yyextra->fullArgString+=*yytext; }
 	YY_BREAK
 case 478:
 /* rule 478 can match eol */
 YY_RULE_SETUP
-#line 4315 "scanner.l"
+#line 4319 "scanner.l"
 { yyextra->fullArgString+=*yytext; lineCount(yyscanner); }
 	YY_BREAK
 case 479:
 YY_RULE_SETUP
-#line 4316 "scanner.l"
+#line 4320 "scanner.l"
 { yyextra->fullArgString+=*yytext; }
 	YY_BREAK
 case 480:
 YY_RULE_SETUP
-#line 4317 "scanner.l"
+#line 4321 "scanner.l"
 {
   					  warn(yyextra->yyFileName,yyextra->yyLineNr,
 					      "Ignoring %cbrief command inside argument documentation",*yytext
@@ -18881,7 +18885,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 481:
 YY_RULE_SETUP
-#line 4323 "scanner.l"
+#line 4327 "scanner.l"
 {
 					  *yyextra->copyArgString+=*yytext;
 					  yyextra->fullArgString+=*yytext;
@@ -18891,7 +18895,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 482:
 YY_RULE_SETUP
-#line 4329 "scanner.l"
+#line 4333 "scanner.l"
 {
 					  *yyextra->copyArgString+=*yytext;
 					  yyextra->fullArgString+=*yytext;
@@ -18902,7 +18906,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 483:
 YY_RULE_SETUP
-#line 4336 "scanner.l"
+#line 4340 "scanner.l"
 {
   					  yyextra->argRoundCount++;
 					  *yyextra->copyArgString+=*yytext;
@@ -18911,7 +18915,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 484:
 YY_RULE_SETUP
-#line 4341 "scanner.l"
+#line 4345 "scanner.l"
 {
 					  *yyextra->copyArgString+=*yytext;
 					  yyextra->fullArgString+=*yytext;
@@ -18923,7 +18927,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 485:
 YY_RULE_SETUP
-#line 4349 "scanner.l"
+#line 4353 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18934,7 +18938,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 486:
 YY_RULE_SETUP
-#line 4356 "scanner.l"
+#line 4360 "scanner.l"
 {
   					  yyextra->argSharpCount++;
 					  //printf("yyextra->argSharpCount++=%d  copy\n",yyextra->argSharpCount);
@@ -18944,7 +18948,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 487:
 YY_RULE_SETUP
-#line 4362 "scanner.l"
+#line 4366 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18962,7 +18966,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 488:
 YY_RULE_SETUP
-#line 4376 "scanner.l"
+#line 4380 "scanner.l"
 {
   					  *yyextra->copyArgString+=yytext;
   					  yyextra->fullArgString+=yytext;
@@ -18970,7 +18974,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 489:
 YY_RULE_SETUP
-#line 4380 "scanner.l"
+#line 4384 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18979,7 +18983,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 490:
 YY_RULE_SETUP
-#line 4385 "scanner.l"
+#line 4389 "scanner.l"
 {
   					  *yyextra->copyArgString+=*yytext;
   					  yyextra->fullArgString+=*yytext;
@@ -18988,7 +18992,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 491:
 YY_RULE_SETUP
-#line 4390 "scanner.l"
+#line 4394 "scanner.l"
 { 
                                           if (yyextra->insidePHP)
 					  {
@@ -19003,7 +19007,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 492:
 YY_RULE_SETUP
-#line 4401 "scanner.l"
+#line 4405 "scanner.l"
 { 
   					  *yyextra->copyArgString+=yytext; 
   					  yyextra->fullArgString+=yytext; 
@@ -19017,7 +19021,7 @@ YY_RULE_SETUP
 case 493:
 /* rule 493 can match eol */
 YY_RULE_SETUP
-#line 4410 "scanner.l"
+#line 4414 "scanner.l"
 { 
                                           lineCount(yyscanner);
 					  *yyextra->copyArgString+=*yytext; 
@@ -19026,7 +19030,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 494:
 YY_RULE_SETUP
-#line 4415 "scanner.l"
+#line 4419 "scanner.l"
 { 
   					  *yyextra->copyArgString+=*yytext; 
   					  yyextra->fullArgString+=*yytext; 
@@ -19035,14 +19039,14 @@ YY_RULE_SETUP
 /*------------------------------------------------------------------------*/
 case 495:
 YY_RULE_SETUP
-#line 4425 "scanner.l"
+#line 4429 "scanner.l"
 { yyextra->current->args += *yytext ;
 					  ++yyextra->roundCount ;
 					}
 	YY_BREAK
 case 496:
 YY_RULE_SETUP
-#line 4428 "scanner.l"
+#line 4432 "scanner.l"
 { yyextra->current->args += *yytext ; 
 					  if ( yyextra->roundCount )
 					    --yyextra->roundCount ;
@@ -19059,7 +19063,7 @@ YY_RULE_SETUP
   */
 case 497:
 YY_RULE_SETUP
-#line 4441 "scanner.l"
+#line 4445 "scanner.l"
 {
                                           if ( qstrcmp(yytext,";")==0 && 
 					       yyextra->insidePHP && 
@@ -19078,7 +19082,7 @@ YY_RULE_SETUP
 case 498:
 /* rule 498 can match eol */
 YY_RULE_SETUP
-#line 4455 "scanner.l"
+#line 4459 "scanner.l"
 { // pure virtual member function
                                           lineCount(yyscanner) ; 
                                           yyextra->current->virt = Pure;
@@ -19088,7 +19092,7 @@ YY_RULE_SETUP
 case 499:
 /* rule 499 can match eol */
 YY_RULE_SETUP
-#line 4460 "scanner.l"
+#line 4464 "scanner.l"
 { // C++11 overridden virtual member function
                                           lineCount(yyscanner) ; 
                                           yyextra->current->spec |= Entry::Override;
@@ -19099,7 +19103,7 @@ YY_RULE_SETUP
 case 500:
 /* rule 500 can match eol */
 YY_RULE_SETUP
-#line 4466 "scanner.l"
+#line 4470 "scanner.l"
 { // C++11 final method
                                           lineCount(yyscanner) ; 
                                           yyextra->current->spec |= Entry::Final;
@@ -19110,7 +19114,7 @@ YY_RULE_SETUP
 case 501:
 /* rule 501 can match eol */
 YY_RULE_SETUP
-#line 4472 "scanner.l"
+#line 4476 "scanner.l"
 { // sealed member function
                                           lineCount(yyscanner) ; 
                                           yyextra->current->spec |= Entry::Sealed;
@@ -19120,7 +19124,7 @@ YY_RULE_SETUP
 case 502:
 /* rule 502 can match eol */
 YY_RULE_SETUP
-#line 4477 "scanner.l"
+#line 4481 "scanner.l"
 { // new member function
                                           lineCount(yyscanner) ; 
                                           yyextra->current->spec |= Entry::New;
@@ -19130,7 +19134,7 @@ YY_RULE_SETUP
 case 503:
 /* rule 503 can match eol */
 YY_RULE_SETUP
-#line 4482 "scanner.l"
+#line 4486 "scanner.l"
 { // const member function
   					  lineCount(yyscanner) ; 
   					  yyextra->current->args += " const "; 
@@ -19140,7 +19144,7 @@ YY_RULE_SETUP
 case 504:
 /* rule 504 can match eol */
 YY_RULE_SETUP
-#line 4487 "scanner.l"
+#line 4491 "scanner.l"
 { // volatile member function
   					  lineCount(yyscanner) ; 
   					  yyextra->current->args += " volatile "; 
@@ -19150,7 +19154,7 @@ YY_RULE_SETUP
 case 505:
 /* rule 505 can match eol */
 YY_RULE_SETUP
-#line 4492 "scanner.l"
+#line 4496 "scanner.l"
 { // noexcept qualifier
   					  lineCount(yyscanner) ; 
   					  yyextra->current->args += " noexcept "; 
@@ -19160,7 +19164,7 @@ YY_RULE_SETUP
 case 506:
 /* rule 506 can match eol */
 YY_RULE_SETUP
-#line 4497 "scanner.l"
+#line 4501 "scanner.l"
 { // noexcept expression
   					  lineCount(yyscanner) ; 
   					  yyextra->current->args += " noexcept("; 
@@ -19174,7 +19178,7 @@ YY_RULE_SETUP
 case 507:
 /* rule 507 can match eol */
 YY_RULE_SETUP
-#line 4506 "scanner.l"
+#line 4510 "scanner.l"
 {
                                           yyextra->current->args += " &";
                                           yyextra->current->argList.refQualifier=RefQualifierLValue;
@@ -19183,7 +19187,7 @@ YY_RULE_SETUP
 case 508:
 /* rule 508 can match eol */
 YY_RULE_SETUP
-#line 4510 "scanner.l"
+#line 4514 "scanner.l"
 {
                                           yyextra->current->args += " &&";
                                           yyextra->current->argList.refQualifier=RefQualifierRValue;
@@ -19192,7 +19196,7 @@ YY_RULE_SETUP
 case 509:
 /* rule 509 can match eol */
 YY_RULE_SETUP
-#line 4515 "scanner.l"
+#line 4519 "scanner.l"
 { // pure virtual member function
   					  lineCount(yyscanner) ; 
 					  yyextra->current->args += " = 0"; 
@@ -19204,7 +19208,7 @@ YY_RULE_SETUP
 case 510:
 /* rule 510 can match eol */
 YY_RULE_SETUP
-#line 4522 "scanner.l"
+#line 4526 "scanner.l"
 { // C++11 explicitly delete member
                                           lineCount(yyscanner);
                                           yyextra->current->args += " = delete";
@@ -19216,7 +19220,7 @@ YY_RULE_SETUP
 case 511:
 /* rule 511 can match eol */
 YY_RULE_SETUP
-#line 4529 "scanner.l"
+#line 4533 "scanner.l"
 { // C++11 explicitly defaulted constructor/assignment operator
                                           lineCount(yyscanner);
                                           yyextra->current->args += " = default";
@@ -19227,7 +19231,7 @@ YY_RULE_SETUP
 case 512:
 /* rule 512 can match eol */
 YY_RULE_SETUP
-#line 4535 "scanner.l"
+#line 4539 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           yyextra->current->argList.trailingReturnType = " -> ";
@@ -19237,7 +19241,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 513:
 YY_RULE_SETUP
-#line 4541 "scanner.l"
+#line 4545 "scanner.l"
 {
                                           unput(*yytext);
                                           BEGIN(FuncQual);
@@ -19245,7 +19249,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 514:
 YY_RULE_SETUP
-#line 4545 "scanner.l"
+#line 4549 "scanner.l"
 {
                                           yyextra->current->argList.trailingReturnType+=yytext;
                                           yyextra->current->args+=yytext;
@@ -19254,7 +19258,7 @@ YY_RULE_SETUP
 case 515:
 /* rule 515 can match eol */
 YY_RULE_SETUP
-#line 4549 "scanner.l"
+#line 4553 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           yyextra->current->argList.trailingReturnType+=yytext;
@@ -19264,7 +19268,7 @@ YY_RULE_SETUP
 case 516:
 /* rule 516 can match eol */
 YY_RULE_SETUP
-#line 4554 "scanner.l"
+#line 4558 "scanner.l"
 { 
   					  lineCount(yyscanner) ; 
 					  yyextra->current->args += ", " ; 
@@ -19273,7 +19277,7 @@ YY_RULE_SETUP
 case 517:
 /* rule 517 can match eol */
 YY_RULE_SETUP
-#line 4558 "scanner.l"
+#line 4562 "scanner.l"
 { 
   					  lineCount(yyscanner) ; 
 					  yyextra->current->args += ' ' ; 
@@ -19281,7 +19285,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 518:
 YY_RULE_SETUP
-#line 4562 "scanner.l"
+#line 4566 "scanner.l"
 { if (yyextra->insidePHP)
   					    REJECT;
   					  yyextra->lastCPPContext = YY_START;
@@ -19290,7 +19294,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 519:
 YY_RULE_SETUP
-#line 4567 "scanner.l"
+#line 4571 "scanner.l"
 { 
                                           if (yyextra->insideCli && 
 					      (yyextra->current_root->section&Entry::COMPOUND_MASK) 
@@ -19310,13 +19314,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 520:
 YY_RULE_SETUP
-#line 4583 "scanner.l"
+#line 4587 "scanner.l"
 {
   					}
 	YY_BREAK
 case 521:
 YY_RULE_SETUP
-#line 4585 "scanner.l"
+#line 4589 "scanner.l"
 { 
   					  unput(*yytext);
 					  BEGIN(FuncQual);
@@ -19325,20 +19329,20 @@ YY_RULE_SETUP
 case 522:
 /* rule 522 can match eol */
 YY_RULE_SETUP
-#line 4589 "scanner.l"
+#line 4593 "scanner.l"
 {
                                           lineCount(yyscanner);
   					}
 	YY_BREAK
 case 523:
 YY_RULE_SETUP
-#line 4592 "scanner.l"
+#line 4596 "scanner.l"
 {
   					}
 	YY_BREAK
 case 524:
 YY_RULE_SETUP
-#line 4594 "scanner.l"
+#line 4598 "scanner.l"
 {
   					  unput(*yytext);
 					  BEGIN(FuncQual);
@@ -19346,7 +19350,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 525:
 YY_RULE_SETUP
-#line 4598 "scanner.l"
+#line 4602 "scanner.l"
 {
                                           yyextra->current->args += *yytext; 
   					  yyextra->pCopyQuotedString=&yyextra->current->args;
@@ -19356,7 +19360,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 526:
 YY_RULE_SETUP
-#line 4604 "scanner.l"
+#line 4608 "scanner.l"
 {
                                           yyextra->current->args += *yytext; 
 					  if (yyextra->insidePHP)
@@ -19369,7 +19373,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 527:
 YY_RULE_SETUP
-#line 4613 "scanner.l"
+#line 4617 "scanner.l"
 {
                                           if (yyextra->insidePHP)
 					  {
@@ -19383,14 +19387,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 528:
 YY_RULE_SETUP
-#line 4623 "scanner.l"
+#line 4627 "scanner.l"
 {
                                           yyextra->current->args += yytext; 
 					}
 	YY_BREAK
 case 529:
 YY_RULE_SETUP
-#line 4626 "scanner.l"
+#line 4630 "scanner.l"
 {
                                           yyextra->current->args += *yytext; 
   					}
@@ -19398,7 +19402,7 @@ YY_RULE_SETUP
 case 530:
 /* rule 530 can match eol */
 YY_RULE_SETUP
-#line 4629 "scanner.l"
+#line 4633 "scanner.l"
 {
                                           yyextra->current->args += *yytext; 
                                           lineCount(yyscanner);
@@ -19406,7 +19410,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 531:
 YY_RULE_SETUP
-#line 4633 "scanner.l"
+#line 4637 "scanner.l"
 { // typically a K&R style C function
                                           if (yyextra->insideCS && qstrcmp(yytext,"where")==0)
 					  { 
@@ -19430,7 +19434,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 532:
 YY_RULE_SETUP
-#line 4653 "scanner.l"
+#line 4657 "scanner.l"
 {
   					  QCString oldStyleArgPtr;
   					  QCString oldStyleArgName;
@@ -19454,12 +19458,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 533:
 YY_RULE_SETUP
-#line 4673 "scanner.l"
+#line 4677 "scanner.l"
 { yyextra->current->args += yytext; }
 	YY_BREAK
 case 534:
 YY_RULE_SETUP
-#line 4674 "scanner.l"
+#line 4678 "scanner.l"
 {
                                           if (yyextra->current->argList.empty())
                                           {
@@ -19472,21 +19476,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 535:
 YY_RULE_SETUP
-#line 4683 "scanner.l"
+#line 4687 "scanner.l"
 { yyextra->current->args += *yytext; }
 	YY_BREAK
 case 536:
 YY_RULE_SETUP
-#line 4684 "scanner.l"
+#line 4688 "scanner.l"
 { yyextra->current->args += *yytext; }
 	YY_BREAK
 case 537:
 /* rule 537 can match eol */
-#line 4686 "scanner.l"
+#line 4690 "scanner.l"
 case 538:
 /* rule 538 can match eol */
 YY_RULE_SETUP
-#line 4686 "scanner.l"
+#line 4690 "scanner.l"
 { /* try-function-block */ 
 					  yyextra->insideTryBlock=TRUE;
 					  lineCount(yyscanner);
@@ -19500,7 +19504,7 @@ YY_RULE_SETUP
 case 539:
 /* rule 539 can match eol */
 YY_RULE_SETUP
-#line 4695 "scanner.l"
+#line 4699 "scanner.l"
 { // C++ style throw clause
   					  yyextra->current->exception = " throw (" ;
 					  yyextra->roundCount=0;
@@ -19511,7 +19515,7 @@ YY_RULE_SETUP
 case 540:
 /* rule 540 can match eol */
 YY_RULE_SETUP
-#line 4701 "scanner.l"
+#line 4705 "scanner.l"
 {
   					  yyextra->current->exception = " raises (" ;
 					  lineCount(yyscanner) ;
@@ -19522,7 +19526,7 @@ YY_RULE_SETUP
 case 541:
 /* rule 541 can match eol */
 YY_RULE_SETUP
-#line 4707 "scanner.l"
+#line 4711 "scanner.l"
 { // Java style throw clause
   					  yyextra->current->exception = " throws " ;
 					  lineCount(yyscanner) ;
@@ -19531,14 +19535,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 542:
 YY_RULE_SETUP
-#line 4712 "scanner.l"
+#line 4716 "scanner.l"
 { yyextra->current->exception += *yytext ;
 					  ++yyextra->roundCount ;
 					}
 	YY_BREAK
 case 543:
 YY_RULE_SETUP
-#line 4715 "scanner.l"
+#line 4719 "scanner.l"
 { yyextra->current->exception += *yytext ; 
 					  if ( yyextra->roundCount )
 					    --yyextra->roundCount ;
@@ -19548,21 +19552,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 544:
 YY_RULE_SETUP
-#line 4721 "scanner.l"
+#line 4725 "scanner.l"
 {
   					  yyextra->current->exception += *yytext;
   					}
 	YY_BREAK
 case 545:
 YY_RULE_SETUP
-#line 4724 "scanner.l"
+#line 4728 "scanner.l"
 {
   					  unput('{'); BEGIN( FuncQual );
   					}
 	YY_BREAK
 case 546:
 YY_RULE_SETUP
-#line 4727 "scanner.l"
+#line 4731 "scanner.l"
 {
   					  unput(';'); BEGIN( FuncQual );
   					}
@@ -19570,7 +19574,7 @@ YY_RULE_SETUP
 case 547:
 /* rule 547 can match eol */
 YY_RULE_SETUP
-#line 4730 "scanner.l"
+#line 4734 "scanner.l"
 {
   					  yyextra->current->exception += ' ';
                                           lineCount(yyscanner);
@@ -19578,14 +19582,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 548:
 YY_RULE_SETUP
-#line 4734 "scanner.l"
+#line 4738 "scanner.l"
 {
   					  yyextra->current->exception += *yytext;
   					}
 	YY_BREAK
 case 549:
 YY_RULE_SETUP
-#line 4737 "scanner.l"
+#line 4741 "scanner.l"
 { yyextra->current->type += yyextra->current->name ;
 					  yyextra->current->name  = yyextra->current->args ;
 					  yyextra->current->args  = yytext ;
@@ -19595,14 +19599,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 550:
 YY_RULE_SETUP
-#line 4743 "scanner.l"
+#line 4747 "scanner.l"
 {
   					  if (!yyextra->insidePHP) BEGIN(SkipInits);
   					}
 	YY_BREAK
 case 551:
 YY_RULE_SETUP
-#line 4746 "scanner.l"
+#line 4750 "scanner.l"
 { 
 					  yyextra->current->name=yyextra->current->name.simplifyWhiteSpace();
   					  yyextra->current->type=yyextra->current->type.simplifyWhiteSpace();
@@ -19736,7 +19740,7 @@ YY_RULE_SETUP
 case 552:
 /* rule 552 can match eol */
 YY_RULE_SETUP
-#line 4875 "scanner.l"
+#line 4879 "scanner.l"
 { // C++11 style initializer (see bug 790788)
                                           lineCount(yyscanner);
                                           yyextra->curlyCount=1;
@@ -19746,7 +19750,7 @@ YY_RULE_SETUP
 case 553:
 /* rule 553 can match eol */
 YY_RULE_SETUP
-#line 4880 "scanner.l"
+#line 4884 "scanner.l"
 { // C++11 style initializer (see bug 688647)
                                           lineCount(yyscanner);
                                           yyextra->curlyCount=1;
@@ -19755,14 +19759,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 554:
 YY_RULE_SETUP
-#line 4885 "scanner.l"
+#line 4889 "scanner.l"
 {
                                           ++yyextra->curlyCount;
                                         }
 	YY_BREAK
 case 555:
 YY_RULE_SETUP
-#line 4888 "scanner.l"
+#line 4892 "scanner.l"
 {
   					  if ( --yyextra->curlyCount<=0 )
                                           {
@@ -19772,14 +19776,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 556:
 YY_RULE_SETUP
-#line 4894 "scanner.l"
+#line 4898 "scanner.l"
 {
                                           BEGIN(yyextra->lastC11AttributeContext);
                                         }
 	YY_BREAK
 case 557:
 YY_RULE_SETUP
-#line 4897 "scanner.l"
+#line 4901 "scanner.l"
 { // C++11 style initializer
   					  unput('{');
 					  BEGIN( Function );
@@ -19787,7 +19791,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 558:
 YY_RULE_SETUP
-#line 4901 "scanner.l"
+#line 4905 "scanner.l"
 { 
   				          //addToBody(yytext);
   					  ++yyextra->curlyCount ; 
@@ -19798,11 +19802,11 @@ case 559:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
-#line 4906 "scanner.l"
+#line 4910 "scanner.l"
 case 560:
 /* rule 560 can match eol */
 YY_RULE_SETUP
-#line 4906 "scanner.l"
+#line 4910 "scanner.l"
 { 
   				          //addToBody(yytext);
   					  if( yyextra->curlyCount )
@@ -19824,7 +19828,7 @@ YY_RULE_SETUP
 case 561:
 /* rule 561 can match eol */
 YY_RULE_SETUP
-#line 4923 "scanner.l"
+#line 4927 "scanner.l"
 { 
 					  lineCount(yyscanner);
 					  if ( yyextra->curlyCount )
@@ -19860,7 +19864,7 @@ YY_RULE_SETUP
 case 562:
 /* rule 562 can match eol */
 YY_RULE_SETUP
-#line 4954 "scanner.l"
+#line 4958 "scanner.l"
 { // desc is followed by another one
 					  yyextra->docBlockContext   = SkipCurlyEndDoc;
 					  yyextra->docBlockInBody    = FALSE;
@@ -19882,7 +19886,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 563:
 YY_RULE_SETUP
-#line 4972 "scanner.l"
+#line 4976 "scanner.l"
 {
   				          //addToBody("}");
                                           if (yyextra->tempEntry) // we can only switch back to yyextra->current if no new item was created
@@ -19895,7 +19899,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 564:
 YY_RULE_SETUP
-#line 4981 "scanner.l"
+#line 4985 "scanner.l"
 { 
   				          //addToBody(yytext);
   					  yyextra->lastStringContext=SkipCurly;
@@ -19904,7 +19908,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 565:
 YY_RULE_SETUP
-#line 4986 "scanner.l"
+#line 4990 "scanner.l"
 { 
   				          if (yyextra->insidePHP)
   				            REJECT;
@@ -19915,7 +19919,7 @@ YY_RULE_SETUP
 case 566:
 /* rule 566 can match eol */
 YY_RULE_SETUP
-#line 4992 "scanner.l"
+#line 4996 "scanner.l"
 {
                                           lineCount(yyscanner);
   				          //addToBody(yytext);
@@ -19923,7 +19927,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 567:
 YY_RULE_SETUP
-#line 4996 "scanner.l"
+#line 5000 "scanner.l"
 {
   					  if (!yyextra->insidePHP) 
 					  {
@@ -19939,7 +19943,7 @@ YY_RULE_SETUP
 case 568:
 /* rule 568 can match eol */
 YY_RULE_SETUP
-#line 5007 "scanner.l"
+#line 5011 "scanner.l"
 {
                                           QCString raw=QCString(yytext).stripWhiteSpace();
                                           yyextra->delimiter = raw.data()+2;
@@ -19953,7 +19957,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 569:
 YY_RULE_SETUP
-#line 5017 "scanner.l"
+#line 5021 "scanner.l"
 {
                                           lineCount(yyscanner);  // for yyextra->column updates
   				          //addToBody(yytext);
@@ -19962,7 +19966,7 @@ YY_RULE_SETUP
 case 570:
 /* rule 570 can match eol */
 YY_RULE_SETUP
-#line 5021 "scanner.l"
+#line 5025 "scanner.l"
 { 
   				          //addToBody(yytext);
                                           lineCount(yyscanner);
@@ -19973,7 +19977,7 @@ YY_RULE_SETUP
 case 571:
 /* rule 571 can match eol */
 YY_RULE_SETUP
-#line 5027 "scanner.l"
+#line 5031 "scanner.l"
 { 
   				          //addToBody(yytext);
                                           lineCount(yyscanner);
@@ -19981,7 +19985,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 572:
 YY_RULE_SETUP
-#line 5031 "scanner.l"
+#line 5035 "scanner.l"
 {
   				          //addToBody(yytext);
   					  yyextra->lastCContext = YY_START;
@@ -19990,7 +19994,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 573:
 YY_RULE_SETUP
-#line 5036 "scanner.l"
+#line 5040 "scanner.l"
 {
   				          //addToBody(yytext);
   					  yyextra->lastCContext = YY_START;
@@ -19999,7 +20003,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 574:
 YY_RULE_SETUP
-#line 5041 "scanner.l"
+#line 5045 "scanner.l"
 {
                                           yyextra->roundCount=0;
                                           yyextra->lastSkipRoundContext=YY_START;
@@ -20008,7 +20012,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 575:
 YY_RULE_SETUP
-#line 5046 "scanner.l"
+#line 5050 "scanner.l"
 {
   					  yyextra->lastStringContext=YY_START;
   				          BEGIN( SkipString ); 
@@ -20016,7 +20020,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 576:
 YY_RULE_SETUP
-#line 5050 "scanner.l"
+#line 5054 "scanner.l"
 {
   					  warn(yyextra->yyFileName,yyextra->yyLineNr,
 					      "Found ';' while parsing initializer list! "
@@ -20027,7 +20031,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 577:
 YY_RULE_SETUP
-#line 5057 "scanner.l"
+#line 5061 "scanner.l"
 {
   				          if (!yyextra->insidePHP)
   				            REJECT;
@@ -20038,7 +20042,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 578:
 YY_RULE_SETUP
-#line 5064 "scanner.l"
+#line 5068 "scanner.l"
 {
   				          if (!yyextra->insideCS) REJECT;
 					  // C# verbatim string
@@ -20049,14 +20053,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 579:
 YY_RULE_SETUP
-#line 5071 "scanner.l"
+#line 5075 "scanner.l"
 {
                                           if (yyextra->insidePHP) REJECT;
                                         }
 	YY_BREAK
 case 580:
 YY_RULE_SETUP
-#line 5074 "scanner.l"
+#line 5078 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -20067,49 +20071,49 @@ YY_RULE_SETUP
 	YY_BREAK
 case 581:
 YY_RULE_SETUP
-#line 5081 "scanner.l"
+#line 5085 "scanner.l"
 { }
 	YY_BREAK
 case 582:
 YY_RULE_SETUP
-#line 5082 "scanner.l"
+#line 5086 "scanner.l"
 { }
 	YY_BREAK
 case 583:
 YY_RULE_SETUP
-#line 5083 "scanner.l"
+#line 5087 "scanner.l"
 { 
   					  BEGIN( yyextra->lastStringContext ); 
 					}
 	YY_BREAK
 case 584:
 YY_RULE_SETUP
-#line 5086 "scanner.l"
+#line 5090 "scanner.l"
 { 
   					  BEGIN( yyextra->lastStringContext ); 
 					}
 	YY_BREAK
 case 585:
 YY_RULE_SETUP
-#line 5089 "scanner.l"
+#line 5093 "scanner.l"
 { }
 	YY_BREAK
 case 586:
 /* rule 586 can match eol */
 YY_RULE_SETUP
-#line 5090 "scanner.l"
+#line 5094 "scanner.l"
 {
                                           lineCount(yyscanner);
   					}
 	YY_BREAK
 case 587:
 YY_RULE_SETUP
-#line 5093 "scanner.l"
+#line 5097 "scanner.l"
 { }
 	YY_BREAK
 case 588:
 YY_RULE_SETUP
-#line 5094 "scanner.l"
+#line 5098 "scanner.l"
 { // for "class : public base {} var;" construct, see bug 608359
   					  unput(':');
 					  BEGIN(ClassVar);
@@ -20117,7 +20121,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 589:
 YY_RULE_SETUP
-#line 5098 "scanner.l"
+#line 5102 "scanner.l"
 {
 					  yyextra->current->section = Entry::EMPTY_SEC ;
 					  yyextra->current->type.resize(0) ;
@@ -20129,7 +20133,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 590:
 YY_RULE_SETUP
-#line 5106 "scanner.l"
+#line 5110 "scanner.l"
 {
 					  if (yyextra->insideIDL && (yyextra->current->spec & (Entry::Singleton |
 					                                     Entry::Service)))
@@ -20165,7 +20169,7 @@ YY_RULE_SETUP
 case 591:
 /* rule 591 can match eol */
 YY_RULE_SETUP
-#line 5137 "scanner.l"
+#line 5141 "scanner.l"
 {
   					  yyextra->sharpCount = 0;
   					  yyextra->current->name = yytext ;
@@ -20193,7 +20197,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 592:
 YY_RULE_SETUP
-#line 5161 "scanner.l"
+#line 5165 "scanner.l"
 {
 					  ArgumentList al;
 					  // check bug 612858 before enabling the next line
@@ -20211,7 +20215,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 593:
 YY_RULE_SETUP
-#line 5175 "scanner.l"
+#line 5179 "scanner.l"
 {
   					  yyextra->insideProtocolList=TRUE;
   					  BEGIN( Bases );
@@ -20220,7 +20224,7 @@ YY_RULE_SETUP
 case 594:
 /* rule 594 can match eol */
 YY_RULE_SETUP
-#line 5179 "scanner.l"
+#line 5183 "scanner.l"
 {
 					  yyextra->current->name += yytext;
 					  lineCount(yyscanner);
@@ -20241,7 +20245,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 595:
 YY_RULE_SETUP
-#line 5196 "scanner.l"
+#line 5200 "scanner.l"
 {
 					  yyextra->current->name += yytext;
 					  if (yyextra->roundCount==0) yyextra->sharpCount++;
@@ -20249,7 +20253,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 596:
 YY_RULE_SETUP
-#line 5200 "scanner.l"
+#line 5204 "scanner.l"
 {
   					  yyextra->current->name += yytext;
 					}
@@ -20257,7 +20261,7 @@ YY_RULE_SETUP
 case 597:
 /* rule 597 can match eol */
 YY_RULE_SETUP
-#line 5203 "scanner.l"
+#line 5207 "scanner.l"
 { // forward declaration
                                           if (!yyextra->current->tArgLists.empty())
                                           {
@@ -20315,7 +20319,7 @@ YY_RULE_SETUP
 case 598:
 /* rule 598 can match eol */
 YY_RULE_SETUP
-#line 5256 "scanner.l"
+#line 5260 "scanner.l"
 { 
 					  yyextra->current->name = yytext ;
 					  lineCount(yyscanner);
@@ -20336,7 +20340,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 599:
 YY_RULE_SETUP
-#line 5273 "scanner.l"
+#line 5277 "scanner.l"
 { yyextra->roundCount=0; 
                                           BEGIN( AlignAsEnd ); 
                                         }
@@ -20344,22 +20348,22 @@ YY_RULE_SETUP
 case 600:
 /* rule 600 can match eol */
 YY_RULE_SETUP
-#line 5276 "scanner.l"
+#line 5280 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 601:
 YY_RULE_SETUP
-#line 5277 "scanner.l"
+#line 5281 "scanner.l"
 
 	YY_BREAK
 case 602:
 YY_RULE_SETUP
-#line 5278 "scanner.l"
+#line 5282 "scanner.l"
 { yyextra->roundCount++; }
 	YY_BREAK
 case 603:
 YY_RULE_SETUP
-#line 5279 "scanner.l"
+#line 5283 "scanner.l"
 { if (--yyextra->roundCount<0) 
                                           {
                                             BEGIN( yyextra->lastAlignAsContext ); 
@@ -20369,18 +20373,18 @@ YY_RULE_SETUP
 case 604:
 /* rule 604 can match eol */
 YY_RULE_SETUP
-#line 5284 "scanner.l"
+#line 5288 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 605:
 YY_RULE_SETUP
-#line 5285 "scanner.l"
+#line 5289 "scanner.l"
 
 	YY_BREAK
 case 606:
 /* rule 606 can match eol */
 YY_RULE_SETUP
-#line 5286 "scanner.l"
+#line 5290 "scanner.l"
 {  // multiple forward declarations on one line
                                            // e.g. @protocol A,B;
 					  yyextra->current->reset();
@@ -20390,7 +20394,7 @@ YY_RULE_SETUP
 case 607:
 /* rule 607 can match eol */
 YY_RULE_SETUP
-#line 5291 "scanner.l"
+#line 5295 "scanner.l"
 { 
 					  yyextra->current->name = yytext ;
                                           if (yyextra->insideCpp || yyextra->insideObjC) 
@@ -20413,7 +20417,7 @@ YY_RULE_SETUP
 case 608:
 /* rule 608 can match eol */
 YY_RULE_SETUP
-#line 5309 "scanner.l"
+#line 5313 "scanner.l"
 { // C# style scope
 					  yyextra->current->name = substitute(yytext,".","::");
 					  lineCount(yyscanner);
@@ -20426,7 +20430,7 @@ case 609:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5314 "scanner.l"
+#line 5318 "scanner.l"
 {
   					  if (yyextra->insideIDL && qstrncmp(yytext,"switch",6)==0 && !isId(yytext[6]))
 					  {
@@ -20446,7 +20450,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 610:
 YY_RULE_SETUP
-#line 5330 "scanner.l"
+#line 5334 "scanner.l"
 {
  					  if (yyextra->isTypedef)
 					  {
@@ -20464,7 +20468,7 @@ YY_RULE_SETUP
 case 611:
 /* rule 611 can match eol */
 YY_RULE_SETUP
-#line 5343 "scanner.l"
+#line 5347 "scanner.l"
 {
   					  if (yyextra->insideCli)
 					  {
@@ -20482,7 +20486,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 612:
 YY_RULE_SETUP
-#line 5357 "scanner.l"
+#line 5361 "scanner.l"
 {
                                           if (yyextra->insideCpp || yyextra->insideObjC) 
                                           {
@@ -20540,7 +20544,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 613:
 YY_RULE_SETUP
-#line 5411 "scanner.l"
+#line 5415 "scanner.l"
 {
     					  if (yyextra->insideObjC && *yytext=='(') // class category
 					  {
@@ -20561,12 +20565,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 614:
 YY_RULE_SETUP
-#line 5428 "scanner.l"
+#line 5432 "scanner.l"
 { /* empty comment */ }
 	YY_BREAK
 case 615:
 YY_RULE_SETUP
-#line 5429 "scanner.l"
+#line 5433 "scanner.l"
 { // special comment
                                           yyextra->fullArgString.resize(0);
 					  yyextra->lastCopyArgChar='#'; // end marker
@@ -20579,14 +20583,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 616:
 YY_RULE_SETUP
-#line 5438 "scanner.l"
+#line 5442 "scanner.l"
 { // artificially inserted token to signal end of comment block
                                           yyextra->current->typeConstr.back().docs = yyextra->fullArgString;
   					}
 	YY_BREAK
 case 617:
 YY_RULE_SETUP
-#line 5441 "scanner.l"
+#line 5445 "scanner.l"
 { // end of type constraint reached
                                           // parse documentation of the constraints
                                           handleParametersCommentBlocks(yyscanner,yyextra->current->typeConstr);
@@ -20596,7 +20600,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 618:
 YY_RULE_SETUP
-#line 5447 "scanner.l"
+#line 5451 "scanner.l"
 {
                                           handleParametersCommentBlocks(yyscanner,yyextra->current->typeConstr);
 					  unput(';');
@@ -20605,14 +20609,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 619:
 YY_RULE_SETUP
-#line 5452 "scanner.l"
+#line 5456 "scanner.l"
 {
                                           BEGIN( CSConstraintType );
                                         }
 	YY_BREAK
 case 620:
 YY_RULE_SETUP
-#line 5455 "scanner.l"
+#line 5459 "scanner.l"
 {
                                           // parameter name
                                           yyextra->current->typeConstr.back().name=yytext;
@@ -20620,7 +20624,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 621:
 YY_RULE_SETUP
-#line 5459 "scanner.l"
+#line 5463 "scanner.l"
 { // another constraint for a different param
 					  yyextra->current->typeConstr.push_back(Argument());
                                           BEGIN( CSConstraintName );
@@ -20628,7 +20632,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 622:
 YY_RULE_SETUP
-#line 5463 "scanner.l"
+#line 5467 "scanner.l"
 {
                                           if (yyextra->current->typeConstr.back().type.isEmpty())
                                               // first type constraint for this parameter
@@ -20647,20 +20651,20 @@ YY_RULE_SETUP
 case 623:
 /* rule 623 can match eol */
 YY_RULE_SETUP
-#line 5477 "scanner.l"
+#line 5481 "scanner.l"
 {
                                           lineCount(yyscanner);
 					}
 	YY_BREAK
 case 624:
 YY_RULE_SETUP
-#line 5480 "scanner.l"
+#line 5484 "scanner.l"
 {
 					}
 	YY_BREAK
 case 625:
 YY_RULE_SETUP
-#line 5482 "scanner.l"
+#line 5486 "scanner.l"
 {
 					  yyextra->current->name+=yytext;
 					}
@@ -20671,7 +20675,7 @@ case 626:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5485 "scanner.l"
+#line 5489 "scanner.l"
 {
 					  yyextra->current->name+=')';
 					  BEGIN( ClassVar );
@@ -20683,7 +20687,7 @@ case 627:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5489 "scanner.l"
+#line 5493 "scanner.l"
 {
 					  yyextra->current->name+=')';
 					  BEGIN( ObjCProtocolList );
@@ -20691,7 +20695,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 628:
 YY_RULE_SETUP
-#line 5493 "scanner.l"
+#line 5497 "scanner.l"
 {
 					  yyextra->current->name+=')';
 					  if ((yyextra->current->section & Entry::Protocol) ||
@@ -20709,7 +20713,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 629:
 YY_RULE_SETUP
-#line 5507 "scanner.l"
+#line 5511 "scanner.l"
 { 
                                           if (yyextra->current->section==Entry::VARIABLE_SEC) // enum A B:2, see bug 748208
                                           {
@@ -20743,7 +20747,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 630:
 YY_RULE_SETUP
-#line 5537 "scanner.l"
+#line 5541 "scanner.l"
 {
     					  unput(*yytext);
 					  if (yyextra->isTypedef) // typedef of a class, put typedef keyword back
@@ -20764,7 +20768,7 @@ case 631:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5550 "scanner.l"
+#line 5554 "scanner.l"
 {
   					  if (!yyextra->insideObjC)
 					  {
@@ -20787,17 +20791,17 @@ case 632:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
-#line 5567 "scanner.l"
+#line 5571 "scanner.l"
 case 633:
 /* rule 633 can match eol */
-#line 5568 "scanner.l"
+#line 5572 "scanner.l"
 case 634:
 /* rule 634 can match eol */
-#line 5569 "scanner.l"
+#line 5573 "scanner.l"
 case 635:
 /* rule 635 can match eol */
 YY_RULE_SETUP
-#line 5569 "scanner.l"
+#line 5573 "scanner.l"
 {
   					  if (!yyextra->insideObjC)
 					  {
@@ -20817,7 +20821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 636:
 YY_RULE_SETUP
-#line 5585 "scanner.l"
+#line 5589 "scanner.l"
 { 
                                           yyextra->current->fileName = yyextra->yyFileName ;
 					  yyextra->current->startLine = yyextra->yyLineNr ;
@@ -20865,47 +20869,47 @@ YY_RULE_SETUP
 case 637:
 /* rule 637 can match eol */
 YY_RULE_SETUP
-#line 5628 "scanner.l"
+#line 5632 "scanner.l"
 { lineCount(yyscanner); yyextra->baseVirt = Virtual; }
 	YY_BREAK
 case 638:
 /* rule 638 can match eol */
 YY_RULE_SETUP
-#line 5629 "scanner.l"
+#line 5633 "scanner.l"
 { lineCount(yyscanner); yyextra->baseProt = Public; }
 	YY_BREAK
 case 639:
 /* rule 639 can match eol */
 YY_RULE_SETUP
-#line 5630 "scanner.l"
+#line 5634 "scanner.l"
 { lineCount(yyscanner); yyextra->baseProt = Protected; }
 	YY_BREAK
 case 640:
 /* rule 640 can match eol */
 YY_RULE_SETUP
-#line 5631 "scanner.l"
+#line 5635 "scanner.l"
 { if (!yyextra->insideCli) REJECT ; lineCount(yyscanner); yyextra->baseProt = Package; }
 	YY_BREAK
 case 641:
 /* rule 641 can match eol */
 YY_RULE_SETUP
-#line 5632 "scanner.l"
+#line 5636 "scanner.l"
 { lineCount(yyscanner); yyextra->baseProt = Private; }
 	YY_BREAK
 case 642:
 /* rule 642 can match eol */
 YY_RULE_SETUP
-#line 5633 "scanner.l"
+#line 5637 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 643:
 YY_RULE_SETUP
-#line 5634 "scanner.l"
+#line 5638 "scanner.l"
 { unput(*yytext); BEGIN(Bases); }
 	YY_BREAK
 case 644:
 YY_RULE_SETUP
-#line 5635 "scanner.l"
+#line 5639 "scanner.l"
 { // PHP namespace token, not sure if interspacing is allowed but it gives problems (see bug 640847)
                                           if (!yyextra->insidePHP)
 					  {
@@ -20925,7 +20929,7 @@ YY_RULE_SETUP
 case 645:
 /* rule 645 can match eol */
 YY_RULE_SETUP
-#line 5650 "scanner.l"
+#line 5654 "scanner.l"
 { 
   					  lineCount(yyscanner);
                                           QCString baseScope = yytext;
@@ -20948,7 +20952,7 @@ YY_RULE_SETUP
 case 646:
 /* rule 646 can match eol */
 YY_RULE_SETUP
-#line 5668 "scanner.l"
+#line 5672 "scanner.l"
 { // Java style class
     					  QCString name = substitute(yytext,".","::");
 					  yyextra->baseName += name;
@@ -20962,7 +20966,7 @@ case 647:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5674 "scanner.l"
+#line 5678 "scanner.l"
 {
                                           if (!yyextra->insideObjC) 
 					  {
@@ -20977,7 +20981,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 648:
 YY_RULE_SETUP
-#line 5685 "scanner.l"
+#line 5689 "scanner.l"
 { // empty ObjC interface
   					  unput('d'); // insert fake body: {}@end
   					  unput('n'); 
@@ -20989,7 +20993,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 649:
 YY_RULE_SETUP
-#line 5693 "scanner.l"
+#line 5697 "scanner.l"
 { yyextra->current->name += *yytext;
   					  yyextra->sharpCount=1; 
 					  yyextra->roundCount=0;
@@ -21001,7 +21005,7 @@ YY_RULE_SETUP
 case 650:
 /* rule 650 can match eol */
 YY_RULE_SETUP
-#line 5700 "scanner.l"
+#line 5704 "scanner.l"
 {
                                           lineCount(yyscanner);
   					  yyextra->sharpCount=1; 
@@ -21025,14 +21029,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 651:
 YY_RULE_SETUP
-#line 5720 "scanner.l"
+#line 5724 "scanner.l"
 { *yyextra->specName += *yytext;
   					  if (yyextra->roundCount==0) yyextra->sharpCount++;
   					}
 	YY_BREAK
 case 652:
 YY_RULE_SETUP
-#line 5723 "scanner.l"
+#line 5727 "scanner.l"
 {
   					  *yyextra->specName += *yytext;
   					  if (yyextra->roundCount==0 && --yyextra->sharpCount<=0)
@@ -21045,12 +21049,12 @@ YY_RULE_SETUP
 case 653:
 /* rule 653 can match eol */
 YY_RULE_SETUP
-#line 5731 "scanner.l"
+#line 5735 "scanner.l"
 { lineCount(yyscanner); *yyextra->specName +=' '; }
 	YY_BREAK
 case 654:
 YY_RULE_SETUP
-#line 5732 "scanner.l"
+#line 5736 "scanner.l"
 { *yyextra->specName += yytext; }
 	YY_BREAK
 case 655:
@@ -21058,7 +21062,7 @@ case 655:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5733 "scanner.l"
+#line 5737 "scanner.l"
 { // M$ C++ extension to allow >> to close a template...
   					  unput('>');
   					  unput(' ');
@@ -21067,7 +21071,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 656:
 YY_RULE_SETUP
-#line 5738 "scanner.l"
+#line 5742 "scanner.l"
 {
                                           if (yyextra->insideCS) // for C# >> ends a nested template
 					  {
@@ -21095,96 +21099,96 @@ YY_RULE_SETUP
 case 657:
 /* rule 657 can match eol */
 YY_RULE_SETUP
-#line 5761 "scanner.l"
+#line 5765 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 658:
 YY_RULE_SETUP
-#line 5762 "scanner.l"
+#line 5766 "scanner.l"
 { *yyextra->specName += *yytext; yyextra->roundCount++; }
 	YY_BREAK
 case 659:
 YY_RULE_SETUP
-#line 5763 "scanner.l"
+#line 5767 "scanner.l"
 { *yyextra->specName += *yytext; yyextra->roundCount--; }
 	YY_BREAK
 case 660:
 YY_RULE_SETUP
-#line 5765 "scanner.l"
+#line 5769 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 661:
 YY_RULE_SETUP
-#line 5766 "scanner.l"
+#line 5770 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 662:
 YY_RULE_SETUP
-#line 5767 "scanner.l"
+#line 5771 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 663:
 YY_RULE_SETUP
-#line 5768 "scanner.l"
+#line 5772 "scanner.l"
 { *yyextra->specName += *yytext;BEGIN(SpecializationSingleQuote);}
 	YY_BREAK
 case 664:
 YY_RULE_SETUP
-#line 5769 "scanner.l"
+#line 5773 "scanner.l"
 { *yyextra->specName += *yytext;BEGIN(SpecializationDoubleQuote);}
 	YY_BREAK
 case 665:
 YY_RULE_SETUP
-#line 5770 "scanner.l"
+#line 5774 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 666:
 YY_RULE_SETUP
-#line 5771 "scanner.l"
+#line 5775 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 667:
 YY_RULE_SETUP
-#line 5772 "scanner.l"
+#line 5776 "scanner.l"
 { *yyextra->specName += *yytext; BEGIN(Specialization);}
 	YY_BREAK
 case 668:
 YY_RULE_SETUP
-#line 5773 "scanner.l"
+#line 5777 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 669:
 YY_RULE_SETUP
-#line 5774 "scanner.l"
+#line 5778 "scanner.l"
 { *yyextra->specName += *yytext; BEGIN(Specialization);}
 	YY_BREAK
 case 670:
 YY_RULE_SETUP
-#line 5775 "scanner.l"
+#line 5779 "scanner.l"
 { *yyextra->specName += *yytext;}
 	YY_BREAK
 case 671:
 YY_RULE_SETUP
-#line 5777 "scanner.l"
+#line 5781 "scanner.l"
 {
   					  *yyextra->specName += *yytext;
   					}
 	YY_BREAK
 case 672:
 YY_RULE_SETUP
-#line 5780 "scanner.l"
+#line 5784 "scanner.l"
 { ++yyextra->roundCount; }
 	YY_BREAK
 case 673:
 YY_RULE_SETUP
-#line 5781 "scanner.l"
+#line 5785 "scanner.l"
 { if (--yyextra->roundCount<0)
 					    BEGIN ( yyextra->lastSkipRoundContext );
 					}
 	YY_BREAK
 case 674:
 YY_RULE_SETUP
-#line 5784 "scanner.l"
+#line 5788 "scanner.l"
 {
   					  yyextra->lastStringContext=SkipRound;
 					  BEGIN(SkipString);
@@ -21193,7 +21197,7 @@ YY_RULE_SETUP
 case 675:
 /* rule 675 can match eol */
 YY_RULE_SETUP
-#line 5788 "scanner.l"
+#line 5792 "scanner.l"
 { lineCount(yyscanner);
                                           if (yyextra->insideProtocolList)
 					  {
@@ -21246,7 +21250,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 676:
 YY_RULE_SETUP
-#line 5837 "scanner.l"
+#line 5841 "scanner.l"
 { yyextra->current->fileName = yyextra->yyFileName ;
 					  yyextra->current->startLine = yyextra->yyLineNr ;
 					  yyextra->current->startColumn = yyextra->yyColNr;
@@ -21268,14 +21272,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 677:
 YY_RULE_SETUP
-#line 5855 "scanner.l"
+#line 5859 "scanner.l"
 {
   					  yyextra->roundCount++;
   					}
 	YY_BREAK
 case 678:
 YY_RULE_SETUP
-#line 5858 "scanner.l"
+#line 5862 "scanner.l"
 {
   					  if (--yyextra->roundCount==0)
 					  {
@@ -21286,35 +21290,35 @@ YY_RULE_SETUP
 case 679:
 /* rule 679 can match eol */
 YY_RULE_SETUP
-#line 5864 "scanner.l"
+#line 5868 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 680:
 YY_RULE_SETUP
-#line 5865 "scanner.l"
+#line 5869 "scanner.l"
 
 	YY_BREAK
 case 681:
 /* rule 681 can match eol */
 YY_RULE_SETUP
-#line 5866 "scanner.l"
+#line 5870 "scanner.l"
 { yyextra->current->program += yytext ;
 					  lineCount(yyscanner) ;
 					}
 	YY_BREAK
 case 682:
 YY_RULE_SETUP
-#line 5869 "scanner.l"
+#line 5873 "scanner.l"
 { yyextra->current->program += yytext ; } 
 	YY_BREAK
 case 683:
 YY_RULE_SETUP
-#line 5870 "scanner.l"
+#line 5874 "scanner.l"
 { yyextra->current->program += yytext ; }
 	YY_BREAK
 case 684:
 YY_RULE_SETUP
-#line 5871 "scanner.l"
+#line 5875 "scanner.l"
 {
                                           yyextra->insideCode=TRUE;
   					  yyextra->current->program += yytext ;
@@ -21322,7 +21326,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 685:
 YY_RULE_SETUP
-#line 5875 "scanner.l"
+#line 5879 "scanner.l"
 {
                                           yyextra->insideCode=FALSE;
   					  yyextra->current->program += yytext ;
@@ -21330,24 +21334,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 686:
 YY_RULE_SETUP
-#line 5879 "scanner.l"
+#line 5883 "scanner.l"
 { yyextra->current->program += yytext ; }
 	YY_BREAK
 case 687:
 YY_RULE_SETUP
-#line 5880 "scanner.l"
+#line 5884 "scanner.l"
 { yyextra->current->program += yytext ;
 					  if (!yyextra->insideCode) BEGIN( yyextra->lastContext ) ;
 					}
 	YY_BREAK
 case 688:
 YY_RULE_SETUP
-#line 5883 "scanner.l"
+#line 5887 "scanner.l"
 { yyextra->current->program += *yytext ; }
 	YY_BREAK
 case 689:
 YY_RULE_SETUP
-#line 5885 "scanner.l"
+#line 5889 "scanner.l"
 { 
   					  //printf("Start doc block at %d\n",yyextra->yyLineNr);
 					  if (!yyextra->current->doc.isEmpty())
@@ -21385,7 +21389,7 @@ YY_RULE_SETUP
 case 690:
 /* rule 690 can match eol */
 YY_RULE_SETUP
-#line 5918 "scanner.l"
+#line 5922 "scanner.l"
 {
 					  bool javadocBanner = Config_getBool(JAVADOC_BANNER);
                                           lineCount(yyscanner);
@@ -21432,7 +21436,7 @@ case 691:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 5957 "scanner.l"
+#line 5961 "scanner.l"
 {
 					  yyextra->lastDocContext = YY_START;
 
@@ -21463,7 +21467,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 692:
 YY_RULE_SETUP
-#line 5984 "scanner.l"
+#line 5988 "scanner.l"
 { 
 					  yyextra->lastDocContext = YY_START;
 					  if (yyextra->current_root->section & Entry::SCOPE_MASK)
@@ -21488,7 +21492,7 @@ case 693:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6001 "scanner.l"
+#line 6005 "scanner.l"
 { 
 					  yyextra->lastDocContext = YY_START;
 					  if (yyextra->current_root->section & Entry::SCOPE_MASK)
@@ -21508,7 +21512,7 @@ YY_RULE_SETUP
 case 694:
 /* rule 694 can match eol */
 YY_RULE_SETUP
-#line 6016 "scanner.l"
+#line 6020 "scanner.l"
 {
 					  lineCount(yyscanner);
 					  yyextra->externC=TRUE;
@@ -21516,7 +21520,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 695:
 YY_RULE_SETUP
-#line 6020 "scanner.l"
+#line 6024 "scanner.l"
 {
                                           if (yyextra->externC) 
 					  {
@@ -21588,12 +21592,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 696:
 YY_RULE_SETUP
-#line 6088 "scanner.l"
+#line 6092 "scanner.l"
 { yyextra->curlyCount++; }
 	YY_BREAK
 case 697:
 YY_RULE_SETUP
-#line 6089 "scanner.l"
+#line 6093 "scanner.l"
 {
 					  // fall back to next rule if it's not the right bracket
 					  if (yyextra->curlyCount != 0) REJECT;
@@ -21605,7 +21609,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 698:
 YY_RULE_SETUP
-#line 6097 "scanner.l"
+#line 6101 "scanner.l"
 { 
                                           if (yyextra->curlyCount) 
                                           {
@@ -21625,99 +21629,99 @@ YY_RULE_SETUP
 case 699:
 /* rule 699 can match eol */
 YY_RULE_SETUP
-#line 6112 "scanner.l"
+#line 6116 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::PrivateSettable;   }
 	YY_BREAK
 case 700:
 /* rule 700 can match eol */
 YY_RULE_SETUP
-#line 6113 "scanner.l"
+#line 6117 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::ProtectedSettable; }
 	YY_BREAK
 case 701:
 /* rule 701 can match eol */
 YY_RULE_SETUP
-#line 6114 "scanner.l"
+#line 6118 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::PrivateGettable;  	}
 	YY_BREAK
 case 702:
 /* rule 702 can match eol */
 YY_RULE_SETUP
-#line 6115 "scanner.l"
+#line 6119 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::ProtectedGettable; }
 	YY_BREAK
 case 703:
 YY_RULE_SETUP
-#line 6116 "scanner.l"
+#line 6120 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::Settable;  }
 	YY_BREAK
 case 704:
 YY_RULE_SETUP
-#line 6117 "scanner.l"
+#line 6121 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::Gettable;  }
 	YY_BREAK
 case 705:
 YY_RULE_SETUP
-#line 6118 "scanner.l"
+#line 6122 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::Addable;   }
 	YY_BREAK
 case 706:
 YY_RULE_SETUP
-#line 6119 "scanner.l"
+#line 6123 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::Removable; }
 	YY_BREAK
 case 707:
 YY_RULE_SETUP
-#line 6120 "scanner.l"
+#line 6124 "scanner.l"
 { if (yyextra->curlyCount==0) yyextra->current->spec |= Entry::Raisable;  }
 	YY_BREAK
 case 708:
 YY_RULE_SETUP
-#line 6121 "scanner.l"
+#line 6125 "scanner.l"
 { BEGIN(CSString);}
 	YY_BREAK
 case 709:
 YY_RULE_SETUP
-#line 6122 "scanner.l"
+#line 6126 "scanner.l"
 {}
 	YY_BREAK
 case 710:
 /* rule 710 can match eol */
 YY_RULE_SETUP
-#line 6123 "scanner.l"
+#line 6127 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 711:
 YY_RULE_SETUP
-#line 6124 "scanner.l"
+#line 6128 "scanner.l"
 { BEGIN(CSAccessorDecl);}
 	YY_BREAK
 case 712:
 YY_RULE_SETUP
-#line 6125 "scanner.l"
+#line 6129 "scanner.l"
 {} // Otherwise the rule <*>"//" will kick in
 	YY_BREAK
 case 713:
 YY_RULE_SETUP
-#line 6126 "scanner.l"
+#line 6130 "scanner.l"
 {} // Otherwise the rule <*>"/*" will kick in
 	YY_BREAK
 case 714:
 /* rule 714 can match eol */
 YY_RULE_SETUP
-#line 6127 "scanner.l"
+#line 6131 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 715:
 YY_RULE_SETUP
-#line 6128 "scanner.l"
+#line 6132 "scanner.l"
 {}
 	YY_BREAK
 /* ---- Slice-specific rules ------ */
 case 716:
 /* rule 716 can match eol */
 YY_RULE_SETUP
-#line 6132 "scanner.l"
+#line 6136 "scanner.l"
 {
                                           if (yyextra->current->spec&Entry::Local)
                                           {
@@ -21731,7 +21735,7 @@ YY_RULE_SETUP
 case 717:
 /* rule 717 can match eol */
 YY_RULE_SETUP
-#line 6142 "scanner.l"
+#line 6146 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           BEGIN(SliceSequenceName);
@@ -21740,7 +21744,7 @@ YY_RULE_SETUP
 case 718:
 /* rule 718 can match eol */
 YY_RULE_SETUP
-#line 6147 "scanner.l"
+#line 6151 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           yyextra->current->name = yytext ;
@@ -21749,7 +21753,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 719:
 YY_RULE_SETUP
-#line 6153 "scanner.l"
+#line 6157 "scanner.l"
 {
                                           yyextra->current->section = Entry::VARIABLE_SEC;
                                           yyextra->current_root->moveToSubEntryAndRefresh(yyextra->current);
@@ -21760,7 +21764,7 @@ YY_RULE_SETUP
 case 720:
 /* rule 720 can match eol */
 YY_RULE_SETUP
-#line 6160 "scanner.l"
+#line 6164 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           if (yyextra->current->spec&Entry::Local)
@@ -21776,7 +21780,7 @@ YY_RULE_SETUP
 case 721:
 /* rule 721 can match eol */
 YY_RULE_SETUP
-#line 6172 "scanner.l"
+#line 6176 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           BEGIN(SliceDictionaryName);
@@ -21785,7 +21789,7 @@ YY_RULE_SETUP
 case 722:
 /* rule 722 can match eol */
 YY_RULE_SETUP
-#line 6177 "scanner.l"
+#line 6181 "scanner.l"
 {
                                           lineCount(yyscanner);
                                           yyextra->current->name = yytext ;
@@ -21794,7 +21798,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 723:
 YY_RULE_SETUP
-#line 6183 "scanner.l"
+#line 6187 "scanner.l"
 {
                                           yyextra->current->section = Entry::VARIABLE_SEC;
                                           yyextra->current_root->moveToSubEntryAndRefresh(yyextra->current);
@@ -21809,7 +21813,7 @@ YY_RULE_SETUP
 case 724:
 /* rule 724 can match eol */
 YY_RULE_SETUP
-#line 6195 "scanner.l"
+#line 6199 "scanner.l"
 { // continuation of multiline C++-style comment
 				           yyextra->docBlock+=yytext;
                                            int markerLen = yytext[yyleng-1]=='<' ? 4 : 3;
@@ -21823,7 +21827,7 @@ case 725:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6201 "scanner.l"
+#line 6205 "scanner.l"
 { // ignore marker line (see bug700345)
 					  handleCommentBlock(yyscanner,yyextra->docBlock.data(),yyextra->current->brief.isEmpty());
 					  BEGIN( yyextra->docBlockContext );
@@ -21832,7 +21836,7 @@ YY_RULE_SETUP
 case 726:
 /* rule 726 can match eol */
 YY_RULE_SETUP
-#line 6205 "scanner.l"
+#line 6209 "scanner.l"
 { // next line is an end group marker, see bug 752712
   					  yyextra->docBlock+=yytext;
 					  handleCommentBlock(yyscanner,yyextra->docBlock.data(),yyextra->current->brief.isEmpty());
@@ -21845,7 +21849,7 @@ case 727:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6210 "scanner.l"
+#line 6214 "scanner.l"
 { // whole line
   					  yyextra->docBlock+=yytext;
 					  handleCommentBlock(yyscanner,yyextra->docBlock.data(),yyextra->current->brief.isEmpty());
@@ -21855,7 +21859,7 @@ YY_RULE_SETUP
 /* ---- Comments blocks ------ */
 case 728:
 YY_RULE_SETUP
-#line 6218 "scanner.l"
+#line 6222 "scanner.l"
 { // end of comment block
   				          handleCommentBlock(yyscanner,yyextra->docBlock.data(),FALSE);
 					  BEGIN(yyextra->docBlockContext);
@@ -21867,7 +21871,7 @@ case 729:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6222 "scanner.l"
+#line 6226 "scanner.l"
 { 
 
                                           QCString indent;
@@ -21881,7 +21885,7 @@ case 730:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6228 "scanner.l"
+#line 6232 "scanner.l"
 { // start of a comment line
                                           QCString indent;
                                           indent.fill(' ',computeIndent(yytext,yyextra->column));
@@ -21890,20 +21894,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 731:
 YY_RULE_SETUP
-#line 6233 "scanner.l"
+#line 6237 "scanner.l"
 { // strip embedded C++ comments if at the start of a line
   					}
 	YY_BREAK
 case 732:
 YY_RULE_SETUP
-#line 6235 "scanner.l"
+#line 6239 "scanner.l"
 { // slashes in the middle of a comment block
   					  yyextra->docBlock+=yytext;
   					}
 	YY_BREAK
 case 733:
 YY_RULE_SETUP
-#line 6238 "scanner.l"
+#line 6242 "scanner.l"
 { // start of a new comment in the 
                                           // middle of a comment block
   					  yyextra->docBlock+=yytext;
@@ -21915,14 +21919,14 @@ case 734:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6242 "scanner.l"
+#line 6246 "scanner.l"
 { // escaped command
   					  yyextra->docBlock+=yytext;
   					}
 	YY_BREAK
 case 735:
 YY_RULE_SETUP
-#line 6245 "scanner.l"
+#line 6249 "scanner.l"
 {
                                           yyextra->docBlock+=yytext;
 				          yyextra->docBlockName=&yytext[1];
@@ -21937,7 +21941,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 736:
 YY_RULE_SETUP
-#line 6256 "scanner.l"
+#line 6260 "scanner.l"
 {
                                           yyextra->docBlock+=yytext;
 				          yyextra->docBlockName="<pre>";
@@ -21952,7 +21956,7 @@ case 737:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6263 "scanner.l"
+#line 6267 "scanner.l"
 { // verbatim command (which could contain nested comments!)
                                           yyextra->docBlock+=yytext;
 				          yyextra->docBlockName=&yytext[1];
@@ -21963,7 +21967,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 738:
 YY_RULE_SETUP
-#line 6270 "scanner.l"
+#line 6274 "scanner.l"
 {
 
                                           QCString pat = substitute(yytext,"*"," ");
@@ -21976,7 +21980,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 739:
 YY_RULE_SETUP
-#line 6279 "scanner.l"
+#line 6283 "scanner.l"
 {
                                           QCString pat = substitute(yytext,"*"," ");
                                           yyextra->docBlock+=pat;
@@ -21988,7 +21992,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 740:
 YY_RULE_SETUP
-#line 6287 "scanner.l"
+#line 6291 "scanner.l"
 {
   					  if (yyextra->insideCS)
 					  {
@@ -22005,7 +22009,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 741:
 YY_RULE_SETUP
-#line 6300 "scanner.l"
+#line 6304 "scanner.l"
 { // any character that isn't special
   					  yyextra->docBlock+=yytext;
   					}
@@ -22013,7 +22017,7 @@ YY_RULE_SETUP
 case 742:
 /* rule 742 can match eol */
 YY_RULE_SETUP
-#line 6303 "scanner.l"
+#line 6307 "scanner.l"
 { // newline
                                           lineCount(yyscanner);
 					  yyextra->docBlock+=*yytext;
@@ -22021,7 +22025,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 743:
 YY_RULE_SETUP
-#line 6307 "scanner.l"
+#line 6311 "scanner.l"
 { // command block
 					  yyextra->docBlock+=*yytext;
   					}
@@ -22029,7 +22033,7 @@ YY_RULE_SETUP
 /* ---- Copy verbatim sections ------ */
 case 744:
 YY_RULE_SETUP
-#line 6313 "scanner.l"
+#line 6317 "scanner.l"
 { // end of a <pre> block
   					  yyextra->docBlock+=yytext;
 					  if (yyextra->docBlockName=="<pre>")
@@ -22040,7 +22044,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 745:
 YY_RULE_SETUP
-#line 6320 "scanner.l"
+#line 6324 "scanner.l"
 { // end of a <code> block
   					  yyextra->docBlock+=yytext;
 					  if (yyextra->docBlockName=="<code>")
@@ -22051,7 +22055,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 746:
 YY_RULE_SETUP
-#line 6327 "scanner.l"
+#line 6331 "scanner.l"
 {
   					  yyextra->docBlock+=yytext;
 					  BEGIN(DocBlock);
@@ -22063,7 +22067,7 @@ case 747:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6331 "scanner.l"
+#line 6335 "scanner.l"
 { // end of verbatim block
   					  yyextra->docBlock+=yytext;
 					  if (&yytext[4]==yyextra->docBlockName)
@@ -22075,7 +22079,7 @@ YY_RULE_SETUP
 case 748:
 /* rule 748 can match eol */
 YY_RULE_SETUP
-#line 6338 "scanner.l"
+#line 6342 "scanner.l"
 { // start of a comment line
   					  if (yyextra->docBlockName=="verbatim")
 					  {
@@ -22096,7 +22100,7 @@ YY_RULE_SETUP
 case 749:
 /* rule 749 can match eol */
 YY_RULE_SETUP
-#line 6354 "scanner.l"
+#line 6358 "scanner.l"
 { // start of a comment line with two *'s
   					  if (yyextra->docBlockName=="code")
                                           {
@@ -22112,7 +22116,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 750:
 YY_RULE_SETUP
-#line 6366 "scanner.l"
+#line 6370 "scanner.l"
 { // Assume *var or *(... is part of source code (see bug723516)
 					  if (yyextra->docBlockName=="code")
                                           {
@@ -22129,7 +22133,7 @@ YY_RULE_SETUP
 case 751:
 /* rule 751 can match eol */
 YY_RULE_SETUP
-#line 6378 "scanner.l"
+#line 6382 "scanner.l"
 { // start of a comment line with one *
   					  if (yyextra->docBlockName=="code")
                                           {
@@ -22153,7 +22157,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 752:
 YY_RULE_SETUP
-#line 6398 "scanner.l"
+#line 6402 "scanner.l"
 {
                                           QCString pat = substitute(yytext,"*"," ");
                                           yyextra->docBlock+=pat;
@@ -22165,7 +22169,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 753:
 YY_RULE_SETUP
-#line 6406 "scanner.l"
+#line 6410 "scanner.l"
 {
                                           QCString pat = substitute(yytext,"*"," ");
                                           yyextra->docBlock+=pat;
@@ -22177,14 +22181,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 754:
 YY_RULE_SETUP
-#line 6414 "scanner.l"
+#line 6418 "scanner.l"
 { // any character that is not special
   					  yyextra->docBlock+=yytext;
   					}
 	YY_BREAK
 case 755:
 YY_RULE_SETUP
-#line 6417 "scanner.l"
+#line 6421 "scanner.l"
 {
                                           if (yytext[1]=='*')
                                           {
@@ -22200,7 +22204,7 @@ YY_RULE_SETUP
 case 756:
 /* rule 756 can match eol */
 YY_RULE_SETUP
-#line 6428 "scanner.l"
+#line 6432 "scanner.l"
 { // newline
   					  yyextra->docBlock+=*yytext;
                                           lineCount(yyscanner);
@@ -22208,13 +22212,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 757:
 YY_RULE_SETUP
-#line 6432 "scanner.l"
+#line 6436 "scanner.l"
 { // any other character
   					  yyextra->docBlock+=*yytext;
   					}
 	YY_BREAK
 case YY_STATE_EOF(DocCopyBlock):
-#line 6435 "scanner.l"
+#line 6439 "scanner.l"
 {
   					  warn(yyextra->yyFileName,yyextra->yyLineNr,
 					      "reached end of file while inside a '%s' block!\n"
@@ -22226,14 +22230,14 @@ case YY_STATE_EOF(DocCopyBlock):
 /* ------------- Prototype parser -------------- */
 case 758:
 YY_RULE_SETUP
-#line 6446 "scanner.l"
+#line 6450 "scanner.l"
 {
   					  yyextra->current->name+=yytext;
   					}
 	YY_BREAK
 case 759:
 YY_RULE_SETUP
-#line 6449 "scanner.l"
+#line 6453 "scanner.l"
 {
   					  yyextra->current->args+=*yytext;
 					  yyextra->currentArgumentContext = PrototypeQual;
@@ -22244,7 +22248,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 760:
 YY_RULE_SETUP
-#line 6456 "scanner.l"
+#line 6460 "scanner.l"
 {
   					  yyextra->current->type+=yyextra->current->name+yytext;
 					  yyextra->current->name.resize(0);
@@ -22254,14 +22258,14 @@ YY_RULE_SETUP
 case 761:
 /* rule 761 can match eol */
 YY_RULE_SETUP
-#line 6461 "scanner.l"
+#line 6465 "scanner.l"
 {
   					  yyextra->current->name+=yytext;
   					}
 	YY_BREAK
 case 762:
 YY_RULE_SETUP
-#line 6464 "scanner.l"
+#line 6468 "scanner.l"
 {
   					  yyextra->current->args+=*yytext;
 					  yyextra->currentArgumentContext = PrototypeQual;
@@ -22272,7 +22276,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 763:
 YY_RULE_SETUP
-#line 6471 "scanner.l"
+#line 6475 "scanner.l"
 {
   					  yyextra->current->type+=')';
   					  BEGIN( Prototype );
@@ -22280,21 +22284,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 764:
 YY_RULE_SETUP
-#line 6475 "scanner.l"
+#line 6479 "scanner.l"
 {
   					  yyextra->current->name+=yytext;
   					}
 	YY_BREAK
 case 765:
 YY_RULE_SETUP
-#line 6478 "scanner.l"
+#line 6482 "scanner.l"
 {
   					  BEGIN( PrototypeSkipLine);
   					}
 	YY_BREAK
 case 766:
 YY_RULE_SETUP
-#line 6481 "scanner.l"
+#line 6485 "scanner.l"
 { 
   					  yyextra->current->args += " const "; 
 					  yyextra->current->argList.constSpecifier=TRUE;
@@ -22302,7 +22306,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 767:
 YY_RULE_SETUP
-#line 6485 "scanner.l"
+#line 6489 "scanner.l"
 { 
   					  yyextra->current->args += " volatile "; 
 					  yyextra->current->argList.volatileSpecifier=TRUE;
@@ -22310,7 +22314,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 768:
 YY_RULE_SETUP
-#line 6489 "scanner.l"
+#line 6493 "scanner.l"
 { 
 					  yyextra->current->args += " = 0"; 
 					  yyextra->current->virt = Pure; 
@@ -22319,7 +22323,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 769:
 YY_RULE_SETUP
-#line 6494 "scanner.l"
+#line 6498 "scanner.l"
 {
   					  yyextra->current->exception = "throw(";
 					  BEGIN(PrototypeExc);
@@ -22327,7 +22331,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 770:
 YY_RULE_SETUP
-#line 6498 "scanner.l"
+#line 6502 "scanner.l"
 {
   					  yyextra->current->exception += ')';
 					  BEGIN(PrototypeQual);
@@ -22335,35 +22339,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 771:
 YY_RULE_SETUP
-#line 6502 "scanner.l"
+#line 6506 "scanner.l"
 {
   					  yyextra->current->exception += *yytext;
   					}
 	YY_BREAK
 case 772:
 YY_RULE_SETUP
-#line 6505 "scanner.l"
+#line 6509 "scanner.l"
 {
   					  yyextra->current->args += *yytext;
   					}
 	YY_BREAK
 case 773:
 YY_RULE_SETUP
-#line 6508 "scanner.l"
+#line 6512 "scanner.l"
 {
   					  yyextra->current->name += *yytext;
   					}
 	YY_BREAK
 case 774:
 YY_RULE_SETUP
-#line 6511 "scanner.l"
+#line 6515 "scanner.l"
 {
   					}
 	YY_BREAK
 case 775:
 /* rule 775 can match eol */
 YY_RULE_SETUP
-#line 6517 "scanner.l"
+#line 6521 "scanner.l"
 {  // line continuation
   					  if (yyextra->insideCS) 
 					  {
@@ -22381,20 +22385,20 @@ case 776:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 6527 "scanner.l"
+#line 6531 "scanner.l"
 { 
 					  BEGIN( yyextra->lastCContext ) ;
 					}
 	YY_BREAK
 case 777:
 YY_RULE_SETUP
-#line 6530 "scanner.l"
+#line 6534 "scanner.l"
 
 	YY_BREAK
 /* ------------ Generic rules -------------- */
 case 778:
 YY_RULE_SETUP
-#line 6534 "scanner.l"
+#line 6538 "scanner.l"
 { // C++11 attribute
                                           if (!yyextra->insideCpp) REJECT;
                                           if (YY_START == CopyGString || YY_START == CopyGString) REJECT;
@@ -22405,12 +22409,12 @@ YY_RULE_SETUP
 case 779:
 /* rule 779 can match eol */
 YY_RULE_SETUP
-#line 6541 "scanner.l"
+#line 6545 "scanner.l"
 { lineCount(yyscanner); }
 	YY_BREAK
 case 780:
 YY_RULE_SETUP
-#line 6542 "scanner.l"
+#line 6546 "scanner.l"
 {
 					  if (yyextra->insideIDL && yyextra->insideCppQuote)
 					  {
@@ -22420,7 +22424,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 781:
 YY_RULE_SETUP
-#line 6548 "scanner.l"
+#line 6552 "scanner.l"
 {	
   					  if (!yyextra->insidePHP)
   					    REJECT;
@@ -22430,7 +22434,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 782:
 YY_RULE_SETUP
-#line 6554 "scanner.l"
+#line 6558 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -22441,7 +22445,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 783:
 YY_RULE_SETUP
-#line 6561 "scanner.l"
+#line 6565 "scanner.l"
 {
   					  if (yyextra->insidePHP)
 					  {
@@ -22452,7 +22456,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 784:
 YY_RULE_SETUP
-#line 6568 "scanner.l"
+#line 6572 "scanner.l"
 {
   					  if (yyextra->insideCS && (YY_START != SkipRound)) 
 					  {
@@ -22472,29 +22476,29 @@ YY_RULE_SETUP
 	YY_BREAK
 case 785:
 YY_RULE_SETUP
-#line 6584 "scanner.l"
+#line 6588 "scanner.l"
 
 	YY_BREAK
 case 786:
 YY_RULE_SETUP
-#line 6585 "scanner.l"
+#line 6589 "scanner.l"
 
 	YY_BREAK
 case 787:
 YY_RULE_SETUP
-#line 6586 "scanner.l"
+#line 6590 "scanner.l"
 { yyextra->lastCContext = YY_START ;
 					  BEGIN( SkipComment ) ;
 					}
 	YY_BREAK
 case 788:
 YY_RULE_SETUP
-#line 6589 "scanner.l"
+#line 6593 "scanner.l"
 { BEGIN( yyextra->lastCContext ) ; }
 	YY_BREAK
 case 789:
 YY_RULE_SETUP
-#line 6590 "scanner.l"
+#line 6594 "scanner.l"
 {	
   					  yyextra->lastCContext = YY_START ;
 					  BEGIN( SkipCxxComment ) ;
@@ -22502,10 +22506,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 790:
 YY_RULE_SETUP
-#line 6594 "scanner.l"
+#line 6598 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 22509 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
+#line 22513 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/scanner.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(AlignAs):
 			case YY_STATE_EOF(AlignAsEnd):
@@ -23782,15 +23786,15 @@ void scannerYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 6594 "scanner.l"
+#line 6598 "scanner.l"
 
 
 
 //----------------------------------------------------------------------------
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int c=0;
+  yy_size_t c=0;
   while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
   {
     *buf = yyextra->inputString[yyextra->inputPosition++] ;
@@ -24023,7 +24027,6 @@ static void splitKnRArg(yyscan_t yyscanner,QCString &oldStyleArgPtr,QCString &ol
     else // normal "int *var"
     {
       int l=si,i=l-1,j;
-      char c;
       // look for start of name in "type *name"
       while (i>=0 && isId(yyextra->current->args.at(i))) i--;
       j=i+1;
@@ -24598,5 +24601,7 @@ void COutlineParser::parsePrototype(const char *text)
 
 //----------------------------------------------------------------------------
 
+#if USE_STATE2STRING
 #include "scanner.l.h"
+#endif
 

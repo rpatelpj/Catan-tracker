@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 # Utility rule file for tests.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
 include testing/CMakeFiles/tests.dir/progress.make
 
 testing/CMakeFiles/tests: bin/doxygen
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running doxygen tests..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/testing && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/testing/runtests.py --doxygen /Users/Raj/Desktop/Catan-tracker/doxygen-build/bin/doxygen --inputdir /Users/Raj/Desktop/Catan-tracker/doxygen/testing --outputdir /Users/Raj/Desktop/Catan-tracker/doxygen-build/testing
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running doxygen tests..."
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/testing && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/testing/runtests.py --doxygen /Users/Raj/Downloads/Catan-tracker/doxygen-build/bin/doxygen --inputdir /Users/Raj/Downloads/Catan-tracker/doxygen/testing --outputdir /Users/Raj/Downloads/Catan-tracker/doxygen-build/testing
 
 tests: testing/CMakeFiles/tests
 tests: testing/CMakeFiles/tests.dir/build.make
@@ -68,10 +68,10 @@ testing/CMakeFiles/tests.dir/build: tests
 .PHONY : testing/CMakeFiles/tests.dir/build
 
 testing/CMakeFiles/tests.dir/clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/testing && $(CMAKE_COMMAND) -P CMakeFiles/tests.dir/cmake_clean.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/testing && $(CMAKE_COMMAND) -P CMakeFiles/tests.dir/cmake_clean.cmake
 .PHONY : testing/CMakeFiles/tests.dir/clean
 
 testing/CMakeFiles/tests.dir/depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Desktop/Catan-tracker/doxygen /Users/Raj/Desktop/Catan-tracker/doxygen/testing /Users/Raj/Desktop/Catan-tracker/doxygen-build /Users/Raj/Desktop/Catan-tracker/doxygen-build/testing /Users/Raj/Desktop/Catan-tracker/doxygen-build/testing/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Downloads/Catan-tracker/doxygen /Users/Raj/Downloads/Catan-tracker/doxygen/testing /Users/Raj/Downloads/Catan-tracker/doxygen-build /Users/Raj/Downloads/Catan-tracker/doxygen-build/testing /Users/Raj/Downloads/Catan-tracker/doxygen-build/testing/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : testing/CMakeFiles/tests.dir/depend
 

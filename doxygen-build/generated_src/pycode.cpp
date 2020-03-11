@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
-#line 27 "pycode.l"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
+#line 28 "pycode.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1238,7 +1238,7 @@ char *pycodeYYtext;
  *  taught by Peter H. Froehlich <phf@acm.org>.
  */
 
-#line 31 "pycode.l"
+#line 32 "pycode.l"
 
 #include <stdio.h>
 #include <qvaluestack.h>
@@ -1266,6 +1266,8 @@ char *pycodeYYtext;
 
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
+
+#define USE_STATE2STRING 0
 
 static ClassSDict    g_codeClassSDict(17);
 static QCString      g_curClassName;
@@ -1311,7 +1313,10 @@ static bool          g_endComment;
 
 static void endFontClass();
 static void adjustScopesAndSuites(unsigned indentLength);
+
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 
 /*! Represents a stack of variable to class mappings as found in the
@@ -1899,19 +1904,19 @@ static void generateClassOrGlobalLink(CodeOutputInterface &ol,char *clName,
       DBG_CTX((stderr,"scope=%s locName=%s mcd=%p\n",scope.data(),locName.data(),mcd));
       if (mcd)
       {
-	MemberDef *md = mcd->getMemberByName(locName);
-	if (md)
+	MemberDef *mmd = mcd->getMemberByName(locName);
+	if (mmd)
 	{
-          g_theCallContext.setClass(stripClassName(md->typeString(),md->getOuterScope()));
-          writeMultiLineCodeLink(ol,md,clName);
+          g_theCallContext.setClass(stripClassName(mmd->typeString(),mmd->getOuterScope()));
+          writeMultiLineCodeLink(ol,mmd,clName);
           addToSearchIndex(className);
-	  const Definition *d = md->getOuterScope()==Doxygen::globalScope ?
-	                        md->getBodyDef() : md->getOuterScope();
-	  if (md->getGroupDef()) d = md->getGroupDef();
-	  if (d && d->isLinkable() && md->isLinkable() && 
+	  const Definition *d = mmd->getOuterScope()==Doxygen::globalScope ?
+	                        mmd->getBodyDef() : mmd->getOuterScope();
+	  if (mmd->getGroupDef()) d = mmd->getGroupDef();
+	  if (d && d->isLinkable() && mmd->isLinkable() && 
               g_currentMemberDef && g_collectXRefs)
 	  {
-	    addDocCrossReference(g_currentMemberDef,md);
+	    addDocCrossReference(g_currentMemberDef,mmd);
 	  }
 	  return;
 	}
@@ -1921,20 +1926,20 @@ static void generateClassOrGlobalLink(CodeOutputInterface &ol,char *clName,
         const NamespaceDef *mnd = getResolvedNamespace(scope);
         if (mnd)
         {
-  	  MemberDef *md=mnd->getMemberByName(locName);
-	  if (md)
+  	  MemberDef *mmd=mnd->getMemberByName(locName);
+	  if (mmd)
           {
 	    //printf("name=%s scope=%s\n",locName.data(),scope.data());
-	    g_theCallContext.setClass(stripClassName(md->typeString(),md->getOuterScope()));
-            writeMultiLineCodeLink(ol,md,clName);
+	    g_theCallContext.setClass(stripClassName(mmd->typeString(),mmd->getOuterScope()));
+            writeMultiLineCodeLink(ol,mmd,clName);
             addToSearchIndex(className);
-	    const Definition *d = md->getOuterScope()==Doxygen::globalScope ?
-	                          md->getBodyDef() : md->getOuterScope();
-	    if (md->getGroupDef()) d = md->getGroupDef();
-	    if (d && d->isLinkable() && md->isLinkable() && 
+	    const Definition *d = mmd->getOuterScope()==Doxygen::globalScope ?
+	                          mmd->getBodyDef() : mmd->getOuterScope();
+	    if (mmd->getGroupDef()) d = mmd->getGroupDef();
+	    if (d && d->isLinkable() && mmd->isLinkable() && 
                 g_currentMemberDef && g_collectXRefs)
 	    {
-	      addDocCrossReference(g_currentMemberDef,md);
+	      addDocCrossReference(g_currentMemberDef,mmd);
 	    }
 	    return;
           }
@@ -2057,9 +2062,9 @@ static void findMemberLink(CodeOutputInterface &ol,char *symName)
 #undef YY_INPUT
 #define YY_INPUT(buf,result,max_size) result=yyread(buf,max_size);
 
-static int yyread(char *buf,int max_size)
+static yy_size_t yyread(char *buf,yy_size_t max_size)
 {
-  int c=0;
+  yy_size_t c=0;
   while( c < max_size && g_inputString[g_inputPosition] )
   {
     *buf = g_inputString[g_inputPosition++] ;
@@ -2083,7 +2088,7 @@ static int yyread(char *buf,int max_size)
 
 
 
-#line 2087 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
+#line 2092 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
 
 #define INITIAL 0
 #define Body 1
@@ -2184,8 +2189,6 @@ static int input (void );
     static void yy_push_state (int new_state );
     
     static void yy_pop_state (void );
-    
-    static int yy_top_state (void );
     
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
@@ -2290,10 +2293,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 995 "pycode.l"
+#line 1001 "pycode.l"
 
 
-#line 2297 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
+#line 2300 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -2412,7 +2415,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 998 "pycode.l"
+#line 1004 "pycode.l"
 {
 				        startFontClass("keyword");
 					codify(pycodeYYtext);
@@ -2422,7 +2425,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 1005 "pycode.l"
+#line 1011 "pycode.l"
 {
 				        startFontClass("keyword");
 					codify(pycodeYYtext);
@@ -2432,7 +2435,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 1011 "pycode.l"
+#line 1017 "pycode.l"
 {
 				        startFontClass("keywordtype");
 					codify(pycodeYYtext);
@@ -2441,7 +2444,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 1016 "pycode.l"
+#line 1022 "pycode.l"
 {
 				        codify("self.");
 				        findMemberLink(*g_code,&pycodeYYtext[5]);
@@ -2452,7 +2455,7 @@ case 5:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up pycodeYYtext again */
 YY_RULE_SETUP
-#line 1020 "pycode.l"
+#line 1026 "pycode.l"
 {
 				        codify("self.");
 				        findMemberLink(*g_code,&pycodeYYtext[5]);
@@ -2460,7 +2463,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 1024 "pycode.l"
+#line 1030 "pycode.l"
 {
 				        codify("self.");
 				        findMemberLink(*g_code,&pycodeYYtext[5]);
@@ -2468,7 +2471,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 1028 "pycode.l"
+#line 1034 "pycode.l"
 {
 				        codify("self.");
 				        findMemberLink(*g_code,&pycodeYYtext[5]);
@@ -2476,7 +2479,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 1032 "pycode.l"
+#line 1038 "pycode.l"
 {
 				        codify("cls.");
 				        findMemberLink(*g_code,&pycodeYYtext[4]);
@@ -2487,7 +2490,7 @@ case 9:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up pycodeYYtext again */
 YY_RULE_SETUP
-#line 1036 "pycode.l"
+#line 1042 "pycode.l"
 {
 				        codify("cls.");
 				        findMemberLink(*g_code,&pycodeYYtext[4]);
@@ -2495,7 +2498,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 1040 "pycode.l"
+#line 1046 "pycode.l"
 {
 				        codify("cls.");
 				        findMemberLink(*g_code,&pycodeYYtext[4]);
@@ -2503,7 +2506,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 1044 "pycode.l"
+#line 1050 "pycode.l"
 {
 				        codify("cls.");
 				        findMemberLink(*g_code,&pycodeYYtext[4]);
@@ -2512,7 +2515,7 @@ YY_RULE_SETUP
 
 case 12:
 YY_RULE_SETUP
-#line 1050 "pycode.l"
+#line 1056 "pycode.l"
 {
 
 					generateClassOrGlobalLink(*g_code,pycodeYYtext);
@@ -2525,14 +2528,14 @@ YY_RULE_SETUP
 
 case 13:
 YY_RULE_SETUP
-#line 1060 "pycode.l"
+#line 1066 "pycode.l"
 {
 					codify(pycodeYYtext);
                                     }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 1064 "pycode.l"
+#line 1070 "pycode.l"
 {
                                         // The parser
 					// is assuming
@@ -2554,7 +2557,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 1083 "pycode.l"
+#line 1089 "pycode.l"
 {
 				      codify(pycodeYYtext);
 
@@ -2599,14 +2602,14 @@ YY_RULE_SETUP
 
 case 16:
 YY_RULE_SETUP
-#line 1126 "pycode.l"
+#line 1132 "pycode.l"
 {
                                         generateFunctionLink(*g_code,pycodeYYtext);
                                     }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 1130 "pycode.l"
+#line 1136 "pycode.l"
 {
 				        codify(pycodeYYtext);
 					BEGIN( FunctionParams );
@@ -2616,7 +2619,7 @@ YY_RULE_SETUP
 
 case 18:
 YY_RULE_SETUP
-#line 1137 "pycode.l"
+#line 1143 "pycode.l"
 {
                                          // Parses delimiters
 				         codify(pycodeYYtext);
@@ -2624,14 +2627,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 1142 "pycode.l"
+#line 1148 "pycode.l"
 {
 				         codify(pycodeYYtext);
                                     }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 1146 "pycode.l"
+#line 1152 "pycode.l"
 {
                                          codify(pycodeYYtext);
                                     }
@@ -2639,14 +2642,14 @@ YY_RULE_SETUP
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 1150 "pycode.l"
+#line 1156 "pycode.l"
 {
 				         codifyLines(pycodeYYtext);
                                     }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 1154 "pycode.l"
+#line 1160 "pycode.l"
 {
 				      codify(pycodeYYtext);
 
@@ -2662,7 +2665,7 @@ YY_RULE_SETUP
 
 case 23:
 YY_RULE_SETUP
-#line 1168 "pycode.l"
+#line 1174 "pycode.l"
 {
                                  // Position-sensitive rules!
                                  // Must come AFTER keyword-triggered rules
@@ -2676,7 +2679,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 1179 "pycode.l"
+#line 1185 "pycode.l"
 {
                                  if (g_currentMemberDef && g_currentMemberDef->isFunction())
                                  {
@@ -2692,35 +2695,35 @@ case 25:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up pycodeYYtext again */
 YY_RULE_SETUP
-#line 1188 "pycode.l"
+#line 1194 "pycode.l"
 {
 				 generateClassOrGlobalLink(*g_code,pycodeYYtext);
       			       }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 1191 "pycode.l"
+#line 1197 "pycode.l"
 {
 				 generateClassOrGlobalLink(*g_code,pycodeYYtext,TRUE);
 			       }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 1194 "pycode.l"
+#line 1200 "pycode.l"
 { codify(pycodeYYtext); }
 	YY_BREAK
 
 
 case 28:
 YY_RULE_SETUP
-#line 1202 "pycode.l"
+#line 1208 "pycode.l"
 {
                                          codify(pycodeYYtext);
                                        }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 1205 "pycode.l"
+#line 1211 "pycode.l"
 {
                                           startFontClass("keyword");
 					  codifyLines(pycodeYYtext);
@@ -2730,7 +2733,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 1211 "pycode.l"
+#line 1217 "pycode.l"
 {
                                           startFontClass("keyword");
 					  codifyLines(pycodeYYtext);
@@ -2742,7 +2745,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 1220 "pycode.l"
+#line 1226 "pycode.l"
 {
                                           if (g_currentMemberDef && g_currentMemberDef->isFunction())
                                           {
@@ -2758,14 +2761,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 1232 "pycode.l"
+#line 1238 "pycode.l"
 {
                                          codify(pycodeYYtext);
 				       } 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 1237 "pycode.l"
+#line 1243 "pycode.l"
 {
   				         if (YY_START==SingleQuoteString || 
 				             YY_START==DoubleQuoteString || 
@@ -2782,7 +2785,7 @@ YY_RULE_SETUP
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 1250 "pycode.l"
+#line 1256 "pycode.l"
 {
 					  codifyLines(pycodeYYtext);
 					  if ( g_noSuiteFound ) 
@@ -2797,7 +2800,7 @@ YY_RULE_SETUP
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 1261 "pycode.l"
+#line 1267 "pycode.l"
 {
                                  // Blankline - ignore, keep looking for indentation.
 				 codifyLines(pycodeYYtext);
@@ -2805,14 +2808,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 1266 "pycode.l"
+#line 1272 "pycode.l"
 {
                                  // This state lasts momentarily,
                                  // to check the indentation
                                  // level that is about to be
                                  // used.
 				 codifyLines(pycodeYYtext);
-				 g_indents.push(pycodeYYleng);
+				 g_indents.push(static_cast<int>(pycodeYYleng));
                                  // printf("Captured indent of %d [line %d]\n", pycodeYYleng, g_yyLineNr);
 				 BEGIN( Suite );
                                }
@@ -2821,20 +2824,20 @@ YY_RULE_SETUP
 
 case 37:
 YY_RULE_SETUP
-#line 1280 "pycode.l"
+#line 1286 "pycode.l"
 {
                                  // This implements poor
 				 // indentation-tracking;
                                  // should be improved.
 				 // (translate tabs to space, etc)
   		                 codifyLines(pycodeYYtext);
-                                 adjustScopesAndSuites((int)pycodeYYleng);
+                                 adjustScopesAndSuites(static_cast<int>(pycodeYYleng));
                                }
 	YY_BREAK
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 1289 "pycode.l"
+#line 1295 "pycode.l"
 {
                                  // If this ever succeeds,
 				 // it means that this is
@@ -2845,7 +2848,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 1297 "pycode.l"
+#line 1303 "pycode.l"
 {
                                  // Default rule; matches
 				 // the empty string, assuming
@@ -2858,7 +2861,7 @@ YY_RULE_SETUP
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 1307 "pycode.l"
+#line 1313 "pycode.l"
 {
                                  codifyLines(pycodeYYtext);
 			         BEGIN( SuiteMaintain );
@@ -2866,7 +2869,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 1311 "pycode.l"
+#line 1317 "pycode.l"
 {
   			         codify(pycodeYYtext);
                                }
@@ -2874,7 +2877,7 @@ YY_RULE_SETUP
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 1314 "pycode.l"
+#line 1320 "pycode.l"
 {
   		                 codifyLines(pycodeYYtext);
                                }
@@ -2883,28 +2886,28 @@ YY_RULE_SETUP
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 1319 "pycode.l"
+#line 1325 "pycode.l"
 { // line continuation
   		                 codifyLines(pycodeYYtext);
                                }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 1322 "pycode.l"
+#line 1328 "pycode.l"
 { // escaped char
   		                 codify(pycodeYYtext);
                                }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 1325 "pycode.l"
+#line 1331 "pycode.l"
 { // triple double quotes
   		                 codify(pycodeYYtext);
       			       }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 1328 "pycode.l"
+#line 1334 "pycode.l"
 { // end of the string
   		                 codify(pycodeYYtext);
 				 endFontClass();
@@ -2913,14 +2916,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 1333 "pycode.l"
+#line 1339 "pycode.l"
 { // normal chars
   		                 codify(pycodeYYtext);
                                }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 1336 "pycode.l"
+#line 1342 "pycode.l"
 { // normal char
   		                 codify(pycodeYYtext);
                                }
@@ -2930,28 +2933,28 @@ YY_RULE_SETUP
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 1342 "pycode.l"
+#line 1348 "pycode.l"
 { // line continuation
   		                 codifyLines(pycodeYYtext);
                                }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 1345 "pycode.l"
+#line 1351 "pycode.l"
 { // escaped char
   		                 codify(pycodeYYtext);
                                }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 1348 "pycode.l"
+#line 1354 "pycode.l"
 { // triple single quotes
   		                 codify(pycodeYYtext);
       			       }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 1351 "pycode.l"
+#line 1357 "pycode.l"
 { // end of the string
   		                 codify(pycodeYYtext);
 				 endFontClass();
@@ -2960,14 +2963,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 1356 "pycode.l"
+#line 1362 "pycode.l"
 { // normal chars
   		                 codify(pycodeYYtext);
                                }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 1359 "pycode.l"
+#line 1365 "pycode.l"
 { // normal char
   		                 codify(pycodeYYtext);
                                }
@@ -2975,10 +2978,10 @@ YY_RULE_SETUP
 
 
 case 55:
-#line 1366 "pycode.l"
+#line 1372 "pycode.l"
 case 56:
 YY_RULE_SETUP
-#line 1366 "pycode.l"
+#line 1372 "pycode.l"
 {
   		          codify(pycodeYYtext);
 			  if (g_doubleQuote==(pycodeYYtext[0]=='"')) 
@@ -2991,7 +2994,7 @@ YY_RULE_SETUP
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 1374 "pycode.l"
+#line 1380 "pycode.l"
 {
 			 codifyLines(pycodeYYtext);
 		       }
@@ -2999,14 +3002,14 @@ YY_RULE_SETUP
 case 58:
 /* rule 58 can match eol */
 YY_RULE_SETUP
-#line 1377 "pycode.l"
+#line 1383 "pycode.l"
 {
 			 codifyLines(pycodeYYtext);
                        }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 1380 "pycode.l"
+#line 1386 "pycode.l"
 {
                          codify(pycodeYYtext);
                        }
@@ -3024,7 +3027,7 @@ YY_RULE_SETUP
    */
 case 60:
 YY_RULE_SETUP
-#line 1396 "pycode.l"
+#line 1402 "pycode.l"
 {
 				 if (YY_START==SingleQuoteString) REJECT;
 				 startFontClass("stringliteral");
@@ -3036,7 +3039,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 1404 "pycode.l"
+#line 1410 "pycode.l"
 {
 				 if (YY_START==DoubleQuoteString) REJECT;
 				 startFontClass("stringliteral");
@@ -3048,7 +3051,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 1412 "pycode.l"
+#line 1418 "pycode.l"
 { // single quoted string
 				 if (YY_START==SingleQuoteString ||
 				     YY_START==DoubleQuoteString ||
@@ -3065,7 +3068,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 1425 "pycode.l"
+#line 1431 "pycode.l"
 { // double quoted string
 				 if (YY_START==SingleQuoteString ||
 				     YY_START==DoubleQuoteString ||
@@ -3082,7 +3085,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 1438 "pycode.l"
+#line 1444 "pycode.l"
 { // contents of current comment line
                                  g_docBlock+=pycodeYYtext;
   			       }
@@ -3090,7 +3093,7 @@ YY_RULE_SETUP
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 1441 "pycode.l"
+#line 1447 "pycode.l"
 { // comment block (next line is also comment line)
 				 g_docBlock+=pycodeYYtext; 
    			       }
@@ -3098,7 +3101,7 @@ YY_RULE_SETUP
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 1444 "pycode.l"
+#line 1450 "pycode.l"
 { // comment block ends at the end of this line
                                  // remove special comment (default config)
 				 if (Config_getBool(STRIP_CODE_COMMENTS))
@@ -3118,7 +3121,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 1460 "pycode.l"
+#line 1466 "pycode.l"
 {
   				 if (YY_START==SingleQuoteString || 
 				     YY_START==DoubleQuoteString || 
@@ -3134,7 +3137,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 1472 "pycode.l"
+#line 1478 "pycode.l"
 { // normal comment
   				 if (YY_START==SingleQuoteString || 
 				     YY_START==DoubleQuoteString || 
@@ -3151,7 +3154,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 1484 "pycode.l"
+#line 1490 "pycode.l"
 {
 				  if (g_endComment)
 				  {
@@ -3170,7 +3173,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 1500 "pycode.l"
+#line 1506 "pycode.l"
 {
   		                 codify(pycodeYYtext);
 				 BEGIN(Body);					
@@ -3178,7 +3181,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 1504 "pycode.l"
+#line 1510 "pycode.l"
 {
   		                 codify(pycodeYYtext);
 				 // printf("[pycode] '%s' [ state %d ]  [line %d] no match\n",
@@ -3204,7 +3207,7 @@ case YY_STATE_EOF(SingleQuoteString):
 case YY_STATE_EOF(DoubleQuoteString):
 case YY_STATE_EOF(TripleString):
 case YY_STATE_EOF(DocBlock):
-#line 1513 "pycode.l"
+#line 1519 "pycode.l"
 {
                                  if (YY_START == DocBlock) {
                                    if (!Config_getBool(STRIP_CODE_COMMENTS))
@@ -3219,10 +3222,10 @@ case YY_STATE_EOF(DocBlock):
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 1524 "pycode.l"
+#line 1530 "pycode.l"
 ECHO;
 	YY_BREAK
-#line 3226 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
+#line 3229 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pycode.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -4006,11 +4009,6 @@ YY_BUFFER_STATE pycodeYY_scan_bytes  (yyconst char * yybytes, yy_size_t  _yybyte
 	BEGIN((yy_start_stack)[(yy_start_stack_ptr)]);
 }
 
-    static int yy_top_state  (void)
-{
-    	return (yy_start_stack)[(yy_start_stack_ptr) - 1];
-}
-
 #ifndef YY_EXIT_FAILURE
 #define YY_EXIT_FAILURE 2
 #endif
@@ -4232,7 +4230,7 @@ void pycodeYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 1524 "pycode.l"
+#line 1530 "pycode.l"
 
 
 
@@ -4382,6 +4380,7 @@ void PythonCodeParser::resetCodeParserState()
   ::resetPythonCodeParserState();
 }
 
-
+#if USE_STATE2STRING
 #include "pycode.l.h"
+#endif
 

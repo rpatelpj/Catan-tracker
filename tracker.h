@@ -1,6 +1,6 @@
 /**
  * @file tracker.h
- * @brief 'tracker' function prototypes.
+ * @brief tracker function prototypes.
  */
 
 #ifndef TRACKER
@@ -76,9 +76,9 @@ void display(int numPlayers, struct Player* profiles, struct Overall* overall);
 void save(int numPlayers, struct Player* profiles, struct Overall* overall);
 
 /**
- * @brief Provide 'tracker' options.
+ * @brief Provide tracker options.
  *
- * Allow user to record data, display results, or save results and quit 'tracker'.
+ * Allow user to record data, display results, or save results and quit tracker.
  *
  * @param numPlayers number of players
  * @param profiles player profiles

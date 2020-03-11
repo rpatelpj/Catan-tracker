@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
 #line 24 "declinfo.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -626,7 +626,9 @@ goto find_rule; \
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 #define YY_NEVER_INTERACTIVE 1
-  
+
+#define USE_STATE2STRING 0
+
 /* -----------------------------------------------------------------
  *
  *	statics
@@ -650,10 +652,13 @@ struct declinfoYY_state
      bool         insidePHP;
 };
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
+
 static void addType(yyscan_t yyscanner);
 static void addTypeName(yyscan_t yyscanner);
-static int yyread(char *buf,int max_size, yyscan_t yyscanner);
+static yy_size_t yyread(char *buf,yy_size_t max_size, yyscan_t yyscanner);
 
 /* -----------------------------------------------------------------
  */
@@ -668,7 +673,7 @@ static int yyread(char *buf,int max_size, yyscan_t yyscanner);
 
 
 
-#line 672 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
+#line 677 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
 
 #define INITIAL 0
 #define Start 1
@@ -905,10 +910,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 93 "declinfo.l"
+#line 98 "declinfo.l"
 
 
-#line 912 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
+#line 917 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -1029,7 +1034,7 @@ case 1:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 95 "declinfo.l"
+#line 100 "declinfo.l"
 { // operator rule must be before {ID} rule
   				  yyextra->name += yytext;
   				  BEGIN(Operator);
@@ -1037,7 +1042,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 99 "declinfo.l"
+#line 104 "declinfo.l"
 { // Objective-C class categories
   				  if (!yyextra->insideObjC) 
 				  {
@@ -1051,7 +1056,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 109 "declinfo.l"
+#line 114 "declinfo.l"
 { // PHP
   				  if (!yyextra->insidePHP)
 				  {
@@ -1063,7 +1068,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 117 "declinfo.l"
+#line 122 "declinfo.l"
 { // the []'s are for Java, 
                                         // the / was add to deal with multi-
                                         // dimensional C++ arrays like A[][15]
@@ -1075,7 +1080,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 125 "declinfo.l"
+#line 130 "declinfo.l"
 { // found a yyextra->scope specifier
  				  if (!yyextra->scope.isEmpty())
 				  {
@@ -1090,14 +1095,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 136 "declinfo.l"
+#line 141 "declinfo.l"
 { // Objective-C argument separator
   				  yyextra->name+=yytext;
   				}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 139 "declinfo.l"
+#line 144 "declinfo.l"
 {
   				  addType(yyscanner);
   				  yyextra->type+=yytext;
@@ -1105,14 +1110,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 143 "declinfo.l"
+#line 148 "declinfo.l"
 {
   				  addType(yyscanner);
   				}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 146 "declinfo.l"
+#line 151 "declinfo.l"
 {
   				  addType(yyscanner);
 				  QCString text=yytext;
@@ -1121,14 +1126,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 151 "declinfo.l"
+#line 156 "declinfo.l"
 {
   				  yyextra->type+=")";
   				}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 154 "declinfo.l"
+#line 159 "declinfo.l"
 { // TODO: function pointers
   				  yyextra->args+="(";
   				  BEGIN(ReadArgs);
@@ -1136,7 +1141,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 158 "declinfo.l"
+#line 163 "declinfo.l"
 {
   				  yyextra->args+="[";
 				  BEGIN(ReadArgs);
@@ -1144,7 +1149,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 162 "declinfo.l"
+#line 167 "declinfo.l"
 {
   				  yyextra->name+="<";
 				  yyextra->sharpCount=0;
@@ -1153,17 +1158,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 167 "declinfo.l"
+#line 172 "declinfo.l"
 { yyextra->name+="<<"; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 168 "declinfo.l"
+#line 173 "declinfo.l"
 { yyextra->name+=">>"; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 169 "declinfo.l"
+#line 174 "declinfo.l"
 {
   				  yyextra->name+="<";
   				  yyextra->sharpCount++;
@@ -1171,7 +1176,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 173 "declinfo.l"
+#line 178 "declinfo.l"
 {
   				  yyextra->name+=">";
   				  if (yyextra->sharpCount)
@@ -1184,7 +1189,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 182 "declinfo.l"
+#line 187 "declinfo.l"
 {
   				  yyextra->name+=*yytext;
   				}
@@ -1194,7 +1199,7 @@ case 19:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 185 "declinfo.l"
+#line 190 "declinfo.l"
 {
   				  yyextra->name+="() <>";
 				  BEGIN(ReadArgs);
@@ -1205,7 +1210,7 @@ case 20:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 189 "declinfo.l"
+#line 194 "declinfo.l"
 {
   				  yyextra->name+="()";
 				  BEGIN(ReadArgs);
@@ -1217,7 +1222,7 @@ case 21:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 193 "declinfo.l"
+#line 198 "declinfo.l"
 {
   				  yyextra->name+=yytext;
 				  BEGIN(ReadArgs);
@@ -1225,7 +1230,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 197 "declinfo.l"
+#line 202 "declinfo.l"
 {
   				  yyextra->exceptionString="throw(";
 				  BEGIN(ReadExceptions);
@@ -1233,35 +1238,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 201 "declinfo.l"
+#line 206 "declinfo.l"
 {
   				  yyextra->args+=*yytext;
   				}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 204 "declinfo.l"
+#line 209 "declinfo.l"
 {
   				  yyextra->exceptionString+=*yytext;
   				}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 207 "declinfo.l"
+#line 212 "declinfo.l"
 
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 208 "declinfo.l"
+#line 213 "declinfo.l"
 
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 210 "declinfo.l"
+#line 215 "declinfo.l"
 ECHO;
 	YY_BREAK
-#line 1265 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
+#line 1270 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/declinfo.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Start):
 			case YY_STATE_EOF(Template):
@@ -2356,7 +2361,7 @@ void declinfoYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 210 "declinfo.l"
+#line 215 "declinfo.l"
 
 
 
@@ -2388,16 +2393,16 @@ static void addTypeName(yyscan_t yyscanner)
   yyextra->name.resize(0);
 }
 
-static int yyread(char *buf,int max_size, yyscan_t yyscanner)
+static yy_size_t yyread(char *buf,yy_size_t max_size, yyscan_t yyscanner)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-    int c=0;
-    while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
-    {
-	*buf = yyextra->inputString[yyextra->inputPosition++] ;
-	c++; buf++;
-    }
-    return c;
+  yy_size_t c=0;
+  while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
+  {
+    *buf = yyextra->inputString[yyextra->inputPosition++] ;
+    c++; buf++;
+  }
+  return c;
 }
 
 /*@ public interface------------------------------------------------------------
@@ -2534,6 +2539,7 @@ int main()
 }
 #endif
 
-
+#if USE_STATE2STRING
 #include "declinfo.l.h"
+#endif
 

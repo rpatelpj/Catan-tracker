@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Raj/Desktop/Catan-tracker/doxygen/src
+# Install script for directory: /Users/Raj/Downloads/Catan-tracker/doxygen/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,7 +33,7 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/Raj/Desktop/Catan-tracker/doxygen-build/bin/doxygen")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/Raj/Downloads/Catan-tracker/doxygen-build/bin/doxygen")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/doxygen" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/doxygen")
     if(CMAKE_INSTALL_DO_STRIP)

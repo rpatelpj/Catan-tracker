@@ -9,8 +9,8 @@
 char *getGitVersion(void)
 {
   static char gitVersionString[100];
-  strcpy(gitVersionString,"6c06e912338176303d1a1e041a39984ff6fd42be");
+  strcpy(gitVersionString,"30887ace1d06cc76bdd1b5aa3895e21dc39fddab");
   strcat(gitVersionString,!strcmp("false","true")?"*":"");
-  if (!strcmp("6c06e912338176303d1a1e041a39984ff6fd42be", "GIT-NOTFOUND")) gitVersionString[0] = '\0';
+  if (!strcmp("30887ace1d06cc76bdd1b5aa3895e21dc39fddab", "GIT-NOTFOUND")) gitVersionString[0] = '\0';
   return gitVersionString;
 }

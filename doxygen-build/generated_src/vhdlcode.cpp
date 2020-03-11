@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
 #line 24 "vhdlcode.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -15549,6 +15549,8 @@ char *vhdlcodeYYtext;
 
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
+
+#define USE_STATE2STRING 0
   
 // Toggle for some debugging info
 //#define DBG_CTX(x) fprintf x
@@ -15612,7 +15614,10 @@ static bool writeColoredWord(QCString& word );
 static void generateClassOrGlobalLink(CodeOutputInterface &ol,const char *clName, bool typeOnly=FALSE, const char *curr_class=0);
 static void endFontClass();
 static void startFontClass(const char *s);
+
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 //-------------------------------------------------------------------
 
 
@@ -16259,7 +16264,7 @@ static int yyread(char *buf,int max_size)
 
 
 
-#line 16263 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
+#line 16268 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
 
 #define INITIAL 0
 #define Bases 1
@@ -16455,10 +16460,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 818 "vhdlcode.l"
+#line 823 "vhdlcode.l"
 
 
-#line 16462 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
+#line 16467 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -16554,14 +16559,14 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 820 "vhdlcode.l"
+#line 825 "vhdlcode.l"
 { 
                         BEGIN(Bases); 
                       }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 824 "vhdlcode.l"
+#line 829 "vhdlcode.l"
 {
                         g_braceCount++;
                         writeFont("vhdlchar",vhdlcodeYYtext);
@@ -16570,7 +16575,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 830 "vhdlcode.l"
+#line 835 "vhdlcode.l"
 { /* write and link a port map lines */
                         QCString tt(vhdlcodeYYtext);
                         VhdlDocGen::deleteAllChars(tt,',');
@@ -16599,7 +16604,7 @@ YY_RULE_SETUP
 			  generateMemLink(*g_code,g_PortMapComp,s1); 
 			  while (index++<t1.size()) 
 			  { 
-			    char cc=t1.at(index);
+			    cc=t1.at(index);
 			    if (cc==' ' || cc=='\t')
 			    {
 			      char c2[2];
@@ -16644,7 +16649,7 @@ YY_RULE_SETUP
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 900 "vhdlcode.l"
+#line 905 "vhdlcode.l"
 {
                         codifyLines(vhdlcodeYYtext);
                         BEGIN(Map);
@@ -16652,7 +16657,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 905 "vhdlcode.l"
+#line 910 "vhdlcode.l"
 {
                         g_braceCount--;
                         writeFont("vhdlchar",vhdlcodeYYtext);
@@ -16664,7 +16669,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 914 "vhdlcode.l"
+#line 919 "vhdlcode.l"
 {
                          QCString tmp(vhdlcodeYYtext);
                          tmp=tmp.stripWhiteSpace();
@@ -16679,7 +16684,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 926 "vhdlcode.l"
+#line 931 "vhdlcode.l"
 {
                        QCString qcs(vhdlcodeYYtext);
                        VhdlDocGen::deleteAllChars(qcs,'"');
@@ -16693,7 +16698,7 @@ YY_RULE_SETUP
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 936 "vhdlcode.l"
+#line 941 "vhdlcode.l"
 {
                         g_FuncProto.append(vhdlcodeYYtext);
                         if (isProto)
@@ -16705,7 +16710,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 946 "vhdlcode.l"
+#line 951 "vhdlcode.l"
 {
                         g_FuncProto.append(vhdlcodeYYtext);                
                         if (isProto)                                                                 
@@ -16718,7 +16723,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 955 "vhdlcode.l"
+#line 960 "vhdlcode.l"
 {
   			QRegExp regg("[\\s]");
                         QCString tt(vhdlcodeYYtext);
@@ -16744,7 +16749,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 977 "vhdlcode.l"
+#line 982 "vhdlcode.l"
 {
                         codifyLines(vhdlcodeYYtext,g_CurrClass.data());
                         g_vhdlKeyDict.clear();
@@ -16752,7 +16757,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 982 "vhdlcode.l"
+#line 987 "vhdlcode.l"
 {
                         codifyLines(vhdlcodeYYtext,g_CurrClass.data());
                         isFuncProto=FALSE;
@@ -16760,7 +16765,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 987 "vhdlcode.l"
+#line 992 "vhdlcode.l"
 {
                         g_FuncProto.append(vhdlcodeYYtext);
                         if (isProto)
@@ -16771,7 +16776,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 995 "vhdlcode.l"
+#line 1000 "vhdlcode.l"
 {
                         QCString val(vhdlcodeYYtext);
                         g_FuncProto.append(vhdlcodeYYtext);
@@ -16809,7 +16814,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 1030 "vhdlcode.l"
+#line 1035 "vhdlcode.l"
 {
                         g_braceCount++;
                         g_FuncProto+='(';
@@ -16822,7 +16827,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 1040 "vhdlcode.l"
+#line 1045 "vhdlcode.l"
 {
                         g_braceCount--;
                         g_FuncProto+=')';
@@ -16845,7 +16850,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 1061 "vhdlcode.l"
+#line 1066 "vhdlcode.l"
 {
                          appStringLower(g_PrevString,vhdlcodeYYtext);
                          g_CurrClass.resize(0);
@@ -16858,7 +16863,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 1072 "vhdlcode.l"
+#line 1077 "vhdlcode.l"
 {
                          g_braceCount++;
                          g_code->codify(vhdlcodeYYtext);
@@ -16866,7 +16871,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 1078 "vhdlcode.l"
+#line 1083 "vhdlcode.l"
 {
                          g_braceCount--;
                          g_code->codify(vhdlcodeYYtext);  
@@ -16883,7 +16888,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 1092 "vhdlcode.l"
+#line 1097 "vhdlcode.l"
 {    
                          if (strlen(vhdlcodeYYtext)>=2) // found text ?
 			 {
@@ -16897,7 +16902,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 1103 "vhdlcode.l"
+#line 1108 "vhdlcode.l"
 {
                          codifyLines(vhdlcodeYYtext);
                        }
@@ -16905,14 +16910,14 @@ YY_RULE_SETUP
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 1109 "vhdlcode.l"
+#line 1114 "vhdlcode.l"
 {
                            codifyLines(vhdlcodeYYtext);
                          }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 1113 "vhdlcode.l"
+#line 1118 "vhdlcode.l"
 { 
                          startFontClass("vhdllogic");
                          codifyLines(vhdlcodeYYtext);
@@ -16922,7 +16927,7 @@ YY_RULE_SETUP
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 1119 "vhdlcode.l"
+#line 1124 "vhdlcode.l"
 { 
                          codifyLines(vhdlcodeYYtext);
                          g_braceCount=1;
@@ -16932,7 +16937,7 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 1125 "vhdlcode.l"
+#line 1130 "vhdlcode.l"
 { 
                          codifyLines(vhdlcodeYYtext);
                          g_braceCount=1;
@@ -16940,7 +16945,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 1130 "vhdlcode.l"
+#line 1135 "vhdlcode.l"
 {
                          QCString temp(vhdlcodeYYtext);
                          appStringLower(g_PrevString,vhdlcodeYYtext);
@@ -16954,7 +16959,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 1141 "vhdlcode.l"
+#line 1146 "vhdlcode.l"
 { 
                             QCString temp(vhdlcodeYYtext);
                         if (!checkVhdlString(temp))
@@ -16964,14 +16969,14 @@ YY_RULE_SETUP
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 1148 "vhdlcode.l"
+#line 1153 "vhdlcode.l"
 { 
                          g_FuncProto.append(vhdlcodeYYtext);
                        }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 1154 "vhdlcode.l"
+#line 1159 "vhdlcode.l"
 {
                          g_FuncProto.append(vhdlcodeYYtext);
                          g_braceCount++;
@@ -16979,7 +16984,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 1159 "vhdlcode.l"
+#line 1164 "vhdlcode.l"
 {
                          g_FuncProto.append(vhdlcodeYYtext);
                          g_braceCount--;
@@ -16993,7 +16998,7 @@ YY_RULE_SETUP
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 1169 "vhdlcode.l"
+#line 1174 "vhdlcode.l"
 { //found package 
                           QCString temp(vhdlcodeYYtext);
                           QCStringList strl=QCStringList::split(".",temp);
@@ -17026,7 +17031,7 @@ YY_RULE_SETUP
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 1198 "vhdlcode.l"
+#line 1203 "vhdlcode.l"
 { // found port or generic map
                            QCString tt(vhdlcodeYYtext);
              /*
@@ -17082,7 +17087,7 @@ YY_RULE_SETUP
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 1250 "vhdlcode.l"
+#line 1255 "vhdlcode.l"
 { // found component
                            appStringLower(g_PrevString,vhdlcodeYYtext);
                            //  writeFont("keywordflow",VhdlDocGen::getIndexWord(vhdlcodeYYtext,0).data());
@@ -17106,7 +17111,7 @@ YY_RULE_SETUP
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 1272 "vhdlcode.l"
+#line 1277 "vhdlcode.l"
 { // found architecture
                            g_PortMapComp.resize(0);
                            //        writeFont("vhdlkeyword",VhdlDocGen::getIndexWord(vhdlcodeYYtext,0).data());
@@ -17133,7 +17138,7 @@ YY_RULE_SETUP
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 1296 "vhdlcode.l"
+#line 1301 "vhdlcode.l"
 { // found package body  
                            QCString ss(vhdlcodeYYtext);
                            QCString temp=VhdlDocGen::getIndexWord(vhdlcodeYYtext,2);
@@ -17153,7 +17158,7 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 1312 "vhdlcode.l"
+#line 1317 "vhdlcode.l"
 { // found process
                            isFuncProto=TRUE;
                            g_FuncProto.resize(0);
@@ -17174,7 +17179,7 @@ YY_RULE_SETUP
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 1329 "vhdlcode.l"
+#line 1334 "vhdlcode.l"
 { // end of process
                            isFuncProto=FALSE;
                            codifyLines(vhdlcodeYYtext);
@@ -17183,7 +17188,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 1336 "vhdlcode.l"
+#line 1341 "vhdlcode.l"
 { 
                            isFuncProto=FALSE;
                            writeFont("vhdlkeyword",vhdlcodeYYtext);
@@ -17192,7 +17197,7 @@ YY_RULE_SETUP
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 1341 "vhdlcode.l"
+#line 1346 "vhdlcode.l"
 { //found package or library
                            writeFont("vhdlkeyword",vhdlcodeYYtext);
                            BEGIN(ParsePackage);
@@ -17201,7 +17206,7 @@ YY_RULE_SETUP
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 1347 "vhdlcode.l"
+#line 1352 "vhdlcode.l"
 { 
                            codifyLines(vhdlcodeYYtext);
                          }
@@ -17209,7 +17214,7 @@ YY_RULE_SETUP
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 1353 "vhdlcode.l"
+#line 1358 "vhdlcode.l"
 {  // found function|procedure
                            g_vhdlKeyDict.clear();
                            g_FuncProto.resize(0);
@@ -17222,7 +17227,7 @@ YY_RULE_SETUP
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 1364 "vhdlcode.l"
+#line 1369 "vhdlcode.l"
 { 
                            appStringLower(g_PrevString,vhdlcodeYYtext);
                            writeFont("keywordflow",vhdlcodeYYtext);
@@ -17233,7 +17238,7 @@ YY_RULE_SETUP
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 1372 "vhdlcode.l"
+#line 1377 "vhdlcode.l"
 {
                            codifyLines(vhdlcodeYYtext,g_CurrClass.data(),TRUE);
                            g_CurrARCH = FALSE;
@@ -17242,7 +17247,7 @@ YY_RULE_SETUP
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 1376 "vhdlcode.l"
+#line 1381 "vhdlcode.l"
 {
                            if (g_CurrARCH)
                            {
@@ -17255,7 +17260,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 1385 "vhdlcode.l"
+#line 1390 "vhdlcode.l"
 {
                            appStringLower(g_PrevString,vhdlcodeYYtext);
                            QCString temp(vhdlcodeYYtext);
@@ -17267,7 +17272,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 1393 "vhdlcode.l"
+#line 1398 "vhdlcode.l"
 {
                            appStringLower(g_PrevString,vhdlcodeYYtext);
                            QCString temp(vhdlcodeYYtext);
@@ -17281,7 +17286,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 1403 "vhdlcode.l"
+#line 1408 "vhdlcode.l"
 {
 			   codifyLines(vhdlcodeYYtext);
 			   BEGIN(Bases);
@@ -17289,7 +17294,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 1407 "vhdlcode.l"
+#line 1412 "vhdlcode.l"
 { // found keyword
                            QCString qcs(vhdlcodeYYtext);
                            if (!writeColoredWord(qcs))
@@ -17302,7 +17307,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 1418 "vhdlcode.l"
+#line 1423 "vhdlcode.l"
 {
                            appStringLower(g_PrevString,vhdlcodeYYtext);
                            QCString temp(vhdlcodeYYtext);
@@ -17318,7 +17323,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 1431 "vhdlcode.l"
+#line 1436 "vhdlcode.l"
 { 
                            startFontClass("vhdllogic");
                            codifyLines(vhdlcodeYYtext);
@@ -17328,14 +17333,14 @@ YY_RULE_SETUP
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 1437 "vhdlcode.l"
+#line 1442 "vhdlcode.l"
 { 
                             codifyLines(vhdlcodeYYtext,g_CurrClass.data(),TRUE);
                          }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 1442 "vhdlcode.l"
+#line 1447 "vhdlcode.l"
 { 
                            codifyLines(vhdlcodeYYtext);
                            if (isFuncProto)
@@ -17350,7 +17355,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 1454 "vhdlcode.l"
+#line 1459 "vhdlcode.l"
 {                            
                            startFontClass("vhdlchar");
                            g_code->codify(vhdlcodeYYtext);
@@ -17359,7 +17364,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 1460 "vhdlcode.l"
+#line 1465 "vhdlcode.l"
 { 
                            startFontClass("vhdlchar");
                            g_code->codify(vhdlcodeYYtext);
@@ -17368,7 +17373,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 1466 "vhdlcode.l"
+#line 1471 "vhdlcode.l"
 {
                        QCString qcs(vhdlcodeYYtext);
                        VhdlDocGen::deleteAllChars(qcs,'"');
@@ -17382,7 +17387,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 1477 "vhdlcode.l"
+#line 1482 "vhdlcode.l"
 { 
                                       writeFont("keyword",vhdlcodeYYtext);
                                     }
@@ -17393,7 +17398,7 @@ case 57:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up vhdlcodeYYtext again */
 YY_RULE_SETUP
-#line 1481 "vhdlcode.l"
+#line 1486 "vhdlcode.l"
 {
                                       writeWord(vhdlcodeYYtext);
                                       //codifyLines(vhdlcodeYYtext,g_CurrClass.data(),TRUE);
@@ -17401,7 +17406,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 1486 "vhdlcode.l"
+#line 1491 "vhdlcode.l"
 { 
                                       writeWord(vhdlcodeYYtext);
                                     }
@@ -17409,7 +17414,7 @@ YY_RULE_SETUP
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 1490 "vhdlcode.l"
+#line 1495 "vhdlcode.l"
 {
 			   codifyLines(vhdlcodeYYtext);
 			   BEGIN(Bases);
@@ -17417,7 +17422,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 1495 "vhdlcode.l"
+#line 1500 "vhdlcode.l"
 {
                            g_code->codify(vhdlcodeYYtext);
                          }
@@ -17425,7 +17430,7 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 1499 "vhdlcode.l"
+#line 1504 "vhdlcode.l"
 { // found normal or special comment on its own line
                            QCString text(vhdlcodeYYtext);
                            int i=text.find("--");
@@ -17445,7 +17450,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 1515 "vhdlcode.l"
+#line 1520 "vhdlcode.l"
 { // found normal or special comment after something
                            QCString text(vhdlcodeYYtext);
                            int i=text.find("--");
@@ -17465,10 +17470,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 1532 "vhdlcode.l"
+#line 1537 "vhdlcode.l"
 ECHO;
 	YY_BREAK
-#line 17472 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
+#line 17477 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/vhdlcode.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Bases):
 			case YY_STATE_EOF(ParseType):
@@ -18414,7 +18419,7 @@ void vhdlcodeYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 1532 "vhdlcode.l"
+#line 1537 "vhdlcode.l"
 
 
 
@@ -18534,6 +18539,8 @@ void codeFreeVhdlScanner()
 #endif
 }
 
+#if USE_STATE2STRING
 #include "vhdlcode.l.h"
+#endif
 
 

@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -94,7 +94,7 @@ install/strip/fast: preinstall/fast
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -126,7 +126,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -159,14 +159,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion/CMakeFiles/progress.marks
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion/CMakeFiles/progress.marks
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/clean
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,22 +176,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libversion/CMakeFiles/doxygen_version.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/doxygen_version.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/doxygen_version.dir/rule
 .PHONY : libversion/CMakeFiles/doxygen_version.dir/rule
 
 # Convenience name for target.
@@ -201,12 +201,12 @@ doxygen_version: libversion/CMakeFiles/doxygen_version.dir/rule
 
 # fast build rule for target.
 doxygen_version/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/build
 .PHONY : doxygen_version/fast
 
 # Convenience name for target.
 libversion/CMakeFiles/check_doxygen_version.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/check_doxygen_version.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/check_doxygen_version.dir/rule
 .PHONY : libversion/CMakeFiles/check_doxygen_version.dir/rule
 
 # Convenience name for target.
@@ -216,12 +216,12 @@ check_doxygen_version: libversion/CMakeFiles/check_doxygen_version.dir/rule
 
 # fast build rule for target.
 check_doxygen_version/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/check_doxygen_version.dir/build.make libversion/CMakeFiles/check_doxygen_version.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/check_doxygen_version.dir/build.make libversion/CMakeFiles/check_doxygen_version.dir/build
 .PHONY : check_doxygen_version/fast
 
 # Convenience name for target.
 libversion/CMakeFiles/check_git_repository.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/check_git_repository.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libversion/CMakeFiles/check_git_repository.dir/rule
 .PHONY : libversion/CMakeFiles/check_git_repository.dir/rule
 
 # Convenience name for target.
@@ -231,7 +231,7 @@ check_git_repository: libversion/CMakeFiles/check_git_repository.dir/rule
 
 # fast build rule for target.
 check_git_repository/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/check_git_repository.dir/build.make libversion/CMakeFiles/check_git_repository.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/check_git_repository.dir/build.make libversion/CMakeFiles/check_git_repository.dir/build
 .PHONY : check_git_repository/fast
 
 __/generated_src/doxyversion.o: __/generated_src/doxyversion.cpp.o
@@ -240,7 +240,7 @@ __/generated_src/doxyversion.o: __/generated_src/doxyversion.cpp.o
 
 # target to build an object file
 __/generated_src/doxyversion.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.o
 .PHONY : __/generated_src/doxyversion.cpp.o
 
 __/generated_src/doxyversion.i: __/generated_src/doxyversion.cpp.i
@@ -249,7 +249,7 @@ __/generated_src/doxyversion.i: __/generated_src/doxyversion.cpp.i
 
 # target to preprocess a source file
 __/generated_src/doxyversion.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.i
 .PHONY : __/generated_src/doxyversion.cpp.i
 
 __/generated_src/doxyversion.s: __/generated_src/doxyversion.cpp.s
@@ -258,7 +258,7 @@ __/generated_src/doxyversion.s: __/generated_src/doxyversion.cpp.s
 
 # target to generate assembly for a file
 __/generated_src/doxyversion.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/doxyversion.cpp.s
 .PHONY : __/generated_src/doxyversion.cpp.s
 
 __/generated_src/gitversion.o: __/generated_src/gitversion.cpp.o
@@ -267,7 +267,7 @@ __/generated_src/gitversion.o: __/generated_src/gitversion.cpp.o
 
 # target to build an object file
 __/generated_src/gitversion.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.o
 .PHONY : __/generated_src/gitversion.cpp.o
 
 __/generated_src/gitversion.i: __/generated_src/gitversion.cpp.i
@@ -276,7 +276,7 @@ __/generated_src/gitversion.i: __/generated_src/gitversion.cpp.i
 
 # target to preprocess a source file
 __/generated_src/gitversion.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.i
 .PHONY : __/generated_src/gitversion.cpp.i
 
 __/generated_src/gitversion.s: __/generated_src/gitversion.cpp.s
@@ -285,7 +285,7 @@ __/generated_src/gitversion.s: __/generated_src/gitversion.cpp.s
 
 # target to generate assembly for a file
 __/generated_src/gitversion.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libversion/CMakeFiles/doxygen_version.dir/build.make libversion/CMakeFiles/doxygen_version.dir/__/generated_src/gitversion.cpp.s
 .PHONY : __/generated_src/gitversion.cpp.s
 
 # Help Target
@@ -323,6 +323,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

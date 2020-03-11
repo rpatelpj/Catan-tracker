@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
 #line 24 "constexp.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -525,13 +525,18 @@ static yyconst flex_int16_t yy_chk[200] =
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
+#if USE_STATE2STRING
 static const char *stateToString(int state);
-static int yyread(char *buf,int max_size,yyscan_t yyscanner);
+#endif
+
+static yy_size_t yyread(char *buf,yy_size_t max_size,yyscan_t yyscanner);
 
 #undef  YY_INPUT
 #define YY_INPUT(buf,result,max_size) result=yyread(buf,max_size,yyscanner);
 
-#line 535 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
+#line 540 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
 
 #define INITIAL 0
 
@@ -760,10 +765,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 49 "constexp.l"
+#line 54 "constexp.l"
 
 
-#line 767 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
+#line 772 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
 
     yylval = yylval_param;
 
@@ -846,127 +851,127 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 51 "constexp.l"
+#line 56 "constexp.l"
 { return TOK_QUESTIONMARK; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 52 "constexp.l"
+#line 57 "constexp.l"
 { return TOK_COLON; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 53 "constexp.l"
+#line 58 "constexp.l"
 { return TOK_OR; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 54 "constexp.l"
+#line 59 "constexp.l"
 { return TOK_AND; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 55 "constexp.l"
+#line 60 "constexp.l"
 { return TOK_BITWISEOR; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 56 "constexp.l"
+#line 61 "constexp.l"
 { return TOK_BITWISEXOR; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 57 "constexp.l"
+#line 62 "constexp.l"
 { return TOK_AMPERSAND; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 58 "constexp.l"
+#line 63 "constexp.l"
 { return TOK_NOTEQUAL; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 59 "constexp.l"
+#line 64 "constexp.l"
 { return TOK_EQUAL; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 60 "constexp.l"
+#line 65 "constexp.l"
 { return TOK_LESSTHAN; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 61 "constexp.l"
+#line 66 "constexp.l"
 { return TOK_GREATERTHAN; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 62 "constexp.l"
+#line 67 "constexp.l"
 { return TOK_LESSTHANOREQUALTO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 63 "constexp.l"
+#line 68 "constexp.l"
 { return TOK_GREATERTHANOREQUALTO; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 64 "constexp.l"
+#line 69 "constexp.l"
 { return TOK_SHIFTLEFT; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 65 "constexp.l"
+#line 70 "constexp.l"
 { return TOK_SHIFTRIGHT; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 66 "constexp.l"
+#line 71 "constexp.l"
 { return TOK_PLUS; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 67 "constexp.l"
+#line 72 "constexp.l"
 { return TOK_MINUS; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 68 "constexp.l"
+#line 73 "constexp.l"
 { return TOK_STAR; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 69 "constexp.l"
+#line 74 "constexp.l"
 { return TOK_DIVIDE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 70 "constexp.l"
+#line 75 "constexp.l"
 { return TOK_MOD; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 71 "constexp.l"
+#line 76 "constexp.l"
 { return TOK_TILDE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 72 "constexp.l"
+#line 77 "constexp.l"
 { return TOK_NOT; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 73 "constexp.l"
+#line 78 "constexp.l"
 { return TOK_LPAREN; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 74 "constexp.l"
+#line 79 "constexp.l"
 { return TOK_RPAREN; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 75 "constexp.l"
+#line 80 "constexp.l"
 { 
                                      yyextra->strToken=yytext;  
 				     return TOK_CHARACTER; 
@@ -974,56 +979,56 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 79 "constexp.l"
+#line 84 "constexp.l"
 { yyextra->strToken=yytext; 
   				     return TOK_OCTALINT; 
 				   }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 82 "constexp.l"
+#line 87 "constexp.l"
 { yyextra->strToken=yytext; 
   				     return TOK_DECIMALINT; 
 				   }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 85 "constexp.l"
+#line 90 "constexp.l"
 { yyextra->strToken=yytext+2; 
                                      return TOK_HEXADECIMALINT; 
                                    }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 88 "constexp.l"
+#line 93 "constexp.l"
 { 
                                      yyextra->strToken=yytext; return TOK_FLOAT; 
                                    }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 91 "constexp.l"
+#line 96 "constexp.l"
 { 
                                      yyextra->strToken=yytext; return TOK_FLOAT; 
 			           }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 94 "constexp.l"
+#line 99 "constexp.l"
 
 	YY_BREAK
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 95 "constexp.l"
+#line 100 "constexp.l"
 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 97 "constexp.l"
+#line 102 "constexp.l"
 ECHO;
 	YY_BREAK
-#line 1027 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
+#line 1032 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/constexp.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2148,14 +2153,14 @@ void constexpYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 97 "constexp.l"
+#line 102 "constexp.l"
 
 
 
-static int yyread(char *buf,int max_size,yyscan_t yyscanner)
+static yy_size_t yyread(char *buf,yy_size_t max_size,yyscan_t yyscanner)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int c=0;
+  yy_size_t c=0;
   while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
   {
     *buf = yyextra->inputString[yyextra->inputPosition++] ;
@@ -2212,5 +2217,8 @@ bool ConstExpressionParser::parse(const char *fileName,int lineNr,const QCString
 extern "C" {
   int constexpYYwrap(yyscan_t yyscanner) { return 1; }
 }
+
+#if USE_STATE2STRING
 #include "constexp.l.h"
+#endif
 

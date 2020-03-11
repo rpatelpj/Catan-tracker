@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
 #line 21 "commentscan.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -3401,6 +3401,8 @@ goto find_rule; \
 #include "util.h"
 #include "reflist.h"
 
+#define USE_STATE2STRING 0
+
 // forward declarations
 static bool handleBrief(yyscan_t yyscanner,const QCString &, const QCStringList &);
 static bool handleFn(yyscan_t yyscanner,const QCString &, const QCStringList &);
@@ -3481,7 +3483,9 @@ static bool handleEndParBlock(yyscan_t yyscanner,const QCString &, const QCStrin
 static bool handleParam(yyscan_t yyscanner,const QCString &, const QCStringList &);
 static bool handleRetval(yyscan_t yyscanner,const QCString &, const QCStringList &);
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 typedef bool (*DocCmdFunc)(yyscan_t yyscanner,const QCString &name, const QCStringList &optList);
 
@@ -3641,6 +3645,7 @@ static const std::map< std::string, DocCmdMap > docCmdMap =
 #define YY_NO_UNISTD_H 1
 #define YY_NEVER_INTERACTIVE 1
 
+
 enum XRefKind
 {
   XRef_Item,
@@ -3750,7 +3755,6 @@ static void stripTrailingWhiteSpace(QCString &s);
 static void initParser(yyscan_t yyscanner);
 static bool makeStructuralIndicator(yyscan_t yyscanner,Entry::Sections s);
 static void lineCount(yyscan_t yyscanner);
-static QCString stripQuotes(yyscan_t yyscanner,const char *s);
 static void addXRefItem(yyscan_t yyscanner,
                         const char *listName,const char *itemTitle,
                         const char *listTitle,bool append);
@@ -3763,7 +3767,7 @@ static inline void addOutput(yyscan_t yyscanner,const char *s);
 static inline void addOutput(yyscan_t yyscanner,char c);
 static void endBrief(yyscan_t yyscanner,bool addToOutput=TRUE);
 static void handleGuard(yyscan_t yyscanner,const QCString &expr);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 static void addCite(yyscan_t yyscanner);
 
 //-----------------------------------------------------------------------------
@@ -3818,7 +3822,7 @@ static void addCite(yyscan_t yyscanner);
 
 
 
-#line 3822 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
+#line 3826 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
 
 #define INITIAL 0
 #define Comment 1
@@ -4095,7 +4099,7 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 520 "commentscan.l"
+#line 524 "commentscan.l"
 
 
   /* What can happen in while parsing a comment block:
@@ -4115,7 +4119,7 @@ YY_DECL
    *   XML commands, <summary></summary><remarks></remarks>
    */
 
-#line 4119 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
+#line 4123 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -4234,42 +4238,42 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 539 "commentscan.l"
+#line 543 "commentscan.l"
 { // escaped command
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 542 "commentscan.l"
+#line 546 "commentscan.l"
 { // escaped command
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 545 "commentscan.l"
+#line 549 "commentscan.l"
 { // mail address
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 548 "commentscan.l"
+#line 552 "commentscan.l"
 { // quoted text
                                           addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 551 "commentscan.l"
+#line 555 "commentscan.l"
 { // directory (or chain of commands!)
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 554 "commentscan.l"
+#line 558 "commentscan.l"
 { // HTML command that ends a brief description
 					  setOutput(yyscanner,OutputDoc);
 					  // continue with the same input
@@ -4278,7 +4282,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 559 "commentscan.l"
+#line 563 "commentscan.l"
 { // HTML command that ends a brief description
 					  if (yyextra->current->lang==SrcLangExt_CSharp)
                                           {
@@ -4290,7 +4294,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 567 "commentscan.l"
+#line 571 "commentscan.l"
 { // start of a .NET XML style brief description
 					  setOutput(yyscanner,OutputBrief);
                                           addOutput(yyscanner,yytext);
@@ -4298,7 +4302,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 571 "commentscan.l"
+#line 575 "commentscan.l"
 { // start of a .NET XML style detailed description
 					  setOutput(yyscanner,OutputDoc);
                                           addOutput(yyscanner,yytext);
@@ -4306,7 +4310,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 575 "commentscan.l"
+#line 579 "commentscan.l"
 { // start of a .NET XML style detailed description
 					  setOutput(yyscanner,OutputBrief);
                                           addOutput(yyscanner,yytext);
@@ -4315,7 +4319,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 580 "commentscan.l"
+#line 584 "commentscan.l"
 { // end of a brief or detailed description
                                           
 					  setOutput(yyscanner,OutputDoc);
@@ -4324,7 +4328,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 585 "commentscan.l"
+#line 589 "commentscan.l"
 {
                                           QCString tag=yytext;
                                           int s=tag.find("id=");
@@ -4346,7 +4350,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 603 "commentscan.l"
+#line 607 "commentscan.l"
 {
                                           yyextra->insidePre=TRUE;
                                           addOutput(yyscanner,yytext);
@@ -4354,7 +4358,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 607 "commentscan.l"
+#line 611 "commentscan.l"
 {
                                           yyextra->insidePre=FALSE;
                                           addOutput(yyscanner,yytext);
@@ -4362,7 +4366,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 611 "commentscan.l"
+#line 615 "commentscan.l"
 { // RCS tag which end a brief description
                                           setOutput(yyscanner,OutputDoc);
                                           REJECT;
@@ -4370,21 +4374,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 615 "commentscan.l"
+#line 619 "commentscan.l"
 { 
                                           BEGIN(HtmlComment);
                                         }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 618 "commentscan.l"
+#line 622 "commentscan.l"
 {
                                           BEGIN(CdataSection);
                                         }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 621 "commentscan.l"
+#line 625 "commentscan.l"
 {
                                           addOutput(yyscanner," \\endinternal "); 
                                           if (!yyextra->inInternalDocs)
@@ -4395,10 +4399,10 @@ YY_RULE_SETUP
   					}
 	YY_BREAK
 case 19:
-#line 630 "commentscan.l"
+#line 634 "commentscan.l"
 case 20:
 YY_RULE_SETUP
-#line 630 "commentscan.l"
+#line 634 "commentscan.l"
 { // potentially interesting command
                                           // the {B}* in the front was added for bug620924
                                           QCString fullMatch = QCString(yytext);
@@ -4464,14 +4468,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 692 "commentscan.l"
+#line 696 "commentscan.l"
 { // escaped formula command
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 695 "commentscan.l"
+#line 699 "commentscan.l"
 { // language switch command
                                           QCString langId = QCString(yytext).stripWhiteSpace().data()+2;
 			       	          if (!langId.isEmpty() &&
@@ -4483,7 +4487,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 703 "commentscan.l"
+#line 707 "commentscan.l"
 { // start of a formula with custom environment
 					  setOutput(yyscanner,OutputDoc);
 					  yyextra->formulaText="\\begin";
@@ -4500,7 +4504,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 716 "commentscan.l"
+#line 720 "commentscan.l"
 { // start of a inline formula
 					  yyextra->formulaText="$";
 					  yyextra->formulaNewLines=0;
@@ -4509,7 +4513,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 721 "commentscan.l"
+#line 725 "commentscan.l"
 { // start of a block formula
 					  setOutput(yyscanner,OutputDoc);
 					  yyextra->formulaText="\\[";
@@ -4519,7 +4523,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 727 "commentscan.l"
+#line 731 "commentscan.l"
 { // begin of a group
                                           //yyextra->langParser->handleGroupStartCommand(yyextra->memberGroupHeader);
                                           yyextra->docGroup.open(yyextra->current,yyextra->fileName,yyextra->lineNr);
@@ -4527,7 +4531,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 731 "commentscan.l"
+#line 735 "commentscan.l"
 { // end of a group
                                           //yyextra->langParser->handleGroupEndCommand();
                                           yyextra->docGroup.close(yyextra->current,yyextra->fileName,yyextra->lineNr,TRUE);
@@ -4535,23 +4539,23 @@ YY_RULE_SETUP
 					  yyextra->parseMore=TRUE;
                                           yyextra->needNewEntry = TRUE;
 #if YY_FLEX_MAJOR_VERSION>=2 && (YY_FLEX_MINOR_VERSION>5 || (YY_FLEX_MINOR_VERSION==5 && YY_FLEX_SUBMINOR_VERSION>=33))
-				          yyextra->inputPosition=yyextra->prevPosition + (int)(yy_bp - YY_CURRENT_BUFFER_LVALUE->yy_ch_buf) + strlen(yytext);
+				          yyextra->inputPosition=yyextra->prevPosition + (int)(yy_bp - YY_CURRENT_BUFFER_LVALUE->yy_ch_buf) + (int)strlen(yytext);
 #else
-				          yyextra->inputPosition=yyextra->prevPosition + (int)(yy_bp - yy_current_buffer->yy_ch_buf) + strlen(yytext);
+				          yyextra->inputPosition=yyextra->prevPosition + (int)(yy_bp - yy_current_buffer->yy_ch_buf) + (int)strlen(yytext);
 #endif
 					  yyterminate();
                                         }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 744 "commentscan.l"
+#line 748 "commentscan.l"
 { // escaped character
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 747 "commentscan.l"
+#line 751 "commentscan.l"
 { // normal word
 					  addOutput(yyscanner,yytext);
   					}
@@ -4562,16 +4566,16 @@ case 30:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 750 "commentscan.l"
+#line 754 "commentscan.l"
 { // explicit end autolist: e.g "  ."
   				          addOutput(yyscanner,yytext); 
 					}
 	YY_BREAK
 case 31:
-#line 754 "commentscan.l"
+#line 758 "commentscan.l"
 case 32:
 YY_RULE_SETUP
-#line 754 "commentscan.l"
+#line 758 "commentscan.l"
 { // start of autolist
                                           if (!Doxygen::markdownSupport)
                                           {
@@ -4590,7 +4594,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 769 "commentscan.l"
+#line 773 "commentscan.l"
 { // start of autolist
 					  if (yyextra->inContext!=OutputXRef) 
 					  {
@@ -4606,42 +4610,42 @@ case 34:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 777 "commentscan.l"
+#line 781 "commentscan.l"
 { // horizontal line (dashed)
   				          addOutput(yyscanner,yytext); 
                                         }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 780 "commentscan.l"
+#line 784 "commentscan.l"
 { // escaped mdash
                                           addOutput(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 783 "commentscan.l"
+#line 787 "commentscan.l"
 { // escaped mdash
                                           addOutput(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 786 "commentscan.l"
+#line 790 "commentscan.l"
 { // mdash
                                           addOutput(yyscanner,yyextra->insidePre || Doxygen::markdownSupport ? yytext : "&mdash;");
                                         }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 789 "commentscan.l"
+#line 793 "commentscan.l"
 { // ndash
                                           addOutput(yyscanner,yyextra->insidePre || Doxygen::markdownSupport ? yytext : "&ndash;");
                                         }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 792 "commentscan.l"
+#line 796 "commentscan.l"
 { // numbered item
                                           if (yyextra->inContext!=OutputXRef)
                                           {
@@ -4653,14 +4657,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 800 "commentscan.l"
+#line 804 "commentscan.l"
 { // . at start or in the middle of a word, or ellipsis
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 803 "commentscan.l"
+#line 807 "commentscan.l"
 { // . with escaped space.
   					  addOutput(yyscanner,yytext[0]);
   					  addOutput(yyscanner,yytext[2]);
@@ -4668,14 +4672,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 807 "commentscan.l"
+#line 811 "commentscan.l"
 { // . with comma such as "e.g.," 
   					  addOutput(yyscanner,yytext);
   					}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 810 "commentscan.l"
+#line 814 "commentscan.l"
 { // ellipsis with escaped space.
   					  addOutput(yyscanner,"... ");
   					}
@@ -4685,7 +4689,7 @@ case 44:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 813 "commentscan.l"
+#line 817 "commentscan.l"
 { // internal ellipsis 
   					  addOutput(yyscanner,yytext);
   					}
@@ -4693,14 +4697,14 @@ YY_RULE_SETUP
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 816 "commentscan.l"
+#line 820 "commentscan.l"
 { // at least one blank line (or blank line command)
 					  if (yyextra->inContext==OutputXRef)
 					  {
 					    // see bug 613024, we need to put the newlines after ending the XRef section.
 					    if (!yyextra->insideParBlock) setOutput(yyscanner,OutputDoc);
-                                            int i;
-                                            for (i=0;i<yyleng;)
+                                            yy_size_t i;
+                                            for (i=0;i<(yy_size_t)yyleng;)
                                             {
                                               if (yytext[i]=='\n') addOutput(yyscanner,'\n'),i++;
                                               else if (strcmp(yytext+i,"\\_linebr")==0) addOutput(yyscanner,'\n'),i+=8;
@@ -4709,8 +4713,8 @@ YY_RULE_SETUP
 					  }
 					  else if (yyextra->inContext!=OutputBrief)
 					  {
-                                            int i;
-                                            for (i=0;i<yyleng;)
+                                            yy_size_t i;
+                                            for (i=0;i<(yy_size_t)yyleng;)
                                             {
                                               if (yytext[i]=='\n') addOutput(yyscanner,'\n'),i++;
                                               else if (strcmp(yytext+i,"\\_linebr")==0) addOutput(yyscanner,'\n'),i+=8;
@@ -4728,7 +4732,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 847 "commentscan.l"
+#line 851 "commentscan.l"
 { // potential end of a JavaDoc style comment
   					  addOutput(yyscanner,*yytext);
   					  if (yyextra->briefEndsAtDot)
@@ -4741,7 +4745,7 @@ YY_RULE_SETUP
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 855 "commentscan.l"
+#line 859 "commentscan.l"
 { // newline
   					  addOutput(yyscanner,*yytext);
   					  yyextra->lineNr++;
@@ -4749,7 +4753,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 859 "commentscan.l"
+#line 863 "commentscan.l"
 { // catch-all for anything else
   					  addOutput(yyscanner,*yytext);
   					}
@@ -4757,32 +4761,32 @@ YY_RULE_SETUP
 /* --------------   Rules for handling HTML comments ----------- */
 case 49:
 YY_RULE_SETUP
-#line 866 "commentscan.l"
+#line 870 "commentscan.l"
 { BEGIN( Comment ); }
 	YY_BREAK
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 867 "commentscan.l"
+#line 871 "commentscan.l"
 { 
   					  if (*yytext=='\n') yyextra->lineNr++;
   					}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 870 "commentscan.l"
+#line 874 "commentscan.l"
 { // ignore unimportant characters
   					}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 872 "commentscan.l"
+#line 876 "commentscan.l"
 { // ignore every else
   					}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 875 "commentscan.l"
+#line 879 "commentscan.l"
 {
                                           BEGIN( Comment );
                                         }
@@ -4790,7 +4794,7 @@ YY_RULE_SETUP
 case 54:
 /* rule 54 can match eol */
 YY_RULE_SETUP
-#line 878 "commentscan.l"
+#line 882 "commentscan.l"
 { 
                                           addOutput(yyscanner,'\n');
                                           if (*yytext=='\n') yyextra->lineNr++;
@@ -4798,7 +4802,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 882 "commentscan.l"
+#line 886 "commentscan.l"
 { // the special XML characters for iwhich the CDATA section is especially used
                                           addOutput(yyscanner,'\\');
                                           addOutput(yyscanner,*yytext);
@@ -4806,14 +4810,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 886 "commentscan.l"
+#line 890 "commentscan.l"
 {
                                           addOutput(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 889 "commentscan.l"
+#line 893 "commentscan.l"
 { 
                                           addOutput(yyscanner,*yytext);
                                         }
@@ -4821,7 +4825,7 @@ YY_RULE_SETUP
 /* --------------   Rules for handling formulas ---------------- */
 case 58:
 YY_RULE_SETUP
-#line 895 "commentscan.l"
+#line 899 "commentscan.l"
 { // end of inline formula
   					  yyextra->formulaText+="$";
 					  addOutput(yyscanner," "+addFormula(yyscanner));
@@ -4830,7 +4834,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 900 "commentscan.l"
+#line 904 "commentscan.l"
 { // end of block formula
 					  yyextra->formulaText+="\\]";
 					  addOutput(yyscanner," "+addFormula(yyscanner));
@@ -4839,7 +4843,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 905 "commentscan.l"
+#line 909 "commentscan.l"
 { // end of custom env formula
 					  yyextra->formulaText+="\\end";
 					  yyextra->formulaText+=yyextra->formulaEnv;
@@ -4849,7 +4853,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 911 "commentscan.l"
+#line 915 "commentscan.l"
 { // any non-special character
                                           yyextra->formulaText+=yytext; 
  					} 
@@ -4857,7 +4861,7 @@ YY_RULE_SETUP
 case 62:
 /* rule 62 can match eol */
 YY_RULE_SETUP
-#line 914 "commentscan.l"
+#line 918 "commentscan.l"
 { // new line
                                           yyextra->formulaNewLines++;
                                           yyextra->formulaText+=*yytext; 
@@ -4866,7 +4870,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 919 "commentscan.l"
+#line 923 "commentscan.l"
 { // any other character
                                           yyextra->formulaText+=*yytext; 
 					}
@@ -4875,7 +4879,7 @@ YY_RULE_SETUP
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 925 "commentscan.l"
+#line 929 "commentscan.l"
 { // handle argument
   					  yyextra->current->name = yytext;
 					  BEGIN( Comment );
@@ -4884,7 +4888,7 @@ YY_RULE_SETUP
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 929 "commentscan.l"
+#line 933 "commentscan.l"
 { // line continuation
   					  yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -4893,7 +4897,7 @@ YY_RULE_SETUP
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 933 "commentscan.l"
+#line 937 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing argument after \\enum."
@@ -4905,7 +4909,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 941 "commentscan.l"
+#line 945 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
@@ -4913,7 +4917,7 @@ YY_RULE_SETUP
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 946 "commentscan.l"
+#line 950 "commentscan.l"
 { // handle argument
   					  yyextra->current->name = substitute(yytext,".","::");
 					  BEGIN( Comment );
@@ -4922,7 +4926,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 950 "commentscan.l"
+#line 954 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -4931,7 +4935,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 954 "commentscan.l"
+#line 958 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing argument after "
@@ -4944,14 +4948,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 963 "commentscan.l"
+#line 967 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 /* ------------ handle argument of package command --------------- */
 case 72:
 YY_RULE_SETUP
-#line 968 "commentscan.l"
+#line 972 "commentscan.l"
 { // handle argument
   					  yyextra->current->name = yytext;
 					  BEGIN( Comment );
@@ -4960,7 +4964,7 @@ YY_RULE_SETUP
 case 73:
 /* rule 73 can match eol */
 YY_RULE_SETUP
-#line 972 "commentscan.l"
+#line 976 "commentscan.l"
 { // line continuation 
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -4969,7 +4973,7 @@ YY_RULE_SETUP
 case 74:
 /* rule 74 can match eol */
 YY_RULE_SETUP
-#line 976 "commentscan.l"
+#line 980 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing argument after "
@@ -4982,7 +4986,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 985 "commentscan.l"
+#line 989 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
@@ -4990,7 +4994,7 @@ YY_RULE_SETUP
 case 76:
 /* rule 76 can match eol */
 YY_RULE_SETUP
-#line 990 "commentscan.l"
+#line 994 "commentscan.l"
 { 
   					  yyextra->current->name = substitute(removeRedundantWhiteSpace(yytext),".","::");
 					  BEGIN( ClassDocArg2 );
@@ -4999,7 +5003,7 @@ YY_RULE_SETUP
 case 77:
 /* rule 77 can match eol */
 YY_RULE_SETUP
-#line 994 "commentscan.l"
+#line 998 "commentscan.l"
 { // first argument
   					  yyextra->current->name = substitute(yytext,".","::");
 					  if (yyextra->current->section==Entry::PROTOCOLDOC_SEC)
@@ -5013,7 +5017,7 @@ YY_RULE_SETUP
 case 78:
 /* rule 78 can match eol */
 YY_RULE_SETUP
-#line 1003 "commentscan.l"
+#line 1007 "commentscan.l"
 {
   					  yyextra->current->name = substitute(yytext,".","::");
 					  BEGIN( ClassDocArg2 );
@@ -5022,7 +5026,7 @@ YY_RULE_SETUP
 case 79:
 /* rule 79 can match eol */
 YY_RULE_SETUP
-#line 1007 "commentscan.l"
+#line 1011 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5031,7 +5035,7 @@ YY_RULE_SETUP
 case 80:
 /* rule 80 can match eol */
 YY_RULE_SETUP
-#line 1011 "commentscan.l"
+#line 1015 "commentscan.l"
 {
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing argument after "
@@ -5044,13 +5048,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 1020 "commentscan.l"
+#line 1024 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 1023 "commentscan.l"
+#line 1027 "commentscan.l"
 { // second argument; include file
 					  yyextra->current->includeFile = yytext;
 					  BEGIN( ClassDocArg3 );
@@ -5059,7 +5063,7 @@ YY_RULE_SETUP
 case 83:
 /* rule 83 can match eol */
 YY_RULE_SETUP
-#line 1027 "commentscan.l"
+#line 1031 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5068,7 +5072,7 @@ YY_RULE_SETUP
 case 84:
 /* rule 84 can match eol */
 YY_RULE_SETUP
-#line 1031 "commentscan.l"
+#line 1035 "commentscan.l"
 { 
 					  addOutput(yyscanner,'\n');
   					  if (*yytext=='\n') yyextra->lineNr++;
@@ -5077,13 +5081,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 1036 "commentscan.l"
+#line 1040 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 1039 "commentscan.l"
+#line 1043 "commentscan.l"
 { // third argument; include file name
  					  yyextra->current->includeName = yytext;
 					  BEGIN( Comment );
@@ -5092,7 +5096,7 @@ YY_RULE_SETUP
 case 87:
 /* rule 87 can match eol */
 YY_RULE_SETUP
-#line 1043 "commentscan.l"
+#line 1047 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -5101,7 +5105,7 @@ YY_RULE_SETUP
 case 88:
 /* rule 88 can match eol */
 YY_RULE_SETUP
-#line 1047 "commentscan.l"
+#line 1051 "commentscan.l"
 { 
   					  if (*yytext=='\n') yyextra->lineNr++;
   					  BEGIN( Comment );
@@ -5109,14 +5113,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 1051 "commentscan.l"
+#line 1055 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 /* --------- handle arguments of {def,add,weak}group commands --------- */
 case 90:
 YY_RULE_SETUP
-#line 1056 "commentscan.l"
+#line 1060 "commentscan.l"
 { // group name
   					  yyextra->current->name = yytext;
 					  //lastDefGroup.groupname = yytext;
@@ -5133,7 +5137,7 @@ YY_RULE_SETUP
 case 91:
 /* rule 91 can match eol */
 YY_RULE_SETUP
-#line 1068 "commentscan.l"
+#line 1072 "commentscan.l"
 { // line continuation
   					  yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5142,7 +5146,7 @@ YY_RULE_SETUP
 case 92:
 /* rule 92 can match eol */
 YY_RULE_SETUP
-#line 1072 "commentscan.l"
+#line 1076 "commentscan.l"
 { // missing argument!
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing group name after %s",
@@ -5155,14 +5159,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 1081 "commentscan.l"
+#line 1085 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 case 94:
 /* rule 94 can match eol */
 YY_RULE_SETUP
-#line 1083 "commentscan.l"
+#line 1087 "commentscan.l"
 { // line continuation
   					  yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5170,7 +5174,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 1087 "commentscan.l"
+#line 1091 "commentscan.l"
 { // title (stored in type)
 					  yyextra->current->type += yytext;
 					  yyextra->current->type = yyextra->current->type.stripWhiteSpace();
@@ -5179,7 +5183,7 @@ YY_RULE_SETUP
 case 96:
 /* rule 96 can match eol */
 YY_RULE_SETUP
-#line 1091 "commentscan.l"
+#line 1095 "commentscan.l"
 {
                                           if ( yyextra->current->groupDocType==Entry::GROUPDOC_NORMAL &&
                                                yyextra->current->type.isEmpty() 
@@ -5197,7 +5201,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 1105 "commentscan.l"
+#line 1109 "commentscan.l"
 { // title (stored in type)
 					  yyextra->current->type += yytext;
 					  yyextra->current->type = yyextra->current->type.stripWhiteSpace();
@@ -5206,7 +5210,7 @@ YY_RULE_SETUP
 /* --------- handle arguments of page/mainpage command ------------------- */
 case 98:
 YY_RULE_SETUP
-#line 1112 "commentscan.l"
+#line 1116 "commentscan.l"
 { // first argument; page name
 					  yyextra->current->name = stripQuotes(yytext);
 					  yyextra->current->args = "";
@@ -5216,7 +5220,7 @@ YY_RULE_SETUP
 case 99:
 /* rule 99 can match eol */
 YY_RULE_SETUP
-#line 1117 "commentscan.l"
+#line 1121 "commentscan.l"
 { yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
                                         }
@@ -5224,7 +5228,7 @@ YY_RULE_SETUP
 case 100:
 /* rule 100 can match eol */
 YY_RULE_SETUP
-#line 1120 "commentscan.l"
+#line 1124 "commentscan.l"
 {
   					  warn(yyextra->fileName,yyextra->lineNr,
                                                "missing argument after "
@@ -5237,14 +5241,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 1129 "commentscan.l"
+#line 1133 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 case 102:
 /* rule 102 can match eol */
 YY_RULE_SETUP
-#line 1131 "commentscan.l"
+#line 1135 "commentscan.l"
 { // second argument; page title
 					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -5253,7 +5257,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 1136 "commentscan.l"
+#line 1140 "commentscan.l"
 { 
 					  // bug 748927
 					  QCString tmp = yytext;
@@ -5264,7 +5268,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 1143 "commentscan.l"
+#line 1147 "commentscan.l"
 { 
 					  yyextra->current->args += yytext;
                                         }
@@ -5272,21 +5276,21 @@ YY_RULE_SETUP
 /* --------- handle arguments of the param command ------------ */
 case 105:
 YY_RULE_SETUP
-#line 1147 "commentscan.l"
+#line 1151 "commentscan.l"
 {
                                           addOutput(yyscanner,yytext);
                                         }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 1150 "commentscan.l"
+#line 1154 "commentscan.l"
 {
                                           addOutput(yyscanner," , ");
                                         }
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 1153 "commentscan.l"
+#line 1157 "commentscan.l"
 {
                                           addOutput(yyscanner,yytext);
                                           BEGIN( Comment );
@@ -5294,7 +5298,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 1157 "commentscan.l"
+#line 1161 "commentscan.l"
 {
                                           unput(yytext[0]);
                                           BEGIN( Comment );
@@ -5304,7 +5308,7 @@ YY_RULE_SETUP
 case 109:
 /* rule 109 can match eol */
 YY_RULE_SETUP
-#line 1164 "commentscan.l"
+#line 1168 "commentscan.l"
 { // no file name specified
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -5313,7 +5317,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 1169 "commentscan.l"
+#line 1173 "commentscan.l"
 { // first argument; name
   					  yyextra->current->name = stripQuotes(yytext);
 					  BEGIN( Comment );
@@ -5322,21 +5326,21 @@ YY_RULE_SETUP
 case 111:
 /* rule 111 can match eol */
 YY_RULE_SETUP
-#line 1173 "commentscan.l"
+#line 1177 "commentscan.l"
 { yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
                                         }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 1176 "commentscan.l"
+#line 1180 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 /* --------- handle arguments of the xrefitem command ------------ */
 case 113:
 YY_RULE_SETUP
-#line 1181 "commentscan.l"
+#line 1185 "commentscan.l"
 { // first argument
   					  yyextra->newXRefItemKey=yytext;
                                           setOutput(yyscanner,OutputXRef);
@@ -5346,7 +5350,7 @@ YY_RULE_SETUP
 case 114:
 /* rule 114 can match eol */
 YY_RULE_SETUP
-#line 1186 "commentscan.l"
+#line 1190 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5355,7 +5359,7 @@ YY_RULE_SETUP
 case 115:
 /* rule 115 can match eol */
 YY_RULE_SETUP
-#line 1190 "commentscan.l"
+#line 1194 "commentscan.l"
 { // missing arguments
   					  warn(yyextra->fileName,yyextra->lineNr,
 					       "Missing first argument of \\xrefitem"
@@ -5368,13 +5372,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 1199 "commentscan.l"
+#line 1203 "commentscan.l"
 { // ignore other stuff 
   					}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 1202 "commentscan.l"
+#line 1206 "commentscan.l"
 { // second argument
   					  yyextra->xrefItemTitle = stripQuotes(yytext);
 					  BEGIN(XRefItemParam3);
@@ -5383,7 +5387,7 @@ YY_RULE_SETUP
 case 118:
 /* rule 118 can match eol */
 YY_RULE_SETUP
-#line 1206 "commentscan.l"
+#line 1210 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5392,7 +5396,7 @@ YY_RULE_SETUP
 case 119:
 /* rule 119 can match eol */
 YY_RULE_SETUP
-#line 1210 "commentscan.l"
+#line 1214 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Missing second argument of \\xrefitem"
@@ -5405,13 +5409,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 1219 "commentscan.l"
+#line 1223 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 1222 "commentscan.l"
+#line 1226 "commentscan.l"
 { // third argument
   					  yyextra->xrefListTitle = stripQuotes(yytext);
                                           yyextra->xrefKind = XRef_Item;
@@ -5421,7 +5425,7 @@ YY_RULE_SETUP
 case 122:
 /* rule 122 can match eol */
 YY_RULE_SETUP
-#line 1227 "commentscan.l"
+#line 1231 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5430,7 +5434,7 @@ YY_RULE_SETUP
 case 123:
 /* rule 123 can match eol */
 YY_RULE_SETUP
-#line 1231 "commentscan.l"
+#line 1235 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Missing third argument of \\xrefitem"
@@ -5443,14 +5447,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 1240 "commentscan.l"
+#line 1244 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 /* ----- handle arguments of the relates(also)/memberof command ------- */
 case 125:
 YY_RULE_SETUP
-#line 1246 "commentscan.l"
+#line 1250 "commentscan.l"
 { // argument
   					  yyextra->current->relates = yytext;
                                           //if (yyextra->current->mGrpId!=DOX_NOGROUP) 
@@ -5463,7 +5467,7 @@ YY_RULE_SETUP
 case 126:
 /* rule 126 can match eol */
 YY_RULE_SETUP
-#line 1254 "commentscan.l"
+#line 1258 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5472,7 +5476,7 @@ YY_RULE_SETUP
 case 127:
 /* rule 127 can match eol */
 YY_RULE_SETUP
-#line 1258 "commentscan.l"
+#line 1262 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Missing argument of \\relates or \\memberof command"
@@ -5484,7 +5488,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 1266 "commentscan.l"
+#line 1270 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
@@ -5492,7 +5496,7 @@ YY_RULE_SETUP
 case 129:
 /* rule 129 can match eol */
 YY_RULE_SETUP
-#line 1272 "commentscan.l"
+#line 1276 "commentscan.l"
 { // end of argument
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -5502,7 +5506,7 @@ YY_RULE_SETUP
 case 130:
 /* rule 130 can match eol */
 YY_RULE_SETUP
-#line 1277 "commentscan.l"
+#line 1281 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5510,7 +5514,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 1281 "commentscan.l"
+#line 1285 "commentscan.l"
 { // ignore other stuff
   					  addOutput(yyscanner,*yytext);
   					}
@@ -5518,7 +5522,7 @@ YY_RULE_SETUP
 /* ----- handle arguments of the section/subsection/.. commands ------- */
 case 132:
 YY_RULE_SETUP
-#line 1287 "commentscan.l"
+#line 1291 "commentscan.l"
 { // first argument
   					  yyextra->sectionLabel=yytext;
                                           addOutput(yyscanner,yytext);
@@ -5529,7 +5533,7 @@ YY_RULE_SETUP
 case 133:
 /* rule 133 can match eol */
 YY_RULE_SETUP
-#line 1293 "commentscan.l"
+#line 1297 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\section command has no label"
@@ -5541,7 +5545,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 1301 "commentscan.l"
+#line 1305 "commentscan.l"
 { // invalid character for section label
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Invalid or missing section label"
@@ -5555,7 +5559,7 @@ case 135:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1307 "commentscan.l"
+#line 1311 "commentscan.l"
 { // end of section title
   					  addSection(yyscanner);
                                           addOutput(yyscanner,yytext);
@@ -5567,7 +5571,7 @@ case 136:
 yyg->yy_c_buf_p = yy_cp -= 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1312 "commentscan.l"
+#line 1316 "commentscan.l"
 { // end of section title
   					  addSection(yyscanner);
                                           addOutput(yyscanner,yytext);
@@ -5577,7 +5581,7 @@ YY_RULE_SETUP
 case 137:
 /* rule 137 can match eol */
 YY_RULE_SETUP
-#line 1317 "commentscan.l"
+#line 1321 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5585,7 +5589,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 1321 "commentscan.l"
+#line 1325 "commentscan.l"
 { // any character without special meaning
   					  yyextra->sectionTitle+=yytext;
 					  addOutput(yyscanner,yytext);
@@ -5593,7 +5597,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 1325 "commentscan.l"
+#line 1329 "commentscan.l"
 { // unescape escaped command
   					  yyextra->sectionTitle+=&yytext[1];
 					  addOutput(yyscanner,yytext);
@@ -5601,7 +5605,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 1329 "commentscan.l"
+#line 1333 "commentscan.l"
 { // unescape escaped character
   					  yyextra->sectionTitle+=yytext[1];
   					  addOutput(yyscanner,yytext);
@@ -5609,7 +5613,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 1333 "commentscan.l"
+#line 1337 "commentscan.l"
 { // anything else
   					  yyextra->sectionTitle+=yytext;
 					  addOutput(yyscanner,*yytext);
@@ -5618,7 +5622,7 @@ YY_RULE_SETUP
 /* ----- handle arguments of the subpage command ------- */
 case 142:
 YY_RULE_SETUP
-#line 1340 "commentscan.l"
+#line 1344 "commentscan.l"
 { // first argument
                                           addOutput(yyscanner,yytext);
 					  // we add subpage labels as a kind of "inheritance" relation to prevent
@@ -5630,7 +5634,7 @@ YY_RULE_SETUP
 case 143:
 /* rule 143 can match eol */
 YY_RULE_SETUP
-#line 1347 "commentscan.l"
+#line 1351 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\subpage command has no label"
@@ -5643,7 +5647,7 @@ YY_RULE_SETUP
 case 144:
 /* rule 144 can match eol */
 YY_RULE_SETUP
-#line 1355 "commentscan.l"
+#line 1359 "commentscan.l"
 { // no title, end command
   					  addOutput(yyscanner,yytext);
 					  BEGIN( Comment );
@@ -5651,7 +5655,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 1359 "commentscan.l"
+#line 1363 "commentscan.l"
 { // add title, end of command
   					  addOutput(yyscanner,yytext);
 					  BEGIN( Comment );
@@ -5659,7 +5663,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 1363 "commentscan.l"
+#line 1367 "commentscan.l"
 { // no title, end of command
   					  unput(*yytext);
 					  BEGIN( Comment );
@@ -5668,7 +5672,7 @@ YY_RULE_SETUP
 /* ----- handle arguments of the anchor command ------- */
 case 147:
 YY_RULE_SETUP
-#line 1370 "commentscan.l"
+#line 1374 "commentscan.l"
 { // found argument
                                           addAnchor(yyscanner,yytext);
 					  addOutput(yyscanner,yytext);
@@ -5678,7 +5682,7 @@ YY_RULE_SETUP
 case 148:
 /* rule 148 can match eol */
 YY_RULE_SETUP
-#line 1375 "commentscan.l"
+#line 1379 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\anchor command has no label"
@@ -5690,7 +5694,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 1383 "commentscan.l"
+#line 1387 "commentscan.l"
 { // invalid character for anchor label
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Invalid or missing anchor label"
@@ -5705,7 +5709,7 @@ case 150:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1393 "commentscan.l"
+#line 1397 "commentscan.l"
 { // possible ends
   					  addOutput(yyscanner,yytext);
 					  if (&yytext[4]==yyextra->blockName) // found end of the block
@@ -5716,7 +5720,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 1400 "commentscan.l"
+#line 1404 "commentscan.l"
 {
   					  addOutput(yyscanner,yytext);
 					  if (yyextra->blockName=="startuml") // found end of the block
@@ -5727,7 +5731,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 1407 "commentscan.l"
+#line 1411 "commentscan.l"
 { // some word
   					  addOutput(yyscanner,yytext);
   					}
@@ -5735,7 +5739,7 @@ YY_RULE_SETUP
 case 153:
 /* rule 153 can match eol */
 YY_RULE_SETUP
-#line 1410 "commentscan.l"
+#line 1414 "commentscan.l"
 { // new line
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -5743,7 +5747,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 1414 "commentscan.l"
+#line 1418 "commentscan.l"
 { // start of a C-comment
 					  if (!(yyextra->blockName=="code" || yyextra->blockName=="verbatim")) yyextra->commentCount++;
   					  addOutput(yyscanner,yytext);
@@ -5751,7 +5755,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 1418 "commentscan.l"
+#line 1422 "commentscan.l"
 { // end of a C-comment
   					  addOutput(yyscanner,yytext);
 					  if (!(yyextra->blockName=="code" || yyextra->blockName=="verbatim"))
@@ -5767,13 +5771,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 1430 "commentscan.l"
+#line 1434 "commentscan.l"
 {
   					  addOutput(yyscanner,*yytext);
   					}
 	YY_BREAK
 case YY_STATE_EOF(FormatBlock):
-#line 1433 "commentscan.l"
+#line 1437 "commentscan.l"
 {
                                           QCString endTag = "end"+yyextra->blockName;
                                           if (yyextra->blockName=="startuml") endTag="enduml";
@@ -5787,7 +5791,7 @@ case YY_STATE_EOF(FormatBlock):
 /* ----- handle arguments of if/ifnot commands ------- */
 case 157:
 YY_RULE_SETUP
-#line 1445 "commentscan.l"
+#line 1449 "commentscan.l"
 {
                                           yyextra->guardExpr=yytext;
                                           yyextra->roundCount=1;
@@ -5797,14 +5801,14 @@ YY_RULE_SETUP
 case 158:
 /* rule 158 can match eol */
 YY_RULE_SETUP
-#line 1450 "commentscan.l"
+#line 1454 "commentscan.l"
 {
                                           yyextra->guardExpr+=yytext;
                                         }
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 1453 "commentscan.l"
+#line 1457 "commentscan.l"
 {
                                           yyextra->guardExpr+=yytext;
                                           yyextra->roundCount++;
@@ -5812,7 +5816,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 1457 "commentscan.l"
+#line 1461 "commentscan.l"
 {
                                           yyextra->guardExpr+=yytext;
                                           yyextra->roundCount--;
@@ -5825,7 +5829,7 @@ YY_RULE_SETUP
 case 161:
 /* rule 161 can match eol */
 YY_RULE_SETUP
-#line 1465 "commentscan.l"
+#line 1469 "commentscan.l"
 {
 					  warn(yyextra->fileName,yyextra->lineNr,
 						"invalid expression '%s' for yyextra->guards",yyextra->guardExpr.data());
@@ -5835,7 +5839,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 1471 "commentscan.l"
+#line 1475 "commentscan.l"
 { // parameter of if/ifnot yyextra->guards
                                           handleGuard(yyscanner,yytext);
   					}
@@ -5843,7 +5847,7 @@ YY_RULE_SETUP
 case 163:
 /* rule 163 can match eol */
 YY_RULE_SETUP
-#line 1474 "commentscan.l"
+#line 1478 "commentscan.l"
 { // end of argument
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  //next line is commented out due to bug620924
@@ -5854,7 +5858,7 @@ YY_RULE_SETUP
 case 164:
 /* rule 164 can match eol */
 YY_RULE_SETUP
-#line 1480 "commentscan.l"
+#line 1484 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -5862,7 +5866,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 1484 "commentscan.l"
+#line 1488 "commentscan.l"
 { // ignore other stuff
   					  addOutput(yyscanner,*yytext);
   					}
@@ -5870,7 +5874,7 @@ YY_RULE_SETUP
 case 166:
 /* rule 166 can match eol */
 YY_RULE_SETUP
-#line 1487 "commentscan.l"
+#line 1491 "commentscan.l"
 {
   					  lineCount(yyscanner);
   					  yyextra->spaceBeforeIf.resize(0);
@@ -5879,7 +5883,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 1492 "commentscan.l"
+#line 1496 "commentscan.l"
 {
   					  if (!yyextra->spaceBeforeIf.isEmpty()) // needed for 665313 in combination with bug620924
 					  {
@@ -5891,7 +5895,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 1500 "commentscan.l"
+#line 1504 "commentscan.l"
 {
   					  unput(*yytext);
   					  BEGIN(Comment);
@@ -5904,7 +5908,7 @@ case 169:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1507 "commentscan.l"
+#line 1511 "commentscan.l"
 {
                                           yyextra->guardType = Guard_IfNot;
   					  BEGIN( GuardParam );
@@ -5916,7 +5920,7 @@ case 170:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1511 "commentscan.l"
+#line 1515 "commentscan.l"
 {
                                           yyextra->guardType = Guard_If;
   					  BEGIN( GuardParam );
@@ -5928,7 +5932,7 @@ case 171:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1515 "commentscan.l"
+#line 1519 "commentscan.l"
 {
   					  if (yyextra->guards.empty())
 					  {
@@ -5954,7 +5958,7 @@ case 172:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1533 "commentscan.l"
+#line 1537 "commentscan.l"
 {
   					  if (yyextra->guards.empty())
 					  {
@@ -5979,7 +5983,7 @@ case 173:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1550 "commentscan.l"
+#line 1554 "commentscan.l"
 {
   					  if (yyextra->guards.empty())
 					  {
@@ -6000,7 +6004,7 @@ YY_RULE_SETUP
 case 174:
 /* rule 174 can match eol */
 YY_RULE_SETUP
-#line 1566 "commentscan.l"
+#line 1570 "commentscan.l"
 { // skip line
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  //addOutput(yyscanner,'\n');
@@ -6008,13 +6012,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 1570 "commentscan.l"
+#line 1574 "commentscan.l"
 { // skip non-special characters
   					}
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 1572 "commentscan.l"
+#line 1576 "commentscan.l"
 { // any other character
   					}
 	YY_BREAK
@@ -6022,7 +6026,7 @@ YY_RULE_SETUP
 case 177:
 /* rule 177 can match eol */
 YY_RULE_SETUP
-#line 1578 "commentscan.l"
+#line 1582 "commentscan.l"
 { // skip line
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -6033,7 +6037,7 @@ case 178:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1582 "commentscan.l"
+#line 1586 "commentscan.l"
 {
                                           yyextra->condCount++;
   					}
@@ -6043,7 +6047,7 @@ case 179:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 6;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1585 "commentscan.l"
+#line 1589 "commentscan.l"
 {
                                           yyextra->condCount++;
   					}
@@ -6053,7 +6057,7 @@ case 180:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1588 "commentscan.l"
+#line 1592 "commentscan.l"
 {
                                           yyextra->condCount--;
 					  if (yyextra->condCount<0) // handle conditional section around of \internal, see bug607743  
@@ -6068,7 +6072,7 @@ case 181:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1596 "commentscan.l"
+#line 1600 "commentscan.l"
 {
   					  if (yyextra->sectionLevel>0)
 					  {
@@ -6082,7 +6086,7 @@ case 182:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1603 "commentscan.l"
+#line 1607 "commentscan.l"
 {
   					  if (yyextra->sectionLevel>1)
 					  {
@@ -6096,7 +6100,7 @@ case 183:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1610 "commentscan.l"
+#line 1614 "commentscan.l"
 {
   					  if (yyextra->sectionLevel>2)
 					  {
@@ -6110,7 +6114,7 @@ case 184:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1617 "commentscan.l"
+#line 1621 "commentscan.l"
 {
   					  if (yyextra->sectionLevel>3)
 					  {
@@ -6121,20 +6125,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 1624 "commentscan.l"
+#line 1628 "commentscan.l"
 {
 					  BEGIN(Comment);
 					}
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-#line 1627 "commentscan.l"
+#line 1631 "commentscan.l"
 { // skip non-special characters
   					}
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 1629 "commentscan.l"
+#line 1633 "commentscan.l"
 { // any other character
   					}
 	YY_BREAK
@@ -6142,7 +6146,7 @@ YY_RULE_SETUP
 case 188:
 /* rule 188 can match eol */
 YY_RULE_SETUP
-#line 1635 "commentscan.l"
+#line 1639 "commentscan.l"
 { // end of argument
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -6152,7 +6156,7 @@ YY_RULE_SETUP
 case 189:
 /* rule 189 can match eol */
 YY_RULE_SETUP
-#line 1640 "commentscan.l"
+#line 1644 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -6161,7 +6165,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 1645 "commentscan.l"
+#line 1649 "commentscan.l"
 { // ignore other stuff
 					  yyextra->docGroup.appendHeader(*yytext);
 					  yyextra->current->name+=*yytext;
@@ -6171,7 +6175,7 @@ YY_RULE_SETUP
 case 191:
 /* rule 191 can match eol */
 YY_RULE_SETUP
-#line 1651 "commentscan.l"
+#line 1655 "commentscan.l"
 { // end of argument
 					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -6180,14 +6184,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 1656 "commentscan.l"
+#line 1660 "commentscan.l"
 { // ignore other stuff
 					}
 	YY_BREAK
 /* ----- handle argument of ingroup command ------- */
 case 193:
 YY_RULE_SETUP
-#line 1660 "commentscan.l"
+#line 1664 "commentscan.l"
 { // group id
   					  yyextra->current->groups.push_back(
 					     Grouping(yytext, Grouping::GROUPING_INGROUP)
@@ -6198,7 +6202,7 @@ YY_RULE_SETUP
 case 194:
 /* rule 194 can match eol */
 YY_RULE_SETUP
-#line 1666 "commentscan.l"
+#line 1670 "commentscan.l"
 { // missing argument
   					  if (!yyextra->inGroupParamFound)
 					  {
@@ -6214,7 +6218,7 @@ YY_RULE_SETUP
 case 195:
 /* rule 195 can match eol */
 YY_RULE_SETUP
-#line 1677 "commentscan.l"
+#line 1681 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  addOutput(yyscanner,'\n');
@@ -6222,7 +6226,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 1681 "commentscan.l"
+#line 1685 "commentscan.l"
 { // ignore other stuff
   					  addOutput(yyscanner,*yytext);
   					}
@@ -6231,7 +6235,7 @@ YY_RULE_SETUP
 case 197:
 /* rule 197 can match eol */
 YY_RULE_SETUP
-#line 1687 "commentscan.l"
+#line 1691 "commentscan.l"
 { // end of argument
   					  if (yyextra->braceCount==0)
 					  {
@@ -6245,7 +6249,7 @@ YY_RULE_SETUP
 case 198:
 /* rule 198 can match eol */
 YY_RULE_SETUP
-#line 1696 "commentscan.l"
+#line 1700 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  yyextra->functionProto+=' ';
@@ -6253,14 +6257,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 1700 "commentscan.l"
+#line 1704 "commentscan.l"
 { // non-special characters
                                           yyextra->functionProto+=yytext;
   					}
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 1703 "commentscan.l"
+#line 1707 "commentscan.l"
 {
                                           yyextra->functionProto+=yytext;
 					  yyextra->braceCount++;
@@ -6268,7 +6272,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 1707 "commentscan.l"
+#line 1711 "commentscan.l"
 {
                                           yyextra->functionProto+=yytext;
 					  yyextra->braceCount--;
@@ -6276,7 +6280,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 1711 "commentscan.l"
+#line 1715 "commentscan.l"
 { // add other stuff
                                           yyextra->functionProto+=*yytext;
   					}
@@ -6285,7 +6289,7 @@ YY_RULE_SETUP
 case 203:
 /* rule 203 can match eol */
 YY_RULE_SETUP
-#line 1719 "commentscan.l"
+#line 1723 "commentscan.l"
 { // end of argument
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  if (yyextra->functionProto.stripWhiteSpace().isEmpty())
@@ -6304,7 +6308,7 @@ YY_RULE_SETUP
 case 204:
 /* rule 204 can match eol */
 YY_RULE_SETUP
-#line 1733 "commentscan.l"
+#line 1737 "commentscan.l"
 { // line continuation
                                           yyextra->lineNr++; 
 					  yyextra->functionProto+=' ';
@@ -6312,7 +6316,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 1737 "commentscan.l"
+#line 1741 "commentscan.l"
 { // add other stuff
                                           yyextra->functionProto+=*yytext;
   					}
@@ -6320,7 +6324,7 @@ YY_RULE_SETUP
 /* ----- handle argument of inherit command ------- */
 case 206:
 YY_RULE_SETUP
-#line 1743 "commentscan.l"
+#line 1747 "commentscan.l"
 { // found argument
 					  yyextra->current->extends.push_back(
 					    BaseInfo(removeRedundantWhiteSpace(yytext),Public,Normal)
@@ -6331,7 +6335,7 @@ YY_RULE_SETUP
 case 207:
 /* rule 207 can match eol */
 YY_RULE_SETUP
-#line 1749 "commentscan.l"
+#line 1753 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\inherit command has no argument"
@@ -6343,7 +6347,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 1757 "commentscan.l"
+#line 1761 "commentscan.l"
 { // invalid character for anchor label
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Invalid or missing name for \\inherit command"
@@ -6354,7 +6358,7 @@ YY_RULE_SETUP
 /* ----- handle argument of extends and implements commands ------- */
 case 209:
 YY_RULE_SETUP
-#line 1766 "commentscan.l"
+#line 1770 "commentscan.l"
 { // found argument
 					  yyextra->current->extends.push_back(
 					    BaseInfo(removeRedundantWhiteSpace(yytext),Public,Normal)
@@ -6365,7 +6369,7 @@ YY_RULE_SETUP
 case 210:
 /* rule 210 can match eol */
 YY_RULE_SETUP
-#line 1772 "commentscan.l"
+#line 1776 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\extends or \\implements command has no argument"
@@ -6377,14 +6381,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 211:
 YY_RULE_SETUP
-#line 1780 "commentscan.l"
+#line 1784 "commentscan.l"
 { // ignore other stuff
   					}
 	YY_BREAK
 /* ----- handle language specific sections ------- */
 case 212:
 YY_RULE_SETUP
-#line 1785 "commentscan.l"
+#line 1789 "commentscan.l"
 { /* language switch */
                                      QCString langId = &yytext[2];
 				     if (langId.isEmpty() ||
@@ -6396,28 +6400,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 213:
 YY_RULE_SETUP
-#line 1793 "commentscan.l"
+#line 1797 "commentscan.l"
 { /* any character not a *, @, backslash or new line */
                                    }
 	YY_BREAK
 case 214:
 /* rule 214 can match eol */
 YY_RULE_SETUP
-#line 1795 "commentscan.l"
+#line 1799 "commentscan.l"
 { /* new line in verbatim block */
   		                     if (*yytext=='\n') yyextra->lineNr++;
                                    }
 	YY_BREAK
 case 215:
 YY_RULE_SETUP
-#line 1798 "commentscan.l"
+#line 1802 "commentscan.l"
 { /* any other character */
                                    }
 	YY_BREAK
 /* ----- handle arguments of the cite command ------- */
 case 216:
 YY_RULE_SETUP
-#line 1803 "commentscan.l"
+#line 1807 "commentscan.l"
 { // found argument
   					  addCite(yyscanner);
                                           addOutput(yyscanner,yytext);
@@ -6427,7 +6431,7 @@ YY_RULE_SETUP
 case 217:
 /* rule 217 can match eol */
 YY_RULE_SETUP
-#line 1808 "commentscan.l"
+#line 1812 "commentscan.l"
 { // missing argument
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "\\cite command has no label"
@@ -6439,7 +6443,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 218:
 YY_RULE_SETUP
-#line 1816 "commentscan.l"
+#line 1820 "commentscan.l"
 { // invalid character for cite label
   					  warn(yyextra->fileName,yyextra->lineNr,
 					      "Invalid or missing cite label"
@@ -6449,11 +6453,11 @@ YY_RULE_SETUP
 	YY_BREAK
 /* ----- handle argument of the copydoc command ------- */
 case YY_STATE_EOF(CopyDoc):
-#line 1825 "commentscan.l"
+#line 1829 "commentscan.l"
 case 219:
 /* rule 219 can match eol */
 YY_RULE_SETUP
-#line 1826 "commentscan.l"
+#line 1830 "commentscan.l"
 {
   					  if (*yytext=='\n') yyextra->lineNr++;
 					  addOutput(yyscanner,'\n');
@@ -6466,7 +6470,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 220:
 YY_RULE_SETUP
-#line 1835 "commentscan.l"
+#line 1839 "commentscan.l"
 {
   					  yyextra->copyDocArg+=yytext;
 					  addOutput(yyscanner,yytext);
@@ -6474,7 +6478,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 221:
 YY_RULE_SETUP
-#line 1839 "commentscan.l"
+#line 1843 "commentscan.l"
 {
   					  yyextra->copyDocArg+=yytext;
 					  addOutput(yyscanner,yytext);
@@ -6482,10 +6486,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 222:
 YY_RULE_SETUP
-#line 1845 "commentscan.l"
+#line 1849 "commentscan.l"
 ECHO;
 	YY_BREAK
-#line 6489 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
+#line 6493 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentscan.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Comment):
 			case YY_STATE_EOF(PageDocArg1):
@@ -7654,7 +7658,7 @@ void commentscanYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 1845 "commentscan.l"
+#line 1849 "commentscan.l"
 
 
 
@@ -8317,7 +8321,6 @@ static bool handleInternal(yyscan_t yyscanner,const QCString &, const QCStringLi
 
 static bool handleLineBr(yyscan_t yyscanner,const QCString &, const QCStringList &)
 {
-  struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
   addOutput(yyscanner,'\n');
   return FALSE;
 }
@@ -8724,7 +8727,7 @@ static void addCite(yyscan_t yyscanner)
   if (yytext[0] =='"')
   {
     name=yytext+1;
-    name=name.left(yyleng-2);
+    name=name.left((int)yyleng-2);
   }
   CitationManager::instance().insert(name.data());
 }
@@ -8918,18 +8921,18 @@ static void endBrief(yyscan_t yyscanner,bool addToOutput)
   }
 }
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-    yyextra->prevPosition=yyextra->inputPosition;
-    int c=0;
-    while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
-    {
-	*buf = yyextra->inputString[yyextra->inputPosition++] ;
-	//printf("%d (%c)\n",*buf,*buf);
-	c++; buf++;
-    }
-    return c;
+  yyextra->prevPosition=yyextra->inputPosition;
+  yy_size_t c=0;
+  while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
+  {
+    *buf = yyextra->inputString[yyextra->inputPosition++] ;
+    //printf("%d (%c)\n",*buf,*buf);
+    c++; buf++;
+  }
+  return c;
 }
 
 //----------------------------------------------------------------------------
@@ -9162,5 +9165,7 @@ void CommentScanner::close(Entry *e,const char *fileName,int lineNr,bool foundIn
   yyextra->docGroup.close(e,fileName,lineNr,foundInline,implicit);
 }
 
+#if USE_STATE2STRING
 #include "commentscan.l.h"
+#endif
 

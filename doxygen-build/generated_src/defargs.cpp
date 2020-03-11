@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
 #line 47 "defargs.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -858,6 +858,8 @@ goto find_rule; \
   
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
+
+#define USE_STATE2STRING 0
   
 /* -----------------------------------------------------------------
  *	state variables
@@ -889,8 +891,11 @@ struct defargsYY_state
   QCString         delimiter;
 };
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+#endif
+
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 static bool nameIsActuallyPartOfType(QCString &name);
 
 /* -----------------------------------------------------------------
@@ -913,7 +918,7 @@ static bool nameIsActuallyPartOfType(QCString &name);
 
 
 
-#line 917 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
+#line 922 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
 
 #define INITIAL 0
 #define Start 1
@@ -1158,10 +1163,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 136 "defargs.l"
+#line 141 "defargs.l"
 
 
-#line 1165 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
+#line 1170 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -1279,12 +1284,12 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 138 "defargs.l"
+#line 143 "defargs.l"
 { BEGIN(ReadFuncArgType); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 140 "defargs.l"
+#line 145 "defargs.l"
 {
   					  yyextra->curArgTypeName+=" ";
   					}
@@ -1292,7 +1297,7 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 143 "defargs.l"
+#line 148 "defargs.l"
 { 
 					  if (yyextra->curArgTypeName.stripWhiteSpace().isEmpty())
 					  {
@@ -1306,23 +1311,23 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 153 "defargs.l"
+#line 158 "defargs.l"
 { yyextra->curArgDefValue+=yytext; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 154 "defargs.l"
+#line 159 "defargs.l"
 { yyextra->curArgDefValue+=yytext; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 155 "defargs.l"
+#line 160 "defargs.l"
 { yyextra->curArgDefValue+=yytext; }
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 156 "defargs.l"
+#line 161 "defargs.l"
 { yyextra->curArgDefValue+=yytext; 
                                           QCString text=yytext;
                                           int i=text.find('"');
@@ -1333,7 +1338,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 163 "defargs.l"
+#line 168 "defargs.l"
 {
   					  yyextra->curArgDefValue+=*yytext;
   					  BEGIN( CopyArgString );
@@ -1342,7 +1347,7 @@ YY_RULE_SETUP
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 167 "defargs.l"
+#line 172 "defargs.l"
 { 
   					  // function pointer as argument
 					  yyextra->curArgTypeName+=yytext;
@@ -1352,14 +1357,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 173 "defargs.l"
+#line 178 "defargs.l"
 {
 					  yyextra->curArgName=yytext;
   					}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 176 "defargs.l"
+#line 181 "defargs.l"
 { // function pointer
 					  yyextra->curArgTypeName+=yytext;
 					  //yyextra->curArgTypeName=yyextra->curArgTypeName.simplifyWhiteSpace();
@@ -1374,7 +1379,7 @@ case 12:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 184 "defargs.l"
+#line 189 "defargs.l"
 { // pointer to fixed size array
 					  yyextra->curArgTypeName+=yytext;
 					  yyextra->curArgTypeName+=yyextra->curArgName;
@@ -1384,7 +1389,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 190 "defargs.l"
+#line 195 "defargs.l"
 { // redundant braces detected / remove them
 					  int i=yyextra->curArgTypeName.findRev('('),l=yyextra->curArgTypeName.length();
 					  if (i!=-1)
@@ -1396,14 +1401,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 198 "defargs.l"
+#line 203 "defargs.l"
 { // handle operators in defargs
   					  yyextra->curArgTypeName+=yytext;
   					}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 201 "defargs.l"
+#line 206 "defargs.l"
 {	 
 					  if (YY_START==ReadFuncArgType)
 					  {
@@ -1436,7 +1441,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 230 "defargs.l"
+#line 235 "defargs.l"
 {
   					  yyextra->argRoundCount++;
 					  *yyextra->copyArgValue += *yytext;
@@ -1444,7 +1449,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 234 "defargs.l"
+#line 239 "defargs.l"
 {
 					  *yyextra->copyArgValue += yytext;
 					  if (yyextra->argRoundCount>0) 
@@ -1466,7 +1471,7 @@ case 18:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 249 "defargs.l"
+#line 254 "defargs.l"
 {
 					  *yyextra->copyArgValue += *yytext;
 					  if (yyextra->argRoundCount>0) yyextra->argRoundCount--;
@@ -1475,7 +1480,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 254 "defargs.l"
+#line 259 "defargs.l"
 {
                                           if (yyextra->argRoundCount>0)
                                           {
@@ -1490,7 +1495,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 265 "defargs.l"
+#line 270 "defargs.l"
 {
                                           if (yyextra->argRoundCount>0)
                                           {
@@ -1505,7 +1510,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 276 "defargs.l"
+#line 281 "defargs.l"
 {
                                           // don't count < inside (, e.g. for things like: < typename A=(i<6) >
   					  if (yyextra->argRoundCount==0) yyextra->argSharpCount++;
@@ -1514,7 +1519,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 281 "defargs.l"
+#line 286 "defargs.l"
 {
 					  *yyextra->copyArgValue += *yytext;
                                           if (yyextra->argRoundCount>0 && yyextra->argSharpCount==0)
@@ -1536,7 +1541,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 299 "defargs.l"
+#line 304 "defargs.l"
 {
                                           yyextra->argRoundCount++;
 					  *yyextra->copyArgValue += *yytext;
@@ -1544,7 +1549,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 303 "defargs.l"
+#line 308 "defargs.l"
 {
                                           yyextra->argRoundCount--;
 					  *yyextra->copyArgValue += *yytext;
@@ -1552,7 +1557,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 307 "defargs.l"
+#line 312 "defargs.l"
 {
   					  yyextra->argCurlyCount++;
 					  *yyextra->copyArgValue += *yytext;
@@ -1560,7 +1565,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 311 "defargs.l"
+#line 316 "defargs.l"
 {
 					  *yyextra->copyArgValue += *yytext;
 					  if (yyextra->argCurlyCount>0) yyextra->argCurlyCount--;
@@ -1569,7 +1574,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 316 "defargs.l"
+#line 321 "defargs.l"
 {
 					  yyextra->curArgDefValue+=yytext;
   					}
@@ -1577,7 +1582,7 @@ YY_RULE_SETUP
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 319 "defargs.l"
+#line 324 "defargs.l"
 {
 					  yyextra->curArgDefValue+=yytext;
                                           QCString delimiter = yytext+1;
@@ -1590,7 +1595,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 328 "defargs.l"
+#line 333 "defargs.l"
 {
 					  yyextra->curArgDefValue+=*yytext;
 					  BEGIN( ReadFuncArgDef );
@@ -1598,14 +1603,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 332 "defargs.l"
+#line 337 "defargs.l"
 {
 					  BEGIN( ReadFuncArgDef );
   					}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 335 "defargs.l"
+#line 340 "defargs.l"
 {
 					  yyextra->lastDocContext=YY_START;
 					  yyextra->lastDocChar=*yytext;  
@@ -1618,7 +1623,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 344 "defargs.l"
+#line 349 "defargs.l"
 {
   					  if (*yytext==')' && yyextra->curArgTypeName.stripWhiteSpace().isEmpty())
 					  {
@@ -1698,7 +1703,7 @@ YY_RULE_SETUP
 					      if (alen>2 && a.array.at(0)=='(' && 
 						            a.array.at(alen-1)==')') // fix-up for int *(a[10])
 					      {
-						int i=a.array.find('[')-1;
+						i=a.array.find('[')-1;
 						a.array = a.array.mid(1,alen-2);
 						if (i>0 && a.name.isEmpty())
 						{
@@ -1732,7 +1737,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 454 "defargs.l"
+#line 459 "defargs.l"
 {
                                            if (yyextra->lang!=SrcLangExt_Java)
                                            {
@@ -1748,7 +1753,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 466 "defargs.l"
+#line 471 "defargs.l"
 { 
   					  QCString name=yytext; //resolveDefines(yytext);
 					  if (YY_START==ReadFuncArgType && yyextra->curArgArray=="[]") // Java style array
@@ -1762,28 +1767,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 476 "defargs.l"
+#line 481 "defargs.l"
 { 
   					  yyextra->curArgTypeName+=*yytext;
 					}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 480 "defargs.l"
+#line 485 "defargs.l"
 {
   					  yyextra->curArgDefValue+=yytext;
   					}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 483 "defargs.l"
+#line 488 "defargs.l"
 {
 					  yyextra->curArgDefValue+=*yytext;
   					}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 486 "defargs.l"
+#line 491 "defargs.l"
 {
   					  QCString name=yytext; //resolveDefines(yytext);
 					  *yyextra->copyArgValue+=name;
@@ -1791,14 +1796,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 490 "defargs.l"
+#line 495 "defargs.l"
 {
 					  *yyextra->copyArgValue += *yytext;
 					}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 493 "defargs.l"
+#line 498 "defargs.l"
 {
                                           unput(*yytext);
                                           BEGIN(yyextra->lastExtendsContext);
@@ -1806,7 +1811,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 497 "defargs.l"
+#line 502 "defargs.l"
 {
                                           yyextra->curTypeConstraint+=yytext;
                                         }
@@ -1814,42 +1819,42 @@ YY_RULE_SETUP
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 500 "defargs.l"
+#line 505 "defargs.l"
 {
                                           yyextra->curTypeConstraint+=' ';
                                         }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 503 "defargs.l"
+#line 508 "defargs.l"
 {
 					  yyextra->argList.constSpecifier=TRUE;
 					}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 506 "defargs.l"
+#line 511 "defargs.l"
 {
 					  yyextra->argList.volatileSpecifier=TRUE;
 					}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 509 "defargs.l"
+#line 514 "defargs.l"
 {
                                           yyextra->argList.refQualifier=RefQualifierLValue;
 					}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 512 "defargs.l"
+#line 517 "defargs.l"
 {
                                           yyextra->argList.refQualifier=RefQualifierRValue;
 					}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 515 "defargs.l"
+#line 520 "defargs.l"
 {
 					  yyextra->argList.pureSpecifier=TRUE;
                                           BEGIN(FuncQual);
@@ -1857,7 +1862,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 519 "defargs.l"
+#line 524 "defargs.l"
 { // C++11 trailing return type
                                           yyextra->argList.trailingReturnType=" -> ";
                                           BEGIN(TrailingReturn);
@@ -1868,7 +1873,7 @@ case 49:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 523 "defargs.l"
+#line 528 "defargs.l"
 {
                                           unput(*yytext);
                                           BEGIN(FuncQual);
@@ -1876,7 +1881,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 527 "defargs.l"
+#line 532 "defargs.l"
 {
                                           yyextra->argList.trailingReturnType+=yytext;
                                         }
@@ -1884,7 +1889,7 @@ YY_RULE_SETUP
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 530 "defargs.l"
+#line 535 "defargs.l"
 {
                                           yyextra->argList.trailingReturnType+=yytext;
                                         }
@@ -1892,7 +1897,7 @@ YY_RULE_SETUP
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 533 "defargs.l"
+#line 538 "defargs.l"
 { // for functions returning a pointer to an array, 
                                           // i.e. ")[]" in "int (*f(int))[4]" with argsString="(int))[4]"
   					  yyextra->extraTypeChars=yytext;
@@ -1900,21 +1905,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 537 "defargs.l"
+#line 542 "defargs.l"
 {
   					  yyextra->curArgDocs+=yytext;
   					}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 540 "defargs.l"
+#line 545 "defargs.l"
 {
   					  yyextra->curArgDocs+=yytext;
   					}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 543 "defargs.l"
+#line 548 "defargs.l"
 { 
   					  if (yyextra->lastDocChar!=0)
 					    unput(yyextra->lastDocChar);
@@ -1924,7 +1929,7 @@ YY_RULE_SETUP
 case 56:
 /* rule 56 can match eol */
 YY_RULE_SETUP
-#line 548 "defargs.l"
+#line 553 "defargs.l"
 {
   					  if (yyextra->lastDocChar!=0)
 					    unput(yyextra->lastDocChar);
@@ -1934,21 +1939,21 @@ YY_RULE_SETUP
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 553 "defargs.l"
+#line 558 "defargs.l"
 {
   					  yyextra->curArgDocs+=*yytext;
   					}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 556 "defargs.l"
+#line 561 "defargs.l"
 {
   					  yyextra->curArgDocs+=*yytext;
   					}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 559 "defargs.l"
+#line 564 "defargs.l"
 {
   					  yyextra->lastDocContext=YY_START;
 					  yyextra->lastDocChar=0;  
@@ -1961,20 +1966,20 @@ YY_RULE_SETUP
 case 60:
 /* rule 60 can match eol */
 YY_RULE_SETUP
-#line 567 "defargs.l"
+#line 572 "defargs.l"
 
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 568 "defargs.l"
+#line 573 "defargs.l"
 
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 570 "defargs.l"
+#line 575 "defargs.l"
 ECHO;
 	YY_BREAK
-#line 1978 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
+#line 1983 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/defargs.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Start):
 			case YY_STATE_EOF(CopyArgString):
@@ -3113,17 +3118,17 @@ void defargsYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 570 "defargs.l"
+#line 575 "defargs.l"
 
 
 
 /* ----------------------------------------------------------------------------
  */
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int c=0;
+  yy_size_t c=0;
   while( c < max_size && yyextra->inputString[yyextra->inputPosition] )
   {
       *buf = yyextra->inputString[yyextra->inputPosition++] ;
@@ -3185,13 +3190,13 @@ void
 class KeywordHash
 {
   private:
-    static inline unsigned int hash (const char *str, size_t len);
+    static inline unsigned int hash (const char *str, unsigned int len);
   public:
-    static const char *find (const char *str, size_t len);
+    static const char *find (const char *str, unsigned int len);
 };
 
 inline unsigned int
-KeywordHash::hash (const char *str, size_t len)
+KeywordHash::hash (const char *str, unsigned int len)
 {
   static const unsigned char asso_values[] =
   {
@@ -3239,7 +3244,7 @@ KeywordHash::hash (const char *str, size_t len)
 }
 
 const char *
-KeywordHash::find (const char *str, size_t len)
+KeywordHash::find (const char *str, unsigned int len)
 {
   static const char * const wordlist[] =
   {
@@ -3337,5 +3342,7 @@ void stringToArgumentList(SrcLangExt lang, const char *argsString,ArgumentList& 
   defargsYYlex_destroy(yyscanner);
 }
 
+#if USE_STATE2STRING
 #include "defargs.l.h"
+#endif
 

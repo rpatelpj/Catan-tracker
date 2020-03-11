@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Raj/Desktop/Catan-tracker/doxygen
+# Install script for directory: /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,15 +34,15 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/libmd5/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/liblodepng/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/libmscgen/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/qtools/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/vhdlparser/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/src/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/addon/cmake_install.cmake")
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/testing/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/libmd5/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/liblodepng/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/libmscgen/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/qtools/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/vhdlparser/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/src/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/addon/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/testing/cmake_install.cmake")
 
 endif()
 
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/Raj/Desktop/Catan-tracker/doxygen-build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/Raj/Downloads/Catan-tracker/doxygen-build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

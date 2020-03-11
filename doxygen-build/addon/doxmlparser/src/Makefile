@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -138,7 +138,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -149,7 +149,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -159,14 +159,14 @@ package/fast: package
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Desktop/Catan-tracker/doxygen-build/addon/doxmlparser/src/CMakeFiles/progress.marks
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Downloads/Catan-tracker/doxygen-build/addon/doxmlparser/src/CMakeFiles/progress.marks
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/clean
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,22 +176,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/rule
 .PHONY : addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/rule
 
 # Convenience name for target.
@@ -201,7 +201,7 @@ doxmlparser: addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/rule
 
 # fast build rule for target.
 doxmlparser/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build
 .PHONY : doxmlparser/fast
 
 basehandler.o: basehandler.cpp.o
@@ -210,7 +210,7 @@ basehandler.o: basehandler.cpp.o
 
 # target to build an object file
 basehandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.o
 .PHONY : basehandler.cpp.o
 
 basehandler.i: basehandler.cpp.i
@@ -219,7 +219,7 @@ basehandler.i: basehandler.cpp.i
 
 # target to preprocess a source file
 basehandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.i
 .PHONY : basehandler.cpp.i
 
 basehandler.s: basehandler.cpp.s
@@ -228,7 +228,7 @@ basehandler.s: basehandler.cpp.s
 
 # target to generate assembly for a file
 basehandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/basehandler.cpp.s
 .PHONY : basehandler.cpp.s
 
 compoundhandler.o: compoundhandler.cpp.o
@@ -237,7 +237,7 @@ compoundhandler.o: compoundhandler.cpp.o
 
 # target to build an object file
 compoundhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.o
 .PHONY : compoundhandler.cpp.o
 
 compoundhandler.i: compoundhandler.cpp.i
@@ -246,7 +246,7 @@ compoundhandler.i: compoundhandler.cpp.i
 
 # target to preprocess a source file
 compoundhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.i
 .PHONY : compoundhandler.cpp.i
 
 compoundhandler.s: compoundhandler.cpp.s
@@ -255,7 +255,7 @@ compoundhandler.s: compoundhandler.cpp.s
 
 # target to generate assembly for a file
 compoundhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/compoundhandler.cpp.s
 .PHONY : compoundhandler.cpp.s
 
 debug.o: debug.cpp.o
@@ -264,7 +264,7 @@ debug.o: debug.cpp.o
 
 # target to build an object file
 debug.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.o
 .PHONY : debug.cpp.o
 
 debug.i: debug.cpp.i
@@ -273,7 +273,7 @@ debug.i: debug.cpp.i
 
 # target to preprocess a source file
 debug.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.i
 .PHONY : debug.cpp.i
 
 debug.s: debug.cpp.s
@@ -282,7 +282,7 @@ debug.s: debug.cpp.s
 
 # target to generate assembly for a file
 debug.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/debug.cpp.s
 .PHONY : debug.cpp.s
 
 dochandler.o: dochandler.cpp.o
@@ -291,7 +291,7 @@ dochandler.o: dochandler.cpp.o
 
 # target to build an object file
 dochandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.o
 .PHONY : dochandler.cpp.o
 
 dochandler.i: dochandler.cpp.i
@@ -300,7 +300,7 @@ dochandler.i: dochandler.cpp.i
 
 # target to preprocess a source file
 dochandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.i
 .PHONY : dochandler.cpp.i
 
 dochandler.s: dochandler.cpp.s
@@ -309,7 +309,7 @@ dochandler.s: dochandler.cpp.s
 
 # target to generate assembly for a file
 dochandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/dochandler.cpp.s
 .PHONY : dochandler.cpp.s
 
 graphhandler.o: graphhandler.cpp.o
@@ -318,7 +318,7 @@ graphhandler.o: graphhandler.cpp.o
 
 # target to build an object file
 graphhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.o
 .PHONY : graphhandler.cpp.o
 
 graphhandler.i: graphhandler.cpp.i
@@ -327,7 +327,7 @@ graphhandler.i: graphhandler.cpp.i
 
 # target to preprocess a source file
 graphhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.i
 .PHONY : graphhandler.cpp.i
 
 graphhandler.s: graphhandler.cpp.s
@@ -336,7 +336,7 @@ graphhandler.s: graphhandler.cpp.s
 
 # target to generate assembly for a file
 graphhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/graphhandler.cpp.s
 .PHONY : graphhandler.cpp.s
 
 linkedtexthandler.o: linkedtexthandler.cpp.o
@@ -345,7 +345,7 @@ linkedtexthandler.o: linkedtexthandler.cpp.o
 
 # target to build an object file
 linkedtexthandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.o
 .PHONY : linkedtexthandler.cpp.o
 
 linkedtexthandler.i: linkedtexthandler.cpp.i
@@ -354,7 +354,7 @@ linkedtexthandler.i: linkedtexthandler.cpp.i
 
 # target to preprocess a source file
 linkedtexthandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.i
 .PHONY : linkedtexthandler.cpp.i
 
 linkedtexthandler.s: linkedtexthandler.cpp.s
@@ -363,7 +363,7 @@ linkedtexthandler.s: linkedtexthandler.cpp.s
 
 # target to generate assembly for a file
 linkedtexthandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/linkedtexthandler.cpp.s
 .PHONY : linkedtexthandler.cpp.s
 
 loamhandler.o: loamhandler.cpp.o
@@ -372,7 +372,7 @@ loamhandler.o: loamhandler.cpp.o
 
 # target to build an object file
 loamhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.o
 .PHONY : loamhandler.cpp.o
 
 loamhandler.i: loamhandler.cpp.i
@@ -381,7 +381,7 @@ loamhandler.i: loamhandler.cpp.i
 
 # target to preprocess a source file
 loamhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.i
 .PHONY : loamhandler.cpp.i
 
 loamhandler.s: loamhandler.cpp.s
@@ -390,7 +390,7 @@ loamhandler.s: loamhandler.cpp.s
 
 # target to generate assembly for a file
 loamhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/loamhandler.cpp.s
 .PHONY : loamhandler.cpp.s
 
 mainhandler.o: mainhandler.cpp.o
@@ -399,7 +399,7 @@ mainhandler.o: mainhandler.cpp.o
 
 # target to build an object file
 mainhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.o
 .PHONY : mainhandler.cpp.o
 
 mainhandler.i: mainhandler.cpp.i
@@ -408,7 +408,7 @@ mainhandler.i: mainhandler.cpp.i
 
 # target to preprocess a source file
 mainhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.i
 .PHONY : mainhandler.cpp.i
 
 mainhandler.s: mainhandler.cpp.s
@@ -417,7 +417,7 @@ mainhandler.s: mainhandler.cpp.s
 
 # target to generate assembly for a file
 mainhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/mainhandler.cpp.s
 .PHONY : mainhandler.cpp.s
 
 memberhandler.o: memberhandler.cpp.o
@@ -426,7 +426,7 @@ memberhandler.o: memberhandler.cpp.o
 
 # target to build an object file
 memberhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.o
 .PHONY : memberhandler.cpp.o
 
 memberhandler.i: memberhandler.cpp.i
@@ -435,7 +435,7 @@ memberhandler.i: memberhandler.cpp.i
 
 # target to preprocess a source file
 memberhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.i
 .PHONY : memberhandler.cpp.i
 
 memberhandler.s: memberhandler.cpp.s
@@ -444,7 +444,7 @@ memberhandler.s: memberhandler.cpp.s
 
 # target to generate assembly for a file
 memberhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/memberhandler.cpp.s
 .PHONY : memberhandler.cpp.s
 
 paramhandler.o: paramhandler.cpp.o
@@ -453,7 +453,7 @@ paramhandler.o: paramhandler.cpp.o
 
 # target to build an object file
 paramhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.o
 .PHONY : paramhandler.cpp.o
 
 paramhandler.i: paramhandler.cpp.i
@@ -462,7 +462,7 @@ paramhandler.i: paramhandler.cpp.i
 
 # target to preprocess a source file
 paramhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.i
 .PHONY : paramhandler.cpp.i
 
 paramhandler.s: paramhandler.cpp.s
@@ -471,7 +471,7 @@ paramhandler.s: paramhandler.cpp.s
 
 # target to generate assembly for a file
 paramhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/paramhandler.cpp.s
 .PHONY : paramhandler.cpp.s
 
 sectionhandler.o: sectionhandler.cpp.o
@@ -480,7 +480,7 @@ sectionhandler.o: sectionhandler.cpp.o
 
 # target to build an object file
 sectionhandler.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.o
 .PHONY : sectionhandler.cpp.o
 
 sectionhandler.i: sectionhandler.cpp.i
@@ -489,7 +489,7 @@ sectionhandler.i: sectionhandler.cpp.i
 
 # target to preprocess a source file
 sectionhandler.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.i
 .PHONY : sectionhandler.cpp.i
 
 sectionhandler.s: sectionhandler.cpp.s
@@ -498,7 +498,7 @@ sectionhandler.s: sectionhandler.cpp.s
 
 # target to generate assembly for a file
 sectionhandler.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/build.make addon/doxmlparser/src/CMakeFiles/doxmlparser.dir/sectionhandler.cpp.s
 .PHONY : sectionhandler.cpp.s
 
 # Help Target
@@ -561,6 +561,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

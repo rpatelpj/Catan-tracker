@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/Raj/Desktop/Catan-tracker/doxygen/liblodepng/lodepng.cpp
+/Users/Raj/Downloads/Catan-tracker/doxygen/liblodepng/lodepng.cpp
 lodepng.h
-/Users/Raj/Desktop/Catan-tracker/doxygen/liblodepng/lodepng.h
+/Users/Raj/Downloads/Catan-tracker/doxygen/liblodepng/lodepng.h
 
-/Users/Raj/Desktop/Catan-tracker/doxygen/liblodepng/lodepng.h
+/Users/Raj/Downloads/Catan-tracker/doxygen/liblodepng/lodepng.h
 stdio.h
 -
 stdlib.h

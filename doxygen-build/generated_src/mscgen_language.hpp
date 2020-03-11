@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
-# define YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
+#ifndef YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
+# define YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -123,7 +123,7 @@ union YYSTYPE
     MscAttrib     attrib;
     MscAttribType attribType;
 
-#line 127 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/mscgen_language.hpp"
+#line 127 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/mscgen_language.hpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -136,4 +136,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void *YYPARSE_PARAM);
 
-#endif /* !YY_YY_USERS_RAJ_DESKTOP_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED  */
+#endif /* !YY_YY_USERS_RAJ_DOWNLOADS_CATAN_TRACKER_DOXYGEN_BUILD_GENERATED_SRC_MSCGEN_LANGUAGE_HPP_INCLUDED  */

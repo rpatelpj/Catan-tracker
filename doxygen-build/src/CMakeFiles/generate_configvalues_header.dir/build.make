@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 # Utility rule file for generate_configvalues_header.
 
@@ -56,10 +56,10 @@ include src/CMakeFiles/generate_configvalues_header.dir/progress.make
 src/CMakeFiles/generate_configvalues_header: generated_src/configvalues.h
 
 
-generated_src/configvalues.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml
-generated_src/configvalues.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../generated_src/configvalues.h"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py -maph /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.h
+generated_src/configvalues.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml
+generated_src/configvalues.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../generated_src/configvalues.h"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py -maph /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.h
 
 generate_configvalues_header: src/CMakeFiles/generate_configvalues_header
 generate_configvalues_header: generated_src/configvalues.h
@@ -73,10 +73,10 @@ src/CMakeFiles/generate_configvalues_header.dir/build: generate_configvalues_hea
 .PHONY : src/CMakeFiles/generate_configvalues_header.dir/build
 
 src/CMakeFiles/generate_configvalues_header.dir/clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/generate_configvalues_header.dir/cmake_clean.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/generate_configvalues_header.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/generate_configvalues_header.dir/clean
 
 src/CMakeFiles/generate_configvalues_header.dir/depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Desktop/Catan-tracker/doxygen /Users/Raj/Desktop/Catan-tracker/doxygen/src /Users/Raj/Desktop/Catan-tracker/doxygen-build /Users/Raj/Desktop/Catan-tracker/doxygen-build/src /Users/Raj/Desktop/Catan-tracker/doxygen-build/src/CMakeFiles/generate_configvalues_header.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Downloads/Catan-tracker/doxygen /Users/Raj/Downloads/Catan-tracker/doxygen/src /Users/Raj/Downloads/Catan-tracker/doxygen-build /Users/Raj/Downloads/Catan-tracker/doxygen-build/src /Users/Raj/Downloads/Catan-tracker/doxygen-build/src/CMakeFiles/generate_configvalues_header.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/generate_configvalues_header.dir/depend
 

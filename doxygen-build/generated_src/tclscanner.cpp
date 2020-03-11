@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
 #line 21 "tclscanner.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -762,7 +762,11 @@ char *tclscannerYYtext;
 
 #define MAX_INCLUDE_DEPTH 10
 
+#define USE_STATE2STRING 0
+
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 //! Application error.
 #define tcl_err \
@@ -1169,7 +1173,7 @@ struct tcl_struct
 static tcl_struct tcl;
 
 // scanner functions
-static int yyread(char *buf,int max_size);
+static yy_size_t yyread(char *buf,yy_size_t max_size);
 static tcl_scan *tcl_scan_start(char type, QCString content, QCString ns, Entry *entry_cls, Entry *entry_fn);
 static void tcl_scan_end();
 static void tcl_comment(int what,const char *text);
@@ -1511,7 +1515,7 @@ static tcl_scan *tcl_codify_token(tcl_scan *myScan, const QCString type, const Q
 
 
 
-#line 1515 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
+#line 1519 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
 
 #define INITIAL 0
 #define ERROR 1
@@ -1713,9 +1717,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 822 "tclscanner.l"
+#line 826 "tclscanner.l"
 
-#line 1719 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
+#line 1723 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -1812,7 +1816,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 823 "tclscanner.l"
+#line 827 "tclscanner.l"
 {
 D
   yyterminate();
@@ -1829,7 +1833,7 @@ case YY_STATE_EOF(COMMENT_CODE):
 case YY_STATE_EOF(COMMENT_VERB):
 case YY_STATE_EOF(COMMENTLINE):
 case YY_STATE_EOF(COMMENTLINE_NL):
-#line 827 "tclscanner.l"
+#line 831 "tclscanner.l"
 {
 D
   if (tcl.scan.count()<1)
@@ -1853,7 +1857,7 @@ D
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 847 "tclscanner.l"
+#line 851 "tclscanner.l"
 {
 D
   yyless(0);
@@ -1864,7 +1868,7 @@ D
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 853 "tclscanner.l"
+#line 857 "tclscanner.l"
 {
 D
   tcl_codify(NULL,tclscannerYYtext);
@@ -1872,7 +1876,7 @@ D
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 857 "tclscanner.l"
+#line 861 "tclscanner.l"
 {
 D
   yyless(0);
@@ -1882,7 +1886,7 @@ D
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 864 "tclscanner.l"
+#line 868 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1891,7 +1895,7 @@ D
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 868 "tclscanner.l"
+#line 872 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1901,7 +1905,7 @@ D
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 873 "tclscanner.l"
+#line 877 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1915,7 +1919,7 @@ D
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 882 "tclscanner.l"
+#line 886 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1925,7 +1929,7 @@ D
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 887 "tclscanner.l"
+#line 891 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -1938,7 +1942,7 @@ D
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 895 "tclscanner.l"
+#line 899 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -1951,7 +1955,7 @@ D
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 903 "tclscanner.l"
+#line 907 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1965,7 +1969,7 @@ D
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 912 "tclscanner.l"
+#line 916 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -1974,7 +1978,7 @@ D
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 917 "tclscanner.l"
+#line 921 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -1987,7 +1991,7 @@ D
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 926 "tclscanner.l"
+#line 930 "tclscanner.l"
 {
 D
   tcl_comment(-2,"");
@@ -1997,7 +2001,7 @@ D
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 931 "tclscanner.l"
+#line 935 "tclscanner.l"
 {
 D
   tcl_comment(-2,tclscannerYYtext);
@@ -2007,7 +2011,7 @@ D
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 937 "tclscanner.l"
+#line 941 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -2021,7 +2025,7 @@ D
 case 17:
 /* rule 17 can match eol */
 YY_RULE_SETUP
-#line 946 "tclscanner.l"
+#line 950 "tclscanner.l"
 {
 D
   yymore();
@@ -2029,7 +2033,7 @@ D
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 950 "tclscanner.l"
+#line 954 "tclscanner.l"
 {
 D
   yy_pop_state();
@@ -2039,7 +2043,7 @@ D
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 956 "tclscanner.l"
+#line 960 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -2053,7 +2057,7 @@ D
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 965 "tclscanner.l"
+#line 969 "tclscanner.l"
 {
 D
   yymore();
@@ -2061,7 +2065,7 @@ D
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 969 "tclscanner.l"
+#line 973 "tclscanner.l"
 {
 D
   yy_pop_state();
@@ -2071,7 +2075,7 @@ D
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 975 "tclscanner.l"
+#line 979 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -2081,7 +2085,7 @@ D
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 980 "tclscanner.l"
+#line 984 "tclscanner.l"
 {
 D
   tcl_codify("comment",tclscannerYYtext);
@@ -2091,7 +2095,7 @@ D
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 986 "tclscanner.l"
+#line 990 "tclscanner.l"
 {
 D
   yy_pop_state();
@@ -2100,7 +2104,7 @@ D
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 992 "tclscanner.l"
+#line 996 "tclscanner.l"
 {
 D
   yy_pop_state();
@@ -2109,7 +2113,7 @@ D
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 997 "tclscanner.l"
+#line 1001 "tclscanner.l"
 {
 D
   tcl.string_commentcodify += tclscannerYYtext;
@@ -2118,7 +2122,7 @@ D
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 1001 "tclscanner.l"
+#line 1005 "tclscanner.l"
 {
 D
   tcl.string_commentcodify += tclscannerYYtext;
@@ -2132,7 +2136,7 @@ D
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 1010 "tclscanner.l"
+#line 1014 "tclscanner.l"
 {
 D
   tcl.string_commentcodify += tclscannerYYtext;
@@ -2142,7 +2146,7 @@ D
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 1015 "tclscanner.l"
+#line 1019 "tclscanner.l"
 {
 D
   yy_pop_state();
@@ -2161,7 +2165,7 @@ D
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 1030 "tclscanner.l"
+#line 1034 "tclscanner.l"
 {
 D
   tcl.string_commentcodify += tclscannerYYtext;
@@ -2174,7 +2178,7 @@ D
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 1038 "tclscanner.l"
+#line 1042 "tclscanner.l"
 {
 D
   tcl.string_commentcodify += tclscannerYYtext;
@@ -2184,7 +2188,7 @@ D
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 1044 "tclscanner.l"
+#line 1048 "tclscanner.l"
 {
 D
   QCString t=tclscannerYYtext;
@@ -2198,7 +2202,7 @@ D
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 1054 "tclscanner.l"
+#line 1058 "tclscanner.l"
 {
 D
   tcl.string_commentcodify = tclscannerYYtext;
@@ -2214,7 +2218,7 @@ D
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 1065 "tclscanner.l"
+#line 1069 "tclscanner.l"
 {
 D
   tcl.string_commentcodify = "";
@@ -2226,7 +2230,7 @@ D
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 1072 "tclscanner.l"
+#line 1076 "tclscanner.l"
 {
 D
   tcl.string_commentcodify = "";
@@ -2238,7 +2242,7 @@ D
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 1079 "tclscanner.l"
+#line 1083 "tclscanner.l"
 {
 D
   tcl.string_commentcodify = "";
@@ -2250,7 +2254,7 @@ D
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 1086 "tclscanner.l"
+#line 1090 "tclscanner.l"
 {
 D
   tcl_command(1,tclscannerYYtext);
@@ -2258,7 +2262,7 @@ D
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 1090 "tclscanner.l"
+#line 1094 "tclscanner.l"
 {
 D
   tcl.word_is = ' ';
@@ -2268,7 +2272,7 @@ D
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 1096 "tclscanner.l"
+#line 1100 "tclscanner.l"
 {
 D
   tcl.word_is=' ';
@@ -2278,7 +2282,7 @@ D
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 1102 "tclscanner.l"
+#line 1106 "tclscanner.l"
 {
 D
   tcl.word_is=' ';
@@ -2288,10 +2292,10 @@ D
 }
 	YY_BREAK
 case 41:
-#line 1111 "tclscanner.l"
+#line 1115 "tclscanner.l"
 case 42:
 YY_RULE_SETUP
-#line 1111 "tclscanner.l"
+#line 1115 "tclscanner.l"
 {
   tcl_word(1,tclscannerYYtext);
 }
@@ -2299,63 +2303,63 @@ YY_RULE_SETUP
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 1114 "tclscanner.l"
+#line 1118 "tclscanner.l"
 {
   tcl_word(2,tclscannerYYtext);
 }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 1117 "tclscanner.l"
+#line 1121 "tclscanner.l"
 {
   tcl_word(3,tclscannerYYtext);
 }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 1120 "tclscanner.l"
+#line 1124 "tclscanner.l"
 {
   tcl_word(4,tclscannerYYtext);
 }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 1123 "tclscanner.l"
+#line 1127 "tclscanner.l"
 {
   tcl_word(5,tclscannerYYtext);
 }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 1126 "tclscanner.l"
+#line 1130 "tclscanner.l"
 {
   tcl_word(6,tclscannerYYtext);
 }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 1129 "tclscanner.l"
+#line 1133 "tclscanner.l"
 {
   tcl_word(7,tclscannerYYtext);
 }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 1132 "tclscanner.l"
+#line 1136 "tclscanner.l"
 {
   tcl_word(8,tclscannerYYtext);
 }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 1135 "tclscanner.l"
+#line 1139 "tclscanner.l"
 {
   tcl_word(9,tclscannerYYtext);
 }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 1138 "tclscanner.l"
+#line 1142 "tclscanner.l"
 {
   tcl_word(10,tclscannerYYtext);
 }
@@ -2363,31 +2367,31 @@ YY_RULE_SETUP
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 1141 "tclscanner.l"
+#line 1145 "tclscanner.l"
 {
   tcl_word(11,tclscannerYYtext);
 }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 1144 "tclscanner.l"
+#line 1148 "tclscanner.l"
 {
   tcl_word(12,tclscannerYYtext);
 }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 1147 "tclscanner.l"
+#line 1151 "tclscanner.l"
 {
   tcl_word(1,tclscannerYYtext);
 }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 1150 "tclscanner.l"
+#line 1154 "tclscanner.l"
 ECHO;
 	YY_BREAK
-#line 2391 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
+#line 2395 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/tclscanner.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -3436,7 +3440,7 @@ void tclscannerYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 1150 "tclscanner.l"
+#line 1154 "tclscanner.l"
 
 
 
@@ -4243,25 +4247,25 @@ D
       // handle leading whitespace/opening brace/double quotes
       if (elem - token > 0)
       {
-        myScan = tcl_codify_token(myScan, "NULL", token.left(elem - token));
+        myScan = tcl_codify_token(myScan, "NULL", token.left((uint)(elem - token)));
       }
       // handle actual element without braces/double quotes
       if (nextIsPattern)
       {
-        myScan = tcl_codify_token(myScan, "NULL", token.mid(elem - token,size));
+        myScan = tcl_codify_token(myScan, "NULL", token.mid((uint)(elem - token),size));
         //printf("pattern=%s\n",(const char*) token.mid(elem - token, size));
       }
       else {
-        myScan = tcl_codify_token(myScan, "script", token.mid(elem - token, size));
+        myScan = tcl_codify_token(myScan, "script", token.mid((uint)(elem - token), size));
         //printf("script =%s\n", (const char*) token.mid(elem - token, size));
       }
       // handle trailing whitespace/closing brace/double quotes
       if (next - elem - size > 0)
       {
-        myScan = tcl_codify_token(myScan, "NULL", token.mid(elem - token + size, next - elem - size));
+        myScan = tcl_codify_token(myScan, "NULL", token.mid((uint)(elem - token + size), (uint)(next - elem - size)));
       }
       nextIsPattern = !nextIsPattern;
-      token = token.mid(next - token);
+      token = token.mid((int)(next - token));
     }
     if (inBraces)
     {
@@ -5074,7 +5078,7 @@ if expr1 ?then? body1 elseif expr2 ?then? body2 elseif ... ?else?  ?bodyN?
     char myState='x';// last word: e'x'pr 't'hen 'b'ody 'e'lse else'i'f..
     for (unsigned int i = 4; i < tcl.list_commandwords.count(); i = i + 2)
     {
-      QCString myStr=(*tcl.list_commandwords.at(i));
+      myStr=(*tcl.list_commandwords.at(i));
       if (myState=='x')
       {
         if (myStr=="then") 
@@ -5305,9 +5309,9 @@ void TclOutlineParser::parsePrototype(const char *text)
   (void)text;
 }
 
-static int yyread(char *buf,int max_size)
+static yy_size_t yyread(char *buf,yy_size_t max_size)
 {
-  int c=0;
+  yy_size_t c=0;
 
   *buf = '\0';
   while ( c < max_size && tcl.input_string.at(tcl.input_position) )
@@ -5438,5 +5442,7 @@ void tclDummy()
   yy_top_state();
 }
 
+#if USE_STATE2STRING
 #include "tclscanner.l.h"
+#endif
 

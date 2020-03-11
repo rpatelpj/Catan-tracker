@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pre.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pre.cpp"
 #line 22 "pre.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pre.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pre.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -2920,11 +2920,15 @@ goto find_rule; \
 
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
 // Toggle for some debugging info
 //#define DBG_CTX(x) fprintf x
 #define DBG_CTX(x) do { } while(0)
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 struct CondCtx
 {
@@ -2943,7 +2947,7 @@ struct FileState
   int curlyCount;
   BufStr fileBuf;
   BufStr *oldFileBuf;
-  int oldFileBufPos;
+  yy_size_t oldFileBufPos;
   YY_BUFFER_STATE bufState;
   QCString fileName;
 };  
@@ -3207,9 +3211,9 @@ struct preYY_state
   int                level;
   int                lastCContext;
   int                lastCPPContext;
-  QArray<int>        levelGuard;
+  QArray<bool>       levelGuard;
   BufStr            *inputBuf = 0;
-  int                inputBufPos;
+  yy_size_t          inputBufPos;
   BufStr            *outputBuf = 0;
   int                roundCount;
   bool               quoteArg;
@@ -3235,7 +3239,7 @@ struct preYY_state
   bool               insideCS; // C# has simpler preprocessor
   bool               isSource;
 
-  int                fenceSize = 0;
+  yy_size_t          fenceSize = 0;
   bool               ccomment;
   QCString           delimiter;
   QDict<void>        allIncludes;
@@ -3264,7 +3268,7 @@ static void     endCondSection(yyscan_t yyscanner);
 static void          addDefine(yyscan_t yyscanner);
 static Define *      newDefine(yyscan_t yyscanner);
 static void        setFileName(yyscan_t yyscanner,const char *name);
-static int              yyread(yyscan_t yyscanner,char *buf,int max_size);
+static yy_size_t        yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 
 /* ----------------------------------------------------------------- */
 
@@ -3312,7 +3316,7 @@ static int              yyread(yyscan_t yyscanner,char *buf,int max_size);
 
 
 
-#line 3316 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pre.cpp"
+#line 3320 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pre.cpp"
 
 #define INITIAL 0
 #define Start 1
@@ -3584,10 +3588,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 470 "pre.l"
+#line 474 "pre.l"
 
 
-#line 3591 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pre.cpp"
+#line 3595 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pre.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -3706,30 +3710,30 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 472 "pre.l"
+#line 476 "pre.l"
 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 473 "pre.l"
+#line 477 "pre.l"
 
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 474 "pre.l"
+#line 478 "pre.l"
 
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 475 "pre.l"
+#line 479 "pre.l"
 { // Trigraph
   					  unput(resolveTrigraph(yytext[2]));
   					}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 478 "pre.l"
-{ BEGIN(Command); yyextra->yyColNr+=yyleng; yyextra->yyMLines=0;}
+#line 482 "pre.l"
+{ BEGIN(Command); yyextra->yyColNr+=(int)yyleng; yyextra->yyMLines=0;}
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
@@ -3737,7 +3741,7 @@ case 6:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 479 "pre.l"
+#line 483 "pre.l"
 {
  					  outputArray(yyscanner,yytext,(int)yyleng);
   					  BEGIN(CopyLine); 
@@ -3746,7 +3750,7 @@ YY_RULE_SETUP
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 483 "pre.l"
+#line 487 "pre.l"
 { // constructors?
 					  int i;
 					  for (i=(int)yyleng-1;i>=0;i--)
@@ -3758,11 +3762,11 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
-#line 492 "pre.l"
+#line 496 "pre.l"
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 492 "pre.l"
+#line 496 "pre.l"
 { // function like macro
   					  bool skipFuncMacros = Config_getBool(SKIP_FUNCTION_MACROS);
 					  QCString name(yytext);
@@ -3797,7 +3801,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 522 "pre.l"
+#line 526 "pre.l"
 {
                                           QCString text=yytext;
   					  yyextra->yyLineNr+=text.contains('\n');
@@ -3807,7 +3811,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 527 "pre.l"
+#line 531 "pre.l"
 {
                                           yyextra->delimiter = yytext+2;
                                           yyextra->delimiter=yyextra->delimiter.left(yyextra->delimiter.length()-1);
@@ -3817,7 +3821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 533 "pre.l"
+#line 537 "pre.l"
 { // count brackets inside the main file
   					  if (yyextra->includeStack.isEmpty()) 
 					  {
@@ -3828,7 +3832,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 540 "pre.l"
+#line 544 "pre.l"
 { // count brackets inside the main file
   					  if (yyextra->includeStack.isEmpty() && yyextra->curlyCount>0) 
 					  {
@@ -3839,28 +3843,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 547 "pre.l"
+#line 551 "pre.l"
 { 
   					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 550 "pre.l"
+#line 554 "pre.l"
 { 
   					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 553 "pre.l"
+#line 557 "pre.l"
 { 
   					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 556 "pre.l"
+#line 560 "pre.l"
 {
                                           if (getLanguageFromFileName(yyextra->yyFileName)!=SrcLangExt_CSharp) REJECT;
 					  outputArray(yyscanner,yytext,(int)yyleng);
@@ -3869,7 +3873,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 561 "pre.l"
+#line 565 "pre.l"
 {
 					  outputChar(yyscanner,*yytext);
                                           if (getLanguageFromFileName(yyextra->yyFileName)!=SrcLangExt_Fortran)
@@ -3884,7 +3888,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 572 "pre.l"
+#line 576 "pre.l"
 {
                                           if (getLanguageFromFileName(yyextra->yyFileName)!=SrcLangExt_Fortran) REJECT;
 					  outputChar(yyscanner,*yytext);
@@ -3893,28 +3897,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 577 "pre.l"
+#line 581 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 580 "pre.l"
+#line 584 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 583 "pre.l"
+#line 587 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 586 "pre.l"
+#line 590 "pre.l"
 {
 					  outputChar(yyscanner,*yytext);
 					  BEGIN( CopyLine );
@@ -3922,21 +3926,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 590 "pre.l"
+#line 594 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 593 "pre.l"
+#line 597 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 596 "pre.l"
+#line 600 "pre.l"
 {
 					  outputChar(yyscanner,*yytext);
 					  BEGIN( CopyLine );
@@ -3944,21 +3948,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 600 "pre.l"
+#line 604 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 603 "pre.l"
+#line 607 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
 					}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 606 "pre.l"
+#line 610 "pre.l"
 {
 					  outputChar(yyscanner,*yytext);
 					  BEGIN( CopyLine );
@@ -3967,7 +3971,7 @@ YY_RULE_SETUP
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 610 "pre.l"
+#line 614 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
                                           QCString delimiter = yytext+1;
@@ -3981,14 +3985,14 @@ YY_RULE_SETUP
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 619 "pre.l"
+#line 623 "pre.l"
 {
 					  outputArray(yyscanner,yytext,(int)yyleng);
                                         }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 622 "pre.l"
+#line 626 "pre.l"
 {
 					  outputChar(yyscanner,*yytext);
                                         }
@@ -3996,7 +4000,7 @@ YY_RULE_SETUP
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 625 "pre.l"
+#line 629 "pre.l"
 {
   					  yyextra->expectGuard = FALSE;
   					  Define *def=0;
@@ -4037,7 +4041,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 662 "pre.l"
+#line 666 "pre.l"
 {
                                           Define *def=0;
   					  if ((yyextra->includeStack.isEmpty() || yyextra->curlyCount>0) && 
@@ -4063,14 +4067,14 @@ case 35:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 680 "pre.l"
+#line 684 "pre.l"
 { // strip line continuation characters
                                           if (getLanguageFromFileName(yyextra->yyFileName)==SrcLangExt_Fortran) outputChar(yyscanner,*yytext);
   					}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 683 "pre.l"
+#line 687 "pre.l"
 {
   					  outputChar(yyscanner,*yytext);
   					}
@@ -4078,7 +4082,7 @@ YY_RULE_SETUP
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 686 "pre.l"
+#line 690 "pre.l"
 {
   					  outputChar(yyscanner,'\n');
 					  BEGIN(Start);
@@ -4088,7 +4092,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 692 "pre.l"
+#line 696 "pre.l"
 {
   					  yyextra->defArgsStr+='(';
   					  yyextra->roundCount++;
@@ -4096,7 +4100,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 696 "pre.l"
+#line 700 "pre.l"
 {
   					  yyextra->defArgsStr+=')';
 					  yyextra->roundCount--;
@@ -4125,14 +4129,14 @@ YY_RULE_SETUP
   */
 case 40:
 YY_RULE_SETUP
-#line 721 "pre.l"
+#line 725 "pre.l"
 {
   					  yyextra->defArgsStr+=yytext;
   					}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 724 "pre.l"
+#line 728 "pre.l"
 {
                                           yyextra->defArgsStr+=yytext;
                                           BEGIN(ArgCopyCComment);
@@ -4140,7 +4144,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 728 "pre.l"
+#line 732 "pre.l"
 {
   					  yyextra->defArgsStr+=*yytext;
   					  BEGIN(ReadString);
@@ -4148,7 +4152,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 732 "pre.l"
+#line 736 "pre.l"
 {
                                           if (getLanguageFromFileName(yyextra->yyFileName)!=SrcLangExt_Fortran) REJECT;
                                           yyextra->defArgsStr+=*yytext;
@@ -4158,7 +4162,7 @@ YY_RULE_SETUP
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 737 "pre.l"
+#line 741 "pre.l"
 {
                                           yyextra->defArgsStr+=' ';
   					  yyextra->yyLineNr++;
@@ -4167,28 +4171,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 742 "pre.l"
+#line 746 "pre.l"
 {
   					  yyextra->defArgsStr+="@@";
   					}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 745 "pre.l"
+#line 749 "pre.l"
 {
   					  yyextra->defArgsStr+=*yytext;
   					}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 748 "pre.l"
+#line 752 "pre.l"
 {
 					  yyextra->defArgsStr+=yytext;
   					}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 751 "pre.l"
+#line 755 "pre.l"
 {
 					  yyextra->defArgsStr+=yytext;
   					  BEGIN(FindDefineArgs);
@@ -4197,7 +4201,7 @@ YY_RULE_SETUP
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 755 "pre.l"
+#line 759 "pre.l"
 { 
                                           yyextra->defArgsStr+=' ';
   					  yyextra->yyLineNr++;
@@ -4206,14 +4210,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 760 "pre.l"
+#line 764 "pre.l"
 { 
                                           yyextra->defArgsStr+=yytext;
                                         }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 763 "pre.l"
+#line 767 "pre.l"
 {
   					  yyextra->defArgsStr+=*yytext;
 					  BEGIN(FindDefineArgs);
@@ -4221,7 +4225,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 767 "pre.l"
+#line 771 "pre.l"
 {
                                           if (getLanguageFromFileName(yyextra->yyFileName)!=SrcLangExt_Fortran) REJECT;
                                           yyextra->defArgsStr+=*yytext;
@@ -4230,7 +4234,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 773 "pre.l"
+#line 777 "pre.l"
 {
   					  yyextra->defArgsStr+=yytext;
   					}
@@ -4241,27 +4245,27 @@ case 54:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 776 "pre.l"
+#line 780 "pre.l"
 { // line continuation
 					}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 778 "pre.l"
+#line 782 "pre.l"
 {
   					  yyextra->defArgsStr+=yytext;
   					}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 781 "pre.l"
+#line 785 "pre.l"
 {
   					  yyextra->defArgsStr+=*yytext;
   					}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 784 "pre.l"
+#line 788 "pre.l"
 {
   					  yyextra->isImported = yytext[1]=='m';
   					  if (yyextra->macroExpansion) 
@@ -4270,7 +4274,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 789 "pre.l"
+#line 793 "pre.l"
 { 
   					  yyextra->isImported = yytext[1]=='m';
 					  char c[2];
@@ -4281,10 +4285,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 796 "pre.l"
+#line 800 "pre.l"
 { 
   			                  //printf("!!!DefName\n"); 
-					  yyextra->yyColNr+=yyleng;
+					  yyextra->yyColNr+=(int)yyleng;
   					  BEGIN(DefName); 
 					}
 	YY_BREAK
@@ -4293,7 +4297,7 @@ case 60:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 5;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 801 "pre.l"
+#line 805 "pre.l"
 {
   					  incrLevel(yyscanner);
 					  yyextra->guardExpr.resize(0);
@@ -4305,7 +4309,7 @@ case 61:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 5;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 806 "pre.l"
+#line 810 "pre.l"
 {
   					  //printf("Pre.l: ifdef\n");
   					  incrLevel(yyscanner);
@@ -4318,7 +4322,7 @@ case 62:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 6;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 812 "pre.l"
+#line 816 "pre.l"
 {
   					  incrLevel(yyscanner);
 					  yyextra->guardExpr="! ";
@@ -4330,7 +4334,7 @@ case 63:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 6;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 817 "pre.l"
+#line 821 "pre.l"
 {
   					  incrLevel(yyscanner);
 					  yyextra->guardExpr="! ";
@@ -4342,7 +4346,7 @@ case 64:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 822 "pre.l"
+#line 826 "pre.l"
 {
   					  incrLevel(yyscanner);
 					  yyextra->guardExpr.resize(0);
@@ -4354,7 +4358,7 @@ case 65:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 827 "pre.l"
+#line 831 "pre.l"
 {
   					  if (!otherCaseDone(yyscanner))
 					  {
@@ -4374,7 +4378,7 @@ case 66:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 4;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 839 "pre.l"
+#line 843 "pre.l"
 {
 					  //printf("else yyextra->levelGuard[%d]=%d\n",yyextra->level-1,yyextra->levelGuard[yyextra->level-1]);
   					  if (otherCaseDone(yyscanner))
@@ -4391,7 +4395,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 852 "pre.l"
+#line 856 "pre.l"
 {
   					  BEGIN(UndefName);
   					}
@@ -4401,7 +4405,7 @@ case 68:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 855 "pre.l"
+#line 859 "pre.l"
 {
   					  if (!otherCaseDone(yyscanner))
 					  {
@@ -4416,7 +4420,7 @@ case 69:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 5;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 862 "pre.l"
+#line 866 "pre.l"
 {
   					  //printf("Pre.l: #endif\n");
   					  decrLevel(yyscanner);
@@ -4425,7 +4429,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 866 "pre.l"
+#line 870 "pre.l"
 {
   					  outputChar(yyscanner,'\n');
   					  BEGIN(Start);
@@ -4434,14 +4438,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 871 "pre.l"
+#line 875 "pre.l"
 {
                                           yyextra->expectGuard = FALSE;
                                         }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 874 "pre.l"
+#line 878 "pre.l"
 { // unknown directive
 					  BEGIN(IgnoreLine);
 					}
@@ -4449,7 +4453,7 @@ YY_RULE_SETUP
 case 73:
 /* rule 73 can match eol */
 YY_RULE_SETUP
-#line 877 "pre.l"
+#line 881 "pre.l"
 {
   					  outputChar(yyscanner,'\n');
 					  yyextra->yyLineNr++;
@@ -4457,17 +4461,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 881 "pre.l"
+#line 885 "pre.l"
 
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 882 "pre.l"
-{yyextra->yyColNr+=yyleng;}
+#line 886 "pre.l"
+{yyextra->yyColNr+=(int)yyleng;}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 883 "pre.l"
+#line 887 "pre.l"
 {
   					  Define *def;
   					  if ((def=yyextra->defineManager.isDefined(yytext)) 
@@ -4484,7 +4488,7 @@ YY_RULE_SETUP
 case 77:
 /* rule 77 can match eol */
 YY_RULE_SETUP
-#line 895 "pre.l"
+#line 899 "pre.l"
 {
   					  outputChar(yyscanner,'\n');
   					  yyextra->guardExpr+=' ';
@@ -4496,7 +4500,7 @@ case 78:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 7;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 900 "pre.l"
+#line 904 "pre.l"
 {
     					  BEGIN(DefinedExpr2);
     					}
@@ -4506,30 +4510,30 @@ case 79:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 7;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 903 "pre.l"
+#line 907 "pre.l"
 {
     					  BEGIN(DefinedExpr1);
     					}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 906 "pre.l"
+#line 910 "pre.l"
 { yyextra->guardExpr+=yytext; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 907 "pre.l"
+#line 911 "pre.l"
 { yyextra->guardExpr+="@@"; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 908 "pre.l"
+#line 912 "pre.l"
 { yyextra->guardExpr+=*yytext; }
 	YY_BREAK
 case 83:
 /* rule 83 can match eol */
 YY_RULE_SETUP
-#line 909 "pre.l"
+#line 913 "pre.l"
 {
   					  unput(*yytext);
   					  //printf("Guard: '%s'\n",
@@ -4551,12 +4555,12 @@ YY_RULE_SETUP
 case 84:
 /* rule 84 can match eol */
 YY_RULE_SETUP
-#line 926 "pre.l"
+#line 930 "pre.l"
 { yyextra->yyLineNr++; outputChar(yyscanner,'\n'); }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 927 "pre.l"
+#line 931 "pre.l"
 {
   					  if (yyextra->defineManager.isDefined(yytext) || yyextra->guardName==yytext)
 					    yyextra->guardExpr+=" 1L ";
@@ -4568,7 +4572,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 935 "pre.l"
+#line 939 "pre.l"
 {
   					  if (yyextra->defineManager.isDefined(yytext) || yyextra->guardName==yytext)
 					    yyextra->guardExpr+=" 1L ";
@@ -4580,7 +4584,7 @@ YY_RULE_SETUP
 case 87:
 /* rule 87 can match eol */
 YY_RULE_SETUP
-#line 942 "pre.l"
+#line 946 "pre.l"
 { // should not happen, handle anyway
                                           yyextra->yyLineNr++;
   					  yyextra->ifcount=0;
@@ -4589,19 +4593,19 @@ YY_RULE_SETUP
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 947 "pre.l"
+#line 951 "pre.l"
 {
   					  BEGIN(Guard);
   					}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 950 "pre.l"
+#line 954 "pre.l"
 
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 951 "pre.l"
+#line 955 "pre.l"
 { BEGIN(SkipCommand); }
 	YY_BREAK
 case 91:
@@ -4610,18 +4614,18 @@ case 91:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 952 "pre.l"
+#line 956 "pre.l"
 { BEGIN(SkipLine); }
 	YY_BREAK
 case 92:
 /* rule 92 can match eol */
 YY_RULE_SETUP
-#line 953 "pre.l"
+#line 957 "pre.l"
 { yyextra->yyLineNr++; outputChar(yyscanner,'\n'); }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 954 "pre.l"
+#line 958 "pre.l"
 
 	YY_BREAK
 case 94:
@@ -4629,7 +4633,7 @@ case 94:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 955 "pre.l"
+#line 959 "pre.l"
 { 
   					  incrLevel(yyscanner);
                                           yyextra->ifcount++; 
@@ -4638,7 +4642,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 960 "pre.l"
+#line 964 "pre.l"
 {
 					  //printf("Else! yyextra->ifcount=%d otherCaseDone=%d\n",yyextra->ifcount,otherCaseDone());
   					  if (yyextra->ifcount==0 && !otherCaseDone(yyscanner))
@@ -4654,7 +4658,7 @@ case 96:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 969 "pre.l"
+#line 973 "pre.l"
 {
   					  if (yyextra->ifcount==0) 
 					  {
@@ -4673,7 +4677,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 984 "pre.l"
+#line 988 "pre.l"
 { 
 					  yyextra->expectGuard = FALSE;
   					  decrLevel(yyscanner);
@@ -4687,7 +4691,7 @@ YY_RULE_SETUP
 case 98:
 /* rule 98 can match eol */
 YY_RULE_SETUP
-#line 993 "pre.l"
+#line 997 "pre.l"
 { 
   					  outputChar(yyscanner,'\n');
   					  yyextra->yyLineNr++; 
@@ -4696,36 +4700,36 @@ YY_RULE_SETUP
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 998 "pre.l"
+#line 1002 "pre.l"
 { // unknown directive 
   					  BEGIN(SkipLine); 
 					}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 1001 "pre.l"
+#line 1005 "pre.l"
 
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 1002 "pre.l"
+#line 1006 "pre.l"
 
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 1003 "pre.l"
+#line 1007 "pre.l"
 { }
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 1004 "pre.l"
+#line 1008 "pre.l"
 {
 					  BEGIN(SkipString);
 					}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 1007 "pre.l"
+#line 1011 "pre.l"
 
 	YY_BREAK
 case 105:
@@ -4733,13 +4737,13 @@ case 105:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1008 "pre.l"
+#line 1012 "pre.l"
 { 
                                         }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 1010 "pre.l"
+#line 1014 "pre.l"
 {
   					  yyextra->lastCPPContext=YY_START;
   					  BEGIN(RemoveCPPComment);
@@ -4750,7 +4754,7 @@ case 107:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1014 "pre.l"
+#line 1018 "pre.l"
 { 
                                         }
 	YY_BREAK
@@ -4759,7 +4763,7 @@ case 108:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1016 "pre.l"
+#line 1020 "pre.l"
 {
 					  yyextra->lastCContext=YY_START;
   					  BEGIN(RemoveCComment);
@@ -4768,7 +4772,7 @@ YY_RULE_SETUP
 case 109:
 /* rule 109 can match eol */
 YY_RULE_SETUP
-#line 1020 "pre.l"
+#line 1024 "pre.l"
 {
   					  outputChar(yyscanner,'\n');
 					  yyextra->yyLineNr++;  
@@ -4777,24 +4781,24 @@ YY_RULE_SETUP
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 1025 "pre.l"
+#line 1029 "pre.l"
 { }
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 1026 "pre.l"
+#line 1030 "pre.l"
 { }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 1027 "pre.l"
+#line 1031 "pre.l"
 {
   					  BEGIN(SkipLine);
   					}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 1030 "pre.l"
+#line 1034 "pre.l"
 { }
 	YY_BREAK
 case 114:
@@ -4802,7 +4806,7 @@ case 114:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1031 "pre.l"
+#line 1035 "pre.l"
 {
   					  yyextra->nospaces=TRUE;
 				          yyextra->roundCount=0;
@@ -4813,7 +4817,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 1038 "pre.l"
+#line 1042 "pre.l"
 {
   					  yyextra->nospaces=TRUE;
                                           readIncludeFile(yyscanner,expandMacro(yyscanner,yytext));
@@ -4822,7 +4826,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 1043 "pre.l"
+#line 1047 "pre.l"
 { 
 					  yyextra->incName+=yytext;
 					  readIncludeFile(yyscanner,yyextra->incName);
@@ -4842,7 +4846,7 @@ case 117:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1055 "pre.l"
+#line 1059 "pre.l"
 {
   					  BEGIN(Start);
   					}
@@ -4850,7 +4854,7 @@ YY_RULE_SETUP
 case 118:
 /* rule 118 can match eol */
 YY_RULE_SETUP
-#line 1058 "pre.l"
+#line 1062 "pre.l"
 { 
 					  outputChar(yyscanner,'\n');
 					  yyextra->yyLineNr++;
@@ -4858,14 +4862,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 1062 "pre.l"
+#line 1066 "pre.l"
 {
   					}
 	YY_BREAK
 case 120:
 /* rule 120 can match eol */
 YY_RULE_SETUP
-#line 1064 "pre.l"
+#line 1068 "pre.l"
 { // define with argument
   					  //printf("Define() '%s'\n",yytext);
 					  delete yyextra->argDict;
@@ -4887,7 +4891,7 @@ case 121:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1078 "pre.l"
+#line 1082 "pre.l"
 { // special case: define with 1 -> can be "guard"
   					  //printf("Define '%s'\n",yytext);
 					  delete yyextra->argDict; yyextra->argDict=0;
@@ -4922,7 +4926,7 @@ YY_RULE_SETUP
 case 122:
 /* rule 122 can match eol */
 YY_RULE_SETUP
-#line 1108 "pre.l"
+#line 1112 "pre.l"
 { // empty define
 					  delete yyextra->argDict; yyextra->argDict=0;
 					  yyextra->defArgs = -1;
@@ -4954,7 +4958,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 1136 "pre.l"
+#line 1140 "pre.l"
 { // define with content
   					  //printf("Define '%s'\n",yytext);
 					  delete yyextra->argDict; yyextra->argDict=0;
@@ -4974,7 +4978,7 @@ YY_RULE_SETUP
 case 124:
 /* rule 124 can match eol */
 YY_RULE_SETUP
-#line 1151 "pre.l"
+#line 1155 "pre.l"
 {
   					  yyextra->defExtraSpacing+="\n";
 					  yyextra->yyLineNr++;
@@ -4982,17 +4986,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 1155 "pre.l"
+#line 1159 "pre.l"
 { yyextra->defArgsStr+=yytext; }
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 1156 "pre.l"
+#line 1160 "pre.l"
 { yyextra->defArgsStr+=yytext; }
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 1157 "pre.l"
+#line 1161 "pre.l"
 {
                                           yyextra->defArgsStr+=yytext; 
 					  QCString tmp=(QCString)"#define "+yyextra->defName+yyextra->defArgsStr+yyextra->defExtraSpacing;
@@ -5004,7 +5008,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 1165 "pre.l"
+#line 1169 "pre.l"
 { // Variadic macro
 					  yyextra->defVarArgs = TRUE;
 					  yyextra->defArgsStr+=yytext;
@@ -5014,7 +5018,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 1171 "pre.l"
+#line 1175 "pre.l"
 {
   					  //printf("Define addArg(%s)\n",yytext);
   					  QCString argName=yytext;
@@ -5043,7 +5047,7 @@ YY_RULE_SETUP
   */
 case 130:
 YY_RULE_SETUP
-#line 1196 "pre.l"
+#line 1200 "pre.l"
 {
 					  yyextra->defText+=yytext;
 					  yyextra->defLitText+=yytext;
@@ -5054,7 +5058,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 1203 "pre.l"
+#line 1207 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					  yyextra->lastCPPContext=YY_START;
@@ -5064,7 +5068,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 1209 "pre.l"
+#line 1213 "pre.l"
 {
   					  if (yytext[0]=='/') outputChar(yyscanner,'/');
   					  outputChar(yyscanner,'*');outputChar(yyscanner,'/');
@@ -5082,14 +5086,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 1223 "pre.l"
+#line 1227 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 1226 "pre.l"
+#line 1230 "pre.l"
 {
   					  outputChar(yyscanner,'/');outputChar(yyscanner,'*');
 					  //yyextra->commentCount++;
@@ -5097,14 +5101,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 1230 "pre.l"
+#line 1234 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 1233 "pre.l"
+#line 1237 "pre.l"
 {
                                           bool markdownSupport = Config_getBool(MARKDOWN_SUPPORT);
                                           if (!markdownSupport)
@@ -5114,14 +5118,14 @@ YY_RULE_SETUP
                                           else
                                           {
   					    outputArray(yyscanner,yytext,(int)yyleng);
-                                            yyextra->fenceSize=yyleng;
+                                            yyextra->fenceSize=(int)yyleng;
                                             BEGIN(SkipVerbatim);
                                           }
                                         }
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 1246 "pre.l"
+#line 1250 "pre.l"
 {
                                           bool markdownSupport = Config_getBool(MARKDOWN_SUPPORT);
                                           if (!markdownSupport)
@@ -5131,7 +5135,7 @@ YY_RULE_SETUP
                                           else
                                           {
   					    outputArray(yyscanner,yytext,(int)yyleng);
-                                            yyextra->fenceSize=yyleng;
+                                            yyextra->fenceSize=(int)yyleng;
                                             BEGIN(SkipVerbatim);
                                           }
                                         }
@@ -5139,7 +5143,7 @@ YY_RULE_SETUP
 case 138:
 /* rule 138 can match eol */
 YY_RULE_SETUP
-#line 1259 "pre.l"
+#line 1263 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					  yyextra->yyLineNr+=QCString(yytext).contains('\n');
@@ -5148,7 +5152,7 @@ YY_RULE_SETUP
 case 139:
 /* rule 139 can match eol */
 YY_RULE_SETUP
-#line 1263 "pre.l"
+#line 1267 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					  yyextra->yyLineNr+=QCString(yytext).contains('\n');
@@ -5169,14 +5173,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 1280 "pre.l"
+#line 1284 "pre.l"
 { // escaped @cond
   					  outputArray(yyscanner,yytext,(int)yyleng);
                                         }
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 1283 "pre.l"
+#line 1287 "pre.l"
 { // conditional section
                                           yyextra->ccomment=TRUE;  
                                           yyextra->condCtx=YY_START;
@@ -5185,7 +5189,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 1288 "pre.l"
+#line 1292 "pre.l"
 { // conditional section
                                           yyextra->ccomment=FALSE;  
                                           yyextra->condCtx=YY_START;
@@ -5194,7 +5198,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 1293 "pre.l"
+#line 1297 "pre.l"
 {
   				          startCondSection(yyscanner,yytext);
                                           if (yyextra->skip)
@@ -5219,7 +5223,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 1314 "pre.l"
+#line 1318 "pre.l"
 { // non-guard character
   					  unput(*yytext);
   					  startCondSection(yyscanner," ");
@@ -5249,7 +5253,7 @@ case 145:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1336 "pre.l"
+#line 1340 "pre.l"
 { // no guard
                                           if (YY_START==SkipCComment)
                                           {
@@ -5269,27 +5273,27 @@ YY_RULE_SETUP
 case 146:
 /* rule 146 can match eol */
 YY_RULE_SETUP
-#line 1351 "pre.l"
+#line 1355 "pre.l"
 { yyextra->yyLineNr++; outputChar(yyscanner,'\n'); }
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 1352 "pre.l"
+#line 1356 "pre.l"
 { }
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 1353 "pre.l"
+#line 1357 "pre.l"
 { }
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 1354 "pre.l"
+#line 1358 "pre.l"
 { yyextra->ccomment=FALSE; }
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 1355 "pre.l"
+#line 1359 "pre.l"
 { yyextra->ccomment=TRUE; }
 	YY_BREAK
 case 151:
@@ -5298,7 +5302,7 @@ case 151:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 9;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1356 "pre.l"
+#line 1360 "pre.l"
 {
                                           if (!yyextra->skip)
                                           {
@@ -5312,7 +5316,7 @@ case 152:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1362 "pre.l"
+#line 1366 "pre.l"
 { 
                                           bool oldSkip = yyextra->skip;
                                           endCondSection(yyscanner);
@@ -5332,7 +5336,7 @@ case 153:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1374 "pre.l"
+#line 1378 "pre.l"
 {
                                           bool oldSkip = yyextra->skip;
   					  endCondSection(yyscanner);
@@ -5344,7 +5348,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 1382 "pre.l"
+#line 1386 "pre.l"
 { /* end of verbatim block */
   					  outputArray(yyscanner,yytext,(int)yyleng);
 					  if (yytext[1]=='f' && yyextra->blockName=="f")
@@ -5359,10 +5363,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 1393 "pre.l"
+#line 1397 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
-                                          if (yyextra->fenceSize==yyleng)
+                                          if (yyextra->fenceSize==(yy_size_t)yyleng)
                                           {
                                             BEGIN(SkipCComment);
                                           }
@@ -5370,10 +5374,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 1400 "pre.l"
+#line 1404 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
-                                          if (yyextra->fenceSize==yyleng)
+                                          if (yyextra->fenceSize==(yy_size_t)yyleng)
                                           {
                                             BEGIN(SkipCComment);
                                           }
@@ -5381,14 +5385,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 1407 "pre.l"
+#line 1411 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 1410 "pre.l"
+#line 1414 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
@@ -5396,7 +5400,7 @@ YY_RULE_SETUP
 case 159:
 /* rule 159 can match eol */
 YY_RULE_SETUP
-#line 1413 "pre.l"
+#line 1417 "pre.l"
 { 
   					  yyextra->yyLineNr++;
   					  outputChar(yyscanner,'\n');
@@ -5404,14 +5408,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 1417 "pre.l"
+#line 1421 "pre.l"
 {
   					  outputChar(yyscanner,*yytext);
   					}
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 1420 "pre.l"
+#line 1424 "pre.l"
 {
 					  yyextra->defLitText+=yytext;
 					  yyextra->defText+=escapeAt(yytext);
@@ -5420,7 +5424,7 @@ YY_RULE_SETUP
 case 162:
 /* rule 162 can match eol */
 YY_RULE_SETUP
-#line 1424 "pre.l"
+#line 1428 "pre.l"
 {
                                           yyextra->defLitText+=yytext;
                                           yyextra->defText+=" ";
@@ -5430,7 +5434,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 1430 "pre.l"
+#line 1434 "pre.l"
 {
 					  yyextra->defLitText+=yytext;
 					  yyextra->defText+=yytext;
@@ -5440,7 +5444,7 @@ YY_RULE_SETUP
 case 164:
 /* rule 164 can match eol */
 YY_RULE_SETUP
-#line 1435 "pre.l"
+#line 1439 "pre.l"
 { 
   					  yyextra->yyLineNr++;
 					  yyextra->defLitText+=yytext;
@@ -5449,7 +5453,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 1440 "pre.l"
+#line 1444 "pre.l"
 { // see bug 594021 for a usecase for this rule
                                           if (yyextra->lastCContext==SkipCPPBlock)
 					  {
@@ -5463,38 +5467,38 @@ YY_RULE_SETUP
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 1450 "pre.l"
+#line 1454 "pre.l"
 { BEGIN(yyextra->lastCContext); }
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 1451 "pre.l"
+#line 1455 "pre.l"
 
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 1452 "pre.l"
+#line 1456 "pre.l"
 
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 1453 "pre.l"
+#line 1457 "pre.l"
 
 	YY_BREAK
 case 170:
 /* rule 170 can match eol */
 YY_RULE_SETUP
-#line 1454 "pre.l"
+#line 1458 "pre.l"
 { yyextra->yyLineNr++; outputChar(yyscanner,'\n'); }
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 1455 "pre.l"
+#line 1459 "pre.l"
 
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 1456 "pre.l"
+#line 1460 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
@@ -5502,7 +5506,7 @@ YY_RULE_SETUP
 case 173:
 /* rule 173 can match eol */
 YY_RULE_SETUP
-#line 1459 "pre.l"
+#line 1463 "pre.l"
 {
   					  unput(*yytext);
   					  BEGIN(yyextra->lastCPPContext);
@@ -5510,55 +5514,55 @@ YY_RULE_SETUP
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 1463 "pre.l"
+#line 1467 "pre.l"
 {
   					  outputChar(yyscanner,'/');outputChar(yyscanner,'*');
   					}
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 1466 "pre.l"
+#line 1470 "pre.l"
 {
   					  outputChar(yyscanner,'/');outputChar(yyscanner,'/');
   					}
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 1469 "pre.l"
+#line 1473 "pre.l"
 {
   					  outputArray(yyscanner,yytext,(int)yyleng);
   					}
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 1472 "pre.l"
+#line 1476 "pre.l"
 {
   					  outputChar(yyscanner,*yytext);
   					}
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 1475 "pre.l"
+#line 1479 "pre.l"
 
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 1476 "pre.l"
+#line 1480 "pre.l"
 
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 1477 "pre.l"
+#line 1481 "pre.l"
 
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 1478 "pre.l"
+#line 1482 "pre.l"
 
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 1479 "pre.l"
+#line 1483 "pre.l"
 {
   					  yyextra->quoteArg=TRUE;
 					  yyextra->defLitText+=yytext;
@@ -5566,7 +5570,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 1483 "pre.l"
+#line 1487 "pre.l"
 {
 					  yyextra->defLitText+=yytext;
   					  if (yyextra->quoteArg)
@@ -5603,7 +5607,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 1516 "pre.l"
+#line 1520 "pre.l"
 {
 					  yyextra->defLitText+=yytext;
 					  yyextra->defText+=yytext;
@@ -5612,7 +5616,7 @@ YY_RULE_SETUP
 case 185:
 /* rule 185 can match eol */
 YY_RULE_SETUP
-#line 1520 "pre.l"
+#line 1524 "pre.l"
 {
 					  yyextra->defLitText+=yytext;
 					  outputChar(yyscanner,'\n');
@@ -5624,7 +5628,7 @@ YY_RULE_SETUP
 case 186:
 /* rule 186 can match eol */
 YY_RULE_SETUP
-#line 1527 "pre.l"
+#line 1531 "pre.l"
 {
 					  QCString comment=extractTrailingComment(yyextra->defLitText);
 					  yyextra->defLitText+=yytext;
@@ -5682,22 +5686,22 @@ YY_RULE_SETUP
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 1581 "pre.l"
+#line 1585 "pre.l"
 { yyextra->defText += ' '; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 188:
 YY_RULE_SETUP
-#line 1582 "pre.l"
+#line 1586 "pre.l"
 { yyextra->defText += "##"; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 1583 "pre.l"
+#line 1587 "pre.l"
 { yyextra->defText += "@@"; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 1584 "pre.l"
+#line 1588 "pre.l"
 { 
                                           yyextra->defText += *yytext; 
   					  yyextra->defLitText+=yytext; 
@@ -5709,7 +5713,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 1592 "pre.l"
+#line 1596 "pre.l"
 { yyextra->defText += *yytext;
   					  yyextra->defLitText+=yytext; 
 					  if (!yyextra->insideComment)
@@ -5720,17 +5724,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 1599 "pre.l"
+#line 1603 "pre.l"
 { yyextra->defText += yytext; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 1600 "pre.l"
+#line 1604 "pre.l"
 { yyextra->defText += yytext; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 1601 "pre.l"
+#line 1605 "pre.l"
 {
   					  yyextra->defText += *yytext; yyextra->defLitText+=yytext; 
 					  BEGIN(DefineText);
@@ -5738,14 +5742,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 1605 "pre.l"
+#line 1609 "pre.l"
 {
   					  yyextra->defText += yytext; yyextra->defLitText+=yytext;
 					}
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 1608 "pre.l"
+#line 1612 "pre.l"
 {
   					  yyextra->defText += *yytext; yyextra->defLitText+=yytext;
 					  BEGIN(DefineText);
@@ -5753,17 +5757,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 1612 "pre.l"
+#line 1616 "pre.l"
 { yyextra->defText += *yytext; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 1613 "pre.l"
+#line 1617 "pre.l"
 { yyextra->defText += *yytext; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 1614 "pre.l"
+#line 1618 "pre.l"
 { yyextra->defText += *yytext; yyextra->defLitText+=yytext; }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
@@ -5806,7 +5810,7 @@ case YY_STATE_EOF(ReadString):
 case YY_STATE_EOF(CondLineC):
 case YY_STATE_EOF(CondLineCpp):
 case YY_STATE_EOF(SkipCond):
-#line 1615 "pre.l"
+#line 1619 "pre.l"
 {
                                           DBG_CTX((stderr,"End of include file\n"));
 					  //printf("Include stack depth=%d\n",yyextra->includeStack.count());
@@ -5826,7 +5830,7 @@ case YY_STATE_EOF(SkipCond):
                                             //preYYin = fs->oldYYin;
                                             yyextra->inputBuf    = fs->oldFileBuf;
 					    yyextra->inputBufPos = fs->oldFileBufPos;
-                                            yyextra->curlyCount = fs->curlyCount;
+                                            yyextra->curlyCount  = fs->curlyCount;
 					    setFileName(yyscanner,fs->fileName);
 					    DBG_CTX((stderr,"######## FileName %s\n",yyextra->yyFileName.data()));
 					    
@@ -5844,10 +5848,10 @@ case 200:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
-#line 1648 "pre.l"
+#line 1652 "pre.l"
 case 201:
 YY_RULE_SETUP
-#line 1648 "pre.l"
+#line 1652 "pre.l"
 {
                                           if (YY_START==SkipVerbatim || YY_START==SkipCond)
                                           {
@@ -5865,7 +5869,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 1662 "pre.l"
+#line 1666 "pre.l"
 {
                                           if (YY_START==SkipVerbatim || YY_START==SkipCond || getLanguageFromFileName(yyextra->yyFileName)==SrcLangExt_Fortran)
                                           {
@@ -5883,7 +5887,7 @@ YY_RULE_SETUP
 case 203:
 /* rule 203 can match eol */
 YY_RULE_SETUP
-#line 1675 "pre.l"
+#line 1679 "pre.l"
 { 
   					  outputChar(yyscanner,'\n');
   					  yyextra->yyLineNr++; 
@@ -5891,7 +5895,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 1679 "pre.l"
+#line 1683 "pre.l"
 {
   					  yyextra->expectGuard = FALSE;
   					  outputChar(yyscanner,*yytext);
@@ -5899,10 +5903,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 1684 "pre.l"
+#line 1688 "pre.l"
 ECHO;
 	YY_BREAK
-#line 5906 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pre.cpp"
+#line 5910 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pre.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -7027,17 +7031,17 @@ void preYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 1684 "pre.l"
+#line 1688 "pre.l"
 
 
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   YY_EXTRA_TYPE state = preYYget_extra(yyscanner);
-  int bytesInBuf = state->inputBuf->curPos()-state->inputBufPos;
-  int bytesToCopy = QMIN(max_size,bytesInBuf);
+  yy_size_t bytesInBuf = state->inputBuf->curPos()-state->inputBufPos;
+  yy_size_t bytesToCopy = QMIN(max_size,bytesInBuf);
   memcpy(buf,state->inputBuf->data()+state->inputBufPos,bytesToCopy);
   state->inputBufPos+=bytesToCopy;
   return bytesToCopy;
@@ -7238,7 +7242,7 @@ static FileState *findFile(yyscan_t yyscanner, const char *fileName,bool localIn
 static QCString extractTrailingComment(const char *s)
 {
   if (s==0) return "";
-  int i=strlen(s)-1;
+  int i=(int)strlen(s)-1;
   while (i>=0)
   {
     char c=s[i];
@@ -7340,7 +7344,7 @@ static QCString stringize(const QCString &s)
       pc=0;
       while (i<s.length() && inString)
       {
-	char c=s.at(i++);
+	c=s.at(i++);
 	if (c=='"') 
 	{
 	  result+="\\\"";
@@ -7433,7 +7437,7 @@ static bool replaceFunctionMacro(yyscan_t yyscanner,const QCString &expr,QCStrin
   }
   if (cc!='(') 
   { 
-    unputChar(yyscanner,expr,rest,j,cc); 
+    unputChar(yyscanner,expr,rest,j,(char)cc); 
     return FALSE; 
   }
   getNextChar(yyscanner,expr,rest,j); // eat the '(' character
@@ -7462,12 +7466,12 @@ static bool replaceFunctionMacro(yyscan_t yyscanner,const QCString &expr,QCStrin
       char c=(char)cc;
       if (c=='(') // argument is a function => search for matching )
       {
-	int level=1;
+	int lvl=1;
 	arg+=c;
 	//char term='\0';
 	while ((cc=getNextChar(yyscanner,expr,rest,j))!=EOF && cc!=0)
 	{
-	  char c=(char)cc;
+	  c=(char)cc;
 	  //printf("processing %c: term=%c (%d)\n",c,term,term);
 	  if (c=='\'' || c=='\"') // skip ('s and )'s inside strings
 	  {
@@ -7476,13 +7480,13 @@ static bool replaceFunctionMacro(yyscan_t yyscanner,const QCString &expr,QCStrin
 	  }
 	  if (c==')')
 	  {
-	    level--;
+	    lvl--;
 	    arg+=c;
-	    if (level==0) break;
+	    if (lvl==0) break;
 	  }
 	  else if (c=='(')
 	  {
-	    level++;
+	    lvl++;
 	    arg+=c;
 	  }
 	  else
@@ -8019,7 +8023,7 @@ static QCString removeIdsAndMarkers(const char *s)
       {
 nextChar:
 	result+=c;
-	char lc=tolower(c);
+	char lc=(char)tolower(c);
 	if (!isId(lc) && lc!='.' /*&& lc!='-' && lc!='+'*/) inNum=FALSE;
 	p++;
       }
@@ -8272,23 +8276,23 @@ static void readIncludeFile(yyscan_t yyscanner,const QCString &inc)
 	else if (searchIncludes) // search in INCLUDE_PATH as well
 	{
 	  QStrList &includePath = Config_getList(INCLUDE_PATH);
-	  char *s=includePath.first();
-	  while (s)
+	  char *incPath=includePath.first();
+	  while (incPath)
 	  {
-	    QFileInfo fi(s);
-	    if (fi.exists() && fi.isDir())
+	    QFileInfo fi3(incPath);
+	    if (fi3.exists() && fi3.isDir())
 	    {
-	      QCString absName = QCString(fi.absFilePath().utf8())+"/"+incFileName;
+	      absName = QCString(fi3.absFilePath().utf8())+"/"+incFileName;
 	      //printf("trying absName=%s\n",absName.data());
-	      QFileInfo fi2(absName);
-	      if (fi2.exists())
+	      QFileInfo fi4(absName);
+	      if (fi4.exists())
 	      {
-		absIncFileName=fi2.absFilePath().utf8();
+		absIncFileName=fi4.absFilePath().utf8();
 		break;
 	      }
 	      //printf( "absIncFileName = %s\n", absIncFileName.data() );
 	    }
-	    s=includePath.next();
+	    incPath=includePath.next();
 	  }
 	}
 	//printf( "absIncFileName = %s\n", absIncFileName.data() );
@@ -8518,8 +8522,7 @@ static int getCurrentChar(yyscan_t yyscanner,const QCString &expr,QCString *rest
   else
   {
     int cc=yyinput(yyscanner);
-    returnCharToStream(yyscanner,cc);
-    //unput((char)cc);
+    returnCharToStream(yyscanner,(char)cc);
     //printf("%c=yyinput()\n",cc);
     return cc;
   }
@@ -8645,14 +8648,14 @@ void Preprocessor::processFile(const char *fileName,BufStr &input,BufStr &output
 	QRegExp reId("[a-z_A-Z\x80-\xFF][a-z_A-Z0-9\x80-\xFF]*"); // regexp matching an id
 	QDict<int> argDict(17);
 	argDict.setAutoDelete(TRUE);
-	int i=i_obrace+1,p,l,count=0;
+	int i=i_obrace+1,pi,l,count=0;
 	// gather the formal arguments in a dictionary 
-	while (i<i_cbrace && (p=reId.match(ds,i,&l)))
+	while (i<i_cbrace && (pi=reId.match(ds,i,&l)))
 	{
           if (l>0) // see bug375037
           {
-	    argDict.insert(ds.mid(p,l),new int(count++));
-	    i=p+l;
+	    argDict.insert(ds.mid(pi,l),new int(count++));
+	    i=pi+l;
           }
           else
           {
@@ -8665,11 +8668,11 @@ void Preprocessor::processFile(const char *fileName,BufStr &input,BufStr &output
 	i=0;
 	// substitute all occurrences of formal arguments by their 
 	// corresponding markers
-	while ((p=reId.match(tmp,i,&l))!=-1)
+	while ((pi=reId.match(tmp,i,&l))!=-1)
 	{
-	  if (p>i) definition+=tmp.mid(i,p-i);
+	  if (pi>i) definition+=tmp.mid(i,pi-i);
 	  int *argIndex;
-	  if ((argIndex=argDict[tmp.mid(p,l)])!=0)
+	  if ((argIndex=argDict[tmp.mid(pi,l)])!=0)
 	  {
 	    QCString marker;
 	    marker.sprintf(" @%d ",*argIndex);
@@ -8677,9 +8680,9 @@ void Preprocessor::processFile(const char *fileName,BufStr &input,BufStr &output
 	  }
 	  else
 	  {
-	    definition+=tmp.mid(p,l);
+	    definition+=tmp.mid(pi,l);
 	  }
-	  i=p+l;
+	  i=pi+l;
 	}
 	if (i<(int)tmp.length()) definition+=tmp.mid(i,tmp.length()-i);
 
@@ -8814,6 +8817,7 @@ void Preprocessor::processFile(const char *fileName,BufStr &input,BufStr &output
   printlex(yy_flex_debug, FALSE, __FILE__, fileName);
 }
 
-
+#if USE_STATE2STRING
 #include "pre.l.h"
+#endif
 

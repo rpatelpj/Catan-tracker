@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Raj/Desktop/Catan-tracker/doxygen/libmscgen
+# Install script for directory: /Users/Raj/Downloads/Catan-tracker/doxygen/libmscgen
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

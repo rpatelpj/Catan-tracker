@@ -34,6 +34,6 @@ Run `make update` to update your `Catan-tracker` local repository and `doxygen` 
 ## Documentation
 The source code is commented with descriptions of each function. Also, check out the [HTML interface](https://rpatelpj.github.io/Catan-tracker).
 
-The HTML interface is generated through Doxygen. `bison` version 2.7 or later and `cmake` are required in addition to other pre-installed packages to use Doxygen.
+The HTML interface is generated through Doxygen. [`bison`](https://formulae.brew.sh/formula/bison) version 2.7 or later and [`cmake`](https://formulae.brew.sh/formula/cmake) are required in addition to other pre-installed packages to use Doxygen.
 
 Run `make generate` to generate documentation from the source code.

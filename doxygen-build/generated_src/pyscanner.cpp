@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
 #line 29 "pyscanner.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1534,6 +1534,8 @@ goto find_rule; \
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
 /* ----------------------------------------------------------------- */
 
 struct pyscannerYY_state
@@ -1542,7 +1544,7 @@ struct pyscannerYY_state
   CommentScanner          commentScanner;
   OutlineParserInterface *thisParser = 0;
   const char *            inputString = 0;
-  int                     inputPosition = 0;
+  yy_size_t               inputPosition = 0;
   Protection              protection = Public;
   std::shared_ptr<Entry>  current_root;
   std::shared_ptr<Entry>  current;
@@ -1583,7 +1585,9 @@ struct pyscannerYY_state
 };
 
 //-----------------------------------------------------------------------------
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 static inline int computeIndent(const char *s);
 
@@ -1606,7 +1610,8 @@ static void initSpecialBlock(yyscan_t yyscanner);
 static void searchFoundDef(yyscan_t yyscanner);
 static void searchFoundClass(yyscan_t yyscanner);
 static QCString findPackageScope(yyscan_t yyscanner,const char *fileName);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 
 //-----------------------------------------------------------------------------
 /* ----------------------------------------------------------------- */
@@ -1649,7 +1654,7 @@ static int yyread(yyscan_t yyscanner,char *buf,int max_size);
 
 
 
-#line 1653 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
+#line 1658 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
 
 #define INITIAL 0
 #define Search 1
@@ -1908,12 +1913,12 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 244 "pyscanner.l"
+#line 249 "pyscanner.l"
 
 
   /* ------------ Function recognition rules -------------- */
 
-#line 1917 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
+#line 1922 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -2033,7 +2038,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 250 "pyscanner.l"
+#line 255 "pyscanner.l"
 { // start of a function/method definition with indent
       			  DBG_CTX((stderr,"Found def at %d\n",yyextra->yyLineNr));
       			  yyextra->indent=computeIndent(yytext);
@@ -2043,7 +2048,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 256 "pyscanner.l"
+#line 261 "pyscanner.l"
 { // start of a function/method definition
 			  searchFoundDef(yyscanner);
 			  BEGIN( FunctionDec );
@@ -2051,7 +2056,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 261 "pyscanner.l"
+#line 266 "pyscanner.l"
 { // start of a class definition with indent
        			  DBG_CTX((stderr,"Found class at %d\n",yyextra->yyLineNr));
       			  yyextra->indent=computeIndent(yytext);
@@ -2061,27 +2066,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 267 "pyscanner.l"
+#line 272 "pyscanner.l"
 {  // start of a class definition
 			  searchFoundClass(yyscanner);
 			  BEGIN( ClassDec ) ;
                        }
 	YY_BREAK
 case 5:
-#line 272 "pyscanner.l"
+#line 277 "pyscanner.l"
 case 6:
 YY_RULE_SETUP
-#line 272 "pyscanner.l"
+#line 277 "pyscanner.l"
 { // start of an from import
 			  yyextra->packageCommentAllowed = FALSE;
                           BEGIN( FromMod );
                        }
 	YY_BREAK
 case 7:
-#line 278 "pyscanner.l"
+#line 283 "pyscanner.l"
 case 8:
 YY_RULE_SETUP
-#line 278 "pyscanner.l"
+#line 283 "pyscanner.l"
 { // start of an import statement
 			  yyextra->packageCommentAllowed = FALSE;
                           BEGIN( Import );
@@ -2089,7 +2094,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 282 "pyscanner.l"
+#line 287 "pyscanner.l"
 { // property
       			yyextra->current->section   = Entry::VARIABLE_SEC;
   			yyextra->current->mtype     = Property;
@@ -2104,7 +2109,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 292 "pyscanner.l"
+#line 297 "pyscanner.l"
 { // variable
                         if (yyextra->search_count) REJECT;
       			yyextra->indent=computeIndent(yytext);
@@ -2120,7 +2125,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 303 "pyscanner.l"
+#line 308 "pyscanner.l"
 { // list of variables, we cannot place the default value
                                                                // so we will skip it later on in a general rule
                                                                // Also note ")" this is to catch also (a,b). the "("
@@ -2138,7 +2143,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 317 "pyscanner.l"
+#line 322 "pyscanner.l"
 { // start of a single quoted string
        		        yyextra->stringContext=YY_START;
 		        yyextra->copyString=0;
@@ -2148,7 +2153,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 323 "pyscanner.l"
+#line 328 "pyscanner.l"
 { // start of a double quoted string
        	                yyextra->stringContext=YY_START;
 			yyextra->copyString=0;
@@ -2158,35 +2163,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 329 "pyscanner.l"
+#line 334 "pyscanner.l"
 {
        			yyextra->stat=TRUE;
       		      }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 332 "pyscanner.l"
+#line 337 "pyscanner.l"
 { // Unix type script comment
                         if (yyextra->yyLineNr != 1) REJECT;
       		      }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 335 "pyscanner.l"
+#line 340 "pyscanner.l"
 { // normal comment 
 			yyextra->packageCommentAllowed = FALSE;
       		      }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 338 "pyscanner.l"
+#line 343 "pyscanner.l"
 { // some other identifier
 			yyextra->packageCommentAllowed = FALSE;
 		      }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 341 "pyscanner.l"
+#line 346 "pyscanner.l"
 {
       			yyextra->curIndent=computeIndent(yytext);
                       }
@@ -2194,14 +2199,14 @@ YY_RULE_SETUP
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 345 "pyscanner.l"
+#line 350 "pyscanner.l"
 { // new line
                         lineCount(yyscanner);
                       }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 349 "pyscanner.l"
+#line 354 "pyscanner.l"
 { // start of a comment block
 			initTriDoubleQuoteBlock(yyscanner);
 			BEGIN(TripleComment);
@@ -2209,7 +2214,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 354 "pyscanner.l"
+#line 359 "pyscanner.l"
 { // start of a comment block
 			initTriSingleQuoteBlock(yyscanner);
 			BEGIN(TripleComment);
@@ -2221,7 +2226,7 @@ case 22:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 359 "pyscanner.l"
+#line 364 "pyscanner.l"
 {  // start of a special comment
       			yyextra->curIndent=computeIndent(yytext);
 			yyextra->packageCommentAllowed = FALSE;
@@ -2231,21 +2236,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 365 "pyscanner.l"
+#line 370 "pyscanner.l"
 { // we have to do something with (
                         yyextra->search_count += 1;
                       }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 368 "pyscanner.l"
+#line 373 "pyscanner.l"
 { // we have to do something with )
                         yyextra->search_count -= 1;
                       }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 371 "pyscanner.l"
+#line 376 "pyscanner.l"
 { // any other character...
                         // This is the major default
                         // that should catch everything
@@ -2256,20 +2261,20 @@ YY_RULE_SETUP
 
 case 26:
 YY_RULE_SETUP
-#line 379 "pyscanner.l"
+#line 384 "pyscanner.l"
 { // python3 style imports
                       }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 381 "pyscanner.l"
+#line 386 "pyscanner.l"
 { // from package import 
                         yyextra->packageName=yytext;
 		      }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 384 "pyscanner.l"
+#line 389 "pyscanner.l"
 {
     			BEGIN(FromModItem);
     		      }
@@ -2277,7 +2282,7 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 387 "pyscanner.l"
+#line 392 "pyscanner.l"
 {
                         incLineNr(yyscanner);
                         BEGIN(Search);
@@ -2285,13 +2290,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 391 "pyscanner.l"
+#line 396 "pyscanner.l"
 {
 		      }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 393 "pyscanner.l"
+#line 398 "pyscanner.l"
 {
                         unput(*yytext);
                         BEGIN(Search);
@@ -2301,7 +2306,7 @@ YY_RULE_SETUP
 
 case 32:
 YY_RULE_SETUP
-#line 400 "pyscanner.l"
+#line 405 "pyscanner.l"
 { // import all
                   addFrom(yyscanner,TRUE);
                   BEGIN(Search);
@@ -2309,21 +2314,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 404 "pyscanner.l"
+#line 409 "pyscanner.l"
 {
                   addFrom(yyscanner,FALSE);
 		}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 407 "pyscanner.l"
+#line 412 "pyscanner.l"
 {
                   addFrom(yyscanner,FALSE);
                 }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 410 "pyscanner.l"
+#line 415 "pyscanner.l"
 {
                   addFrom(yyscanner,FALSE);
                   if (!yyextra->importTuple)
@@ -2335,7 +2340,7 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 417 "pyscanner.l"
+#line 422 "pyscanner.l"
 {
                   incLineNr(yyscanner);
                   if (!yyextra->importTuple)
@@ -2346,20 +2351,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 424 "pyscanner.l"
+#line 429 "pyscanner.l"
 {
 		}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 426 "pyscanner.l"
+#line 431 "pyscanner.l"
 {
                   yyextra->importTuple=TRUE;
                 }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 429 "pyscanner.l"
+#line 434 "pyscanner.l"
 {
                   yyextra->importTuple=FALSE;
                   BEGIN(Search);
@@ -2367,21 +2372,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 433 "pyscanner.l"
+#line 438 "pyscanner.l"
 {
   		}
 	YY_BREAK
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 435 "pyscanner.l"
+#line 440 "pyscanner.l"
 { // line continuation
                   incLineNr(yyscanner);
                 }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 438 "pyscanner.l"
+#line 443 "pyscanner.l"
 {
                   unput(*yytext);
                   BEGIN(Search);
@@ -2391,7 +2396,7 @@ YY_RULE_SETUP
 
 case 43:
 YY_RULE_SETUP
-#line 445 "pyscanner.l"
+#line 450 "pyscanner.l"
 {
 			yyextra->current->name=removeRedundantWhiteSpace(substitute(yytext,".","::"));
 			yyextra->current->fileName = yyextra->yyFileName; 
@@ -2405,7 +2410,7 @@ YY_RULE_SETUP
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 454 "pyscanner.l"
+#line 459 "pyscanner.l"
 {
                   incLineNr(yyscanner);
                   BEGIN(Search);
@@ -2413,13 +2418,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 458 "pyscanner.l"
+#line 463 "pyscanner.l"
 {
 		}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 460 "pyscanner.l"
+#line 465 "pyscanner.l"
 {
                   unput(*yytext);
                   BEGIN(Search);
@@ -2429,7 +2434,7 @@ YY_RULE_SETUP
 
 case 47:
 YY_RULE_SETUP
-#line 467 "pyscanner.l"
+#line 472 "pyscanner.l"
 {
                         DBG_CTX((stderr,"Found instance method variable %s in %s at %d\n",&yytext[5],yyextra->current_root->name.data(),yyextra->yyLineNr));
 			yyextra->current->name=&yytext[5];
@@ -2447,7 +2452,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 481 "pyscanner.l"
+#line 486 "pyscanner.l"
 {
                         DBG_CTX((stderr,"Found class method variable %s in %s at %d\n",&yytext[4],yyextra->current_root->name.data(),yyextra->yyLineNr));
 			yyextra->current->name=&yytext[4];
@@ -2465,7 +2470,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 495 "pyscanner.l"
+#line 500 "pyscanner.l"
 { // start of a comment block
 			initTriDoubleQuoteBlock(yyscanner);
 			BEGIN(TripleComment);
@@ -2473,7 +2478,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 500 "pyscanner.l"
+#line 505 "pyscanner.l"
 { // start of a comment block
 			initTriSingleQuoteBlock(yyscanner);
 			BEGIN(TripleComment);
@@ -2485,7 +2490,7 @@ case 51:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 505 "pyscanner.l"
+#line 510 "pyscanner.l"
 {  // start of a special comment
 			initSpecialBlock(yyscanner);
 			BEGIN(SpecialComment);
@@ -2493,13 +2498,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 509 "pyscanner.l"
+#line 514 "pyscanner.l"
 { // #
 	              }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 511 "pyscanner.l"
+#line 516 "pyscanner.l"
 { // start of a single quoted string
        			yyextra->stringContext=YY_START;
 			yyextra->copyString=0;
@@ -2508,7 +2513,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 516 "pyscanner.l"
+#line 521 "pyscanner.l"
 { // start of a double quoted string
        			yyextra->stringContext=YY_START;
 			yyextra->copyString=0;
@@ -2518,22 +2523,22 @@ YY_RULE_SETUP
 case 55:
 /* rule 55 can match eol */
 YY_RULE_SETUP
-#line 521 "pyscanner.l"
+#line 526 "pyscanner.l"
 { incLineNr(yyscanner); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 522 "pyscanner.l"
+#line 527 "pyscanner.l"
 // identifiers
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 523 "pyscanner.l"
+#line 528 "pyscanner.l"
 // other uninteresting stuff
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 524 "pyscanner.l"
+#line 529 "pyscanner.l"
 // anything else
 	YY_BREAK
 
@@ -2541,7 +2546,7 @@ YY_RULE_SETUP
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 528 "pyscanner.l"
+#line 533 "pyscanner.l"
 {
                         DBG_CTX((stderr,"indent %d<=%d\n",computeIndent(&yytext[1]),yyextra->indent));
                         if (computeIndent(&yytext[1])<=yyextra->indent) 
@@ -2568,7 +2573,7 @@ case 60:
 yyg->yy_c_buf_p = yy_cp -= 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 547 "pyscanner.l"
+#line 552 "pyscanner.l"
 {
                         if (computeIndent(&yytext[1])<=yyextra->indent)
 			{
@@ -2589,7 +2594,7 @@ YY_RULE_SETUP
       		      }
 	YY_BREAK
 case YY_STATE_EOF(FunctionBody):
-#line 565 "pyscanner.l"
+#line 570 "pyscanner.l"
 {
 			endOfDef(yyscanner);
 			yyterminate();
@@ -2601,14 +2606,14 @@ case 61:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 569 "pyscanner.l"
+#line 574 "pyscanner.l"
 { // skip empty line
       		        yyextra->current->program+=yytext;
       	              }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 572 "pyscanner.l"
+#line 577 "pyscanner.l"
 { // something at indent >0
       		        yyextra->current->program+=yytext;
 			yyextra->curIndent = computeIndent(yytext);
@@ -2622,7 +2627,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 582 "pyscanner.l"
+#line 587 "pyscanner.l"
 { // start of a single quoted string
       		        yyextra->current->program+=yytext;
        			yyextra->stringContext=YY_START;
@@ -2633,7 +2638,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 589 "pyscanner.l"
+#line 594 "pyscanner.l"
 { // start of a double quoted string
       		        yyextra->current->program+=yytext;
        			yyextra->stringContext=YY_START;
@@ -2644,7 +2649,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 596 "pyscanner.l"
+#line 601 "pyscanner.l"
 { // non-special stuff
       		        yyextra->current->program+=yytext;
 		        yyextra->specialBlock = FALSE; 
@@ -2652,14 +2657,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 600 "pyscanner.l"
+#line 605 "pyscanner.l"
 { // normal comment 
       		        yyextra->current->program+=yytext;
       		      }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 603 "pyscanner.l"
+#line 608 "pyscanner.l"
 { // comment half way
       		        yyextra->current->program+=yytext;
                       }
@@ -2667,7 +2672,7 @@ YY_RULE_SETUP
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 606 "pyscanner.l"
+#line 611 "pyscanner.l"
 { 
 			incLineNr(yyscanner); 
       		        yyextra->current->program+=yytext;
@@ -2675,7 +2680,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 610 "pyscanner.l"
+#line 615 "pyscanner.l"
 { // any character
       		        yyextra->current->program+=*yytext;
 		        yyextra->specialBlock = FALSE; 
@@ -2683,7 +2688,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 615 "pyscanner.l"
+#line 620 "pyscanner.l"
 { // start of a comment block
 			yyextra->current->program+=yytext;
 			initTriDoubleQuoteBlock(yyscanner);
@@ -2692,7 +2697,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 621 "pyscanner.l"
+#line 626 "pyscanner.l"
 { // start of a comment block
 			yyextra->current->program+=yytext;
 			initTriSingleQuoteBlock(yyscanner);
@@ -2705,7 +2710,7 @@ case 72:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 627 "pyscanner.l"
+#line 632 "pyscanner.l"
 {  // start of a special comment
 			initSpecialBlock(yyscanner);
 			BEGIN(SpecialComment);
@@ -2715,7 +2720,7 @@ YY_RULE_SETUP
 
 case 73:
 YY_RULE_SETUP
-#line 635 "pyscanner.l"
+#line 640 "pyscanner.l"
 {
 			      //found function name
 			      if (yyextra->current->type.isEmpty()) 
@@ -2729,7 +2734,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 645 "pyscanner.l"
+#line 650 "pyscanner.l"
 { // function without arguments
 			      yyextra->specialBlock = TRUE; // expecting a docstring
 			      yyextra->bodyEntry = yyextra->current;
@@ -2738,7 +2743,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 651 "pyscanner.l"
+#line 656 "pyscanner.l"
 {
 			      yyextra->defVal.resize(0);
 			      yyextra->braceCount = 0;
@@ -2747,7 +2752,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 656 "pyscanner.l"
+#line 661 "pyscanner.l"
 {
 			      yyextra->funcParamsEnd = FALSE;
                               yyextra->current->bodyLine  = yyextra->yyLineNr;
@@ -2756,7 +2761,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 661 "pyscanner.l"
+#line 666 "pyscanner.l"
 { // end of parameter list
                               if (yyextra->current->argList.empty())
                               {
@@ -2770,20 +2775,20 @@ YY_RULE_SETUP
 
 case 78:
 YY_RULE_SETUP
-#line 672 "pyscanner.l"
+#line 677 "pyscanner.l"
 {
                         }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 675 "pyscanner.l"
+#line 680 "pyscanner.l"
 {
                           yyextra->argType = yytext;
                         }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 678 "pyscanner.l"
+#line 683 "pyscanner.l"
 { // Name of parameter
 			  lineCount(yyscanner);
 			  Argument a;
@@ -2795,7 +2800,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 686 "pyscanner.l"
+#line 691 "pyscanner.l"
 { // default value
                           // TODO: this rule is too simple, need to be able to
                           // match things like =")" as well!
@@ -2806,7 +2811,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 693 "pyscanner.l"
+#line 698 "pyscanner.l"
 {
 			  unput(*yytext);
 			  BEGIN(FunctionDec);
@@ -2814,7 +2819,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 697 "pyscanner.l"
+#line 702 "pyscanner.l"
 {
 			  yyextra->defVal.resize(0);
 			  yyextra->braceCount = 0;
@@ -2823,37 +2828,37 @@ YY_RULE_SETUP
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 702 "pyscanner.l"
+#line 707 "pyscanner.l"
 { // a comment
 			}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 704 "pyscanner.l"
+#line 709 "pyscanner.l"
 { // Default rule inside arguments.
                         }
 	YY_BREAK
 
 
 case 86:
-#line 711 "pyscanner.l"
+#line 716 "pyscanner.l"
 case 87:
-#line 712 "pyscanner.l"
+#line 717 "pyscanner.l"
 case 88:
 YY_RULE_SETUP
-#line 712 "pyscanner.l"
+#line 717 "pyscanner.l"
 {
      			  ++yyextra->braceCount;
      			  yyextra->defVal+=*yytext;
      			}
 	YY_BREAK
 case 89:
-#line 717 "pyscanner.l"
+#line 722 "pyscanner.l"
 case 90:
-#line 718 "pyscanner.l"
+#line 723 "pyscanner.l"
 case 91:
 YY_RULE_SETUP
-#line 718 "pyscanner.l"
+#line 723 "pyscanner.l"
 {
 			  --yyextra->braceCount;
 			  yyextra->defVal+=*yytext;
@@ -2861,7 +2866,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 722 "pyscanner.l"
+#line 727 "pyscanner.l"
 {
 			  if (yyextra->braceCount == 0)
 			  {
@@ -2875,7 +2880,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 732 "pyscanner.l"
+#line 737 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  yyextra->copyString=&yyextra->defVal;
@@ -2885,7 +2890,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 738 "pyscanner.l"
+#line 743 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  yyextra->copyString=&yyextra->defVal;
@@ -2896,7 +2901,7 @@ YY_RULE_SETUP
 case 95:
 /* rule 95 can match eol */
 YY_RULE_SETUP
-#line 744 "pyscanner.l"
+#line 749 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  incLineNr(yyscanner);
@@ -2904,7 +2909,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 748 "pyscanner.l"
+#line 753 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
        			}
@@ -2912,34 +2917,34 @@ YY_RULE_SETUP
 
 
 case 97:
-#line 755 "pyscanner.l"
+#line 760 "pyscanner.l"
 case 98:
-#line 756 "pyscanner.l"
+#line 761 "pyscanner.l"
 case 99:
 YY_RULE_SETUP
-#line 756 "pyscanner.l"
+#line 761 "pyscanner.l"
 {
      			  ++yyextra->braceCount;
      			  yyextra->defVal+=*yytext;
      			}
 	YY_BREAK
 case 100:
-#line 761 "pyscanner.l"
+#line 766 "pyscanner.l"
 case 101:
 YY_RULE_SETUP
-#line 761 "pyscanner.l"
+#line 766 "pyscanner.l"
 {
 			  --yyextra->braceCount;
 			  yyextra->defVal+=*yytext;
        			}
 	YY_BREAK
 case 102:
-#line 766 "pyscanner.l"
+#line 771 "pyscanner.l"
 case 103:
-#line 767 "pyscanner.l"
+#line 772 "pyscanner.l"
 case 104:
 YY_RULE_SETUP
-#line 767 "pyscanner.l"
+#line 772 "pyscanner.l"
 {
 			  if (yyextra->braceCount == 0)
 			  {
@@ -2959,7 +2964,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 783 "pyscanner.l"
+#line 788 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  yyextra->copyString=&yyextra->defVal;
@@ -2969,7 +2974,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 789 "pyscanner.l"
+#line 794 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  yyextra->copyString=&yyextra->defVal;
@@ -2980,7 +2985,7 @@ YY_RULE_SETUP
 case 107:
 /* rule 107 can match eol */
 YY_RULE_SETUP
-#line 795 "pyscanner.l"
+#line 800 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
 			  incLineNr(yyscanner);
@@ -2988,7 +2993,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 799 "pyscanner.l"
+#line 804 "pyscanner.l"
 {
 			  yyextra->defVal+=*yytext;
        			}
@@ -2996,32 +3001,32 @@ YY_RULE_SETUP
 
 
 case 109:
-#line 806 "pyscanner.l"
+#line 811 "pyscanner.l"
 case 110:
-#line 807 "pyscanner.l"
+#line 812 "pyscanner.l"
 case 111:
 YY_RULE_SETUP
-#line 807 "pyscanner.l"
+#line 812 "pyscanner.l"
 { // internal opening brace, assumption is that we have correct code so braces do match
        			  ++yyextra->braceCount;
 			  yyextra->defVal+=*yytext;
        			}
 	YY_BREAK
 case 112:
-#line 812 "pyscanner.l"
+#line 817 "pyscanner.l"
 case 113:
 YY_RULE_SETUP
-#line 812 "pyscanner.l"
+#line 817 "pyscanner.l"
 {
 			  --yyextra->braceCount;
 			  yyextra->defVal+=*yytext;
        			}
 	YY_BREAK
 case 114:
-#line 817 "pyscanner.l"
+#line 822 "pyscanner.l"
 case 115:
 YY_RULE_SETUP
-#line 817 "pyscanner.l"
+#line 822 "pyscanner.l"
 {
 			  if (yyextra->braceCount == 0)
 			  {
@@ -3041,7 +3046,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 834 "pyscanner.l"
+#line 839 "pyscanner.l"
 {
                           yyextra->defVal+=*yytext;
                           yyextra->copyString=&yyextra->defVal;
@@ -3051,7 +3056,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 840 "pyscanner.l"
+#line 845 "pyscanner.l"
 {
                           yyextra->defVal+=*yytext;
                           yyextra->copyString=&yyextra->defVal;
@@ -3062,7 +3067,7 @@ YY_RULE_SETUP
 case 118:
 /* rule 118 can match eol */
 YY_RULE_SETUP
-#line 846 "pyscanner.l"
+#line 851 "pyscanner.l"
 {
        			    yyextra->defVal+=*yytext;
 			    incLineNr(yyscanner);
@@ -3070,7 +3075,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 850 "pyscanner.l"
+#line 855 "pyscanner.l"
 {
 			    yyextra->defVal+=*yytext;
        			}
@@ -3083,7 +3088,7 @@ case 120:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 857 "pyscanner.l"
+#line 862 "pyscanner.l"
 { // new def at indent 0
                         incLineNr(yyscanner);
 			endOfDef(yyscanner);
@@ -3098,7 +3103,7 @@ case 121:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 864 "pyscanner.l"
+#line 869 "pyscanner.l"
 {  // start of a special comment at indent 0
                         incLineNr(yyscanner);
 			endOfDef(yyscanner);
@@ -3113,13 +3118,13 @@ case 122:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 871 "pyscanner.l"
+#line 876 "pyscanner.l"
 { // skip empty line
       		        yyextra->current->program+=yytext;
       	              }
 	YY_BREAK
 case YY_STATE_EOF(ClassBody):
-#line 874 "pyscanner.l"
+#line 879 "pyscanner.l"
 {
 			endOfDef(yyscanner);
 			yyterminate();
@@ -3127,7 +3132,7 @@ case YY_STATE_EOF(ClassBody):
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 878 "pyscanner.l"
+#line 883 "pyscanner.l"
 { // something at indent >0
                         yyextra->curIndent=computeIndent(yytext);
 			DBG_CTX((stderr,"yyextra->curIndent=%d yyextra->indent=%d\n",yyextra->curIndent,yyextra->indent));
@@ -3149,7 +3154,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 896 "pyscanner.l"
+#line 901 "pyscanner.l"
 { // start of a single quoted string
       		        yyextra->current->program+=*yytext;
        			yyextra->stringContext=YY_START;
@@ -3160,7 +3165,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 903 "pyscanner.l"
+#line 908 "pyscanner.l"
 { // start of a double quoted string
       		        yyextra->current->program+=*yytext;
        			yyextra->stringContext=YY_START;
@@ -3171,7 +3176,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 910 "pyscanner.l"
+#line 915 "pyscanner.l"
 { // non-special stuff
       		        yyextra->current->program+=yytext;
 		        yyextra->specialBlock = FALSE; 
@@ -3181,7 +3186,7 @@ YY_RULE_SETUP
 case 127:
 /* rule 127 can match eol */
 YY_RULE_SETUP
-#line 915 "pyscanner.l"
+#line 920 "pyscanner.l"
 { 
       		        yyextra->current->program+=*yytext;
 			incLineNr(yyscanner); 
@@ -3189,14 +3194,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 919 "pyscanner.l"
+#line 924 "pyscanner.l"
 { // normal comment
       		        yyextra->current->program+=yytext;
                       }
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 922 "pyscanner.l"
+#line 927 "pyscanner.l"
 { // any character
 		        yyextra->specialBlock = FALSE; 
       		        yyextra->current->program+=*yytext;
@@ -3204,7 +3209,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 926 "pyscanner.l"
+#line 931 "pyscanner.l"
 { // start of a comment block
       		        //if (!yyextra->hideClassDocs) 
 			yyextra->current->program+=yytext;
@@ -3214,7 +3219,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 933 "pyscanner.l"
+#line 938 "pyscanner.l"
 { // start of a comment block
       		        //if (!yyextra->hideClassDocs) 
 			yyextra->current->program+=yytext;
@@ -3225,7 +3230,7 @@ YY_RULE_SETUP
 
 case 132:
 YY_RULE_SETUP
-#line 941 "pyscanner.l"
+#line 946 "pyscanner.l"
 {
 			  if (yyextra->current->type.isEmpty()) 
 			  {
@@ -3255,13 +3260,13 @@ YY_RULE_SETUP
 
 case 133:
 YY_RULE_SETUP
-#line 968 "pyscanner.l"
+#line 973 "pyscanner.l"
 { // syntactic sugar for the list
                        }
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 971 "pyscanner.l"
+#line 976 "pyscanner.l"
 { // begin of the class definition
 			 yyextra->specialBlock = TRUE; // expecting a docstring
                          yyextra->current->bodyLine  = yyextra->yyLineNr;
@@ -3271,7 +3276,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 978 "pyscanner.l"
+#line 983 "pyscanner.l"
 {
                          yyextra->current->extends.push_back(
 					      BaseInfo(substitute(yytext,".","::"),Public,Normal)
@@ -3281,7 +3286,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 984 "pyscanner.l"
+#line 989 "pyscanner.l"
 { // start of a single quoted string
        			 yyextra->stringContext=YY_START;
                          BEGIN( SingleQuoteStringIgnore );
@@ -3289,7 +3294,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 988 "pyscanner.l"
+#line 993 "pyscanner.l"
 { // start of a double quoted string
        			 yyextra->stringContext=YY_START;
                          BEGIN( DoubleQuoteStringIgnore );
@@ -3299,28 +3304,28 @@ YY_RULE_SETUP
 
 case 138:
 YY_RULE_SETUP
-#line 995 "pyscanner.l"
+#line 1000 "pyscanner.l"
 { // end of a single quoted string
 			 BEGIN(yyextra->stringContext);
                        }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 998 "pyscanner.l"
+#line 1003 "pyscanner.l"
 { }
 	YY_BREAK
 
 
 case 140:
 YY_RULE_SETUP
-#line 1001 "pyscanner.l"
+#line 1006 "pyscanner.l"
 { // end of a double quoted string
 			 BEGIN(yyextra->stringContext);
                        }
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 1004 "pyscanner.l"
+#line 1009 "pyscanner.l"
 { }
 	YY_BREAK
 
@@ -3328,7 +3333,7 @@ YY_RULE_SETUP
 case 142:
 /* rule 142 can match eol */
 YY_RULE_SETUP
-#line 1008 "pyscanner.l"
+#line 1013 "pyscanner.l"
 {
                                  // Blankline - ignore, keep looking for indentation.
 				 lineCount(yyscanner);
@@ -3337,7 +3342,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 1014 "pyscanner.l"
+#line 1019 "pyscanner.l"
 { // start of a comment block
 				 initTriDoubleQuoteBlock(yyscanner);
       				 yyextra->current->program+=yytext;
@@ -3346,7 +3351,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 1019 "pyscanner.l"
+#line 1024 "pyscanner.l"
 { // start of a comment block
 			         initTriSingleQuoteBlock(yyscanner);
       				 yyextra->current->program+=yytext;
@@ -3355,7 +3360,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 1024 "pyscanner.l"
+#line 1029 "pyscanner.l"
 {  // start of a special comment
                                  initSpecialBlock(yyscanner);
                                  BEGIN(SpecialComment);
@@ -3363,13 +3368,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 1028 "pyscanner.l"
+#line 1033 "pyscanner.l"
 { // ignore comment with just one #
                                }
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 1030 "pyscanner.l"
+#line 1035 "pyscanner.l"
 {
       				 yyextra->current->program+=yytext;
 			         //yyextra->current->startLine = yyextra->yyLineNr;
@@ -3383,7 +3388,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 1041 "pyscanner.l"
+#line 1046 "pyscanner.l"
 {
 				 // Just pushback an empty class, and
 				 // resume parsing the body.
@@ -3398,7 +3403,7 @@ YY_RULE_SETUP
 
 case 149:
 YY_RULE_SETUP
-#line 1054 "pyscanner.l"
+#line 1059 "pyscanner.l"
 { // the assignment operator
                         //printf("====== VariableDec at line %d\n",yyextra->yyLineNr);
                         yyextra->start_init = TRUE;
@@ -3408,14 +3413,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 1060 "pyscanner.l"
+#line 1065 "pyscanner.l"
 { // spaces
 			yyextra->current->initializer += yytext;
 	              }
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 1063 "pyscanner.l"
+#line 1068 "pyscanner.l"
 { // integer value
 			if (yyextra->current-> type.isEmpty()) yyextra->current->type = "int";
 			yyextra->current->initializer += yytext;
@@ -3423,7 +3428,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 1067 "pyscanner.l"
+#line 1072 "pyscanner.l"
 { // floating point value
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "float";
 			yyextra->current->initializer += yytext;
@@ -3431,7 +3436,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 1071 "pyscanner.l"
+#line 1076 "pyscanner.l"
 { // boolean value
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "bool";
 			yyextra->current->initializer += yytext;
@@ -3439,7 +3444,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 1075 "pyscanner.l"
+#line 1080 "pyscanner.l"
 { // string
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "string";
 			yyextra->current->initializer += yytext;
@@ -3450,7 +3455,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 1082 "pyscanner.l"
+#line 1087 "pyscanner.l"
 { // string
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "string";
 			yyextra->current->initializer += yytext;
@@ -3461,7 +3466,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 1089 "pyscanner.l"
+#line 1094 "pyscanner.l"
 { // start of a comment block
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "string";
 			yyextra->current->initializer += yytext;
@@ -3473,7 +3478,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 1098 "pyscanner.l"
+#line 1103 "pyscanner.l"
 { // start of a comment block
 			if (yyextra->current->type.isEmpty()) yyextra->current->type = "string";
 			yyextra->current->initializer += yytext;
@@ -3485,7 +3490,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 1106 "pyscanner.l"
+#line 1111 "pyscanner.l"
 { // tuple, only when direct after =
                         if (yyextra->current->mtype!=Property && yyextra->start_init)
 			{
@@ -3500,7 +3505,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 1117 "pyscanner.l"
+#line 1122 "pyscanner.l"
 { // list
                         if (yyextra->start_init) yyextra->current->type = "list";
       		        yyextra->current->initializer+=*yytext;
@@ -3512,7 +3517,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 1125 "pyscanner.l"
+#line 1130 "pyscanner.l"
 { // dictionary
                         if (yyextra->start_init) yyextra->current->type = "dictionary";
       		        yyextra->current->initializer+=*yytext;
@@ -3524,14 +3529,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 1133 "pyscanner.l"
+#line 1138 "pyscanner.l"
 { // comment
                         BEGIN( VariableEnd ); 
                       }
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 1136 "pyscanner.l"
+#line 1141 "pyscanner.l"
 {
 			// do something based on the type of the IDENTIFIER
 			if (yyextra->current->type.isEmpty())
@@ -3554,7 +3559,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 1155 "pyscanner.l"
+#line 1160 "pyscanner.l"
 {
                         yyextra->start_init = FALSE;
       		        yyextra->current->initializer+=*yytext;
@@ -3563,7 +3568,7 @@ YY_RULE_SETUP
 case 164:
 /* rule 164 can match eol */
 YY_RULE_SETUP
-#line 1159 "pyscanner.l"
+#line 1164 "pyscanner.l"
 {
      		        unput('\n');
      			BEGIN( VariableEnd );
@@ -3573,7 +3578,7 @@ YY_RULE_SETUP
 
 case 165:
 YY_RULE_SETUP
-#line 1166 "pyscanner.l"
+#line 1171 "pyscanner.l"
 {
       		        yyextra->current->initializer+=*yytext;
                         if (yyextra->atomStart==*yytext)
@@ -3584,7 +3589,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 1173 "pyscanner.l"
+#line 1178 "pyscanner.l"
 {
       		        yyextra->current->initializer+=*yytext;
                         if (yyextra->atomEnd==*yytext)
@@ -3600,7 +3605,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 1185 "pyscanner.l"
+#line 1190 "pyscanner.l"
 { // start of a comment block
                         yyextra->specialBlock = FALSE;
 			yyextra->current->program+=yytext;
@@ -3610,7 +3615,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 1192 "pyscanner.l"
+#line 1197 "pyscanner.l"
 { // start of a comment block
                         yyextra->specialBlock = FALSE;
 			yyextra->current->program+=yytext;
@@ -3620,7 +3625,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 1198 "pyscanner.l"
+#line 1203 "pyscanner.l"
 {
        			yyextra->stringContext=YY_START;
 			yyextra->current->initializer+="'";
@@ -3630,7 +3635,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 1204 "pyscanner.l"
+#line 1209 "pyscanner.l"
 {
        			yyextra->stringContext=YY_START;
 			yyextra->current->initializer+="\"";
@@ -3640,14 +3645,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 1210 "pyscanner.l"
+#line 1215 "pyscanner.l"
 {
       		        yyextra->current->initializer+=yytext;
 	              }
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 1213 "pyscanner.l"
+#line 1218 "pyscanner.l"
 {
       		        yyextra->current->initializer+=*yytext;
                       }
@@ -3655,7 +3660,7 @@ YY_RULE_SETUP
 case 173:
 /* rule 173 can match eol */
 YY_RULE_SETUP
-#line 1216 "pyscanner.l"
+#line 1221 "pyscanner.l"
 {
       		        yyextra->current->initializer+=*yytext;
      			incLineNr(yyscanner);
@@ -3666,7 +3671,7 @@ YY_RULE_SETUP
 case 174:
 /* rule 174 can match eol */
 YY_RULE_SETUP
-#line 1224 "pyscanner.l"
+#line 1229 "pyscanner.l"
 {
                         incLineNr(yyscanner);
 			newVariable(yyscanner);
@@ -3675,7 +3680,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 1229 "pyscanner.l"
+#line 1234 "pyscanner.l"
 { 
                         unput(*yytext);
 			newVariable(yyscanner);
@@ -3683,17 +3688,17 @@ YY_RULE_SETUP
       		      }
 	YY_BREAK
 case YY_STATE_EOF(VariableEnd):
-#line 1234 "pyscanner.l"
+#line 1239 "pyscanner.l"
 { yyterminate();
                       }
 	YY_BREAK
 
 
 case 176:
-#line 1240 "pyscanner.l"
+#line 1245 "pyscanner.l"
 case 177:
 YY_RULE_SETUP
-#line 1240 "pyscanner.l"
+#line 1245 "pyscanner.l"
 {
 			  // printf("Expected module block %d special=%d\n",yyextra->expectModuleDocs,yyextra->specialBlock);
 			  if (yyextra->doubleQuote==(yytext[0]=='"')) 
@@ -3742,7 +3747,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 1287 "pyscanner.l"
+#line 1292 "pyscanner.l"
 { // leading whitespace
       			  int indent = computeIndent(yytext);
 			  if (indent>=yyextra->curIndent)
@@ -3760,7 +3765,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 1301 "pyscanner.l"
+#line 1306 "pyscanner.l"
 {
 			  yyextra->docBlock += yytext;
                         }
@@ -3768,7 +3773,7 @@ YY_RULE_SETUP
 case 180:
 /* rule 180 can match eol */
 YY_RULE_SETUP
-#line 1304 "pyscanner.l"
+#line 1309 "pyscanner.l"
 {
       			  incLineNr(yyscanner);
 			  yyextra->docBlock += yytext;
@@ -3776,14 +3781,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 1308 "pyscanner.l"
+#line 1313 "pyscanner.l"
 { // escaped char
 			  yyextra->docBlock += yytext;
       			}
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 1311 "pyscanner.l"
+#line 1316 "pyscanner.l"
 {
 			  yyextra->docBlock += yytext;
       			}
@@ -3792,7 +3797,7 @@ YY_RULE_SETUP
 
 case 183:
 YY_RULE_SETUP
-#line 1317 "pyscanner.l"
+#line 1322 "pyscanner.l"
 { // skip leading hashes
       			}
 	YY_BREAK
@@ -3802,7 +3807,7 @@ case 184:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 1319 "pyscanner.l"
+#line 1324 "pyscanner.l"
 { // continuation of the comment on the next line
       			  yyextra->docBlock+='\n';
 			  yyextra->docBrief = FALSE;
@@ -3812,7 +3817,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 1325 "pyscanner.l"
+#line 1330 "pyscanner.l"
 { // any other stuff
       			  yyextra->docBlock+=yytext;
       			}
@@ -3820,7 +3825,7 @@ YY_RULE_SETUP
 case 186:
 /* rule 186 can match eol */
 YY_RULE_SETUP
-#line 1328 "pyscanner.l"
+#line 1333 "pyscanner.l"
 { // new line that ends the comment
 			  handleCommentBlock(yyscanner, yyextra->docBlock, yyextra->docBrief);
       			  incLineNr(yyscanner);
@@ -3829,7 +3834,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 187:
 YY_RULE_SETUP
-#line 1333 "pyscanner.l"
+#line 1338 "pyscanner.l"
 { // anything we missed
       			  yyextra->docBlock+=*yytext;
       			}
@@ -3839,7 +3844,7 @@ YY_RULE_SETUP
 case 188:
 /* rule 188 can match eol */
 YY_RULE_SETUP
-#line 1339 "pyscanner.l"
+#line 1344 "pyscanner.l"
 { // line continuation
       			         addToString(yyscanner,yytext);
       				 incLineNr(yyscanner);
@@ -3847,21 +3852,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 189:
 YY_RULE_SETUP
-#line 1343 "pyscanner.l"
+#line 1348 "pyscanner.l"
 { // escaped char
       			         addToString(yyscanner,yytext);
                                }
 	YY_BREAK
 case 190:
 YY_RULE_SETUP
-#line 1346 "pyscanner.l"
+#line 1351 "pyscanner.l"
 { // triple double quotes
       			         addToString(yyscanner,yytext);
       			       }
 	YY_BREAK
 case 191:
 YY_RULE_SETUP
-#line 1349 "pyscanner.l"
+#line 1354 "pyscanner.l"
 { // end of the string
       			         addToString(yyscanner,yytext);
       		                 BEGIN(yyextra->stringContext);
@@ -3869,14 +3874,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 192:
 YY_RULE_SETUP
-#line 1353 "pyscanner.l"
+#line 1358 "pyscanner.l"
 { // normal chars
       			         addToString(yyscanner,yytext);
                                }
 	YY_BREAK
 case 193:
 YY_RULE_SETUP
-#line 1356 "pyscanner.l"
+#line 1361 "pyscanner.l"
 { // normal char
       			         addToString(yyscanner,yytext);
                                }
@@ -3886,7 +3891,7 @@ YY_RULE_SETUP
 case 194:
 /* rule 194 can match eol */
 YY_RULE_SETUP
-#line 1362 "pyscanner.l"
+#line 1367 "pyscanner.l"
 { // line continuation
       			         addToString(yyscanner,yytext);
       				 incLineNr(yyscanner);
@@ -3894,21 +3899,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 1366 "pyscanner.l"
+#line 1371 "pyscanner.l"
 { // escaped char
       			         addToString(yyscanner,yytext);
                                }
 	YY_BREAK
 case 196:
 YY_RULE_SETUP
-#line 1369 "pyscanner.l"
+#line 1374 "pyscanner.l"
 { // triple single quotes
       			         addToString(yyscanner,yytext);
       			       }
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 1372 "pyscanner.l"
+#line 1377 "pyscanner.l"
 { // end of the string
       			         addToString(yyscanner,yytext);
       		                 BEGIN(yyextra->stringContext);
@@ -3916,14 +3921,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 1376 "pyscanner.l"
+#line 1381 "pyscanner.l"
 { // normal chars
       			         addToString(yyscanner,yytext);
                                }
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 1379 "pyscanner.l"
+#line 1384 "pyscanner.l"
 { // normal char
       			         addToString(yyscanner,yytext);
                                }
@@ -3931,10 +3936,10 @@ YY_RULE_SETUP
 
 
 case 200:
-#line 1386 "pyscanner.l"
+#line 1391 "pyscanner.l"
 case 201:
 YY_RULE_SETUP
-#line 1386 "pyscanner.l"
+#line 1391 "pyscanner.l"
 {
                           *yyextra->copyString += yytext;
 			  if (yyextra->doubleQuote==(yytext[0]=='"')) 
@@ -3946,7 +3951,7 @@ YY_RULE_SETUP
 case 202:
 /* rule 202 can match eol */
 YY_RULE_SETUP
-#line 1395 "pyscanner.l"
+#line 1400 "pyscanner.l"
 {
 			  lineCount(yyscanner);
                           *yyextra->copyString += yytext;
@@ -3955,7 +3960,7 @@ YY_RULE_SETUP
 case 203:
 /* rule 203 can match eol */
 YY_RULE_SETUP
-#line 1399 "pyscanner.l"
+#line 1404 "pyscanner.l"
 {
       			  incLineNr(yyscanner);
                           *yyextra->copyString += yytext;
@@ -3963,7 +3968,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 1403 "pyscanner.l"
+#line 1408 "pyscanner.l"
 {
                           *yyextra->copyString += *yytext;
       			}
@@ -3980,7 +3985,7 @@ YY_RULE_SETUP
 case 205:
 /* rule 205 can match eol */
 YY_RULE_SETUP
-#line 1418 "pyscanner.l"
+#line 1423 "pyscanner.l"
 {
 				 //printf("[pyscanner] %d NEWLINE [line %d] no match\n",
 				 //       YY_START, yyextra->yyLineNr);
@@ -3990,14 +3995,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 1425 "pyscanner.l"
+#line 1430 "pyscanner.l"
 {
        fprintf(stderr,"Quote: %d\n",YY_START);
                                }
 	YY_BREAK
 case 207:
 YY_RULE_SETUP
-#line 1429 "pyscanner.l"
+#line 1434 "pyscanner.l"
 {
 				 //printf("[pyscanner] '%s' [ state %d ]  [line %d] no match\n",
 				 //       yytext, YY_START, yyextra->yyLineNr);
@@ -4006,10 +4011,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 1436 "pyscanner.l"
+#line 1441 "pyscanner.l"
 ECHO;
 	YY_BREAK
-#line 4013 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
+#line 4018 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/pyscanner.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Search):
 			case YY_STATE_EOF(SearchMemVars):
@@ -5159,16 +5164,16 @@ void pyscannerYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 1436 "pyscanner.l"
+#line 1441 "pyscanner.l"
 
 
 
 //----------------------------------------------------------------------------
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int c=0;
+  yy_size_t c=0;
   const char *p = yyextra->inputString + yyextra->inputPosition;
   while ( c < max_size && *p ) { *buf++ = *p++; c++; }
   yyextra->inputPosition+=c;
@@ -5468,7 +5473,7 @@ static void parseCompounds(yyscan_t yyscanner,std::shared_ptr<Entry> rt)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
   //printf("parseCompounds(%s)\n",rt->name.data());
-  for (int i=0; i<rt->children().size(); ++i)
+  for (size_t i=0; i<rt->children().size(); ++i)
   {
     std::shared_ptr<Entry> ce = rt->children()[i];
     if (!ce->program.isEmpty())
@@ -5593,7 +5598,7 @@ static void parsePrototype(yyscan_t yyscanner,const QCString &text)
   yyextra->packageCommentAllowed = FALSE;
 
   const char *orgInputString;
-  int orgInputPosition;
+  yy_size_t orgInputPosition;
   YY_BUFFER_STATE orgState;
   
   // save scanner state
@@ -5679,5 +5684,7 @@ void PythonOutlineParser::parsePrototype(const char *text)
 
 //----------------------------------------------------------------------------
 
+#if USE_STATE2STRING
 #include "pyscanner.l.h"
+#endif
 

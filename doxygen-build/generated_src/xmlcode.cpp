@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
 #line 23 "xmlcode.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -580,7 +580,9 @@ static MemberDef *   g_currentMemberDef;
 static bool          g_includeCodeFragment;
 static const char *  g_currentFontClass;
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 static void codify(const char* text) 
 { 
@@ -743,7 +745,7 @@ static int yyread(char *buf,int max_size)
   return c;
 }
 
-#line 747 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
+#line 749 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
 
 #define INITIAL 0
 
@@ -923,10 +925,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 255 "xmlcode.l"
+#line 257 "xmlcode.l"
 
 
-#line 930 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
+#line 932 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -1007,14 +1009,14 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 257 "xmlcode.l"
+#line 259 "xmlcode.l"
 {
                         codifyLines(xmlcodeYYtext);
                     }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 260 "xmlcode.l"
+#line 262 "xmlcode.l"
 {
                         endFontClass();
                         codify(xmlcodeYYtext);
@@ -1022,7 +1024,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 264 "xmlcode.l"
+#line 266 "xmlcode.l"
 {
                         endFontClass();
                         codify(xmlcodeYYtext);
@@ -1030,7 +1032,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 268 "xmlcode.l"
+#line 270 "xmlcode.l"
 {
                         endFontClass();
                         codify(xmlcodeYYtext);
@@ -1038,7 +1040,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 272 "xmlcode.l"
+#line 274 "xmlcode.l"
 {
                         startFontClass("keyword");
                         codify(xmlcodeYYtext);
@@ -1048,7 +1050,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 277 "xmlcode.l"
+#line 279 "xmlcode.l"
 {
                         startFontClass("stringliteral");
                         codifyLines(xmlcodeYYtext);
@@ -1057,7 +1059,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 283 "xmlcode.l"
+#line 285 "xmlcode.l"
 {
                         // Write the < in a different color
                         char openBracket[] = { xmlcodeYYtext[0], '\0' };
@@ -1074,7 +1076,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 296 "xmlcode.l"
+#line 298 "xmlcode.l"
 {
                         // Write the "</" in a different color
                         char closeBracket[] = { xmlcodeYYtext[0], xmlcodeYYtext[1], '\0' };
@@ -1094,7 +1096,7 @@ YY_RULE_SETUP
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 311 "xmlcode.l"
+#line 313 "xmlcode.l"
 {
                         // Strip off the extra '!'
                         // xmlcodeYYtext++; // <
@@ -1108,14 +1110,14 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 320 "xmlcode.l"
+#line 322 "xmlcode.l"
 {
                         codifyLines(xmlcodeYYtext);
                     }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 324 "xmlcode.l"
+#line 326 "xmlcode.l"
 {
                         //printf("!ERROR(%c)\n", *xmlcodeYYtext);
                         codifyLines(xmlcodeYYtext);
@@ -1123,10 +1125,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 329 "xmlcode.l"
+#line 331 "xmlcode.l"
 ECHO;
 	YY_BREAK
-#line 1130 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
+#line 1132 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/xmlcode.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2083,7 +2085,7 @@ void xmlcodeYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 329 "xmlcode.l"
+#line 331 "xmlcode.l"
 
 
 
@@ -2197,5 +2199,7 @@ void XMLCodeParser::resetCodeParserState()
   resetXmlCodeParserState();
 }
 
+#if USE_STATE2STRING
 #include "xmlcode.l.h"
+#endif
 

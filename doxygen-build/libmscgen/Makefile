@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -138,7 +138,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackSourceConfig.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -149,7 +149,7 @@ package_source/fast: package_source
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && /usr/local/Cellar/cmake/3.16.4/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -159,14 +159,14 @@ package/fast: package
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Desktop/Catan-tracker/doxygen-build/libmscgen/CMakeFiles/progress.marks
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles /Users/Raj/Downloads/Catan-tracker/doxygen-build/libmscgen/CMakeFiles/progress.marks
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/clean
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,22 +176,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/preinstall
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 libmscgen/CMakeFiles/mscgen.dir/rule:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/CMakeFiles/mscgen.dir/rule
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f CMakeFiles/Makefile2 libmscgen/CMakeFiles/mscgen.dir/rule
 .PHONY : libmscgen/CMakeFiles/mscgen.dir/rule
 
 # Convenience name for target.
@@ -201,7 +201,7 @@ mscgen: libmscgen/CMakeFiles/mscgen.dir/rule
 
 # fast build rule for target.
 mscgen/fast:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/build
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/build
 .PHONY : mscgen/fast
 
 __/generated_src/mscgen_language.o: __/generated_src/mscgen_language.cpp.o
@@ -210,7 +210,7 @@ __/generated_src/mscgen_language.o: __/generated_src/mscgen_language.cpp.o
 
 # target to build an object file
 __/generated_src/mscgen_language.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.o
 .PHONY : __/generated_src/mscgen_language.cpp.o
 
 __/generated_src/mscgen_language.i: __/generated_src/mscgen_language.cpp.i
@@ -219,7 +219,7 @@ __/generated_src/mscgen_language.i: __/generated_src/mscgen_language.cpp.i
 
 # target to preprocess a source file
 __/generated_src/mscgen_language.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.i
 .PHONY : __/generated_src/mscgen_language.cpp.i
 
 __/generated_src/mscgen_language.s: __/generated_src/mscgen_language.cpp.s
@@ -228,7 +228,7 @@ __/generated_src/mscgen_language.s: __/generated_src/mscgen_language.cpp.s
 
 # target to generate assembly for a file
 __/generated_src/mscgen_language.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_language.cpp.s
 .PHONY : __/generated_src/mscgen_language.cpp.s
 
 __/generated_src/mscgen_lexer.o: __/generated_src/mscgen_lexer.cpp.o
@@ -237,7 +237,7 @@ __/generated_src/mscgen_lexer.o: __/generated_src/mscgen_lexer.cpp.o
 
 # target to build an object file
 __/generated_src/mscgen_lexer.cpp.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.o
 .PHONY : __/generated_src/mscgen_lexer.cpp.o
 
 __/generated_src/mscgen_lexer.i: __/generated_src/mscgen_lexer.cpp.i
@@ -246,7 +246,7 @@ __/generated_src/mscgen_lexer.i: __/generated_src/mscgen_lexer.cpp.i
 
 # target to preprocess a source file
 __/generated_src/mscgen_lexer.cpp.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.i
 .PHONY : __/generated_src/mscgen_lexer.cpp.i
 
 __/generated_src/mscgen_lexer.s: __/generated_src/mscgen_lexer.cpp.s
@@ -255,7 +255,7 @@ __/generated_src/mscgen_lexer.s: __/generated_src/mscgen_lexer.cpp.s
 
 # target to generate assembly for a file
 __/generated_src/mscgen_lexer.cpp.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/__/generated_src/mscgen_lexer.cpp.s
 .PHONY : __/generated_src/mscgen_lexer.cpp.s
 
 gd.o: gd.c.o
@@ -264,7 +264,7 @@ gd.o: gd.c.o
 
 # target to build an object file
 gd.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.o
 .PHONY : gd.c.o
 
 gd.i: gd.c.i
@@ -273,7 +273,7 @@ gd.i: gd.c.i
 
 # target to preprocess a source file
 gd.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.i
 .PHONY : gd.c.i
 
 gd.s: gd.c.s
@@ -282,7 +282,7 @@ gd.s: gd.c.s
 
 # target to generate assembly for a file
 gd.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd.c.s
 .PHONY : gd.c.s
 
 gd_color.o: gd_color.c.o
@@ -291,7 +291,7 @@ gd_color.o: gd_color.c.o
 
 # target to build an object file
 gd_color.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.o
 .PHONY : gd_color.c.o
 
 gd_color.i: gd_color.c.i
@@ -300,7 +300,7 @@ gd_color.i: gd_color.c.i
 
 # target to preprocess a source file
 gd_color.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.i
 .PHONY : gd_color.c.i
 
 gd_color.s: gd_color.c.s
@@ -309,7 +309,7 @@ gd_color.s: gd_color.c.s
 
 # target to generate assembly for a file
 gd_color.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_color.c.s
 .PHONY : gd_color.c.s
 
 gd_lodepng.o: gd_lodepng.c.o
@@ -318,7 +318,7 @@ gd_lodepng.o: gd_lodepng.c.o
 
 # target to build an object file
 gd_lodepng.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.o
 .PHONY : gd_lodepng.c.o
 
 gd_lodepng.i: gd_lodepng.c.i
@@ -327,7 +327,7 @@ gd_lodepng.i: gd_lodepng.c.i
 
 # target to preprocess a source file
 gd_lodepng.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.i
 .PHONY : gd_lodepng.c.i
 
 gd_lodepng.s: gd_lodepng.c.s
@@ -336,7 +336,7 @@ gd_lodepng.s: gd_lodepng.c.s
 
 # target to generate assembly for a file
 gd_lodepng.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_lodepng.c.s
 .PHONY : gd_lodepng.c.s
 
 gd_security.o: gd_security.c.o
@@ -345,7 +345,7 @@ gd_security.o: gd_security.c.o
 
 # target to build an object file
 gd_security.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.o
 .PHONY : gd_security.c.o
 
 gd_security.i: gd_security.c.i
@@ -354,7 +354,7 @@ gd_security.i: gd_security.c.i
 
 # target to preprocess a source file
 gd_security.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.i
 .PHONY : gd_security.c.i
 
 gd_security.s: gd_security.c.s
@@ -363,7 +363,7 @@ gd_security.s: gd_security.c.s
 
 # target to generate assembly for a file
 gd_security.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gd_security.c.s
 .PHONY : gd_security.c.s
 
 gdfonts.o: gdfonts.c.o
@@ -372,7 +372,7 @@ gdfonts.o: gdfonts.c.o
 
 # target to build an object file
 gdfonts.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.o
 .PHONY : gdfonts.c.o
 
 gdfonts.i: gdfonts.c.i
@@ -381,7 +381,7 @@ gdfonts.i: gdfonts.c.i
 
 # target to preprocess a source file
 gdfonts.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.i
 .PHONY : gdfonts.c.i
 
 gdfonts.s: gdfonts.c.s
@@ -390,7 +390,7 @@ gdfonts.s: gdfonts.c.s
 
 # target to generate assembly for a file
 gdfonts.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfonts.c.s
 .PHONY : gdfonts.c.s
 
 gdfontt.o: gdfontt.c.o
@@ -399,7 +399,7 @@ gdfontt.o: gdfontt.c.o
 
 # target to build an object file
 gdfontt.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.o
 .PHONY : gdfontt.c.o
 
 gdfontt.i: gdfontt.c.i
@@ -408,7 +408,7 @@ gdfontt.i: gdfontt.c.i
 
 # target to preprocess a source file
 gdfontt.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.i
 .PHONY : gdfontt.c.i
 
 gdfontt.s: gdfontt.c.s
@@ -417,7 +417,7 @@ gdfontt.s: gdfontt.c.s
 
 # target to generate assembly for a file
 gdfontt.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdfontt.c.s
 .PHONY : gdfontt.c.s
 
 gdhelpers.o: gdhelpers.c.o
@@ -426,7 +426,7 @@ gdhelpers.o: gdhelpers.c.o
 
 # target to build an object file
 gdhelpers.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.o
 .PHONY : gdhelpers.c.o
 
 gdhelpers.i: gdhelpers.c.i
@@ -435,7 +435,7 @@ gdhelpers.i: gdhelpers.c.i
 
 # target to preprocess a source file
 gdhelpers.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.i
 .PHONY : gdhelpers.c.i
 
 gdhelpers.s: gdhelpers.c.s
@@ -444,7 +444,7 @@ gdhelpers.s: gdhelpers.c.s
 
 # target to generate assembly for a file
 gdhelpers.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdhelpers.c.s
 .PHONY : gdhelpers.c.s
 
 gdtables.o: gdtables.c.o
@@ -453,7 +453,7 @@ gdtables.o: gdtables.c.o
 
 # target to build an object file
 gdtables.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.o
 .PHONY : gdtables.c.o
 
 gdtables.i: gdtables.c.i
@@ -462,7 +462,7 @@ gdtables.i: gdtables.c.i
 
 # target to preprocess a source file
 gdtables.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.i
 .PHONY : gdtables.c.i
 
 gdtables.s: gdtables.c.s
@@ -471,7 +471,7 @@ gdtables.s: gdtables.c.s
 
 # target to generate assembly for a file
 gdtables.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/gdtables.c.s
 .PHONY : gdtables.c.s
 
 mscgen_adraw.o: mscgen_adraw.c.o
@@ -480,7 +480,7 @@ mscgen_adraw.o: mscgen_adraw.c.o
 
 # target to build an object file
 mscgen_adraw.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.o
 .PHONY : mscgen_adraw.c.o
 
 mscgen_adraw.i: mscgen_adraw.c.i
@@ -489,7 +489,7 @@ mscgen_adraw.i: mscgen_adraw.c.i
 
 # target to preprocess a source file
 mscgen_adraw.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.i
 .PHONY : mscgen_adraw.c.i
 
 mscgen_adraw.s: mscgen_adraw.c.s
@@ -498,7 +498,7 @@ mscgen_adraw.s: mscgen_adraw.c.s
 
 # target to generate assembly for a file
 mscgen_adraw.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_adraw.c.s
 .PHONY : mscgen_adraw.c.s
 
 mscgen_api.o: mscgen_api.c.o
@@ -507,7 +507,7 @@ mscgen_api.o: mscgen_api.c.o
 
 # target to build an object file
 mscgen_api.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.o
 .PHONY : mscgen_api.c.o
 
 mscgen_api.i: mscgen_api.c.i
@@ -516,7 +516,7 @@ mscgen_api.i: mscgen_api.c.i
 
 # target to preprocess a source file
 mscgen_api.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.i
 .PHONY : mscgen_api.c.i
 
 mscgen_api.s: mscgen_api.c.s
@@ -525,7 +525,7 @@ mscgen_api.s: mscgen_api.c.s
 
 # target to generate assembly for a file
 mscgen_api.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_api.c.s
 .PHONY : mscgen_api.c.s
 
 mscgen_gd_out.o: mscgen_gd_out.c.o
@@ -534,7 +534,7 @@ mscgen_gd_out.o: mscgen_gd_out.c.o
 
 # target to build an object file
 mscgen_gd_out.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.o
 .PHONY : mscgen_gd_out.c.o
 
 mscgen_gd_out.i: mscgen_gd_out.c.i
@@ -543,7 +543,7 @@ mscgen_gd_out.i: mscgen_gd_out.c.i
 
 # target to preprocess a source file
 mscgen_gd_out.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.i
 .PHONY : mscgen_gd_out.c.i
 
 mscgen_gd_out.s: mscgen_gd_out.c.s
@@ -552,7 +552,7 @@ mscgen_gd_out.s: mscgen_gd_out.c.s
 
 # target to generate assembly for a file
 mscgen_gd_out.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_gd_out.c.s
 .PHONY : mscgen_gd_out.c.s
 
 mscgen_msc.o: mscgen_msc.c.o
@@ -561,7 +561,7 @@ mscgen_msc.o: mscgen_msc.c.o
 
 # target to build an object file
 mscgen_msc.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.o
 .PHONY : mscgen_msc.c.o
 
 mscgen_msc.i: mscgen_msc.c.i
@@ -570,7 +570,7 @@ mscgen_msc.i: mscgen_msc.c.i
 
 # target to preprocess a source file
 mscgen_msc.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.i
 .PHONY : mscgen_msc.c.i
 
 mscgen_msc.s: mscgen_msc.c.s
@@ -579,7 +579,7 @@ mscgen_msc.s: mscgen_msc.c.s
 
 # target to generate assembly for a file
 mscgen_msc.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_msc.c.s
 .PHONY : mscgen_msc.c.s
 
 mscgen_null_out.o: mscgen_null_out.c.o
@@ -588,7 +588,7 @@ mscgen_null_out.o: mscgen_null_out.c.o
 
 # target to build an object file
 mscgen_null_out.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.o
 .PHONY : mscgen_null_out.c.o
 
 mscgen_null_out.i: mscgen_null_out.c.i
@@ -597,7 +597,7 @@ mscgen_null_out.i: mscgen_null_out.c.i
 
 # target to preprocess a source file
 mscgen_null_out.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.i
 .PHONY : mscgen_null_out.c.i
 
 mscgen_null_out.s: mscgen_null_out.c.s
@@ -606,7 +606,7 @@ mscgen_null_out.s: mscgen_null_out.c.s
 
 # target to generate assembly for a file
 mscgen_null_out.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_null_out.c.s
 .PHONY : mscgen_null_out.c.s
 
 mscgen_ps_out.o: mscgen_ps_out.c.o
@@ -615,7 +615,7 @@ mscgen_ps_out.o: mscgen_ps_out.c.o
 
 # target to build an object file
 mscgen_ps_out.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.o
 .PHONY : mscgen_ps_out.c.o
 
 mscgen_ps_out.i: mscgen_ps_out.c.i
@@ -624,7 +624,7 @@ mscgen_ps_out.i: mscgen_ps_out.c.i
 
 # target to preprocess a source file
 mscgen_ps_out.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.i
 .PHONY : mscgen_ps_out.c.i
 
 mscgen_ps_out.s: mscgen_ps_out.c.s
@@ -633,7 +633,7 @@ mscgen_ps_out.s: mscgen_ps_out.c.s
 
 # target to generate assembly for a file
 mscgen_ps_out.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_ps_out.c.s
 .PHONY : mscgen_ps_out.c.s
 
 mscgen_safe.o: mscgen_safe.c.o
@@ -642,7 +642,7 @@ mscgen_safe.o: mscgen_safe.c.o
 
 # target to build an object file
 mscgen_safe.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.o
 .PHONY : mscgen_safe.c.o
 
 mscgen_safe.i: mscgen_safe.c.i
@@ -651,7 +651,7 @@ mscgen_safe.i: mscgen_safe.c.i
 
 # target to preprocess a source file
 mscgen_safe.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.i
 .PHONY : mscgen_safe.c.i
 
 mscgen_safe.s: mscgen_safe.c.s
@@ -660,7 +660,7 @@ mscgen_safe.s: mscgen_safe.c.s
 
 # target to generate assembly for a file
 mscgen_safe.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_safe.c.s
 .PHONY : mscgen_safe.c.s
 
 mscgen_svg_out.o: mscgen_svg_out.c.o
@@ -669,7 +669,7 @@ mscgen_svg_out.o: mscgen_svg_out.c.o
 
 # target to build an object file
 mscgen_svg_out.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.o
 .PHONY : mscgen_svg_out.c.o
 
 mscgen_svg_out.i: mscgen_svg_out.c.i
@@ -678,7 +678,7 @@ mscgen_svg_out.i: mscgen_svg_out.c.i
 
 # target to preprocess a source file
 mscgen_svg_out.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.i
 .PHONY : mscgen_svg_out.c.i
 
 mscgen_svg_out.s: mscgen_svg_out.c.s
@@ -687,7 +687,7 @@ mscgen_svg_out.s: mscgen_svg_out.c.s
 
 # target to generate assembly for a file
 mscgen_svg_out.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_svg_out.c.s
 .PHONY : mscgen_svg_out.c.s
 
 mscgen_usage.o: mscgen_usage.c.o
@@ -696,7 +696,7 @@ mscgen_usage.o: mscgen_usage.c.o
 
 # target to build an object file
 mscgen_usage.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.o
 .PHONY : mscgen_usage.c.o
 
 mscgen_usage.i: mscgen_usage.c.i
@@ -705,7 +705,7 @@ mscgen_usage.i: mscgen_usage.c.i
 
 # target to preprocess a source file
 mscgen_usage.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.i
 .PHONY : mscgen_usage.c.i
 
 mscgen_usage.s: mscgen_usage.c.s
@@ -714,7 +714,7 @@ mscgen_usage.s: mscgen_usage.c.s
 
 # target to generate assembly for a file
 mscgen_usage.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_usage.c.s
 .PHONY : mscgen_usage.c.s
 
 mscgen_utf8.o: mscgen_utf8.c.o
@@ -723,7 +723,7 @@ mscgen_utf8.o: mscgen_utf8.c.o
 
 # target to build an object file
 mscgen_utf8.c.o:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.o
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.o
 .PHONY : mscgen_utf8.c.o
 
 mscgen_utf8.i: mscgen_utf8.c.i
@@ -732,7 +732,7 @@ mscgen_utf8.i: mscgen_utf8.c.i
 
 # target to preprocess a source file
 mscgen_utf8.c.i:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.i
 .PHONY : mscgen_utf8.c.i
 
 mscgen_utf8.s: mscgen_utf8.c.s
@@ -741,7 +741,7 @@ mscgen_utf8.s: mscgen_utf8.c.s
 
 # target to generate assembly for a file
 mscgen_utf8.c.s:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(MAKE) -f libmscgen/CMakeFiles/mscgen.dir/build.make libmscgen/CMakeFiles/mscgen.dir/mscgen_utf8.c.s
 .PHONY : mscgen_utf8.c.s
 
 # Help Target
@@ -831,6 +831,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

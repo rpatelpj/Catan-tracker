@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
-#line 30 "fortrancode.l"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
+#line 31 "fortrancode.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -28429,7 +28429,7 @@ char *fortrancodeYYtext;
        - references to variables
 **/
 
-#line 34 "fortrancode.l"
+#line 35 "fortrancode.l"
 
 /*
  *	includes
@@ -28467,6 +28467,8 @@ const int fixedCommentAfter = 72;
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
 
+#define USE_STATE2STRING 0
+
 /*
  * For fixed formatted code position 6 is of importance (continuation character).
  * The following variables and macros keep track of the column number
@@ -28477,7 +28479,7 @@ const int fixedCommentAfter = 72;
 int yy_old_start = 0;
 int yy_my_start  = 0;
 int yy_end       = 1;
-#define YY_USER_ACTION {yy_old_start = yy_my_start; yy_my_start = yy_end; yy_end += fortrancodeYYleng;}
+#define YY_USER_ACTION {yy_old_start = yy_my_start; yy_my_start = yy_end; yy_end += static_cast<int>(fortrancodeYYleng);}
 #define YY_FTN_RESET   {yy_old_start = 0; yy_my_start = 0; yy_end = 1;}
 #define YY_FTN_REJECT  {yy_end = yy_my_start; yy_my_start = yy_old_start; REJECT;}
    
@@ -28529,7 +28531,7 @@ static UseEntry  *useEntry = 0;              //!< current use statement info
 static QList<Scope> scopeStack;
 static bool      g_isExternal = false;
 // static QCStringList *currentUseNames= new QCStringList; //! contains names of used modules of current program unit
-static QCString str="";         //!> contents of fortran string
+static QCString  g_str="";         //!> contents of fortran string
 
 static CodeOutputInterface * g_code;
 
@@ -28570,7 +28572,9 @@ static int           inTypeDecl = 0;
 
 static bool      g_endComment;
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 
 static void endFontClass()
 {
@@ -28855,58 +28859,58 @@ static bool getFortranDefs(const QCString &memberName, const QCString &moduleNam
 
   if (mn) // name is known
   {
-      MemberNameIterator mli(*mn);
-      for (mli.toFirst();(md=mli.current());++mli) // all found functions with given name
+    MemberNameIterator mli(*mn);
+    for (mli.toFirst();(md=mli.current());++mli) // all found functions with given name
+    {
+      const FileDef  *fd=md->getFileDef();
+      const GroupDef *gd=md->getGroupDef();
+      const ClassDef *cd=md->getClassDef();
+
+      //cout << "found link with same name: " << fd->fileName() << "  " <<  memberName;
+      //if (md->getNamespaceDef() != 0) cout << " in namespace " << md->getNamespaceDef()->name();cout << endl;
+
+      if ((gd && gd->isLinkable()) || (fd && fd->isLinkable()))
       {
-        const FileDef  *fd=md->getFileDef();
-        const GroupDef *gd=md->getGroupDef();
-        const ClassDef *cd=md->getClassDef();
+        const NamespaceDef *nspace= md->getNamespaceDef();
 
- //cout << "found link with same name: " << fd->fileName() << "  " <<  memberName;
- //if (md->getNamespaceDef() != 0) cout << " in namespace " << md->getNamespaceDef()->name();cout << endl;
-
-        if ((gd && gd->isLinkable()) || (fd && fd->isLinkable()))
-        {
-           const NamespaceDef *nspace= md->getNamespaceDef();
-
-           if (nspace == 0) 
-	   { // found function in global scope
-             if(cd == 0) { // Skip if bound to type
-                return TRUE;
+        if (nspace == 0) 
+        { // found function in global scope
+          if(cd == 0) { // Skip if bound to type
+            return TRUE;
+          }
+        }
+        else if (moduleName == nspace->name()) 
+        { // found in local scope
+          return TRUE;
+        }
+        else 
+        { // else search in used modules
+          QCString usedModuleName= nspace->name();
+          UseEntry *ue= usedict->find(usedModuleName);
+          if (ue) 
+          {
+            // check if only-list exists and if current entry exists is this list
+            QCStringList &only= ue->onlyNames;
+            if (only.isEmpty()) 
+            {
+              //cout << " found in module " << usedModuleName << " entry " << memberName <<  endl;
+              return TRUE; // whole module used
+            }
+            else
+            {
+              for ( QCStringList::Iterator lit = only.begin(); lit != only.end(); ++lit)
+              {
+                //cout << " search in only: " << usedModuleName << ":: " << memberName << "==" << (*it)<<  endl;
+                if (memberName == *lit)
+                {
+                  return TRUE; // found in ONLY-part of use list
+                }
               }
-           }
-           else if (moduleName == nspace->name()) 
-	   { // found in local scope
-             return TRUE;
-           }
-           else 
-	   { // else search in used modules
-	     QCString moduleName= nspace->name();
-	     UseEntry *ue= usedict->find(moduleName);
-	     if (ue) 
-	     {
-               // check if only-list exists and if current entry exists is this list
-	       QCStringList &only= ue->onlyNames;
-	       if (only.isEmpty()) 
-	       {
-               //cout << " found in module " << moduleName << " entry " << memberName <<  endl;
-                 return TRUE; // whole module used
-               }
-               else
-	       {
-	         for ( QCStringList::Iterator it = only.begin(); it != only.end(); ++it)
-                 {
-                   //cout << " search in only: " << moduleName << ":: " << memberName << "==" << (*it)<<  endl;
-		   if (memberName == *it)
-	           {
-                     return TRUE; // found in ONLY-part of use list
-	           }
-	         }
-	       }
-             }
-           }
-        } // if linkable
-      } // for
+            }
+          }
+        }
+      } // if linkable
+    } // for
   }
   return FALSE;
 }
@@ -29068,15 +29072,15 @@ static void addLocalVar(const QCString &varName)
 #undef	YY_INPUT
 #define	YY_INPUT(buf,result,max_size) result=yyread(buf,max_size);
 
-static int yyread(char *buf,int max_size)
+static yy_size_t yyread(char *buf,yy_size_t max_size)
 {
-    int c=0;
-    while( c < max_size && g_inputString[g_inputPosition] )
-    {
-	*buf = g_inputString[g_inputPosition++] ;
-	c++; buf++;
-    }
-    return c;
+  yy_size_t c=0;
+  while( c < max_size && g_inputString[g_inputPosition] )
+  {
+    *buf = g_inputString[g_inputPosition++] ;
+    c++; buf++;
+  }
+  return c;
 }
 
 /* Assume that attribute statements are almost the same as attributes. */
@@ -29098,7 +29102,7 @@ static int yyread(char *buf,int max_size)
 
 
 
-#line 29102 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
+#line 29106 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
 
 #define INITIAL 0
 #define Start 1
@@ -29200,8 +29204,6 @@ static int input (void );
     static void yy_push_state (int new_state );
     
     static void yy_pop_state (void );
-    
-    static int yy_top_state (void );
     
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
@@ -29309,13 +29311,13 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 739 "fortrancode.l"
+#line 744 "fortrancode.l"
 
  /*==================================================================*/
 
  /*-------- ignore ------------------------------------------------------------*/
 
-#line 29319 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
+#line 29321 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -29437,7 +29439,7 @@ case 1:
 (yy_c_buf_p) = yy_cp = yy_bp + 4;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 744 "fortrancode.l"
+#line 749 "fortrancode.l"
 { // do not search keywords, intrinsics... TODO: complete list
                                           codifyLines(fortrancodeYYtext);
                                         }
@@ -29446,7 +29448,7 @@ YY_RULE_SETUP
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 749 "fortrancode.l"
+#line 754 "fortrancode.l"
 {  // highlight
    					  /* font class is defined e.g. in doxygen.css */
   					  startFontClass("keyword");
@@ -29457,7 +29459,7 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 755 "fortrancode.l"
+#line 760 "fortrancode.l"
 {
                                           if (g_isFixedForm)
                                           {
@@ -29475,7 +29477,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 769 "fortrancode.l"
+#line 774 "fortrancode.l"
 {
                                           startFontClass("keywordflow");
                                           codifyLines(fortrancodeYYtext);
@@ -29488,7 +29490,7 @@ case 5:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 774 "fortrancode.l"
+#line 779 "fortrancode.l"
 { // list is a bit long as not all have possible end
   					  startFontClass("keywordflow");
   					  codifyLines(fortrancodeYYtext);
@@ -29498,7 +29500,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 779 "fortrancode.l"
+#line 784 "fortrancode.l"
 { 
   					  startFontClass("keywordtype"); 
   					  codifyLines(fortrancodeYYtext);
@@ -29510,7 +29512,7 @@ case 7:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 784 "fortrancode.l"
+#line 789 "fortrancode.l"
 {  // Namelist specification
                                           startFontClass("keywordtype");
                                           codifyLines(fortrancodeYYtext);
@@ -29520,7 +29522,7 @@ YY_RULE_SETUP
 /*-------- use statement -------------------------------------------*/
 case 8:
 YY_RULE_SETUP
-#line 790 "fortrancode.l"
+#line 795 "fortrancode.l"
 { 
   					  startFontClass("keywordtype"); 
   					  codifyLines(fortrancodeYYtext);
@@ -29531,7 +29533,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 797 "fortrancode.l"
+#line 802 "fortrancode.l"
 { // TODO: rename
   					  startFontClass("keywordtype"); 
  					  codifyLines(fortrancodeYYtext);
@@ -29542,7 +29544,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 804 "fortrancode.l"
+#line 809 "fortrancode.l"
 {
                                           QCString tmp = fortrancodeYYtext;
                                           tmp = tmp.lower();
@@ -29562,20 +29564,20 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 820 "fortrancode.l"
+#line 825 "fortrancode.l"
 { codifyLines(fortrancodeYYtext); }
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 821 "fortrancode.l"
+#line 826 "fortrancode.l"
 { codifyLines(fortrancodeYYtext);
                                           g_contLineNr++;
                                           YY_FTN_RESET}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 824 "fortrancode.l"
+#line 829 "fortrancode.l"
 {
                                           QCString tmp = fortrancodeYYtext;
                                           tmp = tmp.lower();
@@ -29588,7 +29590,7 @@ YY_RULE_SETUP
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 832 "fortrancode.l"
+#line 837 "fortrancode.l"
 {
                                           unput(*fortrancodeYYtext);
                                           yy_pop_state();YY_FTN_RESET
@@ -29599,11 +29601,11 @@ case 15:
 *yy_cp = (yy_hold_char); /* undo effects of setting up fortrancodeYYtext */
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
-#line 837 "fortrancode.l"
+#line 842 "fortrancode.l"
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 837 "fortrancode.l"
+#line 842 "fortrancode.l"
 {
                                           startFontClass("keywordtype");
                                           codifyLines(fortrancodeYYtext);
@@ -29614,7 +29616,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 844 "fortrancode.l"
+#line 849 "fortrancode.l"
 {
                                           g_insideBody=TRUE;
                                           generateLink(*g_code, fortrancodeYYtext);
@@ -29623,7 +29625,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 849 "fortrancode.l"
+#line 854 "fortrancode.l"
 {
                                           startFontClass("keywordtype");
                                           codifyLines(fortrancodeYYtext);
@@ -29634,7 +29636,7 @@ YY_RULE_SETUP
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 855 "fortrancode.l"
+#line 860 "fortrancode.l"
 {  //
                                           startScope();
   					  startFontClass("keyword"); 
@@ -29651,7 +29653,7 @@ case 20:
 (yy_c_buf_p) = yy_cp = yy_bp + 4;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 864 "fortrancode.l"
+#line 869 "fortrancode.l"
 {  //
                                           startScope();
                                           startFontClass("keyword");
@@ -29664,7 +29666,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 873 "fortrancode.l"
+#line 878 "fortrancode.l"
 {  //
                                           startFontClass("keyword");
                                           codifyLines(fortrancodeYYtext);
@@ -29677,7 +29679,7 @@ case 22:
 (yy_c_buf_p) = yy_cp = yy_bp + 4;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 878 "fortrancode.l"
+#line 883 "fortrancode.l"
 {  //
                                           startScope();
                                           startFontClass("keyword");
@@ -29690,7 +29692,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 887 "fortrancode.l"
+#line 892 "fortrancode.l"
 {
 	                                  if (currentModule == "module")
                                           {
@@ -29706,7 +29708,7 @@ case 24:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 896 "fortrancode.l"
+#line 901 "fortrancode.l"
 { //| variable declaration
               startFontClass("keyword");
             g_code->codify(fortrancodeYYtext);
@@ -29716,7 +29718,7 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 901 "fortrancode.l"
+#line 906 "fortrancode.l"
 { // interface may be without name
                                           yy_pop_state();
                                           YY_FTN_REJECT;
@@ -29724,7 +29726,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 905 "fortrancode.l"
+#line 910 "fortrancode.l"
 { // just reset currentClass, rest is done in following rule
                                           currentClass=0;
                                           YY_FTN_REJECT;
@@ -29732,7 +29734,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 909 "fortrancode.l"
+#line 914 "fortrancode.l"
 { // just reset currentClass, rest is done in following rule
                                           currentClass=0;
                                           YY_FTN_REJECT;
@@ -29740,7 +29742,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 913 "fortrancode.l"
+#line 918 "fortrancode.l"
 { // just reset currentModule, rest is done in following rule
                                           currentModule=0;
                                           YY_FTN_REJECT;
@@ -29750,7 +29752,7 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 918 "fortrancode.l"
+#line 923 "fortrancode.l"
 {   // TYPE_SPEC is for old function style function result
    					  startFontClass("keyword");
   					  codifyLines(fortrancodeYYtext);
@@ -29759,7 +29761,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 923 "fortrancode.l"
+#line 928 "fortrancode.l"
 {  // Fortran subroutine or function found
    					  startFontClass("keyword");
   					  codifyLines(fortrancodeYYtext);
@@ -29770,7 +29772,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 930 "fortrancode.l"
+#line 935 "fortrancode.l"
 { // subroutine/function name
                                           DBG_CTX((stderr, "===> start subprogram %s\n", fortrancodeYYtext));
 					  startScope();
@@ -29783,7 +29785,7 @@ case 32:
 (yy_c_buf_p) = yy_cp = yy_bp + 6;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 935 "fortrancode.l"
+#line 940 "fortrancode.l"
 {
    					  startFontClass("keyword");
  					  codifyLines(fortrancodeYYtext);
@@ -29793,7 +29795,7 @@ YY_RULE_SETUP
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 940 "fortrancode.l"
+#line 945 "fortrancode.l"
 { // ignore rest of line 
  					  codifyLines(fortrancodeYYtext);
                                         }
@@ -29801,7 +29803,7 @@ YY_RULE_SETUP
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 943 "fortrancode.l"
+#line 948 "fortrancode.l"
 { codifyLines(fortrancodeYYtext);
 					  g_contLineNr++;
                                           yy_pop_state();
@@ -29810,7 +29812,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 948 "fortrancode.l"
+#line 953 "fortrancode.l"
 {  // Fortran subroutine or function ends
                                           //cout << "===> end function " << fortrancodeYYtext << endl;
                                           endScope();
@@ -29824,7 +29826,7 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 957 "fortrancode.l"
+#line 962 "fortrancode.l"
 {
 					  generateLink(*g_code,fortrancodeYYtext);
                                           yy_pop_state();
@@ -29833,7 +29835,7 @@ YY_RULE_SETUP
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 961 "fortrancode.l"
+#line 966 "fortrancode.l"
 {  // Fortran subroutine or function ends
                                           //cout << "===> end function " << fortrancodeYYtext << endl;
                                           endScope();
@@ -29848,7 +29850,7 @@ case 38:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 969 "fortrancode.l"
+#line 974 "fortrancode.l"
 { // real is a bit tricky as it is a data type but also a function.
                                           yy_push_state(YY_START);
 					  BEGIN(Declaration);
@@ -29863,7 +29865,7 @@ case 39:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 976 "fortrancode.l"
+#line 981 "fortrancode.l"
 { 
                                           QCString typ = fortrancodeYYtext;
                                           typ = removeRedundantWhiteSpace(typ.lower());
@@ -29879,7 +29881,7 @@ YY_RULE_SETUP
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 987 "fortrancode.l"
+#line 992 "fortrancode.l"
 { 
                                           if (QCString(fortrancodeYYtext) == "external")
                                           {
@@ -29898,7 +29900,7 @@ case 41:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 998 "fortrancode.l"
+#line 1003 "fortrancode.l"
 { //| variable declaration
 					  if (QCString(fortrancodeYYtext) == "external") g_isExternal = true;
   					  startFontClass("keywordtype");
@@ -29908,7 +29910,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 1004 "fortrancode.l"
+#line 1009 "fortrancode.l"
 { // local var
                                           if (g_isFixedForm && yy_my_start == 1)
                                           {
@@ -29933,7 +29935,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 1025 "fortrancode.l"
+#line 1030 "fortrancode.l"
 { // Procedure binding
                                           BEGIN(DeclarationBinding);
                                           g_code->codify(fortrancodeYYtext);
@@ -29941,7 +29943,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 1029 "fortrancode.l"
+#line 1034 "fortrancode.l"
 { // Type bound procedure link
                                           generateLink(*g_code, fortrancodeYYtext);
                                           yy_pop_state();
@@ -29949,7 +29951,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 1033 "fortrancode.l"
+#line 1038 "fortrancode.l"
 { // start of array or type / class specification
 					  bracketCount++;
 					  g_code->codify(fortrancodeYYtext);
@@ -29957,7 +29959,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 1038 "fortrancode.l"
+#line 1043 "fortrancode.l"
 { // end array specification
 					  bracketCount--;
                                           if (!bracketCount) inTypeDecl = 0;
@@ -29966,7 +29968,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 1044 "fortrancode.l"
+#line 1049 "fortrancode.l"
 { // continuation line
 					  g_code->codify(fortrancodeYYtext);
                                           if (!g_isFixedForm)
@@ -29979,7 +29981,7 @@ YY_RULE_SETUP
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 1052 "fortrancode.l"
+#line 1057 "fortrancode.l"
 { // declaration not yet finished
 					  g_contLineNr++;
                                           codifyLines(fortrancodeYYtext);
@@ -29991,7 +29993,7 @@ YY_RULE_SETUP
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 1059 "fortrancode.l"
+#line 1064 "fortrancode.l"
 { // end declaration line (?)
 					  if (g_endComment)
                                           {
@@ -30014,7 +30016,7 @@ YY_RULE_SETUP
 /*-------- subprog calls  -----------------------------------------*/
 case 50:
 YY_RULE_SETUP
-#line 1080 "fortrancode.l"
+#line 1085 "fortrancode.l"
 {
                                           startFontClass("keyword");
                                           codifyLines(fortrancodeYYtext);
@@ -30025,7 +30027,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 1087 "fortrancode.l"
+#line 1092 "fortrancode.l"
 { // subroutine call
 					  g_insideBody=TRUE;
                                           generateLink(*g_code, fortrancodeYYtext);
@@ -30038,7 +30040,7 @@ case 52:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 1093 "fortrancode.l"
+#line 1098 "fortrancode.l"
 { // function call
                                           if (g_isFixedForm && yy_my_start == 6)
                                           {
@@ -30066,14 +30068,14 @@ YY_RULE_SETUP
 case 53:
 /* rule 53 can match eol */
 YY_RULE_SETUP
-#line 1117 "fortrancode.l"
+#line 1122 "fortrancode.l"
 { // start comment line or comment block
                                           if (fortrancodeYYtext[0] == '\n')
                                           {
 					    g_contLineNr++;
                                             yy_old_start = 0;
                                             yy_my_start = 1;
-                                            yy_end = fortrancodeYYleng;
+                                            yy_end = static_cast<int>(fortrancodeYYleng);
                                           }
                                           // Actually we should see if ! on position 6, can be continuation
                                           // but the chance is very unlikely, so no effort to solve it here
@@ -30084,7 +30086,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 1131 "fortrancode.l"
+#line 1136 "fortrancode.l"
 { // start comment line or comment block
                                           yy_push_state(YY_START);
 					  BEGIN(DocBlock);
@@ -30093,7 +30095,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 1137 "fortrancode.l"
+#line 1142 "fortrancode.l"
 { // contents of current comment line
                                           docBlock+=fortrancodeYYtext;
   					}
@@ -30101,12 +30103,12 @@ YY_RULE_SETUP
 case 56:
 /* rule 56 can match eol */
 YY_RULE_SETUP
-#line 1140 "fortrancode.l"
+#line 1145 "fortrancode.l"
 { // comment block (next line is also comment line)
 					  g_contLineNr++;
                                           yy_old_start = 0;
                                           yy_my_start = 1;
-                                          yy_end = fortrancodeYYleng;
+                                          yy_end = static_cast<int>(fortrancodeYYleng);
                                           // Actually we should see if ! on position 6, can be continuation
                                           // but the chance is very unlikely, so no effort to solve it here
 					  docBlock+=fortrancodeYYtext; 
@@ -30115,7 +30117,7 @@ YY_RULE_SETUP
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 1149 "fortrancode.l"
+#line 1154 "fortrancode.l"
 { // comment block ends at the end of this line
                                           // remove special comment (default config)
 					  g_contLineNr++;
@@ -30147,7 +30149,7 @@ case 58:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 1175 "fortrancode.l"
+#line 1180 "fortrancode.l"
 { // normal comment
 					  if(YY_START == String) YY_FTN_REJECT; // ignore in strings
                                           if (g_isFixedForm && yy_my_start == 6) YY_FTN_REJECT;
@@ -30158,7 +30160,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 1183 "fortrancode.l"
+#line 1188 "fortrancode.l"
 { // normal comment
                                           if(! g_isFixedForm) YY_FTN_REJECT;
 
@@ -30172,7 +30174,7 @@ case 60:
 (yy_c_buf_p) = yy_cp = yy_bp + 10;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 1190 "fortrancode.l"
+#line 1195 "fortrancode.l"
 {
   					  startFontClass("keyword");
   					  codifyLines(fortrancodeYYtext);
@@ -30185,7 +30187,7 @@ case 61:
 (yy_c_buf_p) = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up fortrancodeYYtext again */
 YY_RULE_SETUP
-#line 1195 "fortrancode.l"
+#line 1200 "fortrancode.l"
 {
   					  startFontClass("keyword");
   					  codifyLines(fortrancodeYYtext);
@@ -30196,7 +30198,7 @@ YY_RULE_SETUP
 case 62:
 /* rule 62 can match eol */
 YY_RULE_SETUP
-#line 1202 "fortrancode.l"
+#line 1207 "fortrancode.l"
 {
                                           if (g_isFixedForm && yy_my_start == 6) YY_FTN_REJECT;
 					  g_contLineNr++;
@@ -30209,14 +30211,14 @@ YY_RULE_SETUP
 /*------ variable references?  -------------------------------------*/ 
 case 63:
 YY_RULE_SETUP
-#line 1212 "fortrancode.l"
+#line 1217 "fortrancode.l"
 { // ignore references to elements 
 					  g_code->codify(fortrancodeYYtext);
 					}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 1215 "fortrancode.l"
+#line 1220 "fortrancode.l"
 {   
   					    g_insideBody=TRUE;
                                             generateLink(*g_code, fortrancodeYYtext);
@@ -30227,51 +30229,51 @@ YY_RULE_SETUP
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 1221 "fortrancode.l"
+#line 1226 "fortrancode.l"
 { // string with \n inside
 					  g_contLineNr++;
-                                          str+=fortrancodeYYtext;
+                                          g_str+=fortrancodeYYtext;
   					  startFontClass("stringliteral");
-  					  codifyLines(str);
+  					  codifyLines(g_str);
 					  endFontClass();
-                                          str = "";
+                                          g_str = "";
                                           YY_FTN_RESET
                                         }           
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 1230 "fortrancode.l"
+#line 1235 "fortrancode.l"
 { // string ends with next quote without previous backspace 
                                           if(fortrancodeYYtext[0]!=stringStartSymbol) YY_FTN_REJECT; // single vs double quote
-                                          str+=fortrancodeYYtext;
+                                          g_str+=fortrancodeYYtext;
   					  startFontClass("stringliteral");
-  					  codifyLines(str);
+  					  codifyLines(g_str);
 					  endFontClass();
                                           yy_pop_state();
                                         }           
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 1238 "fortrancode.l"
-{str+=fortrancodeYYtext;}
+#line 1243 "fortrancode.l"
+{g_str+=fortrancodeYYtext;}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 1240 "fortrancode.l"
+#line 1245 "fortrancode.l"
 { /* string starts */
 					  /* if(YY_START == StrIgnore) YY_FTN_REJECT; // ignore in simple comments */
                                           if (g_isFixedForm && yy_my_start == 6) YY_FTN_REJECT;
                                           yy_push_state(YY_START);
                                           stringStartSymbol=fortrancodeYYtext[0]; // single or double quote
                                           BEGIN(String);
-					  str=fortrancodeYYtext;
+					  g_str=fortrancodeYYtext;
                                         }
 	YY_BREAK
 /*-----------------------------------------------------------------------------*/
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 1250 "fortrancode.l"
+#line 1255 "fortrancode.l"
 {
   				  	  if (g_endComment)
                                           {
@@ -30289,12 +30291,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 1264 "fortrancode.l"
+#line 1269 "fortrancode.l"
 { g_code->codify(fortrancodeYYtext); }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 1266 "fortrancode.l"
+#line 1271 "fortrancode.l"
 { 
                                           if (g_isFixedForm && yy_my_start > fixedCommentAfter)
                                           {
@@ -30312,7 +30314,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 1280 "fortrancode.l"
+#line 1285 "fortrancode.l"
 { // Fortran logical comparison keywords
                                           g_code->codify(fortrancodeYYtext);
                                         }
@@ -30334,7 +30336,7 @@ case YY_STATE_EOF(DeclContLine):
 case YY_STATE_EOF(Parameterlist):
 case YY_STATE_EOF(String):
 case YY_STATE_EOF(Subprogend):
-#line 1283 "fortrancode.l"
+#line 1288 "fortrancode.l"
 {
                                           if (YY_START == DocBlock) {
                                             if (!Config_getBool(STRIP_CODE_COMMENTS))
@@ -30349,10 +30351,10 @@ case YY_STATE_EOF(Subprogend):
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 1294 "fortrancode.l"
+#line 1299 "fortrancode.l"
 ECHO;
 	YY_BREAK
-#line 30356 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
+#line 30358 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/fortrancode.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -31139,11 +31141,6 @@ YY_BUFFER_STATE fortrancodeYY_scan_bytes  (yyconst char * yybytes, yy_size_t  _y
 	BEGIN((yy_start_stack)[(yy_start_stack_ptr)]);
 }
 
-    static int yy_top_state  (void)
-{
-    	return (yy_start_stack)[(yy_start_stack_ptr) - 1];
-}
-
 #ifndef YY_EXIT_FAILURE
 #define YY_EXIT_FAILURE 2
 #endif
@@ -31365,7 +31362,7 @@ void fortrancodeYYfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 1294 "fortrancode.l"
+#line 1299 "fortrancode.l"
 
 
 
@@ -31382,7 +31379,6 @@ const char* prepassFixedForm(const char* contents, int *hasContLine); /* prototy
 static void checkContLines(const char *s)
 {
   int numLines = 0;
-  int curLine = 0;
   int i = 0;
   const char *p = s;
 
@@ -31506,5 +31502,7 @@ void FortranCodeParser::resetCodeParserState()
 
 //---------------------------------------------------------
 
+#if USE_STATE2STRING
 #include "fortrancode.l.h"
+#endif
 

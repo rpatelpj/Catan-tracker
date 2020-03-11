@@ -1,10 +1,10 @@
-#line 2 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
+#line 2 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
 #line 22 "commentcnv.l"
 #include <stdint.h>
 
 
 
-#line 8 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
+#line 8 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1251,6 +1251,8 @@ goto find_rule; \
 
 #define ADDCHAR(c)    yyextra->outBuf->addChar(c)
 #define ADDARRAY(a,s) yyextra->outBuf->addArray(a,s)
+
+#define USE_STATE2STRING 0
   
 struct CondCtx
 {
@@ -1305,7 +1307,9 @@ struct commentcnvYY_state
   bool       isFixedForm = FALSE; // For Fortran
 };
 
+#if USE_STATE2STRING
 static const char *stateToString(int state);
+#endif
 static inline int computeIndent(const char *s);
 
 static void replaceCommentMarker(yyscan_t yyscanner,const char *s,int len);
@@ -1314,7 +1318,7 @@ static void startCondSection(yyscan_t yyscanner,const char *sectId);
 static void endCondSection(yyscan_t yyscanner);
 static void handleCondSectionId(yyscan_t yyscanner,const char *expression);
 static void replaceAliases(yyscan_t yyscanner,const char *s);
-static int yyread(yyscan_t yyscanner,char *buf,int max_size);
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size);
 static void replaceComment(yyscan_t yyscanner,int offset);
 
 
@@ -1334,7 +1338,7 @@ static void replaceComment(yyscan_t yyscanner,int offset);
 
 
 
-#line 1338 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
+#line 1342 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
 
 #define INITIAL 0
 #define Scan 1
@@ -1577,10 +1581,10 @@ YY_DECL
 	register int yy_act;
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-#line 141 "commentcnv.l"
+#line 145 "commentcnv.l"
 
 
-#line 1584 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
+#line 1588 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
 
 	if ( !yyg->yy_init )
 		{
@@ -1699,21 +1703,21 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 143 "commentcnv.l"
+#line 147 "commentcnv.l"
 { /* eat anything that is not " / , or \n */
                                        copyToOutput(yyscanner,yytext,(int)yyleng);
                                     }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 146 "commentcnv.l"
+#line 150 "commentcnv.l"
 { /* eat , so we have a nice separator in long initialization lines */ 
                                        copyToOutput(yyscanner,yytext,(int)yyleng);
                                     }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 149 "commentcnv.l"
+#line 153 "commentcnv.l"
 { /* start of python long comment */
                                      if (yyextra->lang!=SrcLangExt_Python)
 				     {
@@ -1736,7 +1740,7 @@ case 4:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 164 "commentcnv.l"
+#line 168 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_Fortran)
 				     {
@@ -1758,7 +1762,7 @@ case 5:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 178 "commentcnv.l"
+#line 182 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_Fortran)
 				     {
@@ -1785,7 +1789,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 200 "commentcnv.l"
+#line 204 "commentcnv.l"
 {
   			             if (yyextra->lang!=SrcLangExt_Fortran)
 				     {
@@ -1800,7 +1804,7 @@ YY_RULE_SETUP
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 210 "commentcnv.l"
+#line 214 "commentcnv.l"
 {
   			             if (yyextra->lang!=SrcLangExt_Fortran)
 				     {
@@ -1821,7 +1825,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 227 "commentcnv.l"
+#line 231 "commentcnv.l"
 { /* start of a string */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     yyextra->stringContext = YY_START;
@@ -1830,7 +1834,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 232 "commentcnv.l"
+#line 236 "commentcnv.l"
 {
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     yyextra->charContext = YY_START;
@@ -1843,7 +1847,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 240 "commentcnv.l"
+#line 244 "commentcnv.l"
 { /* new line */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
@@ -1853,11 +1857,11 @@ case 11:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
-#line 244 "commentcnv.l"
+#line 248 "commentcnv.l"
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 244 "commentcnv.l"
+#line 248 "commentcnv.l"
 { /* start C++ style special comment block */
   				     if (yyextra->mlBrief) 
 				     {
@@ -1886,7 +1890,7 @@ case 13:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 265 "commentcnv.l"
+#line 269 "commentcnv.l"
 { /* Start of Rational Rose ANSI C++ comment block */
                                      if (yyextra->mlBrief) REJECT;
                                      int i=17; //=strlen("//##Documentation");
@@ -1903,7 +1907,7 @@ case 14:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 3;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 274 "commentcnv.l"
+#line 278 "commentcnv.l"
 { // next line contains an end marker, see bug 752712
 				     yyextra->inSpecialComment=yytext[2]=='/' || yytext[2]=='!';
   				     copyToOutput(yyscanner,yytext,(int)yyleng); 
@@ -1917,7 +1921,7 @@ case 15:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 280 "commentcnv.l"
+#line 284 "commentcnv.l"
 { /* one line C++ comment */ 
 				     yyextra->inSpecialComment=yytext[2]=='/' || yytext[2]=='!';
   				     copyToOutput(yyscanner,yytext,(int)yyleng); 
@@ -1927,14 +1931,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 286 "commentcnv.l"
+#line 290 "commentcnv.l"
 { /* avoid matching next rule for empty C comment, see bug 711723 */
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
                                    }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 289 "commentcnv.l"
+#line 293 "commentcnv.l"
 { /* start of a C comment */
                                      if ((yyextra->lang==SrcLangExt_Python) || (yyextra->lang==SrcLangExt_Tcl))
 				     {
@@ -1950,7 +1954,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 301 "commentcnv.l"
+#line 305 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_Python)
 				     {
@@ -1968,7 +1972,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 315 "commentcnv.l"
+#line 319 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_VHDL)
 				     {
@@ -1987,7 +1991,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 330 "commentcnv.l"
+#line 334 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_Fortran)
 				     {
@@ -2004,10 +2008,10 @@ YY_RULE_SETUP
   				   }
 	YY_BREAK
 case 21:
-#line 345 "commentcnv.l"
+#line 349 "commentcnv.l"
 case 22:
 YY_RULE_SETUP
-#line 345 "commentcnv.l"
+#line 349 "commentcnv.l"
 { // Mail address, to prevent seeing e.g x@code-factory.org as start of a code block
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
                                    }
@@ -2018,7 +2022,7 @@ case 23:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 6;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 348 "commentcnv.l"
+#line 352 "commentcnv.l"
 {
                                      copyToOutput(yyscanner,"@code",5); 
 				     yyextra->lastCommentContext = YY_START;
@@ -2029,7 +2033,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 355 "commentcnv.l"
+#line 359 "commentcnv.l"
 { /* start of markdown code block */
                                      if (!Config_getBool(MARKDOWN_SUPPORT))
                                      {
@@ -2048,7 +2052,7 @@ case 25:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 366 "commentcnv.l"
+#line 370 "commentcnv.l"
 { /* start of a verbatim block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     yyextra->lastCommentContext = YY_START;
@@ -2066,7 +2070,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 380 "commentcnv.l"
+#line 384 "commentcnv.l"
 {
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     yyextra->blockName=&yytext[1];
@@ -2088,7 +2092,7 @@ case 27:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 394 "commentcnv.l"
+#line 398 "commentcnv.l"
 { /* start of a verbatim block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     yyextra->blockName=&yytext[1];
@@ -2098,14 +2102,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 400 "commentcnv.l"
+#line 404 "commentcnv.l"
 { /* any other character */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 403 "commentcnv.l"
+#line 407 "commentcnv.l"
 { /* end of verbatim block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
 				     if (&yytext[1]==yyextra->blockName) // end of formula
@@ -2120,7 +2124,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 414 "commentcnv.l"
+#line 418 "commentcnv.l"
 {
                                      if (yyextra->javaBlock==0)
 				     {
@@ -2135,7 +2139,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 425 "commentcnv.l"
+#line 429 "commentcnv.l"
 {
                                      if (yyextra->javaBlock==0)
 				     {
@@ -2158,7 +2162,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 444 "commentcnv.l"
+#line 448 "commentcnv.l"
 { /* end of markdown code block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
                                      if (yytext[0]==yyextra->blockName[0])
@@ -2169,7 +2173,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 451 "commentcnv.l"
+#line 455 "commentcnv.l"
 { /* end of verbatim block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
 				     if (&yytext[4]==yyextra->blockName)
@@ -2180,7 +2184,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 458 "commentcnv.l"
+#line 462 "commentcnv.l"
 { /* skip leading comments */
   				     if (!yyextra->inSpecialComment)
 				     {
@@ -2207,7 +2211,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 481 "commentcnv.l"
+#line 485 "commentcnv.l"
 { /* any character not a backslash or new line or } */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
@@ -2215,14 +2219,14 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 484 "commentcnv.l"
+#line 488 "commentcnv.l"
 { /* new line in verbatim block */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 487 "commentcnv.l"
+#line 491 "commentcnv.l"
 {
   				     if (yyextra->blockName=="dot" || yyextra->blockName=="msc" || yyextra->blockName=="uml" || yyextra->blockName.at(0)=='f')
 				     {
@@ -2243,14 +2247,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 504 "commentcnv.l"
+#line 508 "commentcnv.l"
 { /* any other character */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 507 "commentcnv.l"
+#line 511 "commentcnv.l"
 { /* escaped character in string */
                                      if (yyextra->lang==SrcLangExt_Fortran)
                                      {
@@ -2265,7 +2269,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 518 "commentcnv.l"
+#line 522 "commentcnv.l"
 { /* end of string */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
 				     BEGIN(yyextra->stringContext); 
@@ -2273,7 +2277,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 522 "commentcnv.l"
+#line 526 "commentcnv.l"
 { /* any other string character */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
@@ -2281,14 +2285,14 @@ YY_RULE_SETUP
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 525 "commentcnv.l"
+#line 529 "commentcnv.l"
 { /* new line inside string (illegal for some compilers) */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 528 "commentcnv.l"
+#line 532 "commentcnv.l"
 { /* escaped character */
                                      if (yyextra->lang==SrcLangExt_Fortran)
                                      {
@@ -2303,7 +2307,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 539 "commentcnv.l"
+#line 543 "commentcnv.l"
 { /* end of character literal */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                      BEGIN(yyextra->charContext);
@@ -2311,7 +2315,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 543 "commentcnv.l"
+#line 547 "commentcnv.l"
 { /* any other string character */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
@@ -2319,28 +2323,28 @@ YY_RULE_SETUP
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 546 "commentcnv.l"
+#line 550 "commentcnv.l"
 { /* new line character */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 550 "commentcnv.l"
+#line 554 "commentcnv.l"
 { /* anything that is not a '*' or command */ 
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 553 "commentcnv.l"
+#line 557 "commentcnv.l"
 { /* stars without slashes */
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
                                    }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 556 "commentcnv.l"
+#line 560 "commentcnv.l"
 { /* end of Python docstring */
                                      if (yyextra->lang!=SrcLangExt_Python)
 				     {
@@ -2358,7 +2362,7 @@ YY_RULE_SETUP
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 569 "commentcnv.l"
+#line 573 "commentcnv.l"
 { /* new line in comment */
                                      copyToOutput(yyscanner,yytext,(int)yyleng);
                                      /* in case of Fortran always end of comment */
@@ -2370,7 +2374,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 577 "commentcnv.l"
+#line 581 "commentcnv.l"
 { /* nested C comment */
                                      if (yyextra->lang==SrcLangExt_Python ||
                                          yyextra->lang==SrcLangExt_Tcl    ||
@@ -2385,7 +2389,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 588 "commentcnv.l"
+#line 592 "commentcnv.l"
 { /* end of C comment */
                                      if (yyextra->lang==SrcLangExt_Python ||
                                          yyextra->lang==SrcLangExt_Tcl    ||
@@ -2416,7 +2420,7 @@ case 53:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 611 "commentcnv.l"
+#line 615 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_VHDL)
                                      {
@@ -2443,7 +2447,7 @@ case 54:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 630 "commentcnv.l"
+#line 634 "commentcnv.l"
 {
                                      if (yyextra->lang!=SrcLangExt_Python || yyextra->pythonDocString)
 				     {
@@ -2462,7 +2466,7 @@ case 55:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 641 "commentcnv.l"
+#line 645 "commentcnv.l"
 {
                                      if (yyextra->lang==SrcLangExt_Python)
                                      {
@@ -2509,7 +2513,7 @@ YY_RULE_SETUP
    */
 case 56:
 YY_RULE_SETUP
-#line 684 "commentcnv.l"
+#line 688 "commentcnv.l"
 {
                                      copyToOutput(yyscanner,yytext,(int)yyleng); 
   				   }
@@ -2520,7 +2524,7 @@ case 57:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 687 "commentcnv.l"
+#line 691 "commentcnv.l"
 {
   				     replaceComment(yyscanner,0);
   				   }
@@ -2531,7 +2535,7 @@ case 58:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 690 "commentcnv.l"
+#line 694 "commentcnv.l"
 {
                                      replaceComment(yyscanner,1); 
                                    }
@@ -2539,7 +2543,7 @@ YY_RULE_SETUP
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 693 "commentcnv.l"
+#line 697 "commentcnv.l"
 { 
   				     replaceComment(yyscanner,0);
 				     yyextra->readLineCtx=YY_START;
@@ -2549,7 +2553,7 @@ YY_RULE_SETUP
 case 60:
 /* rule 60 can match eol */
 YY_RULE_SETUP
-#line 698 "commentcnv.l"
+#line 702 "commentcnv.l"
 {   
                                      /* See Bug 752712: end the multiline comment when finding a @} or \} command */
                                      copyToOutput(yyscanner," */",3); 
@@ -2562,7 +2566,7 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 706 "commentcnv.l"
+#line 710 "commentcnv.l"
 { 
                                      replaceComment(yyscanner,1); 
 				     yyextra->readLineCtx=YY_START;
@@ -2570,14 +2574,14 @@ YY_RULE_SETUP
   				   }
 	YY_BREAK
 case 62:
-#line 712 "commentcnv.l"
+#line 716 "commentcnv.l"
 case 63:
 /* rule 63 can match eol */
-#line 713 "commentcnv.l"
+#line 717 "commentcnv.l"
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 713 "commentcnv.l"
+#line 717 "commentcnv.l"
 {    // or   //!something
   				     replaceComment(yyscanner,0);
 				     yyextra->readLineCtx=YY_START;
@@ -2586,14 +2590,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
-#line 719 "commentcnv.l"
+#line 723 "commentcnv.l"
 case 66:
 /* rule 66 can match eol */
-#line 720 "commentcnv.l"
+#line 724 "commentcnv.l"
 case 67:
 /* rule 67 can match eol */
 YY_RULE_SETUP
-#line 720 "commentcnv.l"
+#line 724 "commentcnv.l"
 { 
                                      replaceComment(yyscanner,1); 
 				     yyextra->readLineCtx=YY_START;
@@ -2603,7 +2607,7 @@ YY_RULE_SETUP
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 725 "commentcnv.l"
+#line 729 "commentcnv.l"
 {
                                      if (!yyextra->inRoseComment)
 				     {
@@ -2620,7 +2624,7 @@ YY_RULE_SETUP
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 737 "commentcnv.l"
+#line 741 "commentcnv.l"
 {
                                      if (!yyextra->inRoseComment)
 				     {
@@ -2637,7 +2641,7 @@ YY_RULE_SETUP
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 749 "commentcnv.l"
+#line 753 "commentcnv.l"
 { /* end of special comment */
                                      copyToOutput(yyscanner," */",3); 
 				     copyToOutput(yyscanner,yytext,(int)yyleng); 
@@ -2648,28 +2652,28 @@ YY_RULE_SETUP
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 756 "commentcnv.l"
+#line 760 "commentcnv.l"
 {
 				     copyToOutput(yyscanner,"/&zwj;**",8);
 				   }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 759 "commentcnv.l"
+#line 763 "commentcnv.l"
 {
 				     copyToOutput(yyscanner,"*&zwj;/",7);
 				   }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 762 "commentcnv.l"
+#line 766 "commentcnv.l"
 {
 				     copyToOutput(yyscanner,yytext,(int)yyleng);
 				   }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 765 "commentcnv.l"
+#line 769 "commentcnv.l"
 {
 				     copyToOutput(yyscanner,yytext,(int)yyleng);
 				   }
@@ -2680,7 +2684,7 @@ case 75:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 768 "commentcnv.l"
+#line 772 "commentcnv.l"
 {
 				     copyToOutput(yyscanner,yytext,(int)yyleng);
 				     BEGIN(yyextra->readLineCtx);
@@ -2688,7 +2692,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 772 "commentcnv.l"
+#line 776 "commentcnv.l"
 { // escaped command
 				     copyToOutput(yyscanner,yytext,(int)yyleng);
   				   }
@@ -2699,7 +2703,7 @@ case 77:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 5;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 775 "commentcnv.l"
+#line 779 "commentcnv.l"
 { // conditional section
   				     yyextra->condCtx = YY_START; 
   				     BEGIN(CondLine);
@@ -2711,7 +2715,7 @@ case 78:
 yyg->yy_c_buf_p = yy_cp = yy_bp + 8;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 779 "commentcnv.l"
+#line 783 "commentcnv.l"
 { // end of conditional section
   				     bool oldSkip=yyextra->skip;
   				     endCondSection(yyscanner);
@@ -2735,7 +2739,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 799 "commentcnv.l"
+#line 803 "commentcnv.l"
 {
                                      handleCondSectionId(yyscanner,yytext);
   				   }
@@ -2746,7 +2750,7 @@ case 80:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 802 "commentcnv.l"
+#line 806 "commentcnv.l"
 {
   				     yyextra->condCtx=YY_START;
                                      handleCondSectionId(yyscanner," "); // fake section id causing the section to be hidden unconditionally
@@ -2754,7 +2758,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 806 "commentcnv.l"
+#line 810 "commentcnv.l"
 { // forgot section id?
                                      handleCondSectionId(yyscanner," "); // fake section id causing the section to be hidden unconditionally
 				     if (*yytext=='\n') yyextra->lineNr++;
@@ -2762,14 +2766,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 810 "commentcnv.l"
+#line 814 "commentcnv.l"
 { // expand alias without arguments
 				     replaceAliases(yyscanner,yytext);
   				   }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 813 "commentcnv.l"
+#line 817 "commentcnv.l"
 { // expand alias with arguments
                                      yyextra->lastBlockContext=YY_START;
 				     yyextra->blockCount=1;
@@ -2780,13 +2784,13 @@ YY_RULE_SETUP
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 820 "commentcnv.l"
+#line 824 "commentcnv.l"
 { // skip leading special comments (see bug 618079)
   				   }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 822 "commentcnv.l"
+#line 826 "commentcnv.l"
 { // oops, end of comment in the middle of an alias?
                                      if (yyextra->lang==SrcLangExt_Python)
 				     {
@@ -2802,7 +2806,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 834 "commentcnv.l"
+#line 838 "commentcnv.l"
 {
                                      yyextra->aliasString+=yytext;
 				     yyextra->lastEscaped=FALSE;
@@ -2810,7 +2814,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 838 "commentcnv.l"
+#line 842 "commentcnv.l"
 {
                                      if (yyextra->lastEscaped)  yyextra->lastEscaped=FALSE;
                                      else                yyextra->lastEscaped=TRUE;
@@ -2820,7 +2824,7 @@ YY_RULE_SETUP
 case 88:
 /* rule 88 can match eol */
 YY_RULE_SETUP
-#line 843 "commentcnv.l"
+#line 847 "commentcnv.l"
 {
                                      yyextra->aliasString+=yytext;
                                      yyextra->lineNr++;
@@ -2829,7 +2833,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 848 "commentcnv.l"
+#line 852 "commentcnv.l"
 {
                                      yyextra->aliasString+=yytext;
                                      if (!yyextra->lastEscaped) yyextra->blockCount++;
@@ -2838,7 +2842,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 853 "commentcnv.l"
+#line 857 "commentcnv.l"
 {
                                      yyextra->aliasString+=yytext;
 				     if (!yyextra->lastEscaped) yyextra->blockCount--;
@@ -2852,7 +2856,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 863 "commentcnv.l"
+#line 867 "commentcnv.l"
 {
                                      yyextra->aliasString+=yytext;
 				     yyextra->lastEscaped=FALSE;
@@ -2860,17 +2864,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 867 "commentcnv.l"
+#line 871 "commentcnv.l"
 {
   				     copyToOutput(yyscanner,yytext,(int)yyleng);
   				   }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 871 "commentcnv.l"
+#line 875 "commentcnv.l"
 ECHO;
 	YY_BREAK
-#line 2874 "/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
+#line 2878 "/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/commentcnv.cpp"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(Scan):
 			case YY_STATE_EOF(SkipString):
@@ -4007,7 +4011,7 @@ void commentcnvYYfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 871 "commentcnv.l"
+#line 875 "commentcnv.l"
 
 
 
@@ -4177,11 +4181,11 @@ static void replaceAliases(yyscan_t yyscanner,const char *s)
 }
 
 
-static int yyread(yyscan_t yyscanner,char *buf,int max_size)
+static yy_size_t yyread(yyscan_t yyscanner,char *buf,yy_size_t max_size)
 {
   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
-  int bytesInBuf = yyextra->inBuf->curPos()-yyextra->inBufPos;
-  int bytesToCopy = QMIN(max_size,bytesInBuf);
+  yy_size_t bytesInBuf = yyextra->inBuf->curPos()-yyextra->inBufPos;
+  yy_size_t bytesToCopy = QMIN(max_size,bytesInBuf);
   memcpy(buf,yyextra->inBuf->data()+yyextra->inBufPos,bytesToCopy);
   yyextra->inBufPos+=bytesToCopy;
   return bytesToCopy;
@@ -4205,7 +4209,7 @@ static void replaceComment(yyscan_t yyscanner,int offset)
     else
     {
       copyToOutput(yyscanner," */",3);
-      int i;for (i=(int)yyleng-1;i>=0;i--) unput(yytext[i]);
+      for (i=(int)yyleng-1;i>=0;i--) unput(yytext[i]);
       yyextra->inSpecialComment=FALSE;
       BEGIN(Scan);
     }
@@ -4341,5 +4345,7 @@ void convertCppComments(BufStr *inBuf,BufStr *outBuf,const char *fileName)
 
 //----------------------------------------------------------------------------
 
+#if USE_STATE2STRING
 #include "commentcnv.l.h"
+#endif
 

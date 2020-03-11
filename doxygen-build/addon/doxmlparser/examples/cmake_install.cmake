@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Raj/Desktop/Catan-tracker/doxygen/addon/doxmlparser/examples
+# Install script for directory: /Users/Raj/Downloads/Catan-tracker/doxygen/addon/doxmlparser/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/Raj/Desktop/Catan-tracker/doxygen-build/addon/doxmlparser/examples/metrics/cmake_install.cmake")
+  include("/Users/Raj/Downloads/Catan-tracker/doxygen-build/addon/doxmlparser/examples/metrics/cmake_install.cmake")
 
 endif()
 

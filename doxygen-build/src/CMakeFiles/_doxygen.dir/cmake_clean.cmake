@@ -129,7 +129,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/_doxygen.dir/message.cpp.o"
   "CMakeFiles/_doxygen.dir/msc.cpp.o"
   "CMakeFiles/_doxygen.dir/namespacedef.cpp.o"
-  "CMakeFiles/_doxygen.dir/objcache.cpp.o"
   "CMakeFiles/_doxygen.dir/outputgen.cpp.o"
   "CMakeFiles/_doxygen.dir/outputlist.cpp.o"
   "CMakeFiles/_doxygen.dir/pagedef.cpp.o"

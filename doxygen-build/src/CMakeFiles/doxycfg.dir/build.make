@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/doxycfg.dir/depend.make
@@ -57,139 +57,139 @@ include src/CMakeFiles/doxycfg.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/doxycfg.dir/flags.make
 
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_am.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ar.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_br.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ca.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_cn.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_cz.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_de.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_dk.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_en.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_eo.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_es.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_fa.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_fi.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_fr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_gr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_hr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_hu.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_id.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_it.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_je.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_jp.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ke.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_kr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_lt.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_lv.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_mk.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_nl.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_no.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_pl.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_pt.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ro.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ru.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_sc.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_si.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_sk.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_sr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_sv.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_tr.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_tw.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_ua.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_vi.h
-generated_src/lang_cfg.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/translator_za.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/lang_cfg.h"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /usr/local/Cellar/cmake/3.16.4/bin/cmake -P /Users/Raj/Desktop/Catan-tracker/doxygen/cmake/lang_cfg.cmake /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/lang_cfg.h AM AR BR CA CN CZ DE DK EN EO ES FA FI FR GR HR HU ID IT JE JP KE KR LT LV MK NL NO PL PT RO RU SC SI SK SR SV TR TW UA VI ZA
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_am.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ar.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_br.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ca.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_cn.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_cz.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_de.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_dk.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_en.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_eo.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_es.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_fa.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_fi.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_fr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_gr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_hr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_hu.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_id.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_it.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_je.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_jp.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ke.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_kr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_lt.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_lv.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_mk.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_nl.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_no.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_pl.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_pt.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ro.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ru.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_sc.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_si.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_sk.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_sr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_sv.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_tr.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_tw.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_ua.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_vi.h
+generated_src/lang_cfg.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/translator_za.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/lang_cfg.h"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /usr/local/Cellar/cmake/3.16.4/bin/cmake -P /Users/Raj/Downloads/Catan-tracker/doxygen/cmake/lang_cfg.cmake /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/lang_cfg.h AM AR BR CA CN CZ DE DK EN EO ES FA FI FR GR HR HU ID IT JE JP KE KR LT LV MK NL NO PL PT RO RU SC SI SK SR SV TR TW UA VI ZA
 
-generated_src/configvalues.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml
-generated_src/configvalues.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating ../generated_src/configvalues.h"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py -maph /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.h
+generated_src/configvalues.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml
+generated_src/configvalues.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating ../generated_src/configvalues.h"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py -maph /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.h
 
-generated_src/configimpl.cpp: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configimpl.l
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "[FLEX][configimpl] Building scanner with flex 2.5.35"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen/src && /usr/bin/flex $(LEX_FLAGS) -o/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp configimpl.l
+generated_src/configimpl.cpp: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configimpl.l
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "[FLEX][configimpl] Building scanner with flex 2.5.35"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen/src && /usr/bin/flex $(LEX_FLAGS) -o/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp configimpl.l
 
-generated_src/configimpl.l.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/scan_states.py
-generated_src/configimpl.l.h: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configimpl.l
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ../generated_src/configimpl.l.h"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/src/scan_states.py /Users/Raj/Desktop/Catan-tracker/doxygen/src/configimpl.l > /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.l.h
+generated_src/configimpl.l.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/scan_states.py
+generated_src/configimpl.l.h: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configimpl.l
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ../generated_src/configimpl.l.h"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/src/scan_states.py /Users/Raj/Downloads/Catan-tracker/doxygen/src/configimpl.l > /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.l.h
 
-generated_src/configoptions.cpp: /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml
-generated_src/configoptions.cpp: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ../generated_src/configoptions.cpp"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py -cpp /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configoptions.cpp
+generated_src/configoptions.cpp: /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml
+generated_src/configoptions.cpp: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ../generated_src/configoptions.cpp"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py -cpp /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configoptions.cpp
 
-generated_src/configvalues.cpp: /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml
-generated_src/configvalues.cpp: /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating ../generated_src/configvalues.cpp"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Desktop/Catan-tracker/doxygen/src/configgen.py -maps /Users/Raj/Desktop/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.cpp
+generated_src/configvalues.cpp: /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml
+generated_src/configvalues.cpp: /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating ../generated_src/configvalues.cpp"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Users/Raj/miniconda2/bin/python /Users/Raj/Downloads/Catan-tracker/doxygen/src/configgen.py -maps /Users/Raj/Downloads/Catan-tracker/doxygen/src/config.xml > /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.cpp
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o: src/CMakeFiles/doxycfg.dir/flags.make
 src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o: generated_src/configimpl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o -c /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.o -c /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.i"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.i
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.s"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configimpl.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configimpl.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configimpl.cpp.s
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o: src/CMakeFiles/doxycfg.dir/flags.make
 src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o: generated_src/configoptions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o -c /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configoptions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.o -c /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configoptions.cpp
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.i"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configoptions.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configoptions.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.i
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.s"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configoptions.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configoptions.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configoptions.cpp.s
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o: src/CMakeFiles/doxycfg.dir/flags.make
 src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o: generated_src/configvalues.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o -c /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.o -c /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.cpp
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.i"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.cpp > CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.i
 
 src/CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.s"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/configvalues.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/configvalues.cpp -o CMakeFiles/doxycfg.dir/__/generated_src/configvalues.cpp.s
 
 src/CMakeFiles/doxycfg.dir/portable.cpp.o: src/CMakeFiles/doxycfg.dir/flags.make
-src/CMakeFiles/doxycfg.dir/portable.cpp.o: /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/doxycfg.dir/portable.cpp.o"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/portable.cpp.o -c /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable.cpp
+src/CMakeFiles/doxycfg.dir/portable.cpp.o: /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/doxycfg.dir/portable.cpp.o"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/doxycfg.dir/portable.cpp.o -c /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable.cpp
 
 src/CMakeFiles/doxycfg.dir/portable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doxycfg.dir/portable.cpp.i"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable.cpp > CMakeFiles/doxycfg.dir/portable.cpp.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable.cpp > CMakeFiles/doxycfg.dir/portable.cpp.i
 
 src/CMakeFiles/doxycfg.dir/portable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doxycfg.dir/portable.cpp.s"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable.cpp -o CMakeFiles/doxycfg.dir/portable.cpp.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable.cpp -o CMakeFiles/doxycfg.dir/portable.cpp.s
 
 src/CMakeFiles/doxycfg.dir/portable_c.c.o: src/CMakeFiles/doxycfg.dir/flags.make
-src/CMakeFiles/doxycfg.dir/portable_c.c.o: /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable_c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object src/CMakeFiles/doxycfg.dir/portable_c.c.o"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doxycfg.dir/portable_c.c.o   -c /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable_c.c
+src/CMakeFiles/doxycfg.dir/portable_c.c.o: /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable_c.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object src/CMakeFiles/doxycfg.dir/portable_c.c.o"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doxycfg.dir/portable_c.c.o   -c /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable_c.c
 
 src/CMakeFiles/doxycfg.dir/portable_c.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doxycfg.dir/portable_c.c.i"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable_c.c > CMakeFiles/doxycfg.dir/portable_c.c.i
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable_c.c > CMakeFiles/doxycfg.dir/portable_c.c.i
 
 src/CMakeFiles/doxycfg.dir/portable_c.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doxycfg.dir/portable_c.c.s"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raj/Desktop/Catan-tracker/doxygen/src/portable_c.c -o CMakeFiles/doxycfg.dir/portable_c.c.s
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raj/Downloads/Catan-tracker/doxygen/src/portable_c.c -o CMakeFiles/doxycfg.dir/portable_c.c.s
 
 # Object files for target doxycfg
 doxycfg_OBJECTS = \
@@ -209,9 +209,9 @@ lib/libdoxycfg.a: src/CMakeFiles/doxycfg.dir/portable.cpp.o
 lib/libdoxycfg.a: src/CMakeFiles/doxycfg.dir/portable_c.c.o
 lib/libdoxycfg.a: src/CMakeFiles/doxycfg.dir/build.make
 lib/libdoxycfg.a: src/CMakeFiles/doxycfg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library ../lib/libdoxycfg.a"
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/doxycfg.dir/cmake_clean_target.cmake
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/doxycfg.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library ../lib/libdoxycfg.a"
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/doxycfg.dir/cmake_clean_target.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/doxycfg.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/doxycfg.dir/build: lib/libdoxycfg.a
@@ -219,7 +219,7 @@ src/CMakeFiles/doxycfg.dir/build: lib/libdoxycfg.a
 .PHONY : src/CMakeFiles/doxycfg.dir/build
 
 src/CMakeFiles/doxycfg.dir/clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/doxycfg.dir/cmake_clean.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/src && $(CMAKE_COMMAND) -P CMakeFiles/doxycfg.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/doxycfg.dir/clean
 
 src/CMakeFiles/doxycfg.dir/depend: generated_src/lang_cfg.h
@@ -228,6 +228,6 @@ src/CMakeFiles/doxycfg.dir/depend: generated_src/configimpl.cpp
 src/CMakeFiles/doxycfg.dir/depend: generated_src/configimpl.l.h
 src/CMakeFiles/doxycfg.dir/depend: generated_src/configoptions.cpp
 src/CMakeFiles/doxycfg.dir/depend: generated_src/configvalues.cpp
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Desktop/Catan-tracker/doxygen /Users/Raj/Desktop/Catan-tracker/doxygen/src /Users/Raj/Desktop/Catan-tracker/doxygen-build /Users/Raj/Desktop/Catan-tracker/doxygen-build/src /Users/Raj/Desktop/Catan-tracker/doxygen-build/src/CMakeFiles/doxycfg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Downloads/Catan-tracker/doxygen /Users/Raj/Downloads/Catan-tracker/doxygen/src /Users/Raj/Downloads/Catan-tracker/doxygen-build /Users/Raj/Downloads/Catan-tracker/doxygen-build/src /Users/Raj/Downloads/Catan-tracker/doxygen-build/src/CMakeFiles/doxycfg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/doxycfg.dir/depend
 

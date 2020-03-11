@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/Raj/Desktop/Catan-tracker/doxygen/addon/doxmlparser/examples/metrics/main.cpp
+/Users/Raj/Downloads/Catan-tracker/doxygen/addon/doxmlparser/examples/metrics/main.cpp
 stdio.h
 -
 stdlib.h
@@ -16,5 +16,5 @@ string.h
 doxmlintf.h
 -
 
-/Users/Raj/Desktop/Catan-tracker/doxygen/addon/doxmlparser/include/doxmlintf.h
+/Users/Raj/Downloads/Catan-tracker/doxygen/addon/doxmlparser/include/doxmlintf.h
 

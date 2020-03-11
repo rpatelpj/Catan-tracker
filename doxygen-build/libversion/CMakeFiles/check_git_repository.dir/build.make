@@ -43,19 +43,19 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen
+CMAKE_SOURCE_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Raj/Desktop/Catan-tracker/doxygen-build
+CMAKE_BINARY_DIR = /Users/Raj/Downloads/Catan-tracker/doxygen-build
 
 # Utility rule file for check_git_repository.
 
 # Include the progress variables for this target.
 include libversion/CMakeFiles/check_git_repository.dir/progress.make
 
-libversion/CMakeFiles/check_git_repository: /Users/Raj/Desktop/Catan-tracker/doxygen/libversion/gitversion.cpp.in
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Desktop/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Checking the git repository for changes..."
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion && /usr/local/Cellar/cmake/3.16.4/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/Users/Raj/Desktop/Catan-tracker/doxygen -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/git_state -DPRE_CONFIGURE_GIT_VERSION_FILE=/Users/Raj/Desktop/Catan-tracker/doxygen/libversion/gitversion.cpp.in -DPOST_CONFIGURE_GIT_VERSION_FILE=/Users/Raj/Desktop/Catan-tracker/doxygen-build/generated_src/gitversion.cpp -P /Users/Raj/Desktop/Catan-tracker/doxygen/cmake/git_watcher.cmake
+libversion/CMakeFiles/check_git_repository: /Users/Raj/Downloads/Catan-tracker/doxygen/libversion/gitversion.cpp.in
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Raj/Downloads/Catan-tracker/doxygen-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Checking the git repository for changes..."
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion && /usr/local/Cellar/cmake/3.16.4/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/Users/Raj/Downloads/Catan-tracker/doxygen -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/git_state -DPRE_CONFIGURE_GIT_VERSION_FILE=/Users/Raj/Downloads/Catan-tracker/doxygen/libversion/gitversion.cpp.in -DPOST_CONFIGURE_GIT_VERSION_FILE=/Users/Raj/Downloads/Catan-tracker/doxygen-build/generated_src/gitversion.cpp -P /Users/Raj/Downloads/Catan-tracker/doxygen/cmake/git_watcher.cmake
 
 check_git_repository: libversion/CMakeFiles/check_git_repository
 check_git_repository: libversion/CMakeFiles/check_git_repository.dir/build.make
@@ -68,10 +68,10 @@ libversion/CMakeFiles/check_git_repository.dir/build: check_git_repository
 .PHONY : libversion/CMakeFiles/check_git_repository.dir/build
 
 libversion/CMakeFiles/check_git_repository.dir/clean:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion && $(CMAKE_COMMAND) -P CMakeFiles/check_git_repository.dir/cmake_clean.cmake
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion && $(CMAKE_COMMAND) -P CMakeFiles/check_git_repository.dir/cmake_clean.cmake
 .PHONY : libversion/CMakeFiles/check_git_repository.dir/clean
 
 libversion/CMakeFiles/check_git_repository.dir/depend:
-	cd /Users/Raj/Desktop/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Desktop/Catan-tracker/doxygen /Users/Raj/Desktop/Catan-tracker/doxygen/libversion /Users/Raj/Desktop/Catan-tracker/doxygen-build /Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion /Users/Raj/Desktop/Catan-tracker/doxygen-build/libversion/CMakeFiles/check_git_repository.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/Raj/Downloads/Catan-tracker/doxygen-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raj/Downloads/Catan-tracker/doxygen /Users/Raj/Downloads/Catan-tracker/doxygen/libversion /Users/Raj/Downloads/Catan-tracker/doxygen-build /Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion /Users/Raj/Downloads/Catan-tracker/doxygen-build/libversion/CMakeFiles/check_git_repository.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : libversion/CMakeFiles/check_git_repository.dir/depend
 

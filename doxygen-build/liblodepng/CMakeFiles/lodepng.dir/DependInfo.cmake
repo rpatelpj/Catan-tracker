@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Raj/Desktop/Catan-tracker/doxygen/liblodepng/lodepng.cpp" "/Users/Raj/Desktop/Catan-tracker/doxygen-build/liblodepng/CMakeFiles/lodepng.dir/lodepng.cpp.o"
+  "/Users/Raj/Downloads/Catan-tracker/doxygen/liblodepng/lodepng.cpp" "/Users/Raj/Downloads/Catan-tracker/doxygen-build/liblodepng/CMakeFiles/lodepng.dir/lodepng.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
